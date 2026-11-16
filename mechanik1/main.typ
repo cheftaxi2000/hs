@@ -11,15 +11,6 @@
   #text(font: "Inter", size: 17pt, weight: 300)[Kinematik und Statik, anschaulich erklärt]
   #v(10pt)
   #line(length: 4cm, stroke: 1.2pt)
-  #v(1.2cm)
-  #sketch(11, 4.2,
-    hatch((0.2,0.5),(10.8,0.5)),
-    beam((1.2,1.4),(9.8,1.4)), festlager((1.2,1.4)), loslager((9.8,1.4)),
-    arr((4.0,3.2),(4.0,1.5), c: cf, w: 1.5pt), lbl((4.35,3.0), $vF$, c: cf, size: 11pt),
-    arr((1.2,-0.4),(1.2,0.4), c: cf, w: 1.2pt), arr((9.8,-0.4),(9.8,0.4), c: cf, w: 1.2pt),
-    circ((7.2,2.3), 0.85), pt((7.2,2.3)), arr((7.2,2.3),(8.3,2.3), c: cv, w: 1.3pt), arr((7.2,3.15),(9.4,3.15), c: cv, w: 1.3pt),
-    arc((7.2,2.3), 0.4, 160, -140, col: cm, head: true, hs: 0.13), lbl((8.5,2.6), $vv$, c: cv, size: 11pt), lbl((6.55,2.75), $vom$, c: cm, size: 10pt),
-  )
   #v(1fr)
   #text(size: 10pt)[
     Ein Begleitskript zum Lehrbuch \
@@ -40,33 +31,28 @@
 // ---------- Vorwort ----------
 #heading(numbering: none, outlined: false)[Wie dieses Skript gedacht ist]
 
-Dieses Skript folgt Kapitel für Kapitel dem Lehrbuch _Ingenieurmechanik 1_. Alle Definitionen, Sätze und Formeln des Buchs sind enthalten; die Kapitelnummern stimmen überein, damit du jederzeit im Buch nachschlagen kannst. Geändert ist die Darstellung: weniger Fließtext, mehr Bilder, und zu jedem neuen Begriff eine anschauliche Vorstellung, bevor gerechnet wird.
+Dieses Skript folgt Kapitel für Kapitel dem Lehrbuch _Ingenieurmechanik 1_. Alle Definitionen, Sätze und Formeln des Buchs sind enthalten; die Kapitelnummern stimmen überein, damit du jederzeit im Buch nachschlagen kannst. Geändert ist die Darstellung: weniger Fließtext, dafür mehr Bilder, mehr Herleitungen in kleinen Schritten, und zu jedem neuen Begriff eine anschauliche Vorstellung, bevor gerechnet wird.
 
 === Die Bausteine
 
 #defn[Begriff][Eine Definition. Sie legt fest, was ein Wort bedeutet. Wörtlich lernen.]
 #satz[Name][Eine Aussage, die gilt (Theorem, Postulat, Gesetz). Die Formeln hier sind die, die du können musst.]
 #intu[Ein Bild oder ein Alltagsvergleich. Nicht prüfungsrelevant als Text, aber der schnellste Weg, die Formel darüber zu verstehen und sich an sie zu erinnern.]
+#warum[Beweis oder Herleitung][Ein kurzer Beweis oder die Herleitung einer Formel. Hier siehst du, _warum_ sie so aussieht. Beim ersten Lesen darfst du überspringen, beim Lernen nicht.]
 #merke[Eine Folgerung oder ein Hinweis, der in Aufgaben den Unterschied macht.]
 #rezept[Aufgabentyp][Ein Vorgehen in Schritten für einen häufigen Aufgabentyp.]
 
 Am Ende jedes Kapitels steht «Das Wichtigste in Kürze». Der Anhang sammelt alle Formeln auf wenigen Seiten.
 
-=== Farben
+=== Farben in den Abbildungen
 
-Farbe hat in allen Abbildungen dieselbe Bedeutung:
+Farbe hat in allen Abbildungen dieselbe Bedeutung. Alles andere ist schwarz (Körper, Achsen, Ortsvektoren) oder grau (Hilfslinien, Maße):
 
-#align(center, sketch(12, 1.4,
-  arr((0.3,0.7),(1.7,0.7), c: cv, w: 1.3pt), lbl((3.1,0.7), [Geschwindigkeiten], c: cv),
-  arr((5.0,0.7),(6.4,0.7), c: cf, w: 1.3pt), lbl((7.1,0.7), [Kräfte], c: cf),
-  arc((8.9,0.7), 0.4, -140, 140, col: cm, head: true), lbl((10.7,0.7), [Drehung, Momente], c: cm),
-))
-
-Schwarz ist die Geometrie (Körper, Achsen, Ortsvektoren), Grau sind Hilfslinien und Maße.
+#align(center, block(width: 11cm, image("figs/k00_farben.svg")))
 
 === Schreibweise
 
-Vektoren sind fett: $vv$, $vF$, $vom$. Ihr Betrag ist der gleiche Buchstabe mager: $v$, $F$, $omega$. $arrow(A B)$ ist der Vektor von $A$ nach $B$. Ein Punkt über einer Größe ist die Ableitung nach der Zeit: $dot(x) = dif x \/ dif t$. Eine Kraft mit Angriffspunkt schreibt man ${A | vF}$. Eine Tilde kennzeichnet virtuelle (gedachte) Größen: $tilde(vv)$, $tilde(PP)$.
+Vektoren sind fett: $vv$, $vF$, $vom$. Ihr Betrag ist der gleiche Buchstabe normal gesetzt: $v$, $F$, $omega$. $arrow(A B)$ ist der Vektor von $A$ nach $B$. Ein Punkt über einer Größe ist die Ableitung nach der Zeit: $dot(x) = dif x \/ dif t$. Eine Kraft mit Angriffspunkt schreibt man ${A | vF}$. Eine Tilde kennzeichnet virtuelle (gedachte) Größen: $tilde(vv)$, $tilde(PP)$.
 
 === Die Idee des ganzen Kurses auf einer halben Seite
 
@@ -77,7 +63,7 @@ Vektoren sind fett: $vv$, $vF$, $vom$. Ihr Betrag ist der gleiche Buchstabe mage
 + *Anwendungen (Kap. 9--14).* Lager, Systeme, Fachwerke, Reibung, Seile und schließlich der Blick ins Innere des Trägers.
 
 #teil("I", "Grundlagen")[
-  Wie beschreibt man Bewegung? Was ist eine Kraft? Und was haben beide miteinander zu tun? Die ersten drei Kapitel behandeln die Geschwindigkeit -- erst für einen Punkt, dann für den starren Körper. Die Kapitel 4 und 5 führen die Kraft ein und verknüpfen sie über die Leistung mit der Bewegung.
+  Wie beschreibt man Bewegung? Was ist eine Kraft? Und was haben beide miteinander zu tun? Die ersten drei Kapitel behandeln die Geschwindigkeit, erst für einen Punkt, dann für den starren Körper. Die Kapitel 4 und 5 führen die Kraft ein und verknüpfen sie über die Leistung mit der Bewegung.
 ]
 #include "ch01.typ"
 #include "ch02.typ"

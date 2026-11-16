@@ -2,212 +2,208 @@
 
 = Äquivalenz und Reduktion von Kräftegruppen
 
-An einem Bauteil greifen oft Dutzende Kräfte an. Die Frage dieses Kapitels: Kann man sie durch etwas Einfacheres ersetzen, ohne dass der (starre) Körper einen Unterschied merkt? Die Antwort ist ja, und sie ist erstaunlich handlich: Es kommt nur auf die Summe der Kräfte und die Summe ihrer Momente an.
+An einem Bauteil greifen oft Dutzende von Kräften an: Gewicht, Lasten, Lagerkräfte, Reibung. Die Frage dieses Kapitels lautet: Kann man sie durch etwas Einfacheres ersetzen, ohne dass der (starre) Körper einen Unterschied merkt? Die Antwort ist ja, und sie ist erstaunlich handlich. Es kommt nur auf die Summe der Kräfte und die Summe ihrer Momente an.
+
+Der Gedanke ist uns schon aus Kapitel 5 vertraut. Dort haben wir gesehen, dass die Leistung einer Kräftegruppe an einem starren Körper nur von zwei Vektoren abhängt, $vR$ und $vM_B$. Jetzt machen wir daraus ein Prinzip.
 
 == Statische Äquivalenz
 
 #defn[Statisch äquivalent][
-  Zwei Kräftegruppen ${G}$ und ${G^*}$ am selben Körper heißen *statisch äquivalent*, wenn sie bei *jeder* Starrkörperbewegung dieselbe Gesamtleistung haben.
+  Zwei am selben Körper $K$ angreifende Kräftegruppen ${G}$ und ${G^*}$ heißen *statisch äquivalent*, wenn für *jede* Starrkörperbewegung von $K$ die Gesamtleistung beider Gruppen gleich ist.
 ]
 
-Mit der Leistungsformel $PP = vv_O dot.c vR + vom dot.c vM_O$ aus Kapitel 5 lässt sich das sofort auswerten. Soll $vv_O dot.c vR + vom dot.c vM_O = vv_O dot.c vR^* + vom dot.c vM_O^*$ für _alle_ Kinematen ${vv_O, vom}$ gelten, so müssen die Faktoren einzeln übereinstimmen (wähle erst reine Translationen, dann reine Rotationen):
+Das ist eine Definition über das, was die Kräfte _leisten_, nicht über ihr Aussehen. Zwei Kräftegruppen dürfen ganz verschieden aussehen (andere Anzahl, andere Angriffspunkte) und sind trotzdem äquivalent, wenn der starre Körper sie nicht unterscheiden kann. Der Test ist einfach, weil wir die Leistung am starren Körper schon kennen: $PP = vv_O dot.c vR + vom dot.c vM_O$.
 
 #satz[Kriterium der statischen Äquivalenz][
-  Zwei Kräftegruppen sind genau dann statisch äquivalent, wenn ihre Resultierenden und ihre Momente bezüglich eines (beliebigen) Punktes übereinstimmen:
+  Zwei Kräftegruppen sind genau dann statisch äquivalent, wenn ihre Resultierenden und ihre Momente bezüglich eines (beliebigen) Punktes $O$ übereinstimmen:
   #gl($ vR = vR^*, wide vM_O = vM_O^*. $)
 ]
 
-#merke[
-  «Statisch äquivalent» heißt: gleich _für den starren Körper als Ganzes_ (Gleichgewicht, Bewegung). Es heißt *nicht*, dass die Wirkung im Inneren dieselbe ist. Ob du einen Balken in der Mitte oder verteilt belastest, kann für die Lagerkräfte egal sein -- für Durchbiegung und innere Beanspruchung ist es das nicht. Für Verformungen und Schnittgrößen darf man Kräfte nicht einfach ersetzen.
+#warum[Beweis][
+  Äquivalenz heißt $vv_O dot.c vR + vom dot.c vM_O = vv_O dot.c vR^* + vom dot.c vM_O^*$ für _alle_ Kinematen ${vv_O, vom}$, also $vv_O dot.c (vR - vR^*) + vom dot.c (vM_O - vM_O^*) = 0$ für alle Werte von $vv_O$ und $vom$. Wählt man zuerst $vom = bold(0)$ (reine Translation) und $vv_O$ beliebig, folgt $vR = vR^*$. Wählt man dann $vv_O = bold(0)$ (reine Rotation), folgt $vM_O = vM_O^*$. Umgekehrt ist klar, dass dann die Leistungen gleich sind. $square$
 ]
 
-== Resultierende und Moment
+#merke[
+  «Statisch äquivalent» heißt: gleich _für den starren Körper als Ganzes_, das heißt für Gleichgewicht und Bewegung. Es heißt *nicht*, dass die Wirkung im Inneren dieselbe ist. Ob du einen Balken in der Mitte oder verteilt belastest, ändert vielleicht an den Lagerkräften nichts. Für Durchbiegung, Verformung und die Kräfte im Inneren des Balkens ist es aber ein großer Unterschied. Sobald es um Verformung geht, darfst du Kräfte nicht mehr einfach ersetzen.
+]
+
+== Resultierende und Moment einer Kräftegruppe
 
 #defn[Resultierende][
-  $vR := sum_(i=1)^n vF_i$, komponentenweise $R_x = sum X_i$, $R_y = sum Y_i$, $R_z = sum Z_i$. Die Resultierende ist zunächst nur ein Vektor ohne Angriffspunkt.
+  Die *Resultierende* einer Kräftegruppe aus $n$ Kräften ist die Summe der Vektoranteile:
+  $ vR := sum_(i=1)^n vF_i, quad "komponentenweise" quad R_x = sum X_i, space R_y = sum Y_i, space R_z = sum Z_i. $
+  Sie ist zunächst nur ein Vektor, _ohne_ Angriffspunkt.
 ]
+
+Graphisch bildet man die Resultierende, indem man die Kraftpfeile aneinanderhängt (_Kräftepolygon_, Parallelogrammregel für zwei Kräfte); die Resultierende ist der Pfeil vom Anfang des ersten zum Ende des letzten.
+
+=== Das Moment einer Einzelkraft
 
 #defn[Moment][
-  Moment einer Einzelkraft bezüglich $O$: $vM_O := arrow(O A) times vF$. Moment einer Kräftegruppe: $vM_O := sum_i arrow(O A_i) times vF_i$.
+  Das Moment einer Einzelkraft ${A | vF}$ bezüglich eines frei wählbaren Bezugspunktes $O$ ist $vM_O := arrow(O A) times vF$. Sein Betrag ist $|vM_O| = |vF| dot.c overline(O A) sin theta = F a$ mit dem *Hebelarm* $a$ (senkrechter Abstand von $O$ zur Wirkungslinie).
 ]
 
-=== Das Moment anschaulich: Hebelarm
-
-#fig(13, 4.2, caption: [Links: Der Betrag des Moments ist Kraft mal Hebelarm $a$, dem senkrechten Abstand des Bezugspunkts von der Wirkungslinie. Rechts: Verschiebt man die Kraft längs ihrer Wirkungslinie, ändern sich weder Hebelarm noch Moment.],
-  dl((0.6,1.2),(6.4,3.52)),
-  pt((1.6,3.4)), lbl((1.35,3.6), $O$),
-  li((1.6,3.4),(2.39,1.92), s: 0.9pt + cm), lbl((1.75,2.5), $a$, c: cm),
-  li((2.39,1.92),(2.25,2.18), s: 0.4pt + cg), 
-  arr((1.6,3.4),(4.0,2.56), w: 0.6pt, hs: 0.13), lbl((3.0,3.25), $arrow(O A)$, size: 8pt),
-  arr((4.0,2.56),(5.86,3.3), c: cf, w: 1.4pt), pt((4.0,2.56)), lbl((4.05,2.25), $A$), lbl((5.6,2.85), $vF$, c: cf),
-  arc((1.6,3.4), 0.45, 200, 420, col: cm, head: true, hs: 0.12), lbl((0.75,3.2), $vM_O$, c: cm, size: 8pt),
-  lbl((4.6,0.5), $|vM_O| = F a$),
-  // rechts
-  dl((7.4,1.2),(13.0,3.44)),
-  pt((8.4,3.4)), lbl((8.15,3.6), $O$),
-  arr((8.6,1.68),(10.46,2.42), c: cf, w: 0.9pt, dash: "dashed"), arr((10.8,2.56),(12.66,3.3), c: cf, w: 1.4pt),
-  pt((8.6,1.68)), pt((10.8,2.56)), lbl((8.7,1.35), $A$), lbl((10.9,2.25), $A'$),
-  li((8.4,3.4),(9.19,1.92), s: 0.9pt + cm), lbl((8.55,2.5), $a$, c: cm),
-  lbl((11.2,0.5), [gleiches $vR$, gleiches $vM_O$]),
-)
-
-Für den Betrag gilt
-#gl($ |vM_O| = |vF| dot.c overline(O A) sin alpha = F a. $)
-Die Richtung von $vM_O$ steht senkrecht auf der Ebene durch $O$ und die Wirkungslinie; der Drehsinn folgt der Rechte-Hand-Regel. In ebenen Aufgaben zeigt jedes Moment in $plus.minus z$-Richtung, und man rechnet nur mit der Zahl $M_z$: positiv im Gegenuhrzeigersinn.
-
-Kartesisch, mit $arrow(O A) = (x, y, z)$ und $vF = (X, Y, Z)$:
+Die Dimension des Moments ist $[F L] = M L^2 T^(-2)$, die Einheit N m. Kartesisch, mit $arrow(O A) = (x, y, z)$ und $vF = (X, Y, Z)$, ergibt das Kreuzprodukt
 #gl($ M_x = y Z - z Y, quad M_y = z X - x Z, quad M_z = x Y - y X. $)
+In ebenen Aufgaben (Kräfte und Hebelarme in der $x y$-Ebene) bleibt nur $M_z = x Y - y X$ übrig; man rechnet mit dieser Zahl und legt fest, dass der Gegenuhrzeigersinn positiv ist.
+
+#intu[
+  Der Hebelarm ist ein Hilfsmittel, um das Kreuzprodukt ohne Rechnung zu bestimmen. Zeichne die Wirkungslinie der Kraft, fälle das Lot von $O$ auf sie, und miss die Länge $a$ des Lots. Dann ist $|M_O| = F a$. Die Kraft kann dabei an beliebiger Stelle _auf_ ihrer Wirkungslinie angreifen, ohne dass sich das Moment ändert, denn der Hebelarm bleibt gleich (rechts in der Abbildung unten). Das ist der Verschiebungssatz.
+]
+
+#fg("k06_verschieben", [Verschiebt man eine Kraft längs ihrer Wirkungslinie von $A$ nach $A'$, ändern sich weder Resultierende noch Moment. Der Hebelarm $a$ bleibt derselbe.])
 
 === Moment bezüglich einer Achse
 
-Das Moment einer Kraft bezüglich einer Achse $zeta$ (Einheitsvektor $ve_zeta$) ist die Projektion $M_zeta := ve_zeta dot.c vM_B$ für irgendeinen Punkt $B$ auf der Achse; das Ergebnis hängt nicht von der Wahl von $B$ ab. Anschaulich: Es misst, wie stark die Kraft den Körper _um diese Achse_ drehen will.
+Oft interessiert nicht das ganze Momentvektor, sondern nur, wie stark die Kraft um eine bestimmte _Achse_ dreht (Türscharnier, Welle).
+
+#defn[Moment bezüglich einer Achse][
+  Das Moment einer Kraft ${A | vF}$ bezüglich einer Achse $zeta$ mit Einheitsvektor $ve_zeta$ ist die Projektion des Moments $vM_B$ bezüglich eines beliebigen Punktes $B$ auf der Achse: $M_zeta := ve_zeta dot.c vM_B$. Das Ergebnis hängt nicht von der Wahl von $B$ auf der Achse ab.
+]
+
+Für zwei Punkte $B, B'$ auf der Achse ist $vM_(B') = vM_B + arrow(B' B) times vF$, und der Zusatzterm steht senkrecht auf $arrow(B' B) parallel ve_zeta$, hat also die Projektion null. Das erklärt die Unabhängigkeit von $B$.
 
 #satz[Wann das Achsenmoment verschwindet][
-  $M_zeta = 0$ genau dann, wenn die Wirkungslinie der Kraft die Achse *schneidet* oder zu ihr *parallel* ist. Sonst gilt $|M_zeta| = a |vF_perp|$ mit dem Kraftanteil $vF_perp$ senkrecht zur Achse und dessen Abstand $a$ von der Achse.
+  $M_zeta = 0$ genau dann, wenn die Wirkungslinie der Kraft die Achse *schneidet* oder zu ihr *parallel* ist. Sonst ist $|M_zeta| = a |vF_perp|$ mit dem Kraftanteil $vF_perp$ senkrecht zur Achse und seinem Abstand $a$ von der Achse.
 ]
 
 #intu[
-  Eine Tür dreht um ihre Scharnierachse. Drückst du in Richtung der Scharniere (Wirkungslinie schneidet die Achse) oder ziehst du die Tür nach oben (parallel zur Achse), dreht sie sich nicht. Nur der Anteil, der quer zur Achse an ihr vorbeizielt, dreht. Diese Regel spart in räumlichen Aufgaben viel Arbeit: Wähle Momentenachsen, die möglichst viele unbekannte Kräfte schneiden.
+  Eine Tür dreht um ihre Scharnierachse. Drückst du in Richtung der Scharniere (die Wirkungslinie trifft die Achse) oder ziehst du die Tür nach oben (parallel zur Achse), bewegt sie sich nicht. Nur der Anteil, der quer zur Achse an ihr vorbeizielt, dreht. Daraus folgt eine Regel, die in räumlichen Aufgaben viel Arbeit spart: Wähle Momentenachsen, die möglichst viele unbekannte Kräfte schneiden. Deren Momente fallen dann aus der Gleichung.
 ]
 
-=== Wechsel des Bezugspunkts
+=== Moment einer Kräftegruppe und Wechsel des Bezugspunkts
 
-Das Moment hängt vom Bezugspunkt ab. Für zwei Punkte $O, P$ gilt
+#defn[Moment einer Kräftegruppe][
+  $vM_O := sum_(i=1)^n arrow(O A_i) times vF_i$: die Summe der Momente der Einzelkräfte bezüglich desselben Punktes.
+]
+
+Wie verändert sich das Moment, wenn man den Bezugspunkt wechselt? Von $O$ nach $P$:
+$ vM_P = sum arrow(P A_i) times vF_i = sum (arrow(P O) + arrow(O A_i)) times vF_i = arrow(P O) times sum vF_i + sum arrow(O A_i) times vF_i, $
+also
 #gl($ vM_P = vM_O + arrow(P O) times vR. $)
 
-Lies das so: Moment bezüglich $P$ = Moment bezüglich $O$ + Moment der in $O$ gedachten Resultierenden bezüglich $P$. Vergleiche mit $vv_P = vv_O + vom times arrow(O P)$ aus Kapitel 3 -- dieselbe Struktur, mit den Rollen $vom <-> vR$ und $vv <-> vM$.
-
-#defn[Dyname][
-  Das Paar ${vR, vM_O}$ aus Resultierender und Moment bezüglich $O$ heißt *Dyname* der Kräftegruppe in $O$. Zwei Kräftegruppen sind statisch äquivalent, wenn sie dieselbe Dyname haben.
+#intu[
+  Lies das so: Das Moment bezüglich $P$ ist das Moment bezüglich $O$ plus das Moment der in $O$ angreifend gedachten Resultierenden bezüglich $P$. Vergleiche mit der Formel der Kinematik, $vv_P = vv_O + vom times arrow(O P)$: Es ist dieselbe Struktur, mit den Rollen $vom <-> vR$ und $vv <-> vM$. Das ist die Dualität von Kapitel 5 in Formelgestalt.
 ]
 
-== Die wichtigsten Spezialfälle
+#defn[Dyname][
+  Das Paar ${vR, vM_O}$ aus Resultierender und Moment bezüglich $O$ heißt *Dyname* der Kräftegruppe in $O$. Nach dem Kriterium oben haben statisch äquivalente Kräftegruppen dieselbe Dyname.
+]
 
-=== Verschiebungssatz
+== Wichtige Spezialfälle
 
-Zwei Einzelkräfte mit gleichem Vektoranteil sind genau dann statisch äquivalent, wenn sie *dieselbe Wirkungslinie* haben. Am starren Körper darf man eine Kraft also längs ihrer Wirkungslinie verschieben (Abb. 6.1 rechts). Man sagt, die Kraft sei ein _linienflüchtiger_ Vektor.
+=== Parallelverschiebung einer Kraft
 
-=== Kräfte mit gemeinsamem Angriffspunkt, nichtparallele Kräfte in einer Ebene
+Eine einzelne Kraft ${A | vF}$ soll nach $B$ verschoben werden. Man fügt in $B$ die _Nullgruppe_ $vF, -vF$ hinzu (sie ändert nichts, denn ihre Resultierende und ihr Moment sind null). Dann bleiben die Kraft $vF$ in $B$ und das Kräftepaar aus der ursprünglichen Kraft in $A$ und der entgegengesetzten in $B$.
 
-Kräfte am selben Punkt ersetzt man durch ihre Vektorsumme an diesem Punkt (Parallelogrammregel). Zwei nichtparallele Kräfte in einer Ebene verschiebt man längs ihrer Wirkungslinien bis zum Schnittpunkt und addiert sie dort.
+#fg("k06_parallel", [Parallelverschiebung: Man fügt in $B$ die Nullgruppe $vF, -vF$ hinzu. Übrig bleiben die Kraft in $B$ und ein Kräftepaar mit dem Versetzungsmoment $M = d F$.])
 
-=== Parallele Kräfte: das Hebelgesetz
+Das ist dasselbe wie $vM_B = arrow(B A) times vF$. Die Kraft darf an jeden Punkt verschoben werden, wenn man das dabei «verlorene» Moment als Kräftepaar dazugibt.
 
-#fig(13, 3.7, caption: [Zwei gleich gerichtete parallele Kräfte sind einer Einzelkraft $R = F_1 + F_2$ äquivalent, deren Wirkungslinie den Abstand im umgekehrten Verhältnis der Kräfte teilt. Rechts das Kräftepaar: Resultierende null, aber Moment $M = b F$.],
-  beam((0.8,1.5),(6.0,1.5), c: cg),
-  arr((1.2,3.1),(1.2,1.55), c: cf, w: 1.3pt), arr((5.6,2.3),(5.6,1.55), c: cf, w: 1.3pt),
-  arr((2.67,1.45),(2.67,-0.0), c: cf, w: 1.3pt, dash: "dashed"),
-  lbl((0.8,2.5), $vF_1$, c: cf), lbl((6.0,2.1), $vF_2$, c: cf), lbl((3.0,0.4), $vR$, c: cf),
-  bem((1.2,1.5),(2.67,1.5), $a_1$, off: 0.3), bem((2.67,1.5),(5.6,1.5), $a_2$, off: 0.3),
-  lbl((4.6,0.4), $a_1 F_1 = a_2 F_2$, size: 8.5pt),
-  // Kräftepaar
-  rct((8.2,0.9),(12.4,3.1)),
-  arr((9.0,1.4),(9.0,2.8), c: cf, w: 1.3pt), arr((11.6,2.6),(11.6,1.2), c: cf, w: 1.3pt),
-  lbl((8.65,2.6), $vF$, c: cf), lbl((12.05,1.4), $-vF$, c: cf),
-  bem((9.0,1.2),(11.6,1.2), $b$, off: -0.6),
-  arc((10.3,2.0), 0.5, 150, -150, col: cm, head: true), lbl((10.3,2.0), $M$, c: cm, size: 8pt),
-)
+=== Parallele Kräfte und Hebelgesetz
 
-Für zwei parallele Kräfte mit $vR != bold(0)$ liegt die äquivalente Einzelkraft auf einer parallelen Wirkungslinie mit
+Zwei parallele Kräfte $vF_1, vF_2$ mit $vF_1 + vF_2 != bold(0)$ sind einer Einzelkraft $vR = vF_1 + vF_2$ äquivalent, deren Wirkungslinie parallel ist. Wo liegt sie? Das Moment bezüglich eines Punktes auf der gesuchten Wirkungslinie muss verschwinden, denn dort hat $vR$ keinen Hebelarm. Daraus folgt das *Hebelgesetz*
 #gl($ a_1 |vF_1| = a_2 |vF_2|, $)
-wobei $a_1, a_2$ die Abstände der Wirkungslinie von $vR$ zu jenen von $vF_1, vF_2$ sind. Bei gleich gerichteten Kräften liegt sie dazwischen (näher bei der größeren), bei entgegengesetzten außerhalb, auf der Seite der größeren.
+wobei $a_1, a_2$ die Abstände der Wirkungslinie von $vR$ zu den Wirkungslinien von $vF_1, vF_2$ sind. Bei gleich gerichteten Kräften liegt $vR$ dazwischen (näher bei der größeren Kraft), bei entgegengesetzt gerichteten außerhalb, auf der Seite der größeren.
 
-=== Kräftepaar
+=== Das Kräftepaar
 
 #defn[Kräftepaar][
   Zwei parallele Kräfte mit $vF_1 + vF_2 = bold(0)$ (gleich groß, entgegengesetzt, verschiedene Wirkungslinien) bilden ein *Kräftepaar*. Sein Moment
-  #gl($ vM = arrow(A' A) times vF, wide |vM| = b |vF| $)
-  ($b$: Abstand der Wirkungslinien, «Breite») ist für _jeden_ Bezugspunkt dasselbe.
+  #gl($ vM = arrow(A' A) times vF, quad |vM| = b |vF|, $)
+  hängt nicht vom Bezugspunkt ab ($b$: Abstand der Wirkungslinien, die «Breite»).
 ]
 
-Weil $vR = bold(0)$ ist, fällt in $vM_P = vM_O + arrow(P O) times vR$ der Zusatzterm weg: Das Moment eines Kräftepaars ist ein *freier Vektor*. Man darf ein Kräftepaar am starren Körper beliebig verschieben und in seiner Ebene drehen, und man darf $F$ und $b$ verändern, solange $b F$ gleich bleibt. Deshalb zeichnet man es oft nur als gebogenen Pfeil mit dem Wert $M$.
+#fg("k06_paare", [Links: Zwei gleich gerichtete parallele Kräfte sind einer Einzelkraft $vR = vF_1 + vF_2$ äquivalent, deren Lage das Hebelgesetz festlegt. Rechts: das Kräftepaar, Resultierende null, aber Moment $M = b F$.])
+
+Weil $vR = bold(0)$ ist, fällt in $vM_P = vM_O + arrow(P O) times vR$ der Zusatzterm weg. Das Moment eines Kräftepaars ist ein *freier Vektor*. Man darf ein Kräftepaar am starren Körper beliebig verschieben und in seiner Ebene drehen, und man darf $F$ und $b$ verändern, solange das Produkt $b F$ gleich bleibt. Deshalb zeichnet man ein Kräftepaar oft nur als gebogenen Pfeil mit dem Wert $M$.
 
 #intu[
-  Ein Kräftepaar ist «reine Drehwirkung». Zwei Hände am Lenkrad, eine zieht, eine drückt: Das Lenkrad wird nirgendwohin geschoben, es wird nur gedreht. Ein Kräftepaar lässt sich nie durch eine einzelne Kraft ersetzen, und umgekehrt. Kraft und Kräftepaar sind die beiden Grundbausteine jeder Belastung.
+  Ein Kräftepaar ist «reine Drehwirkung». Zwei Hände am Lenkrad: Die eine zieht, die andere drückt. Das Lenkrad wird nirgendwohin geschoben, es wird nur gedreht. Ein Kräftepaar lässt sich nie durch eine einzelne Kraft ersetzen, und umgekehrt kann eine Einzelkraft nie ein reines Moment sein. Kraft und Kräftepaar sind die beiden Grundbausteine jeder Belastung.
 ]
 
-=== Eine Kraft parallel verschieben
-
-#fig(12.5, 2.9, caption: [Parallelverschiebung einer Kraft: Man fügt in $B$ die Nullgruppe $vF, -vF$ hinzu. Übrig bleiben die Kraft in $B$ und ein Kräftepaar mit dem Moment $M = d F$ (Versetzungsmoment).],
-  ..(0.6, 4.9, 9.2).map(x0 => rct((x0, 0.7), (x0 + 3.0, 2.0))),
-  arr((3.0,0.2),(3.0,1.35), c: cf, w: 1.3pt), pt((3.0,1.35)), pt((1.2,1.35)), lbl((1.2,1.65), $B$, size: 8pt), lbl((3.0,1.65), $A$, size: 8pt), lbl((3.35,0.4), $vF$, c: cf),
-  lbl((4.25,1.35), $=$, size: 12pt),
-  arr((7.3,0.2),(7.3,1.35), c: cf, w: 1.3pt), arr((5.5,0.2),(5.5,1.35), c: cf, w: 1.3pt), arr((5.5,2.5),(5.5,1.35), c: cf, w: 1.3pt, dash: "dashed"), pt((7.3,1.35)), pt((5.5,1.35)),
-  lbl((8.55,1.35), $=$, size: 12pt),
-  arr((9.8,0.2),(9.8,1.35), c: cf, w: 1.3pt), pt((9.8,1.35)), lbl((10.15,0.4), $vF$, c: cf),
-  arc((11.2,1.35), 0.4, -140, 140, col: cm, head: true), lbl((11.2,1.35), $M$, c: cm, size: 8pt),
-  bem((1.2,2.0),(3.0,2.0), $d$, off: 0.25),
-)
-
-Das ist der anschauliche Inhalt von $vM_P = vM_O + arrow(P O) times vR$: Eine Kraft darf man an jeden Punkt verschieben, wenn man das dabei «verlorene» Moment als Kräftepaar dazugibt.
+#bsp[Zahnrad][
+  Der Zahnflankendruck $F$ greift am Zahnrad (Radius $R$) tangential am Umfang an. Parallel verschoben in den Mittelpunkt $O$ ergibt sich die Kraft $F$ in $O$ (sie wird vom Lager aufgenommen) und das Versetzungsmoment $M = R F$. Das Lager muss also _beides_ leisten: die Kraft $F$ aufnehmen und das Rad gegen das Antriebsmoment $M$ festhalten.
+]
 
 == Gleichgewicht einer Kräftegruppe
 
 #defn[Gleichgewicht, Nullgruppe][
-  Eine Kräftegruppe ist *im Gleichgewicht* (sie ist eine *Nullgruppe*), wenn
+  Eine Kräftegruppe ist im *Gleichgewicht* (sie ist eine *Nullgruppe*), wenn ihre Resultierende und ihr Moment bezüglich eines Punktes verschwinden:
   #gl($ vR = bold(0), wide vM_O = bold(0). $)
-  Die erste Gleichung heißt *Komponentenbedingung*, die zweite *Momentenbedingung*. Ist $vR = bold(0)$, so ist $vM_O = bold(0)$ für alle Bezugspunkte zugleich erfüllt oder für keinen.
 ]
 
-Eine Nullgruppe hat bei jeder Starrkörperbewegung die Leistung null; man darf sie zu jeder Kräftegruppe hinzufügen oder weglassen, ohne die statische Äquivalenz zu ändern. Im Raum sind das 6 skalare Gleichungen, in der Ebene 3 ($R_x = 0$, $R_y = 0$, $M_z = 0$).
+Ist $vR = bold(0)$, so verschwindet $vM_O$ entweder für alle Bezugspunkte oder für keinen (denn $vM_P = vM_O + arrow(P O) times bold(0) = vM_O$). Die erste Gleichung heißt *Komponentenbedingung*, die zweite *Momentenbedingung*. Eine Nullgruppe hat bei jeder Starrkörperbewegung die Leistung null. Man darf sie zu jeder Kräftegruppe hinzufügen oder weglassen, ohne die Äquivalenz zu ändern. Im Raum sind das 6 skalare Gleichungen, in der Ebene 3: $R_x = 0$, $R_y = 0$, $M_z = 0$.
 
 #satz[Zwei und drei Kräfte im Gleichgewicht][
-  - *Zwei* Kräfte sind nur dann im Gleichgewicht, wenn sie gleich groß und entgegengesetzt sind und auf *derselben Wirkungslinie* liegen.
-  - *Drei* nichtparallele Kräfte in einer Ebene sind nur dann im Gleichgewicht, wenn sich ihre Wirkungslinien in *einem Punkt* schneiden (und ihre Vektoren ein geschlossenes Dreieck bilden).
+  - *Zwei* Kräfte sind nur dann im Gleichgewicht, wenn sie gleich groß, entgegengesetzt sind und auf *derselben Wirkungslinie* liegen.
+  - *Drei* nichtparallele Kräfte in einer Ebene sind nur dann im Gleichgewicht, wenn sich ihre Wirkungslinien in *einem Punkt* schneiden und ihre Vektoren ein geschlossenes Dreieck bilden.
 ]
 
-Beides folgt direkt aus der Momentenbedingung (wähle den Bezugspunkt auf einer bzw. im Schnittpunkt zweier Wirkungslinien) und ist in Aufgaben ein mächtiges Werkzeug: Kennt man zwei Wirkungslinien, kennt man die Richtung der dritten Kraft.
+#warum[Zwei bzw. drei Kräfte][
+  _Zwei Kräfte:_ $vR = bold(0)$ erzwingt $vF_2 = -vF_1$. Dann bilden sie ein Kräftepaar mit Moment $b F$; es verschwindet nur für $b = 0$, also gleiche Wirkungslinie.
+
+  _Drei Kräfte:_ Schneiden sich zwei Wirkungslinien im Punkt $S$, wähle $S$ als Bezugspunkt. Deren Momente sind null; die Momentenbedingung verlangt dann auch für die dritte $a F = 0$: Ihre Wirkungslinie muss ebenfalls durch $S$ gehen. Mit $vR = bold(0)$ schließt sich das Kräftedreieck.
+]
+
+Beides sind in Aufgaben mächtige Werkzeuge: Kennt man zwei Wirkungslinien, kennt man die Richtung der dritten Kraft.
 
 == Reduktion einer Kräftegruppe
 
-*Reduktion* heißt: die einfachste statisch äquivalente Kräftegruppe finden. Der erste Schritt ist immer die Dyname ${vR, vM_B}$ in einem bequemen Punkt $B$: eine Einzelkraft $vR$ in $B$ plus ein Kräftepaar mit Moment $vM_B$.
+*Reduktion* heißt: die einfachste statisch äquivalente Kräftegruppe finden. Erster Schritt ist stets die Dyname ${vR, vM_B}$ in einem bequemen Punkt $B$: eine Einzelkraft $vR$ in $B$ plus ein Kräftepaar mit dem Moment $vM_B$.
 
-Wie bei der Kinemate gibt es zwei *Invarianten*, die nicht vom Bezugspunkt abhängen:
+#fg("k06_dyname", [Reduktion: Jede Kräftegruppe ist äquivalent zu ihrer Dyname (Kraft $vR$ in $B$ plus Kräftepaar $vM_B$). Wählt man den Bezugspunkt auf der Zentralachse, wird daraus die einfachste Form, die Schraube.])
+
+Wie bei der Kinemate gibt es *Invarianten*, die nicht vom Bezugspunkt abhängen:
 #gl($ "1. Invariante:" quad vR, wide "2. Invariante:" quad vR dot.c vM_P = vR dot.c vM_O. $)
-Die zweite bedeutet: Der Anteil $vM^((R))$ des Moments _in Richtung von_ $vR$ ist überall gleich. Nur der Anteil senkrecht zu $vR$ hängt vom Bezugspunkt ab, und er lässt sich durch geschickte Wahl zum Verschwinden bringen. Die Punkte $Z$, in denen das gelingt, bilden die *Zentralachse* (parallel zu $vR$):
-#gl($ arrow(B Z) = (vR times vM_B) / (|vR|^2), wide vM_Z = vM^((R)) = lambda vR. $)
-Die Dyname ${vR, vM_Z}$ auf der Zentralachse heißt (Kraft-)*Schraube*: eine Kraft und ein Kräftepaar, das um die Richtung dieser Kraft dreht -- wie beim Eindrehen einer Schraube mit dem Schraubenzieher.
+Die zweite folgt aus $vM_P = vM_O + arrow(P O) times vR$, denn $vR dot.c (arrow(P O) times vR) = 0$. Sie sagt: Der Anteil von $vM$ _in Richtung von $vR$_ ist überall gleich. Nur der Anteil senkrecht zu $vR$ hängt vom Bezugspunkt ab, und man kann ihn durch geschickte Wahl zum Verschwinden bringen. Die Punkte, wo das gelingt, bilden die *Zentralachse* (parallel zu $vR$):
+#gl($ arrow(B Z) = (vR times vM_B) / R^2, wide vM_Z = vM^((R)) = lambda vR. $)
+Die Dyname ${vR, vM_Z}$ auf der Zentralachse heißt (Kraft-)*Schraube*: eine Kraft und ein Kräftepaar, das um die Richtung dieser Kraft dreht (wie beim Anziehen einer Schraube mit dem Schraubenzieher).
 
 #table(columns: (auto, auto, 1fr), stroke: none, inset: (x: 6pt, y: 6pt),
-  table.hline(stroke: 0.6pt),
-  [$vR$], [$vM_B$], [*Einfachste äquivalente Kräftegruppe*],
-  table.hline(stroke: 0.3pt),
+  table.hline(stroke: 0.7pt),
+  [$vR$], [$vM_B$], [*einfachste äquivalente Kräftegruppe*],
+  table.hline(stroke: 0.4pt),
   [$= bold(0)$], [$= bold(0)$], [nichts: Gleichgewicht (Nullgruppe)],
   [$= bold(0)$], [$!= bold(0)$], [ein *Kräftepaar* mit Moment $vM_B$],
   [$!= bold(0)$], [$vR dot.c vM_B = 0$], [eine *Einzelkraft* $vR$ auf der Zentralachse],
   [$!= bold(0)$], [$vR dot.c vM_B != 0$], [eine *Schraube*: $vR$ auf der Zentralachse plus Kräftepaar $vM^((R)) parallel vR$],
-  table.hline(stroke: 0.6pt),
+  table.hline(stroke: 0.7pt),
 )
 
 #merke[
-  Bei *ebenen* Kräftegruppen und bei *parallelen* Kräften steht das Moment immer senkrecht auf $vR$, also $vR dot.c vM_B = 0$. Solche Kräftegruppen lassen sich daher immer auf eine Einzelkraft reduzieren (oder auf ein Kräftepaar, wenn $vR = bold(0)$ ist). Die echte Schraube gibt es nur im Raum.
+  Bei *ebenen* Kräftegruppen und bei *parallelen* Kräften steht das Moment immer senkrecht auf $vR$, also $vR dot.c vM_B = 0$. Solche Gruppen lassen sich daher immer auf eine Einzelkraft reduzieren (oder auf ein Kräftepaar, wenn $vR = bold(0)$). Die echte Schraube gibt es nur im Raum.
 ]
 
 #rezept[Ebene Kräftegruppe reduzieren][
   + Koordinaten wählen, alle Kräfte in Komponenten $X_i, Y_i$ zerlegen.
   + $R_x = sum X_i$, $R_y = sum Y_i$.
-  + Bezugspunkt $O$ wählen (am besten dort, wo viele Wirkungslinien durchgehen) und $M_O = sum (x_i Y_i - y_i X_i)$ bilden, oder direkt «Kraft mal Hebelarm» mit Vorzeichen nach Drehsinn.
+  + Bezugspunkt $O$ wählen (möglichst dort, wo viele Wirkungslinien durchgehen) und $M_O = sum (x_i Y_i - y_i X_i)$ bilden, oder direkt «Kraft mal Hebelarm» mit Vorzeichen nach Drehsinn.
   + Ist $vR != bold(0)$: Die Wirkungslinie der äquivalenten Einzelkraft erfüllt $x R_y - y R_x = M_O$. Ihr Abstand von $O$ ist $a = |M_O| \/ |vR|$.
 ]
 
 #bsp[Drei Kräfte an einer Platte][
-  An einer quadratischen Platte (Seite $a$, Ecken $O(0,0)$, $P(a,0)$, $Q(a,a)$, $S(0,a)$) greifen an: in $P$ die Kraft $(0, F)$, in $Q$ die Kraft $(-F, 0)$, in $S$ die Kraft $(0, -2F)$.
-  $ R_x = -F, quad R_y = F - 2F = -F, wide M_O = underbrace(a F, "in" P) + underbrace(a F, "in" Q) + underbrace(0, "in" S) = 2 a F. $
-  (Kraft in $Q$: $x Y - y X = a dot.c 0 - a dot.c (-F) = a F$.) Die Gruppe ist einer Einzelkraft $vR = (-F, -F)$ äquivalent, deren Wirkungslinie $x(-F) - y(-F) = 2 a F$, also $y = x + 2a$ erfüllt. Abstand von $O$: $2 a F \/ (sqrt(2) F) = sqrt(2) a$.
+  An einer quadratischen Platte (Seitenlänge $a$, Ecken $O(0,0)$, $P(a,0)$, $Q(a,a)$, $S(0,a)$) greifen an: in $P$ die Kraft $(0, F)$, in $Q$ die Kraft $(-F, 0)$, in $S$ die Kraft $(0, -2F)$.
+
+  _Resultierende:_ $R_x = -F$, $R_y = F - 2F = -F$.
+
+  _Moment bezüglich $O$_ ($x Y - y X$ für jede Kraft): in $P$: $a dot.c F - 0 = a F$; in $Q$: $a dot.c 0 - a dot.c (-F) = a F$; in $S$: $0 dot.c (-2F) - a dot.c 0 = 0$. Also $M_O = 2 a F$.
+
+  _Ergebnis:_ Die Gruppe ist einer Einzelkraft $vR = (-F, -F)$ äquivalent. Ihre Wirkungslinie erfüllt $x(-F) - y(-F) = 2 a F$, also $y = x + 2a$. Ihr Abstand von $O$ ist $2 a F \/ (sqrt(2) F) = sqrt(2) a$.
 ]
 
 #fehler[
   - Das Moment einer Kräftegruppe als «Moment der Resultierenden» berechnen, ohne zu wissen, wo die Resultierende angreift. $vR$ allein hat keinen Angriffspunkt.
   - Bei $vR = bold(0)$ auf Gleichgewicht schließen. Es kann ein Kräftepaar übrig bleiben.
-  - Hebelarm bis zum Angriffspunkt statt senkrecht bis zur Wirkungslinie messen.
-  - Vorzeichen: In der Ebene eine Drehrichtung als positiv festlegen (üblich: Gegenuhrzeigersinn) und konsequent beibehalten.
+  - Den Hebelarm bis zum Angriffspunkt statt senkrecht bis zur Wirkungslinie messen.
+  - In der Ebene die Vorzeichen der Momente nicht konsequent nach einem festen Drehsinn vergeben.
 ]
 
 #kurz[
   - Statisch äquivalent $<=>$ gleiche Dyname: $vR = vR^*$, $vM_O = vM_O^*$.
-  - $vM_O = arrow(O A) times vF$, Betrag = Kraft $times$ Hebelarm; $vM_P = vM_O + arrow(P O) times vR$.
-  - Kraft längs der Wirkungslinie verschiebbar; Parallelverschiebung kostet ein Versetzungsmoment.
+  - $vM_O = arrow(O A) times vF$, Betrag = Kraft $times$ Hebelarm. $vM_P = vM_O + arrow(P O) times vR$.
+  - Kraft längs ihrer Wirkungslinie verschiebbar; Parallelverschiebung kostet ein Versetzungsmoment.
   - Kräftepaar: $vR = bold(0)$, Moment $b F$, freier Vektor.
-  - Gleichgewicht: $vR = bold(0)$ und $vM_O = bold(0)$.
-  - Reduktion: Nullgruppe, Kräftepaar, Einzelkraft oder Schraube; Zentralachse $arrow(B Z) = (vR times vM_B) \/ R^2$.
+  - Gleichgewicht: $vR = bold(0)$ und $vM_O = bold(0)$. Zwei Kräfte: gleiche Wirkungslinie. Drei Kräfte: ein gemeinsamer Schnittpunkt.
+  - Reduktion: Nullgruppe, Kräftepaar, Einzelkraft oder Schraube; Zentralachse $arrow(B Z) = (vR times vM_B)\/R^2$.
 ]
