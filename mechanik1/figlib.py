@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager as fm
 from matplotlib.patches import Polygon, Circle, FancyArrowPatch, ArrowStyle, Rectangle
 
-for f in ("Regular", "Medium", "SemiBold"):
-    fm.fontManager.addfont(f"/usr/share/fonts/opentype/inter/Inter-{f}.otf")
+for f in ("cmunrm", "cmunti", "cmunbx", "cmunbi"):
+    fm.fontManager.addfont(f"/usr/share/fonts/truetype/cmu/{f}.ttf")
 
 plt.rcParams.update({
-    "svg.fonttype": "path", "font.family": "Inter", "font.size": 8,
+    "svg.fonttype": "path", "font.family": "CMU Serif", "font.size": 8,
     "mathtext.fontset": "cm", "axes.unicode_minus": False,
 })
 
@@ -80,17 +80,26 @@ class Fig:
     def cap(s, p, t, c=INK, size=7.8, **k): s.text(p, t, c=c, size=size, **k)
 
     # ---------- Pfeile ----------
+    def head(s, q, u, c=INK, hl=0.24, z=5):
+        """Gefüllte Pfeilspitze (LaTeX-artig, leicht eingezogen) mit Spitze in q, Richtung u."""
+        q = np.array(q, float); u = unit(u); n = nrm(u); hw = 0.30 * hl
+        pts = [q, q - hl * u + hw * n, q - 0.82 * hl * u, q - hl * u - hw * n]
+        s.ax.add_patch(Polygon(pts, closed=True, fc=c, ec=c, lw=0.3, joinstyle="miter", zorder=z + 0.1))
     def arrow(s, p, q, c=INK, lw=1.3, label=None, off=(0.0, 0.0), ha="center", va="center", size=9.5,
               dash=None, head=1.0, z=5, both=False, hl=None):
         p, q = np.array(p, float), np.array(q, float)
         L = np.linalg.norm(q - p)
-        hl = (min(0.25, max(0.11, 0.3 * L)) * head) if hl is None else hl
-        ms = 1.0
-        style = ArrowStyle("<|-|>" if both else "-|>", head_length=hl * PT / 11, head_width=hl * 0.18 * PT / 11)
-        a = FancyArrowPatch(p, q, arrowstyle=style, mutation_scale=11, color=c, lw=lw, shrinkA=0, shrinkB=0,
-                            zorder=z, joinstyle="miter", capstyle="butt")
-        if dash: a.set_linestyle((0, dash))
-        s.ax.add_patch(a)
+        if L < 1e-9: return
+        u = (q - p) / L
+        if hl is None: hl = (0.17 + 0.055 * lw) * (0.8 if head < 0.9 else 1.0)
+        hl = min(hl, max(0.13, (0.45 if both else 0.8) * L))
+        a = p + 0.8 * hl * u if both else p
+        b = q - 0.8 * hl * u
+        if np.dot(b - a, u) > 0:
+            ln, = s.ax.plot([a[0], b[0]], [a[1], b[1]], color=c, lw=lw, solid_capstyle="butt", zorder=z)
+            if dash: ln.set_dashes(dash)
+        s.head(q, u, c=c, hl=hl, z=z)
+        if both: s.head(p, -u, c=c, hl=hl, z=z)
         if label is not None:
             m = (p + q) / 2
             s.text(m + np.array(off), label, c=c, size=size, ha=ha, va=va)
@@ -106,9 +115,13 @@ class Fig:
         t = np.linspace(a0, a1, n)
         pts = np.array([pol(c, r, a) for a in t])
         if arrow:
-            k = 4
-            s.path(pts[:-k + 1], c=col, lw=lw, z=z)
-            s.arrow(pts[-k], pts[-1], c=col, lw=lw, hl=0.21, z=z)
+            hl = 0.17 + 0.055 * lw
+            da = np.rad2deg(0.8 * hl / r) * (1 if a1 > a0 else -1)
+            if abs(da) > 0.7 * abs(a1 - a0): da = 0.7 * (a1 - a0); hl = abs(rad(da)) * r / 0.8
+            tb = np.linspace(a0, a1 - da, n)
+            s.path(np.array([pol(c, r, a) for a in tb]), c=col, lw=lw, z=z, dash=dash)
+            s.ax.lines[-1].set_solid_capstyle("butt")
+            e = pol(c, r, a1); s.head(e, e - pol(c, r, a1 - 1.25 * da), c=col, hl=hl, z=z)
         else:
             s.path(pts, c=col, lw=lw, z=z, dash=dash)
         if label is not None:

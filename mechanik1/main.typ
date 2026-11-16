@@ -4,13 +4,13 @@
 // ---------- Titel ----------
 #page(header: none, footer: none)[
   #v(5.5cm)
-  #text(font: "Inter", size: 11pt, fill: cg, tracking: 1.5pt)[LERNSKRIPT]
+  #text(font: sans, size: 15pt, weight: "bold")[Lernskript]
   #v(4pt)
-  #text(font: "Inter", size: 40pt, weight: 600)[Mechanik 1]
+  #text(font: sans, size: 38pt, weight: "bold")[Mechanik 1]
   #v(-6pt)
-  #text(font: "Inter", size: 17pt, weight: 300)[Kinematik und Statik, anschaulich erklärt]
+  #text(font: sans, size: 16pt)[Kinematik und Statik, anschaulich erklärt]
   #v(10pt)
-  #line(length: 4cm, stroke: 1.2pt)
+  #line(length: 100%, stroke: 0.8pt)
   #v(1fr)
   #text(size: 10pt)[
     Ein Begleitskript zum Lehrbuch \
@@ -22,9 +22,9 @@
 
 // ---------- Inhalt ----------
 #page(header: none)[
-  #text(font: "Inter", size: 22pt, weight: 600)[Inhalt]
+  #text(font: sans, size: 23pt, weight: "bold")[Inhaltsverzeichnis]
   #v(0.6cm)
-  #show outline.entry.where(level: 1): it => { v(0.55em); text(font: "Inter", size: 10pt, weight: 600, it) }
+  #show outline.entry.where(level: 1): it => { v(0.55em); text(weight: "bold", it) }
   #outline(title: none, depth: 2, indent: 1.4em)
 ]
 

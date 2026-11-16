@@ -3,7 +3,7 @@
 = Anhang: Formelsammlung
 
 #let fs(title, body) = block(width: 100%, breakable: false, spacing: 1.2em,
-  [#text(font: "Inter", size: 9pt, weight: 600, title) #v(-4pt) #line(length: 100%, stroke: 0.4pt) #v(-2pt) #body])
+  [#text(font: sans, size: 10pt, weight: "bold", title) #v(-4pt) #line(length: 100%, stroke: 0.4pt) #v(-2pt) #body])
 
 #fs[Koordinaten und Geschwindigkeit (Kap. 1--2)][
   $ vr = x ve_x + y ve_y + z ve_z = rho ve_rho + z ve_z = r ve_r $

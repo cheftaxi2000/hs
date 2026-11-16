@@ -34,52 +34,59 @@
 #let fg(name, cap, w: 100%) = figure(image("figs/" + name + ".svg", width: w), caption: cap)
 
 // ---------- Kästen ----------
-#let _lab(t, col) = text(font: "Inter", size: 7.5pt, weight: 600, fill: col, tracking: 0.6pt, upper(t))
+#let sans = "CMU Sans Serif"
+#let cbl = rgb("#2f86c0")      // Rahmen der Definitions- und Satzkästen
+#let cblf = rgb("#eef6fb")
+#let crd = rgb("#a3222e")      // Kopf der Beispielkästen
+#let _lab(t, col) = text(font: sans, size: 9.5pt, weight: "bold", fill: col, t)
 #let _blk(label, body, col: black, bar: none, fill: none, stroke: none, brk: false) = block(
-  width: 100%, breakable: brk, fill: fill, spacing: 1.15em,
+  width: 100%, breakable: brk, fill: fill, spacing: 1.15em, radius: if bar != none { 0pt } else { 4pt },
   stroke: if bar != none { (left: 1.5pt + bar) } else { stroke },
-  inset: if bar != none { (left: 11pt, right: 9pt, y: 8pt) } else { (x: 10pt, y: 8pt) },
-  { _lab(label, col); v(-3pt); body })
+  inset: if bar != none { (left: 11pt, right: 9pt, y: 7pt) } else { (x: 10pt, y: 8pt) },
+  { _lab(label, col); v(-4pt); body })
 
-#let defn(title, body) = _blk([Definition #sym.dot.c #title], body, bar: black)
-#let satz(title, body) = _blk([Satz #sym.dot.c #title], body, bar: black, fill: luma(243))
-#let intu(body) = _blk([Anschaulich], body, col: luma(90), fill: rgb("#f6f2e9"))
-#let merke(body) = _blk([Merke], body, col: cf, bar: cf)
-#let fehler(body) = _blk([Typische Fehler], body, col: cf, bar: cf)
-#let rezept(title, body) = _blk([Vorgehen #sym.dot.c #title], body, stroke: 0.6pt + luma(150))
-#let warum(title, body) = _blk([Warum gilt das? #sym.dot.c #title], body, col: luma(90), bar: luma(175))
-#let bsp(title, body) = {
-  block(width: 100%, sticky: true, above: 1.3em, below: 0.5em, inset: (top: 7pt), stroke: (top: 0.5pt + luma(170)),
-    text(font: "Inter", size: 8.5pt, weight: 600)[Beispiel #sym.dot.c #title])
-  body
-  v(0.4em)
-}
-#let kurz(body) = block(width: 100%, breakable: false, stroke: 0.6pt + black, inset: 11pt, spacing: 1.4em,
-  [#text(font: "Inter", size: 8.5pt, weight: 600, tracking: 0.6pt)[DAS WICHTIGSTE IN KÜRZE] #v(1pt) #body])
+#let defn(title, body) = _blk([Definition: #title], body, fill: cblf, stroke: 0.7pt + cbl)
+#let satz(title, body) = _blk([Satz: #title], body, fill: cblf, stroke: 0.7pt + cbl)
+#let intu(body) = _blk([Anschaulich], body, bar: luma(150))
+#let merke(body) = _blk([Merke], body, col: crd, bar: crd)
+#let fehler(body) = _blk([Typische Fehler], body, col: crd, bar: crd)
+#let rezept(title, body) = _blk([Vorgehen: #title], body, fill: luma(248), stroke: 0.6pt + luma(140))
+#let warum(title, body) = _blk([Warum gilt das? #title], body, bar: luma(150))
+#let bsp(title, body) = block(width: 100%, breakable: true, spacing: 1.3em, radius: 4pt, clip: true,
+  stroke: 0.7pt + crd, fill: luma(249), {
+    block(width: 100%, fill: crd, inset: (x: 10pt, y: 4.5pt), sticky: true, below: 0pt,
+      text(font: sans, size: 9.5pt, weight: "bold", fill: white)[Beispiel: #title])
+    block(width: 100%, inset: (x: 10pt, top: 8pt, bottom: 9pt), above: 0pt, body)
+  })
+#let kurz(body) = block(width: 100%, breakable: false, fill: cblf, stroke: 0.7pt + cbl, radius: 4pt, inset: 11pt, spacing: 1.4em,
+  [#text(font: sans, size: 10pt, weight: "bold")[Das Wichtigste in Kürze] #v(1pt) #body])
 #let gl(body) = math.equation(block: true, numbering: n => "(" + str(counter(heading).get().first()) + "." + str(n) + ")", body)
 
 #let teil(num, title, body) = {
   pagebreak(weak: true)
   v(6cm)
-  text(font: "Inter", size: 11pt, fill: cg, tracking: 1.5pt)[TEIL #num]
-  v(2pt)
-  text(font: "Inter", size: 30pt, weight: 600, title)
-  v(8pt); line(length: 4cm, stroke: 1.2pt); v(10pt)
-  block(width: 75%, text(size: 11pt, body))
+  text(font: sans, size: 14pt, weight: "bold")[Teil #num]
+  v(4pt)
+  text(font: sans, size: 26pt, weight: "bold", title)
+  v(6pt); line(length: 100%, stroke: 0.8pt); v(10pt)
+  block(width: 80%, text(size: 11pt, body))
 }
 
 #let skript(body) = {
-  set page(paper: "a4", margin: (x: 2.6cm, top: 2.6cm, bottom: 2.6cm),
+  set page(paper: "a4", margin: (x: 2.6cm, top: 2.8cm, bottom: 2.6cm),
     header: context {
       let p = counter(page).get().first()
-      if p > 2 {
+      let h1 = query(heading.where(level: 1)).filter(h => h.location().page() == here().page())
+      if p > 2 and h1.len() == 0 {
         let hs = query(selector(heading.where(level: 1)).before(here()))
+        let h2 = query(selector(heading.where(level: 2)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
-        text(font: "Inter", size: 7.5pt, fill: cg)[Mechanik 1 #h(1fr) #t]
-        v(-6pt); line(length: 100%, stroke: 0.3pt + luma(170))
+        let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
+        text(size: 9pt)[#n#t #h(1fr) Mechanik 1 -- Lernskript]
+        v(-7pt); line(length: 100%, stroke: 0.5pt)
       }
     },
-    footer: context { let p = counter(page).get().first(); if p > 1 { align(center, text(font: "Inter", size: 8pt, fill: cg, str(p))) } })
+    footer: context { let p = counter(page).get().first(); if p > 1 { align(center, text(size: 9.5pt, str(p))) } })
   set text(font: "New Computer Modern", size: 10.5pt, lang: "de", region: "de")
   set par(justify: true, leading: 0.7em, spacing: 1.05em)
   show math.equation.where(block: true): set block(spacing: 1.15em)
@@ -88,17 +95,17 @@
     pagebreak(weak: true)
     counter(math.equation).update(0)
     counter(figure.where(kind: image)).update(0)
-    v(1.2cm)
-    if it.numbering != none { text(font: "Inter", size: 44pt, weight: 300, fill: cg, counter(heading).display("1")); v(-1.0cm) }
-    par(justify: false, text(font: "Inter", size: 22pt, weight: 600, hyphenate: false, it.body))
-    v(0.5cm)
+    v(2.2cm)
+    if it.numbering != none { text(font: sans, size: 15pt, weight: "bold")[Kapitel #counter(heading).display("1")]; v(0.1cm) }
+    par(justify: false, text(font: sans, size: 23pt, weight: "bold", hyphenate: false, it.body))
+    v(0.1cm); line(length: 100%, stroke: 0.8pt); v(0.7cm)
   }
-  show heading.where(level: 2): it => block(sticky: true, above: 1.7em, below: 0.9em, text(font: "Inter", size: 13pt, weight: 600, [#counter(heading).display() #h(0.5em) #it.body]))
-  show heading.where(level: 3): it => block(sticky: true, above: 1.3em, below: 0.7em, text(font: "Inter", size: 10pt, weight: 600, it.body))
+  show heading.where(level: 2): it => block(sticky: true, above: 1.8em, below: 0.9em, text(font: sans, size: 14.5pt, weight: "bold", [#counter(heading).display() #h(0.7em) #it.body]))
+  show heading.where(level: 3): it => block(sticky: true, above: 1.4em, below: 0.7em, text(font: sans, size: 11pt, weight: "bold", it.body))
   set figure(numbering: n => str(counter(heading).get().first()) + "." + str(n), supplement: [Abb.], gap: 0.9em)
-  show figure.caption: it => text(size: 8.8pt, fill: luma(60), it)
+  show figure.caption: it => text(size: 9pt, it)
   show figure: set block(spacing: 1.6em)
-  set list(indent: 0.6em, marker: [–])
+  set list(indent: 0.6em, marker: [•])
   set enum(indent: 0.6em)
   body
 }
