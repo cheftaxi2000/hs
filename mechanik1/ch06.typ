@@ -14,6 +14,14 @@ Der Gedanke ist uns schon aus Kapitel 5 vertraut. Dort haben wir gesehen, dass d
 
 Das ist eine Definition über das, was die Kräfte _leisten_, nicht über ihr Aussehen. Zwei Kräftegruppen dürfen ganz verschieden aussehen (andere Anzahl, andere Angriffspunkte) und sind trotzdem äquivalent, wenn der starre Körper sie nicht unterscheiden kann. Der Test ist einfach, weil wir die Leistung am starren Körper schon kennen: $PP = vv_O dot.c vR + vom dot.c vM_O$.
 
+#bsp[Zwei Kräfte auf einem Balkenstück][
+  Zwei Kräfte mit demselben Vektor $vF$ greifen an den Punkten $A_1$ und $A_2$ eines Balkenstücks an. Die Einzelkraft $2 vF$ in der Mitte zwischen $A_1$ und $A_2$ ist ihnen statisch äquivalent: Ihre Leistung stimmt bei jeder Starrkörperbewegung überein (nach der Formel $PP = vv_O dot.c vR + vom dot.c vM_O$). Ersetzt man dagegen die zweite Kraft durch $2 vF$ in $A_2$, so haben die beiden Gruppen zwar bei einer Drehung um das Ende $P$ des Stücks dieselbe Leistung, aber nicht bei jeder Bewegung. Sie sind nicht äquivalent.
+]
+
+#intu[
+  Hinter der Definition stecken physikalische Ideen. In der Statik betrachtet man Kräftegruppen an ruhenden Körpern, deren Verformbarkeit man vernachlässigt. Setzt sich der erstarrte Körper aus irgendeinem Grund (zum Beispiel wegen Stabilitätsverlust) in Bewegung, ist es naheliegend, nur solche Kräftegruppen gleichwertig zu nennen, die bei _allen_ denkbaren Starrkörperbewegungen im nächsten Augenblick gleich viel Energie pro Zeit zuführen (Antrieb) oder entziehen (Widerstand). Statische Äquivalenz ist also eine augenblickliche _energetische_ Gleichwertigkeit.
+]
+
 #satz[Kriterium der statischen Äquivalenz][
   Zwei Kräftegruppen sind genau dann statisch äquivalent, wenn ihre Resultierenden und ihre Momente bezüglich eines (beliebigen) Punktes $O$ übereinstimmen:
   #gl($ vR = vR^*, wide vM_O = vM_O^*. $)
@@ -37,6 +45,8 @@ Das ist eine Definition über das, was die Kräfte _leisten_, nicht über ihr Au
 
 Graphisch bildet man die Resultierende, indem man die Kraftpfeile aneinanderhängt (_Kräftepolygon_, Parallelogrammregel für zwei Kräfte); die Resultierende ist der Pfeil vom Anfang des ersten zum Ende des letzten.
 
+Ein Beispiel für kontinuierliche Verteilungen: Ein Massenpunkt $M$ liege im Mittelpunkt eines halbkreisförmigen Drahtes vom Radius $r$ und ziehe ihn mit einer radial gerichteten Linienkraftdichte konstanten Betrags $f$ an. Auf das Bogenelement $r dif phi$ entfällt die Kraft $f r dif phi$, radial gerichtet. Die Komponenten der Resultierenden sind Integrale: $R_x = -f r integral cos phi dif phi = 0$, $R_y = -f r integral sin phi dif phi = -2 f r$. Die Resultierende liegt (wie man aus der Symmetrie schon sieht) in $y$-Richtung, ihr Betrag ist die Kraftdichte mal die Länge $2 r$ der Projektion des Drahtes auf die $y$-Achse.
+
 === Das Moment einer Einzelkraft
 
 #defn[Moment][
@@ -52,6 +62,8 @@ In ebenen Aufgaben (Kräfte und Hebelarme in der $x y$-Ebene) bleibt nur $M_z = 
 ]
 
 #fg("k06_verschieben", [Verschiebt man eine Kraft längs ihrer Wirkungslinie von $A$ nach $A'$, ändern sich weder Resultierende noch Moment. Der Hebelarm $a$ bleibt derselbe.])
+
+Das Moment hat dieselbe Dimension wie die Arbeit (das zeitliche Integral der Leistung), man schreibt trotzdem N m und nicht J. Die Richtung von $vM_O$ steht senkrecht auf der Ebene durch $O$ und die Wirkungslinie, der Drehsinn folgt der Rechte-Hand-Regel.
 
 === Moment bezüglich einer Achse
 
@@ -91,6 +103,14 @@ also
 ]
 
 == Wichtige Spezialfälle
+
+=== Wann dürfen Kräfte ersetzt werden? Zwei Bemerkungen
+
+*Nur am starren Körper.* Schon bei statisch äquivalenten Einzelkräften sieht man, dass Kräftegruppen nur an einem _erstarrten_ System durch andere statisch äquivalente ersetzt werden dürfen. An verformbaren Systemen können statisch äquivalente Kräfte verschiedene Verformungs- oder Bewegungszustände erzeugen. Am Viergelenk-Mechanismus würde die Kraft ${A | vF}$ das ruhende System in Bewegung setzen, die statisch äquivalente Kraft in einem Lagerpunkt ${O | vF}$ dagegen nicht. An einem verformbaren Fachwerk kann eine Kraft einen Stab ohne Verbiegung verlängern, die längs der Wirkungslinie verschobene Kraft verbiegt ihn (siehe Kapitel 11).
+
+*Ein Bezugspunkt genügt.* Beim Kriterium der Äquivalenz genügt es, die Momente bezüglich _eines einzigen_ Punktes zu vergleichen, sofern die Resultierenden gleich sind: Nach der Formel $vM_P = vM_O + arrow(P O) times vR$ sind die Momente dann automatisch auch bezüglich aller anderen Punkte gleich.
+
+*Das Grundverfahren der graphischen Statik.* Zwei Kräfte in einer Ebene, deren Wirkungslinien sich in $S$ schneiden, kann man längs ihrer Wirkungslinien nach $S$ verschieben, dort nach der Parallelogrammregel addieren und die Summe wieder längs ihrer eigenen Wirkungslinie an einen beliebigen Punkt schieben. So reduziert man ebene Kräftegruppen geometrisch zu einer Einzelkraft. Das war früher ein Standardwerkzeug der Ingenieure; heute rechnet man meist. Für zwei nicht parallele Kräfte in _verschiedenen_ Ebenen gibt es dagegen keine äquivalente Einzelkraft (denn $vR dot.c vM != 0$: es entsteht eine echte Schraube, siehe Abschnitt 6.5).
 
 === Parallelverschiebung einer Kraft
 

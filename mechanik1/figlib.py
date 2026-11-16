@@ -55,6 +55,14 @@ class Fig:
         p = Circle(c, r, fc=fc, ec=ec, lw=lw, zorder=z)
         if dash: p.set_linestyle((0, dash))
         s.ax.add_patch(p)
+    def potato(s, c, w, h, ang=0, seed=1, k=1.0, **kw):
+        """Beliebiger starrer Körper: glatte, unregelmäßig gerundete «Kartoffel»."""
+        rs = np.random.RandomState(seed); t = np.linspace(0, 2 * np.pi, 260, endpoint=False)
+        r = 1 + k * (0.075 * rs.uniform(.7, 1.3) * np.cos(2 * t + rs.uniform(0, 6.3)) + 0.055 * rs.uniform(.7, 1.3) * np.cos(3 * t + rs.uniform(0, 6.3))
+                     + 0.03 * np.cos(4 * t + rs.uniform(0, 6.3)) + 0.02 * np.cos(5 * t + rs.uniform(0, 6.3)))
+        x, y = 0.5 * w * r * np.cos(t), 0.5 * h * r * np.sin(t)
+        a = rad(ang); X = c[0] + x * np.cos(a) - y * np.sin(a); Y = c[1] + x * np.sin(a) + y * np.cos(a)
+        s.poly(np.column_stack([X, Y]), **kw)
     def rect(s, p, q, **k):
         (x0, y0), (x1, y1) = p, q
         s.poly([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], **k)

@@ -230,6 +230,55 @@ Beim rollenden Rad ist die feste Polbahn die Straße, die bewegliche der Radumfa
 
 #fg("k03_polbahnen", [Der geführte Stab: Der Thaleskreis (bewegliche Polbahn) rollt im Viertelkreis mit Radius $L$ (feste Polbahn) ab. Die Punkte auf dem Viertelkreis sind die Momentanzentren bei verschiedenen Neigungen.])
 
+=== Die Polbahnen des Stabes: analytisch
+
+Bei einfachen Problemen liest man die Polbahnen aus der Zeichnung. Bei schwierigeren rechnet man: Man drückt die Koordinaten von $Z$ durch eine Lagekoordinate aus (hier den Winkel $phi$ des Stabes) und eliminiert sie.
+
+#warum[Feste und bewegliche Polbahn des geführten Stabes][
+  _Fest._ In $O x y$ (Ecke $O$, Wand = $y$-Achse, Boden = $x$-Achse) ist $A = (L cos phi, 0)$, $B = (0, L sin phi)$ und damit $Z = (x_Z, y_Z) = (L cos phi, L sin phi)$. Elimination von $phi$ liefert $x_Z^2 + y_Z^2 = L^2$: ein Kreis um $O$ mit Radius $L$.
+
+  _Beweglich._ Wir führen ein körperfestes System $A xi eta$ ein ($xi$ entlang des Stabes von $A$ nach $B$, $eta$ senkrecht dazu). Der Vektor $arrow(A Z) = (0, L sin phi)$ hat dort die Komponenten $xi_Z = L sin^2 phi = (L\/2)(1 - cos 2 phi)$ und $eta_Z = L sin phi cos phi = (L\/2) sin 2 phi$. Elimination von $phi$: $(xi_Z - L\/2)^2 + eta_Z^2 = (L\/2)^2$. Das ist der Kreis um die Stabmitte mit Radius $L\/2$.
+]
+
+Allgemein heißt das: Die ebene Bewegung eines starren Körpers lässt sich als *Rollbewegung der beweglichen Polbahn auf der festen* auffassen. Man kann sich den starren Körper (hier den Stab) in Gedanken durch die bewegliche Polbahn (den kleinen Kreis) ersetzen und das Bezugssystem durch die feste (den großen Kreis): Die Stabbewegung ist dann das Abrollen des kleinen Kreises im großen.
+
+=== Systeme aus mehreren starren Körpern
+
+Technische Mechanismen (Getriebe, Fachwerke mit entferntem Stab, Kurbeltriebe) bestehen aus mehreren starren Körpern. Jeder hat sein *eigenes* Momentanzentrum und seine eigene Rotationsschnelligkeit.
+
+#rezept[Mechanismus mit mehreren starren Körpern][
+  + *Starre Körper identifizieren.* Stäbe, die so verbunden sind, dass keine Relativbewegung möglich ist (zum Beispiel ein Dreieck aus drei Stäben), bilden zusammen _einen_ starren Körper.
+  + Für jeden Körper das Momentanzentrum bestimmen. Ist ein Körper in einem ruhenden Gelenk gelagert, ist dieses Gelenk sein $Z$. Daraus folgt sofort die Richtung der Geschwindigkeit jedes seiner Punkte (senkrecht zur Verbindung mit $Z$).
+  + Ein Gelenkpunkt gehört zu zwei Körpern: Seine Geschwindigkeit ist für beide dieselbe. Das verknüpft die Momentanzentren der Nachbarn.
+  + Wo man ein $Z$ nicht direkt findet, hilft der Satz der projizierten Geschwindigkeiten für den Betrag.
+]
+
+#bsp[Fachwerk-Mechanismus][
+  Ein ebenes Fachwerk aus 9 gelenkig verbundenen Stäben sei in $A$ drehbar und in $B$ horizontal verschiebbar gelagert; in der gegebenen Lage ist Stab 4 entfernt, und $B$ erhält die horizontale Geschwindigkeit $v$. Die Stäbe 5 bis 9 bilden zusammen einen starren Körper $K$. Zusammen mit den Stäben 1, 2, 3 gibt es also vier starre Körper und damit vier Momentanzentren. Zwei davon (die der Stäbe 1 und 2) fallen mit dem ruhenden Lager $A$ zusammen. Daraus folgt: Die Geschwindigkeit in $D$ steht senkrecht auf Stab $A D$. $D$ gehört auch zu $K$; also liegt das Momentanzentrum $Z_K$ auf der Geraden durch $A$ und $D$. Außerdem kennen wir die Geschwindigkeit von $B in K$ und damit die Senkrechte dazu. Der Schnittpunkt beider Geraden ist $Z_K$ (Konstruktion wie in der ersten Abbildung des letzten Abschnitts). Damit hat man $omega_K$, $vv_D$ und $omega_2$. Die Geschwindigkeit von $C$ liefert dann der Satz der projizierten Geschwindigkeiten, und das Momentanzentrum von Stab $C E$ ergibt sich aus den Senkrechten zu $vv_E$ und $vv_C$.
+]
+
+#satz[Parallelogrammregel][
+  Vier gelenkig zu einem (nicht entarteten) Parallelogramm verbundene Stäbe haben gegenüberliegend jeweils gleiche Rotationsgeschwindigkeit: $vom_(A B) = vom_(C D)$ und $vom_(B C) = vom_(D A)$. Die Lage der Momentanzentren spielt dabei keine Rolle.
+]
+
+#warum[Beweisidee][
+  Wir dürfen $A$ in Ruhe annehmen (eine Translation von $A$ addiert sich zu allen Geschwindigkeiten und ändert keine Rotation). Dann haben $B$ und $D$ die Geschwindigkeiten $a omega_1$ bzw. $b omega_4$. Die Geschwindigkeit von $C$ ist die von $B$ plus der Anteil $b omega_2$ aus der Drehung von $B C$. Der Satz der projizierten Geschwindigkeiten für $C D$ liefert: Von $vv_C$ trägt nur die Komponente $b omega_2$ bei (die andere steht senkrecht zu $C D$), und dasselbe muss in $D$ herauskommen. Aus der Geometrie des Parallelogramms folgt $omega_2 = omega_4$; analog mit dem SdpG für $B C$ folgt $omega_1 = omega_3$.
+]
+
+Der Spezialfall ist uns schon begegnet: Das Viergelenk mit zwei gleich langen Kurbeln (Abbildung 3.2) ist ein Parallelogramm, und die Koppel behält ihre Richtung, sie führt also eine Translation aus ($omega = 0$).
+
+#fg("k03_kurbel", [Schubkurbelgetriebe: Kurbel 1 dreht um $O$, der Kolben 2 gleitet geradlinig, die Pleuelstange 3 verbindet beide. $Z_3$ ist ihr Momentanzentrum.])
+
+#bsp[Schubkurbelgetriebe][
+  Die Kurbel ($O B = r$) dreht mit $omega$ um $O$, der Kolben bewegt sich in einer Geraden durch $O$, die Pleuelstange hat die Länge $l$. Gesucht: die Schnelligkeit des Kolbens als Funktion des Kurbelwinkels $phi$ gegen die Gerade $O A$.
+
+  _Momentanzentren._ Kurbel: $Z_1 = O$. Kolben (Translation): $Z_2$ im Unendlichen. Pleuel: $v_B$ steht senkrecht auf $O B$, also liegt $Z_3$ auf der Geraden $O B$ (verlängert). $v_A$ ist horizontal, also liegt $Z_3$ auch auf der Senkrechten zur Bahn des Kolbens durch $A$. Schnittpunkt: $Z_3$ (rot in der Abbildung).
+
+  _Rechnung mit dem SdpG._ Der Pleuelwinkel $beta$ gegen die Gerade erfüllt $sin beta = (r\/l) sin phi$. Der Einheitsvektor von $A$ nach $B$ ist $(-cos beta, sin beta)$. $vv_A = (v_A, 0)$ hat dort die Projektion $-v_A cos beta$, $vv_B = omega r (-sin phi, cos phi)$ die Projektion $omega r sin(phi + beta)$. Gleichsetzen:
+  $ v_A = -omega r (sin(phi + beta)) / (cos beta). $
+  Das Minuszeichen sagt: Für kleines positives $phi$ bewegt sich der Kolben auf $O$ zu. Für $phi = 0$ ist $v_A = 0$ (Totpunkt), und für $l >> r$ ist $beta approx 0$ und $|v_A| approx omega r sin phi$.
+]
+
 === Anwendung: Planetengetriebe
 
 Ein Planetengetriebe enthält ein Sonnenrad 1 (Radius $R_1$), ein Hohlrad 2 (Innenradius $R_2$) und dazwischen ein Planetenrad 3 mit Radius $R_3 = (R_2 - R_1)\/2$, das auf beiden abrollt. Das Planetenrad sitzt in einem um $O$ drehbaren Arm der Länge $L = (R_1 + R_2)\/2$. Die Räder 1, 2 drehen mit $omega_1, omega_2$ um $O$; gesucht ist die Rotationsschnelligkeit $omega$ des Arms.
@@ -243,6 +292,12 @@ $ omega = (R_1 omega_1 + R_2 omega_2) / (R_1 + R_2). $
 Die Rotationsschnelligkeit des Planetenrads selbst folgt aus dem Geschwindigkeitsunterschied zwischen $P$ und $Q$ (Abstand $2R_3 = R_2 - R_1$): $omega_3 = (R_2 omega_2 - R_1 omega_1)\/(R_2 - R_1)$.
 
 Spezialfälle: Hält man das Sonnenrad fest ($omega_1 = 0$), ist $omega = R_2 omega_2\/(R_1 + R_2)$ -- ein kräftiges Untersetzungsgetriebe. Hält man den Arm fest ($omega = 0$), gilt $omega_2 = -(R_1\/R_2) omega_1$: Das Hohlrad dreht gegensinnig.
+
+=== Polkegel und Kollergang
+
+Die Begriffe Polbahn lassen sich auf die Kreiselung verallgemeinern. Bei einer Kreiselung um $O$ durchläuft die momentane Rotationsachse im Raum eine Kegelfläche mit Spitze $O$, den *festen Polkegel*, und im Körper eine zweite Kegelfläche, den *beweglichen Polkegel*. Beide Kegel haben in jedem Augenblick die Momentanachse als gemeinsame Mantellinie, deren Punkte die Geschwindigkeit null haben. Die Kreiselung ist also ein Abrollen des beweglichen auf dem festen Polkegel.
+
+Ein Beispiel ist der *Kollergang* (Mühle): Ein Rad mit Radius $R$ rollt auf einer horizontalen Ebene, während sich seine horizontale Achse der Länge $L$ um die senkrechte Achse durch $O$ dreht. Die Momentanachse ist durch die beiden momentan ruhenden Punkte $O$ und den Berührungspunkt $A$ des Rades bestimmt. Die Polkegel sind gerade Kreiskegel. Die momentane Rotation lässt sich in zwei Teile zerlegen: die Drehung des Rades mit $omega_1$ um seine Achse und die Drehung der Achse mit $omega_2$ um die Senkrechte. Weil der Berührungspunkt ruht, müssen sich beide Anteile dort aufheben: $omega_1 R = omega_2 L$.
 
 #fehler[
   - Das Momentanzentrum für einen _festen_ Punkt halten. Es hat nur momentan die Geschwindigkeit null (und im Allgemeinen keineswegs die Beschleunigung null), und es wandert.

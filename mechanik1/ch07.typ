@@ -23,6 +23,10 @@ Soll das nicht nur für eine Richtung $ve$ gelten, sondern für _jede_ (wir dreh
   Kinder mit 30 kg und 20 kg sitzen auf einer Wippe, 3 m voneinander entfernt. Nimmt man das schwerere Kind als Ursprung, $x_1 = 0$, $x_2 = 3$ m: $x_S = (0 dot.c 30 + 3 dot.c 20)\/(30 + 20) = 1.2$ m. Der Drehpunkt liegt 1.2 m vom schwereren Kind entfernt. Kontrolle mit dem Hebelgesetz: $1.2 dot.c 30 = 36 = 1.8 dot.c 20$ ✓.
 ]
 
+Für parallele Kräfte $vF_i = Z_i ve_z$ (Basis so gewählt, dass die Wirkungslinien parallel zur $z$-Achse liegen) hat die Reduktion auf den Ursprung eine besonders einfache Gestalt: Die Resultierende ist $vR = (sum Z_i) ve_z$, und das Moment $vM_O$ hat nur Komponenten in der $x y$-Ebene, denn $vM_O = sum arrow(O A_i) times Z_i ve_z$ steht senkrecht auf $ve_z$. Daraus folgt $vR dot.c vM_O = 0$. Nach Kapitel 6 kann man eine parallele Kräftegruppe deshalb *immer* auf eine Einzelkraft oder, für $vR = bold(0)$, auf ein Kräftepaar in einer zur $z$-Achse parallelen Ebene reduzieren. Für $vR != bold(0)$ ist die Wirkungslinie der Einzelkraft die Zentralachse.
+
+Warum heißt $S$ «Mittelpunkt»? Dreht man alle Kräfte einer _gleich gerichteten_ Gruppe um ihre Angriffspunkte um denselben Winkel, ändert sich die Resultierende nur in der Richtung, und ihre Wirkungslinie dreht sich um den festen Punkt $S$. Genau diesen Punkt meinen wir. Er hängt auch nicht davon ab, wo man den Ursprung des Koordinatensystems hinlegt: Verschiebt man ihn nach $O'$, haben alle Ortsvektoren den Zusatz $arrow(O' O)$, und die Formel liefert $vr'_S = vr_S + arrow(O' O)$. Der Punkt $S$ bleibt also am selben materiellen Ort des Körpers. Er ist eine Eigenschaft der Kräftegruppe, nicht des Koordinatensystems.
+
 == Linien- und flächenverteilte Kräfte
 
 Bei kontinuierlichen Verteilungen werden die Summen zu Integralen, der Beitrag jedes Elements ist $dif F = q dif x$:
@@ -38,10 +42,20 @@ Bei kontinuierlichen Verteilungen werden die Summen zu Integralen, der Beitrag j
   $q(x) = q_0 x \/ L$ steigt linear von null auf $q_0$. Dann ist $R = integral_0^L (q_0 x\/L) dif x = q_0 L\/2$ (Dreiecksfläche), und $x_S = (integral_0^L x (q_0 x\/L) dif x)\/R = (q_0 L^2\/3)\/(q_0 L\/2) = 2L\/3$.
 ]
 
+Eine Dreieckslast tritt zum Beispiel als Schneelast auf einem Dach oder als Wasserdruck auf einer senkrechten Wand auf.
+
 Ein Trapez zerlegt man in ein Rechteck und ein Dreieck (zwei Ersatzkräfte), ein beliebiger Verlauf in einfache Teile oder man integriert.
 
 Für eine parallele Flächenlast $s(vr)$ auf einer Fläche gilt entsprechend $R = integral s dif A$ und $vr_S = (integral vr s dif A) \/ (integral s dif A)$. Ist die Last *uniform* ($s = "konst."$), kürzt sich $s$ heraus, und $S$ fällt mit dem rein geometrischen *Flächenmittelpunkt* zusammen:
 #gl($ vr_C = 1 / A integral vr dif A. $)
+
+#bsp[Flächenmittelpunkt einer Halbkugelfläche][
+  Bei einer Halbkugelfläche mit Radius $R$ liegen die Flächenmittelpunkte der dünnen ringförmigen Streifen (Dicke $dif z$) auf der $z$-Achse; also liegt auch der Flächenmittelpunkt $C$ der ganzen Fläche auf ihr. Mit dem Höhenwinkel $beta$: $z = R sin beta$, $dif s = R dif beta$, $dif A = 2 pi (R cos beta) dif s = 2 pi R^2 cos beta dif beta$:
+  $ z_C = 1 / A integral z dif A = (2 pi R^3) / (2 pi R^2) integral_0^(pi\/2) sin beta cos beta dif beta = R/2. $
+  Der Flächenmittelpunkt einer gekrümmten Fläche liegt im Allgemeinen nicht auf der Fläche selbst, hier schwebt er in der halben Höhe über der Grundfläche.
+]
+
+Für kontinuierlich verteilte parallele Fernkräfte (Gravitation in Erdnähe, parallele elektromagnetische Kräfte) geht man von der Raumkraftdichte $vf = f ve$ aus. Die Resultierende ist $vR = (integral f dif V) ve$, das Moment $vM_O = (integral vr f dif V) times ve$, und der Kräftemittelpunkt folgt wie in den letzten Abschnitten. Bei _uniformer_ Raumkraftverteilung ($f = f_0$) fällt $f_0$ heraus.
 
 == Schwerpunkt und Massenmittelpunkt
 
@@ -61,6 +75,14 @@ Jedes Volumenelement $dif V$ eines Körpers hat das Gewicht $dif G = gamma dif V
 #intu[
   Der Schwerpunkt ist der Punkt, an dem du einen Körper auf einer Fingerspitze balancieren könntest, in jeder Orientierung. Für alle Gleichgewichtsfragen darfst du das gesamte, über den Körper verschmierte Gewicht durch _eine_ Kraft $vG$ im Schwerpunkt ersetzen. Der Schwerpunkt muss dabei nicht im Material liegen: Bei einem Ring liegt er in der Mitte des Lochs. Bei Körpern in der Nähe der Erdoberfläche ist $g$ praktisch konstant, deshalb ist dort der Massenmittelpunkt der Schwerpunkt.
 ]
+
+Drei Dinge zum Schwerpunkt:
+
+- Er ist der Kräftemittelpunkt der Gewichtskräfte, also der Angriffspunkt des resultierenden Gewichts _unabhängig davon, wie der Körper zur Schwerkraft orientiert ist_ (solange er in Erdnähe bleibt). Bei Starrkörperbewegungen ändert sich seine Lage im Körper nicht. Das lässt sich mit den Formeln nachrechnen; am elegantesten gelingt es mit Drehmatrizen.
+- Wie jeder Kräftemittelpunkt muss er nicht im Material liegen. Eine homogene Hohlkugel hat ihren Schwerpunkt im Zentrum, in der Luft.
+- Der Betrag des spezifischen Gewichts folgt aus der spezifischen Masse (Dichte) $rho$ und der Erdbeschleunigung: $gamma = rho g$. Streng genommen müsste man zwischen träger und schwerer Masse unterscheiden; Einstein hat ihre Gleichheit postuliert, sie ist eine Grundlage der allgemeinen Relativitätstheorie.
+
+Der *Massenmittelpunkt* $vr_C$ ist wie der Schwerpunkt definiert, aber mit der Masse statt mit dem Gewicht. Bei Körpern, deren Abmessungen viel kleiner als der Erdradius sind, fallen beide zusammen. Bei großen Körpern und in der Astronomie ist das Gravitationsfeld nicht mehr aus parallelen Kräften aufgebaut, der Begriff des Kräftemittelpunkts (und damit der Schwerpunkt) entfällt, aber der Massenmittelpunkt existiert trotzdem, weil er nicht aus einer Momentenbedingung, sondern aus der Massenverteilung allein definiert ist. Ein Körper heißt *homogen*, wenn $rho = rho_0$ im ganzen Körper konstant ist; dann ist $m = rho_0 V$, und $rho_0$ kürzt sich aus allen Formeln.
 
 #rezept[Schwerpunkt bestimmen][
   + *Symmetrie nutzen.* Hat der (homogene) Körper eine Symmetrieebene oder -achse, liegt der Schwerpunkt darauf. Mit zwei Symmetrieachsen: Schnittpunkt, fertig.

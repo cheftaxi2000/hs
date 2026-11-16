@@ -11,6 +11,7 @@
 #let vR = $bold(R)$
 #let vM = $bold(M)$
 #let vN = $bold(N)$
+#let vn = $bold(n)$
 #let vG = $bold(G)$
 #let vS = $bold(S)$
 #let ve = $bold(e)$

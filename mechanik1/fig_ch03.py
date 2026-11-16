@@ -6,7 +6,7 @@ def isect(p, d, q, e):
 # ---------- 3.1 Satz der projizierten Geschwindigkeiten ----------
 def sdpg():
     f = Fig(15.8, 5.4)
-    f.poly([(0.5, 1.2), (1.6, 0.5), (4.6, 0.8), (5.8, 2.0), (5.2, 3.9), (2.2, 4.3), (0.7, 3.0)])
+    f.potato((3.15, 2.4), 5.9, 4.2, ang=8, seed=5)
     Mp, Np = P(1.5, 1.5), P(4.8, 2.7); u = unit(Np - Mp)
     f.line(Mp - u * 0.5, Np + u * 0.8, c=GREY, lw=0.7, dash=(5, 3))
     vM = P(0.7, 1.75); vN = P(1.25, 0.3)
@@ -38,7 +38,7 @@ def sdpg():
 def trans_rot():
     f = Fig(15.8, 4.8)
     # Translation
-    f.box((2.0, 2.3), 3.0, 2.0, fc=LIGHT)
+    f.potato((2.0, 2.3), 3.5, 2.3, ang=-8, seed=11)
     for q in [(1.0, 1.8), (2.0, 1.8), (3.0, 1.8), (1.0, 2.8), (2.0, 2.8), (3.0, 2.8)]:
         f.dot(q, 0.05); f.arrow(q, P(*q) + P(0.8, 0.5), c=V, lw=1.2)
     f.cap((2.0, 0.3), "Translation: alle Pfeile gleich")
@@ -94,7 +94,7 @@ def rollen():
 # ---------- 3.4 Kinemate ----------
 def kinemate():
     f = Fig(15.8, 5.2)
-    f.poly([(0.8, 1.0), (2.4, 0.5), (6.6, 0.9), (7.6, 2.4), (6.6, 4.1), (3.0, 4.3), (1.0, 3.0)])
+    f.potato((4.2, 2.4), 7.4, 4.2, ang=6, seed=7)
     B, M_ = P(2.2, 1.7), P(5.8, 2.7)
     f.line(B, M_, c=GREY, lw=0.8)
     f.arrow(B, B + P(1.5, 0.35), c=V, lw=1.6); f.text(B + P(1.5, 0.35), r"$\mathbfit{v}_B$", c=V, dx=0.35, dy=0.0)
@@ -132,7 +132,7 @@ def schraube():
 # ---------- 3.6 Momentanzentrum ----------
 def momentanzentrum():
     f = Fig(15.8, 5.4)
-    f.poly([(0.6, 0.9), (3.4, 0.5), (5.4, 1.6), (4.8, 3.6), (1.9, 3.9), (0.5, 2.6)], fc=LIGHT)
+    f.potato((2.95, 2.2), 5.4, 3.7, ang=-6, seed=2)
     Pp, Qp = P(1.5, 1.6), P(4.5, 2.5); d1 = P(1.0, -0.45); d2 = P(0.45, 1.0)
     n1, n2 = nrm(d1), nrm(d2)
     Z = isect(Pp, n1, Qp, n2)
@@ -199,3 +199,26 @@ def planet():
     f.save("k03_planet")
 
 sdpg(); trans_rot(); rollen(); kinemate(); schraube(); momentanzentrum(); polbahnen(); planet()
+
+# ---------- 3.9 Schubkurbelgetriebe ----------
+def kurbel():
+    f = Fig(15.8, 6.8)
+    O = P(2.0, 1.6); r, l = 1.8, 5.0; ph = rad(38)
+    B = O + r * P(np.cos(ph), np.sin(ph)); A = P(B[0] + np.sqrt(l ** 2 - (B[1] - O[1]) ** 2), O[1])
+    Z = P(A[0], O[1] + np.tan(ph) * (A[0] - O[0]))
+    f.hatch((1.0, O[1] - 0.5), (11.5, O[1] - 0.5), side=-1)
+    f.line((1.0, O[1] - 0.5), (11.5, O[1] - 0.5), lw=0.0)
+    f.line(O, Z, c=F, lw=0.8, dash=(5, 3)); f.line(A, Z, c=F, lw=0.8, dash=(5, 3))
+    f.rect((A[0] - 0.55, O[1] - 0.4), (A[0] + 0.55, O[1] + 0.4), fc=LIGHT)
+    f.beam(O, B, lw=3.0); f.beam(B, A, lw=2.4)
+    f.hinge(O, 0.1); f.hinge(B, 0.1); f.hinge(A, 0.1); f.dot(Z, 0.09, c=F)
+    f.pin(O, size=0.3, gw=0.9) if False else None
+    f.text(O, "$O$", dx=-0.3, dy=0.3); f.text(B, "$B$", dx=-0.3, dy=0.3); f.text(A, "$A$", dx=-0.1, dy=0.65); f.text(Z, "$Z_3$", c=F, dx=0.5, dy=0.1)
+    vb = unit(P(-np.sin(ph), np.cos(ph))) * 1.5; f.arrow(B, B + vb, c=V, lw=1.6); f.text(B + vb, r"$\mathbfit{v}_B$", c=V, dx=-0.3, dy=0.3)
+    f.arrow(A, A - P(1.6, 0), c=V, lw=1.6); f.text(A - P(1.6, 0), r"$\mathbfit{v}_A$", c=V, dy=0.35)
+    f.angle(O, 1.1, 0, 38, label=r"$\varphi$", lr=1.45, size=9)
+    f.moment(O + P(0, 0), 0.0, 0, 0) if False else f.arc(O, 0.7, 60, 300, col=M, lw=1.2, arrow=True)
+    f.text(O + P(-0.45, 0.85), r"$\omega$", c=M, size=9)
+    f.text((7.0, 0.3), "Kurbel 1 (um $O$), Pleuel 3, Kolben 2 (geradlinig)", size=8, c=GREY)
+    f.save("k03_kurbel")
+kurbel()

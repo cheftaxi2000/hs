@@ -21,6 +21,14 @@ Kräfte treten in der Natur und in der Technik als Ursache von zwei Arten von Wi
   Warum reicht ein Vektor nicht? Probiere es mit einer Tür. Drückst du mit der Kraft $vF$ an der Klinke, geht sie leicht auf. Drückst du mit demselben Vektor direkt neben dem Scharnier, bewegt sich kaum etwas. Derselbe Betrag und dieselbe Richtung, aber eine völlig andere Wirkung: Der Ort, an dem die Kraft angreift, gehört zur Kraft. Deshalb schreiben wir ${A | vF}$ und nicht einfach $vF$.
 ]
 
+Die Kraft ist also ein _Modellbegriff_: Sie wird als Ursache messbarer Phänomene definiert, als Wechselwirkung, die ein materielles System in Bewegung setzt, verformt oder einen vorhandenen Bewegungs- oder Verformungszustand ändert. Beispiele sind die Fallbewegung eines Gegenstands, die beschleunigte Drehung eines Turbinenrads unter dem Druck des Dampfes, die Gestaltänderung einer Stahlkugel im Kugellager oder die Durchbiegung einer Brücke unter den darauf fahrenden Fahrzeugen.
+
+Das Experiment zeigt, dass die Wirkung einer Kraft gleich bleibt, wenn man Richtung, Betrag und Angriffspunkt beibehält. Deshalb liegt der punktgebundene Vektor nahe. Auf die Vektoranteile wendet man die Regeln der Vektorrechnung an. Greifen mehrere Kräfte im _gleichen_ Punkt an, addiert man sie nach der Parallelogrammregel zu einer *resultierenden Kraft*. Die Vektoren von Kräften mit _verschiedenen_ Angriffspunkten kann man zwar auch addieren, die Summe ist dann aber zunächst keine Kraft mit klar definiertem Angriffspunkt. Wie man damit umgeht, zeigt Kapitel 6.
+
+#merke[
+  Ein Vektor ist erst dann eine Kraft, wenn man ihn mit einer physikalischen Wechselwirkung identifiziert. In Zeichnungen darf der Angriffspunkt am Anfang oder an der Spitze des Pfeils stehen. Beschriftet man einen Pfeil mit $R$, kann das zwei Dinge heißen: der _Vektor_ $vR$ (für Rechnungen in Komponenten zerlegen) oder die _Komponente_ $R$ in Richtung des gezeichneten Pfeils (dann kann sie auch negativ sein). Ab Kapitel 9 benutzen wir die zweite Schreibweise für Lagerkräfte.
+]
+
 Die Einheit der Kraft ist das *Newton*, $1 "N" = 1 "kg" dot.c "m"\/"s"^2$ (die Kraft, die einem Körper von 1 kg die Beschleunigung $1 "m/s"^2$ gäbe). Zur Anschauung: Eine Tafel Schokolade (100 g) wiegt an der Erdoberfläche etwa 1 N, ein Mensch von 70 kg etwa 700 N, eine Tonne etwa 10 kN. Allgemein haben alle mechanischen Größen Dimensionen, die sich auf Masse $M$, Länge $L$ und Zeit $T$ zurückführen lassen; für die Kraft ist $[F] = M L T^(-2)$.
 
 === Fernkräfte und Kontaktkräfte
@@ -37,6 +45,10 @@ Auf makroskopischer Ebene (ohne Moleküle zu betrachten) unterscheidet man zwei 
   table.hline(stroke: 0.7pt),
 )
 
+Beispiele für Fernkräfte: die Gravitation zwischen Sonne und Planeten, die elektromagnetischen Kräfte zwischen geladenen Teilchen, die induktiven Kräfte zwischen Stator und Rotor eines Elektromotors. Beispiele für Kontaktkräfte: die Kräfte zwischen Kugel und Ring im Kugellager, zwischen Dampf und Turbinenschaufel, zwischen Last und Träger und zwischen Träger und Stützen. Das Gewicht der Last ist dagegen eine Fernkraft (Gravitation). Berühren sich zwei Körper nicht mehr, verschwinden auch die Kontaktkräfte; Fernkräfte bleiben.
+
+Zu den Einheiten: Das SI-Einheitensystem (auch MKS-System) geht von der Masse als dritter Grunddimension aus, neben Länge und Zeit. Die Einheit der Masse ist das Kilogramm (ursprünglich die Masse eines Liters Wasser), daneben Tonne und Gramm. Das ältere CGS-System verwendet Gramm und Zentimeter und kommt in manchen Publikationen noch vor; es unterscheidet sich nur durch die kleineren Einheiten.
+
 Kräfte, die von außen vorgegeben sind (Gewichte, Nutzlasten, Wind, Schnee), heißen *Lasten*. Kräfte, die sich erst als Antwort auf diese Lasten an Stützen, Lagern und Verbindungen einstellen, heißen *Reaktionen*, später *Bindungskräfte* oder *Lagerkräfte*. Eine wichtige Lektion der Statik ist, dass man die Lasten kennt und die Reaktionen ausrechnet.
 
 == Das Reaktionsprinzip
@@ -46,6 +58,14 @@ Kräfte, die von außen vorgegeben sind (Gewichte, Nutzlasten, Wind, Schnee), he
 ]
 
 Das ist ein *Axiom*: Es wird nicht bewiesen, sondern angenommen und durch Erfahrung und Experiment bestätigt. Keine Kraft existiert ohne ihre Gegenkraft. Newton hat das Prinzip 1684 für Massenpunkte unter Fernkräften formuliert. Wenn du mit der Hand gegen eine Wand drückst, drückt die Wand gleich stark zurück: das spürst du in der Hand. Zwei Eisläufer, die sich voneinander abstoßen, fahren in entgegengesetzte Richtungen.
+
+Zwei Präzisierungen gehören zum Prinzip.
+
+*Wer ist wer?* Bei Kontaktkräften haben Kraft und Gegenkraft im Moment der Berührung denselben _geometrischen_ Angriffspunkt, den Berührungspunkt. Trotzdem sind es zwei verschiedene _materielle_ Punkte $A_1, A_2$, die zu verschiedenen Systemen gehören. Bezeichne sie deshalb verschieden, das verhindert Denkfehler beim Freischneiden.
+
+*Zusatzpostulat für Fernkräfte.* Bei Fernkräften liegen die Wirkungslinien von Kraft und Gegenkraft auf der Verbindungsgeraden von $A_1$ und $A_2$. Das schließt aus, dass Kraft und Gegenkraft zwar entgegengesetzte Vektoren haben, aber auf zwei parallelen, seitlich versetzten Wirkungslinien liegen. Solche zwei Kräfte würden ein Kräftepaar bilden (Kapitel 6) und zwei Körper ohne äußere Ursache in Drehung versetzen.
+
+Beachte schließlich: Die in der Dynamik später auftretenden _Trägheitskräfte_ haben keine Reaktionen. Sie entsprechen keiner physikalischen Wechselwirkung und sind nur mathematische Hilfsvorstellungen («scheinbare Kräfte»).
 
 #fg("k04_reaktion", [Links der Klotz auf dem Tisch. Rechts «auseinandergeschnitten»: Klotz und Tisch üben aufeinander Kräfte aus, die gleich groß und entgegengesetzt sind ($vN$ und $-vN$). Ebenso das Gewicht des Klotzes $vG$ und seine Gegenkraft $-vG$ an der Erde.])
 
@@ -60,6 +80,10 @@ Bevor man in der Mechanik etwas rechnet, muss man sagen, _welches_ materielle Sy
 #defn[Innere und äußere Kräfte][
   Eine Kraft auf einen Punkt des Systems heißt *innere Kraft*, wenn auch der Angriffspunkt ihrer Reaktion zum System gehört; sie heißt *äußere Kraft*, wenn dieser Angriffspunkt außerhalb des Systems liegt.
 ]
+
+*Beispiel aus dem Buch.* An der Last in der Abbildung wirken die Zugkraft $Z$, das Gewicht $G$, zwei Normalkräfte $N_1, N_2$ (senkrecht zur Berührungsebene) und zwei Reibungskräfte $R_1, R_2$ (in der Berührungsebene). Wählt man nur die Last als System, sind alle diese Kräfte äußere Kräfte. Wählt man Last und Träger zusammen, bleiben $Z$ und $G$ äußere Kräfte, aber Normal- und Reibungskräfte werden innere, weil die Angriffspunkte ihrer Reaktionen auf den Träger jetzt im System liegen. Zusätzlich erscheinen die Lagerkräfte $F_A, F_B$ der Stützen als äußere Kräfte. Wo greift die Reaktion auf das Gewicht $G$ an? Im Erdmittelpunkt! Die Last wirkt auf die Erde mit einer gleich großen Gegenkraft. Die Lagerkräfte $F_A, F_B$ werden oft fälschlich als «Reaktionen» des Gewichts bezeichnet. Sie sind es nicht: Sie sind Wirkungen der Stützen auf den Träger, ihre Reaktionen greifen an den Stützen an.
+
+Beim Freischneiden werden also Actio-Reactio-Paare getrennt, und man muss beide Partner mit ihren richtigen materiellen Angriffspunkten berücksichtigen.
 
 #fg("k04_system", [Dieselbe Berührungskraft zwischen Last und Träger ist _äußere_ Kraft, wenn das System nur die Last ist (links, gestrichelte Grenze), und _innere_ Kraft, wenn Last und Träger zusammen das System bilden (rechts). Im rechten Fall erscheinen stattdessen die Lagerkräfte als äußere Kräfte.])
 
@@ -76,6 +100,12 @@ Eine «Einzelkraft» in einem einzigen Punkt ist immer eine Idealisierung. Eine 
   - Die *Raumkraftdichte* $vf$ ist die Fernkraft je Volumeneinheit. Auf ein Volumenelement $dif V$ wirkt $dif vF = vf dif V$. Einheit N/m³. Beispiel: das Eigengewicht, $vf = gamma ve_g$ mit dem spezifischen Gewicht $gamma = rho g$.
   - Die *Linienkraftdichte* $vq$ ist die Kraft je Längeneinheit für Körper, die man als eindimensional modelliert (Balken, Draht). Auf ein Längenelement $dif x$ wirkt $dif vF = vq dif x$. Einheit N/m. Beispiel: Eigengewicht eines Balkens, Schneelast auf einem Träger.
 ]
+
+Etwas genauer: Die Kontaktkräfte sind auf einer endlichen Fläche verteilt (_Flächenkräfte_), die Fernkräfte auf einem endlichen Raumteil (_Raumkräfte_). Betrachtet man den Körper als Kontinuum, gibt es unendlich viele Angriffspunkte. Wird das Flächenstück $Delta A$ kleiner, muss auch die zugehörige Kraft $Delta vF$ gegen null gehen, sonst wäre die Gesamtwirkung unendlich. Der Quotient bleibt endlich, und das ist die Dichte:
+$ vs = lim_(Delta A -> 0) (Delta vF) / (Delta A), wide vf = lim_(Delta V -> 0) (Delta vF) / (Delta V), wide vq = lim_(Delta s -> 0) (Delta vF) / (Delta s). $
+Die Flächenkraftdichte heißt in der Festigkeitslehre auch *Spannungsvektor*. Der Wasserdruck $p$ an der Staumauer ergibt $vs = -p vn$ (mit der äußeren Flächennormalen $vn$): Der Druck wirkt gegen die Wand. Das spezifische Gewicht $gamma$ ist der Betrag der Raumkraftdichte der Gravitation; die Raumkraftdichte selbst ist ein Vektor, der zum Erdmittelpunkt zeigt. Ist sie in allen Punkten gleich (uniforme Raumkraftverteilung), so ist die Gesamtkraft auf einen homogenen Körper vom Volumen $V$ einfach $G = V gamma$. Das darf man annehmen, solange die Abmessungen des Körpers klein gegen den Erdradius sind: Dann haben die Gewichte aller Volumenelemente praktisch gleiche Richtung und gleichen Betrag.
+
+Für einen horizontalen Balken mit veränderlichem spezifischem Gewicht $gamma(x)$ und veränderlicher Querschnittsfläche $A(x)$ ist die Linienkraftdichte des Gewichts $q(x) = -gamma(x) A(x) ve_z$. Bei einem homogenen Balken mit konstantem Querschnitt ist sie konstant: $q = -A gamma ve_z$.
 
 #fg("k04_dichte", [Linienkraftdichte $q(x)$ auf einem Balken. Auf das kurze Stück $dif x$ wirkt die Kraft $q(x) dif x$ (rot hinterlegt). Die Gesamtkraft ist die Summe (das Integral) aller dieser Teilkräfte, also die Fläche unter der Kurve.])
 

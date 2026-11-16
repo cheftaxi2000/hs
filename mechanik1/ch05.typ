@@ -24,7 +24,11 @@ In kartesischen Komponenten, $vF = (X, Y, Z)$ und $vv = (dot(x), dot(y), dot(z))
   Du ziehst mit $F = 50$ N unter $alpha = 30°$ zur Fahrtrichtung, der Schlitten fährt mit $v = 2$ m/s. $PP = F v cos alpha = 50 dot 2 dot cos 30° approx 86.6$ W. Würdest du genau waagerecht ziehen, wären es $100$ W; bei senkrechtem Ziehen $0$ W.
 ]
 
+Die Dimension der Leistung ist $[P] = [F L T^(-1)] = [M L^2 T^(-3)]$. Das Watt ist die Leistung einer Kraft von 1 N, deren Angriffspunkt sich mit 1 m/s in Kraftrichtung bewegt; größer sind das Kilowatt (kW) und das Megawatt (MW). Für $alpha < 90°$ ist die Leistung positiv, die Kraft wirkt als *Antriebskraft*; für $alpha > 90°$ ist sie negativ, die Kraft wirkt als *Widerstandskraft*. Beachte, dass die Leistung eine _momentane_ Größe ist: Sie kann zu jedem Zeitpunkt anders sein, weil $vF$, $vv_M$ und die Lage von $M$ von der Zeit abhängen dürfen. Der Punkt $M$ darf zu einem beliebigen materiellen System gehören (fest, flüssig oder gasförmig).
+
 Eine Kraft mit $PP = 0$ heißt *momentan leistungslos*. Das ist der Fall, wenn ihr Angriffspunkt ruht (Berührungspunkt eines rollenden Rades!) oder wenn sie senkrecht auf der Geschwindigkeit steht. Beispiele: die Normalkraft auf einen Körper, der auf einer ruhenden, glatten Fläche gleitet; die Kraft des Magnetfelds $vq(vv times vB)$ auf eine bewegte Ladung; die Spannkraft des Fadens beim Kreispendel. Diese Eigenschaft wird beim Prinzip der virtuellen Leistungen ausgenutzt: Alle leistungslosen Kräfte fallen heraus.
+
+Zwei Beispiele für leistungslose Kräfte: Die Lorentzkraft $vF = q thin vv times vB$ auf eine bewegte Ladung im Magnetfeld steht immer senkrecht auf $vv$ (Kreuzprodukt!) und leistet nichts. Auch die Kontaktkräfte $vN$ und $-vN$ an einer reibungsfreien punktförmigen Berührung zweier aufeinander gleitender Körper sind leistungslos, denn sie stehen senkrecht auf den Geschwindigkeiten der Berührungspunkte.
 
 == Leistung bei Rotation: Das Moment entsteht
 
@@ -52,6 +56,10 @@ Mit $vom = omega ve_z$ wird die Leistung bei Rotation um die $z$-Achse
 ]
 
 Die Einheit des Moments ist N m. Sie stimmt dimensionsmäßig mit der Energie überein, aber ein Moment ist eine Kraftwirkung, keine Energie (man schreibt deshalb nicht «Joule»).
+
+#bsp[Endlose Schraube][
+  Auf die reibungsfreie endlose Schraube (Schraubenwinkel $gamma$) wirke die zur Schraubenfläche normale Antriebskraft $F$, die Drehzahl um die Wellenachse sei $n$ (in Umdrehungen pro Minute), der Angriffspunkt habe den Abstand $R$ von der Achse. In der zylindrischen Basis ist $vF = F sin gamma thin ve_phi + F cos gamma thin ve_z$, und die Rotationsgeschwindigkeit ist $vom = (pi n \/ 30) ve_z$. _Weg 1:_ Die Geschwindigkeit des Angriffspunkts ist $vv = vom times vr = (pi n R\/30) ve_phi$, also $PP = vF dot.c vv = pi n F R sin gamma \/ 30$. _Weg 2:_ Das Moment bezüglich der Achse ist $M_z = F R sin gamma$ (nur der tangentiale Kraftanteil dreht), und $PP = omega M_z = (pi n\/30) F R sin gamma$. Beide Wege stimmen überein.
+]
 
 == Gesamtleistung
 
@@ -83,6 +91,8 @@ Das ist die wichtigste Formel des ganzen ersten Teils. Sie sagt: Was eine noch s
 
   Die Leistung ist das «Skalarprodukt der Dualen». Diese Dualität wird in Kapitel 6 vollständig ausgenutzt.
 ]
+
+Die Formel gilt nicht nur für zwei Kräfte. Man erweitert sie ohne Weiteres auf beliebig viele Einzelkräfte und sogar auf verteilte Flächen- und Raumkräfte (die Summen werden zu Integralen); ihre Gestalt bleibt dabei dieselbe. Sie ist der Ausgangspunkt der gesamten Statik im folgenden Teil.
 
 #bsp[Kranarm][
   Ein Stab $A B$ der Länge $L$ dreht mit der Schnelligkeit $omega$ gegen den Uhrzeigersinn um das Gelenk $A$ und steht unter dem Winkel $alpha$ zur Horizontalen. An der Spitze $B$ hängt die Last $G$ (senkrecht nach unten). Gesucht: die Leistung der Last.

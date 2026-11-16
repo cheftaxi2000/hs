@@ -14,7 +14,7 @@ Dazu brauchen wir zuerst einige Begriffe: Ruhelage, Bindungen und Bindungskräft
 
 #fg("k08_ruhelage", [Das Pendel in senkrechter Lage ist in einer Ruhelage: Lässt man es dort los, bleibt es hängen. Am Umkehrpunkt steht es nur einen Augenblick lang still und kehrt gleich wieder um. Das ist momentane Ruhe, aber keine Ruhelage.])
 
-Statik fragt nach Ruhelagen, nicht nach Augenblicken des Stillstands. Ob eine Ruhelage _stabil_ ist (das Pendel kehrt nach einer kleinen Störung zurück) oder _labil_ (ein auf der Spitze stehender Stab kippt weg), ist eine weitere Frage, die wir hier nicht behandeln.
+Statik fragt nach Ruhelagen, nicht nach Augenblicken des Stillstands. Das Pendel ist beim größten Ausschlag $phi_0$ nur momentan in Ruhe; seine Ruhelage ist die senkrechte Lage. Statt «Ruhelage» sagt man oft auch *Gleichgewichtslage*. Der Zusatz in der Definition ist wichtig: Die Lage bleibt nur dann eine Ruhelage, wenn sich die angreifenden Kräfte und die Lagerung nicht ändern. Ob eine Ruhelage _stabil_ ist (das Pendel kehrt nach einer kleinen Störung zurück) oder _labil_ (ein auf der Spitze stehender Stab kippt weg), ist eine weitere Frage, die wir hier nicht behandeln.
 
 == Bindungen und Bindungskräfte
 
@@ -29,6 +29,11 @@ Ein System kann sich meist nicht frei bewegen. Es liegt auf, ist gelagert, und s
   table.hline(stroke: 0.7pt),
 )
 
+Jeder Komponente der Bindungskräfte und -momente («Bindungskomponente») entspricht eine (linear unabhängige) Gleichung zwischen den Bewegungszuständen der verbundenen Körper. Zwei Beispiele, die man sich merken sollte:
+
+- *Innere Bindung.* Zwei Stäbe $A B$ und $B C$ sind in $B$ durch ein reibungsfreies Gelenk verbunden. Der Stab $A B$ übt auf $B C$ die Gelenkkraft ${B | vF}$ aus, umgekehrt übt $B C$ auf $A B$ die Reaktion ${B | -vF}$ aus. Beide Angriffspunkte liegen im betrachteten System der zwei Stäbe: ${B | vF}$ und ${B | -vF}$ sind innere Bindungskräfte.
+- *Äußere Bindung.* Ein Gegenstand auf einer Unterlage: An den Berührungspunkten übt die Unterlage die *Auflagerkräfte* auf ihn aus. Quer-, Längs- und Kugellager einer rotierenden Welle sind äußere Bindungen des Systems Welle; ihre Kräfte heißen *Lagerkräfte*.
+
 #fg("k08_bindungen", [Links eine einseitige Bindung: Die Unterlage kann nur drücken (nach oben), der Körper kann abheben. Rechts eine vollständige Bindung: Die Nut hält in beide Richtungen quer zur Nut, längs der Nut ist der Klotz frei beweglich.])
 
 #merke[
@@ -39,6 +44,8 @@ Ein System kann sich meist nicht frei bewegen. Es liegt auf, ist gelagert, und s
   In einer (unnachgiebigen) Bindung heißen Bindungskräfte parallel zu den in der Bindung erlaubten Geschwindigkeiten *Reibungskräfte*, entsprechend Bindungsmomente *Reibungsmomente*. Verschwinden sie alle, heißt die Bindung *reibungsfrei*. Eine reibungsfreie Unterlage kann also nur senkrecht zu sich selbst drücken. Reibung behandeln wir in Kapitel 12.
 ]
 
+Zur Definition der Reibung: In einer Bindung (zwischen starren Körpern, unnachgiebig, ohne Antrieb) sind Bindungskräfte, die parallel zu einer zulässigen virtuellen Geschwindigkeit der Bindung stehen, Reibungskräfte. Bei einem Körper auf einer Unterlage ist die Berührung genau dann reibungsfrei, wenn die Wirkungslinie der Bindungskraft in Richtung der Flächennormalen liegt. Bei einem Gelenk in einem ebenen System, das eine Kraft mit zwei Komponenten und eventuell ein Moment $M_R$ auf den Stab ausübt, ist die virtuelle Rotation um das Gelenk zulässig; ein Moment $M_R$ wäre also ein Reibungsmoment. Virtuelle Translationen in Richtung der Kraftkomponenten sind unzulässig, diese Komponenten sind keine Reibungskräfte.
+
 == Virtuelle Bewegungszustände
 
 #defn[Virtueller Bewegungszustand][
@@ -46,6 +53,10 @@ Ein System kann sich meist nicht frei bewegen. Es liegt auf, ist gelagert, und s
 ]
 
 Die *virtuelle Leistung* einer Kraft ist, genau wie in Kapitel 5, $tilde(PP) = vF dot.c tilde(vv)$. Für einen starren Körper mit virtueller Kinemate ${tilde(vv)_B, tilde(vom)}$ ist $tilde(PP) = tilde(vv)_B dot.c vR + tilde(vom) dot.c vM_B$.
+
+*Was zulässig heißt, hängt von den Bindungen ab.* Liegt ein Rad auf einer starren Unterlage, ist die virtuelle Geschwindigkeit des Berührungspunkts nur zulässig, wenn sie in der Tangentialebene liegt; jede andere würde die Unterlage durchdringen oder zum Abheben führen (die Bindung lösen). Bei einem starren Körper müssen die virtuellen Geschwindigkeiten außerdem dem Satz der projizierten Geschwindigkeiten genügen. Bei Mechanismen aus mehreren Körpern bestimmt man einen zulässigen virtuellen Bewegungszustand mit der Kinematik von Kapitel 3: Geben wir zum Beispiel an einem ebenen System aus zwei gelenkig verbundenen starren Stäben $A B$ und $B C$ die virtuelle Geschwindigkeit des Punkts $C$ vor (horizontal, Betrag $v$), so ist der ganze virtuelle Bewegungszustand eindeutig bestimmt: Stab $A B$ dreht um das Lager $A$, und Stab $B C$ dreht momentan um sein Momentanzentrum.
+
+*Einseitige Bindungen.* Die Bindungskraft einer einseitigen Bindung zeigt immer gegen die «freie» Raumhälfte: Die Unterlage kann nur drücken. Ein zulässiger virtueller Bewegungszustand darf eine einseitige Bindung _nicht lösen_. Ein starrer Zylinder ist für den Kolben darin eine _vollständige_ Bindung, denn die einzig mögliche Bewegung des Kolbens (axial) löst sie nicht.
 
 #intu[
   Du stehst vor einer ruhenden Konstruktion und fragst dich: «Was wäre, wenn sich das jetzt so bewegen würde?» Du _wackelst in Gedanken_ daran. Es bewegt sich nichts wirklich, und die Kräfte bleiben, wie sie sind. Du rechnest nur aus, welche Leistung die Kräfte bei diesem gedachten Wackeln hätten. Der Trick besteht darin, dass du dir das Wackeln aussuchen darfst, und zwar so, dass nur die Kräfte Leistung haben, die dich interessieren.
@@ -63,6 +74,12 @@ Das ist ein Axiom, und zwar der statische Spezialfall eines allgemeinen Grundges
 #merke[
   - Wählst du einen *zulässigen* Bewegungszustand und sind die Bindungen *reibungsfrei*, leisten die Bindungskräfte nichts. Sie fallen aus der Gleichung heraus, und du erhältst direkt eine Beziehung zwischen den Lasten.
   - Willst du eine bestimmte Bindungskraft wissen, wählst du einen Bewegungszustand, der *genau diese eine Bindung verletzt*. Dann erscheint nur diese Bindungskraft in der Gleichung.
+]
+
+Bernoulli hat das PdvL stillschweigend bei der Bewegung eines physikalischen Pendels benutzt, Lagrange hat es 1788 ausdrücklich und in aller Schärfe formuliert. Wie jedes Postulat wird es ohne Beweis angenommen und durch seine experimentell überprüfbaren Folgerungen bestätigt.
+
+#merke[
+  Das PdvL sagt, welche Kräfte in einer Ruhelage herrschen müssen. Es kann aber nicht sicherstellen, dass diese Kräfte im gegebenen System überhaupt möglich sind. Das muss man zusätzlich prüfen: über die Festigkeit (Mechanik 2), über die richtige Richtung der Normalkraft in einer einseitigen Bindung (Kapitel 9), über die Standfestigkeit (Kapitel 9) oder über das Haftreibungsgesetz (Kapitel 12). Deshalb steht im Postulat der Zusatz «und wenn die Eigenschaften des Systems und seiner Lagerung diese Kräfte zulassen».
 ]
 
 #fg("k08_virtuell", [Klotz auf reibungsfreier schiefer Ebene, durch eine horizontale Kraft $vF$ gehalten. Links die wirklichen Kräfte. Mitte: zulässige virtuelle Verschiebung längs der Ebene ($vN$ leistet nichts). Rechts: virtuelle Verschiebung senkrecht zur Ebene, die die Bindung verletzt ($vN$ leistet mit).])
@@ -89,11 +106,27 @@ Wählt man als virtuellen Bewegungszustand eine *Starrkörperbewegung des ganzen
 
 Das sind die *Gleichgewichtsbedingungen*: im Raum 6 skalare Gleichungen, in der Ebene 3.
 
+#warum[Beweis des Hauptsatzes][
+  Wir erteilen dem System in seiner Ruhelage eine beliebige momentane Starrkörperbewegung als virtuellen Bewegungszustand. Er darf die äußeren Bindungen durchaus verletzen. Nach dem PdvL muss die Gesamtleistung aller inneren und äußeren Kräfte null sein. Nach dem Reaktionsprinzip enthalten die inneren Kräfte mit jeder Kraft auch ihre Reaktion, sie bilden also eine Nullgruppe: $vR^((i)) = bold(0)$ und $vM_O^((i)) = bold(0)$. Nach der Leistungsformel für starre Körper liefern sie bei einer Starrkörperbewegung keinen Beitrag. Übrig bleibt $tilde(PP) = tilde(vv)_O dot.c vR^((a)) + tilde(vom) dot.c vM_O^((a)) = 0$ für alle Kinematen $\{tilde(vv)_O, tilde(vom)\}$. Das geht nur, wenn $vR^((a)) = bold(0)$ und $vM_O^((a)) = bold(0)$.
+]
+
+#bsp[Klotz auf der schiefen Ebene mit dem Hauptsatz][
+  Dieselbe Aufgabe wie oben, jetzt mit den Gleichgewichtsbedingungen. Wir zerlegen parallel ($ve_x$) und senkrecht ($ve_y$) zur Ebene, dann tritt die Unbekannte $N$ nur in einer Komponentenbedingung auf: $vF = -F cos alpha thin ve_x - F sin alpha thin ve_y$, $vG = G sin alpha thin ve_x - G cos alpha thin ve_y$, $vN = N ve_y$. Aus $vR = bold(0)$ folgt
+  $ -F cos alpha + G sin alpha = 0, quad -F sin alpha - G cos alpha + N = 0, $
+  also wieder $F = G tan alpha$ und $N = G\/cos alpha$. Die Momentenbedingung bezüglich des Schwerpunkts liefert dann die Lage der Wirkungslinie von $vN$. Die Gleichungen sind dieselben, die das PdvL mit drei gewählten virtuellen Bewegungen geliefert hat.
+]
+
 #merke[
   Der Hauptsatz ist *notwendig, aber im Allgemeinen nicht hinreichend*. Er gilt für jedes System, auch für verformbare und für Mechanismen. Aber aus dem Gleichgewicht der äußeren Kräfte am Gesamtsystem folgt noch nicht, dass auch jedes Teil in Ruhe bleibt. Für *einen einzelnen starren Körper* dagegen ist er auch hinreichend.
 ]
 
+Die genaue Aussage ist: Für einen *einzelnen starren Körper* bilden der Hauptsatz und die etwaigen Bedingungen in den äußeren Bindungen (Richtung der Normalkraft bei einseitiger Bindung, Standfestigkeit, Haftreibungsgesetz) einen vollständigen Satz notwendiger _und hinreichender_ Bedingungen für eine Ruhelage. Besteht das System aus mehreren starren Bestandteilen, schreibt man den Hauptsatz für _jeden_ Bestandteil einzeln an. Beim System der zwei Stäbe wären das 6 Gleichungen (eben) bzw. 12 (räumlich). Dann erkennt man den Fehler sofort: An jedem getrennten Stab wirkt ein Kräftepaar mit Moment $!= 0$, die Momentenbedingung kann nicht erfüllt werden. Bei deformierbaren Systemen führt der Grenzübergang auf Differentialgleichungen des Gleichgewichts (Mechanik 2).
+
 #fg("k08_schere", [Gleichgewicht der äußeren Kräfte, aber keine Ruhelage: Zwei gelenkig verbundene Stäbe auf reibungsfreier Ebene (Draufsicht), belastet mit $vF$ und $-vF$ auf derselben Wirkungslinie. Die äußeren Kräfte bilden eine Nullgruppe, trotzdem klappt die Anordnung zusammen. Erst das Gleichgewicht an jedem einzelnen Stab würde das aufdecken.])
+
+#intu[
+  Newtons erstes Gesetz in der Sprache der Statik: Sind die äußeren Kräfte an einem starren Körper im Gleichgewicht, ändert sich seine Bewegung nicht. Das ist Ruhe, aber auch gleichförmige Translation oder gleichförmige Drehung um eine Achse durch den Massenmittelpunkt. «Gleichgewicht» heißt also streng genommen: keine Änderung des Bewegungszustands. Die Statik behandelt den Fall, in dem dieser Zustand die Ruhe ist.
+]
 
 #rezept[Welches Werkzeug wofür?][
   - *Hauptsatz* (Gleichgewichtsbedingungen): der Normalfall. Systematisch, liefert alle Lagerkräfte. Bei mehreren Körpern muss man zerlegen und bekommt viele Gleichungen mit vielen Unbekannten.

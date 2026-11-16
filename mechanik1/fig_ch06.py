@@ -29,7 +29,7 @@ def paare():
     f.dim((x1, y), (xs, y), "$a_1$", off=-0.55); f.dim((xs, y), (x2, y), "$a_2$", off=-0.55)
     f.cap((4.0, 0.35), "$a_1 F_1 = a_2 F_2$", size=9.5)
     # Kräftepaar
-    f.rect((9.4, 1.0), (14.8, 4.0))
+    f.potato((12.1, 2.5), 5.6, 3.2, ang=3, seed=4)
     f.arrow((10.4, 1.7), (10.4, 3.5), c=F, lw=1.6); f.text((10.4, 3.5), r"$\mathbfit{F}$", c=F, dx=-0.35, dy=0.1)
     f.arrow((13.8, 3.5), (13.8, 1.7), c=F, lw=1.6); f.text((13.8, 1.7), r"$-\mathbfit{F}$", c=F, dx=0.5, dy=0.0)
     f.dim((10.4, 1.4), (13.8, 1.4), "$b$", off=0.0)
@@ -41,7 +41,7 @@ def paare():
 def parallel():
     f = Fig(15.8, 3.9)
     for x0 in (0.5, 5.3, 10.3):
-        f.rect((x0, 1.0), (x0 + 3.6, 2.6))
+        f.potato((x0 + 1.8, 1.8), 3.9, 2.0, ang=0, seed=8)
     # links
     f.dot((1.3, 1.8)); f.text((1.3, 1.8), "$B$", dx=-0.25, dy=0.35, size=9); f.dot((3.3, 1.8)); f.text((3.3, 1.8), "$A$", dx=0.2, dy=0.4, size=9)
     f.arrow((3.3, 0.3), (3.3, 1.75), c=F, lw=1.6); f.text((3.3, 0.3), r"$\mathbfit{F}$", c=F, dx=0.4, dy=0.0)
@@ -63,12 +63,12 @@ def dyname():
     f = Fig(15.8, 4.6)
     for k, (x0, lab) in enumerate([(0.0, "Kräftegruppe"), (5.4, "Dyname in $B$"), (10.4, "Schraube auf Zentralachse")]):
         pass
-    f.poly([(0.6, 1.0), (3.6, 0.7), (4.6, 2.2), (3.8, 3.6), (1.0, 3.5)])
+    f.potato((2.6, 2.2), 4.2, 3.2, ang=10, seed=6)
     for p, v in [((1.4, 1.7), (0.0, 1.2)), ((2.8, 1.2), (0.4, 1.0)), ((3.4, 3.1), (0.0, -1.0)), ((2.0, 3.0), (0.9, 0.5))]:
         f.dot(p, 0.05); f.arrow(p, P(*p) + P(*v), c=F, lw=1.2)
     f.cap((2.6, 0.2), "beliebige Kräftegruppe", size=8.5)
     f.text((5.5, 2.2), r"$\Rightarrow$", size=15)
-    f.poly([(6.6, 1.0), (9.6, 0.7), (10.6, 2.2), (9.8, 3.6), (7.0, 3.5)])
+    f.potato((8.6, 2.2), 4.2, 3.2, ang=10, seed=6)
     B = P(8.2, 2.1); f.dot(B, 0.06); f.text(B, "$B$", dx=-0.3, dy=-0.3)
     f.arrow(B, B + P(0.9, 1.3), c=F, lw=1.8); f.text(B + P(0.9, 1.3), r"$\mathbfit{R}$", c=F, dx=0.3, dy=0.1)
     f.moment(B, 0.55, 20, 300, col=M); f.text(B + P(-0.6, 0.9), r"$\mathbfit{M}_B$", c=M, size=9)

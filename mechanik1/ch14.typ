@@ -4,9 +4,15 @@
 
 Bis jetzt haben wir gefragt, welche Kräfte _von außen_ auf einen Träger wirken. Für die Frage «Hält er?» muss man wissen, was _im Inneren_ los ist: Welche Kräfte muss das Material an jeder Stelle übertragen? Das ist die *Beanspruchung*. Sie ist die Brücke von der Statik zur Festigkeitslehre.
 
+Tragstrukturen müssen unter den gegebenen Lasten halten. Übersteigen die übertragenen Kräfte örtlich oder in größeren Bereichen die Festigkeitsgrenzen des Materials, drohen Risse oder große bleibende Verformungen, und die Struktur versagt. Um das schon beim Entwurf zu erkennen, muss man die in der Struktur übertragenen Kräfte (die per Definition _inneren_ Kräfte) Punkt für Punkt ausrechnen. Beispiele kennen wir schon: die Stabkräfte der Pendelstützen im Fachwerk (Kapitel 11) und den Seilzug (Kapitel 13), der von jedem Seilelement auf seine Nachbarn übertragen wird.
+
+Die Pendelstütze ist der einfachste Fall einer größeren Klasse: Bei ihr überträgt jeder Querschnitt nur eine Kraft, die Stabkraft. Bei anderen schlanken Trägern (Balken, Säulen, gekrümmten Stabträgern) lassen sich die von Querschnitt zu Querschnitt übertragenen Kräfte statisch äquivalent auf eine Einzelkraft und ein Kräftepaar reduzieren. Das ist die Beanspruchung, die wir gleich definieren.
+
 Wir betrachten *Stabträger*: schlanke Körper, deren Länge viel größer ist als ihre Querabmessungen. Die *Achse* verbindet die Flächenmittelpunkte der Querschnitte. Ist sie gerade, spricht man von einem *Balken*, sonst von einem gekrümmten Stabträger.
 
 == Definition und Zerlegung
+
+Besitzen die Lasten Komponenten senkrecht zur Achse, heißt der gerade Stabträger *Balken*. Quer belastete schlanke Prismen und Zylinder sind Sonderfälle; ein Zylinder, der um die eigene Achse rotieren kann, heißt oft *Welle*. Die Querschnitte dürfen sich entlang der Achse ändern. Wir konzentrieren uns auf gerade Träger; gekrümmte folgen am Schluss.
 
 Der Träger ruhe unter äußeren Kräften, die im Gleichgewicht sind. Wir trennen ihn in Gedanken an einer Stelle durch einen ebenen Schnitt senkrecht zur Achse. Jedes der beiden Teile muss für sich in Ruhe bleiben. Das geht nur, wenn über die Schnittfläche Kräfte übertragen werden: die *Schnittkräfte*. Vor dem Schnitt waren sie innere Kräfte, durch den Schnitt werden sie zu äußeren Kräften der Teile.
 
@@ -48,9 +54,21 @@ Mit $ve_x$ in Achsrichtung (äußere Normale des betrachteten Schnittufers) und 
   + Die Verläufe als Diagramme aufzeichnen und kontrollieren (siehe 14.3).
 ]
 
+Genau gesagt gibt es vier gleichwertige Wege, die Beanspruchung an einem Schnitt zu berechnen: (1) aus dem Gleichgewicht der äußeren Kräfte des linken Teils mit der Beanspruchung, (2) aus dem Gleichgewicht der äußeren Kräfte des rechten Teils mit der entgegengesetzten Beanspruchung, (3) aus der Reduktion der äußeren Kräfte des rechten Teils auf den Flächenmittelpunkt, (4) aus der Reduktion der äußeren Kräfte des linken Teils (mit umgekehrtem Vorzeichen). Man wählt den Weg, der am wenigsten Rechnung bedeutet.
+
+Beim Eintragen der Schnittgrößen am Freischnitt hilft eine Regel: Der Basisvektor $ve_1$ liegt in Richtung der _äußeren Normalen_ der Schnittfläche des betrachteten Teils. Dann liegen positive Beanspruchungskomponenten in positiver Richtung der Basisvektoren. Die Richtung der äußeren Normalen kann man durch Schraffur auf der Innenseite (der mit Material gefüllten Seite) des Schnitts markieren. Treten Einzelkräfte oder Einzelmomente auf, braucht man in _jedem_ Bereich zwischen zwei Lasten einen eigenen Schnitt in allgemeiner Lage. Statt zuerst alle Lagerkräfte zu berechnen, kann man sie auch zunächst als Unbekannte stehen lassen und aus den Randbedingungen (zum Beispiel: Moment am gelenkigen Ende null, alle Schnittgrößen an einem lastfreien Ende null) bestimmen.
+
 Gleichwertig und oft schneller: Die Beanspruchung am positiven Schnittufer bei $x$ ist die Dyname _aller äußeren Kräfte am abgeschnittenen Teil jenseits des Schnitts_ ($> x$), reduziert auf $C$.
 
 #fg("k14_diagramme", [Die beiden wichtigsten Grundfälle mit Querkraft- und Momentenverlauf (Lasten nach unten). Das Biegemoment ist dort extremal, wo die Querkraft null ist oder springt.])
+
+#bsp[Kragarm mit außermittiger Last][
+  Greift die Kraft $F$ am Kragarm nicht in der Achse an, sondern im Abstand $e$ seitlich daneben ($e < a\/2$ bei quadratischem Querschnitt der Seite $a$), kommt zur Querkraft $Q_y = F$ und zum Biegemoment $M_z = (L - x) F$ noch ein *Torsionsmoment* $T(x) = -e F$ hinzu: Die Last dreht den Träger um seine Achse. An der Einspannung entstehen dann die Kraft $A_y = F$ und ein Moment mit den Komponenten $M_(A x) = e F$ und $M_(A z) = -L F$.
+]
+
+#bsp[Vertikale Säule unter Eigengewicht][
+  Bei verteilten Lasten darf man äquivalente Einzelkräfte einsetzen, aber erst _nach_ der Zerlegung. Eine homogene Säule (Gewicht $G$, Länge $L$) steht auf einer Unterlage. Schnitt im Abstand $x$ vom unteren Ende: Das Gewicht des oberen Stücks der Länge $L - x$ ist $G (L - x)\/L$ und wirkt nach unten, also $N(x) = -G (L - x)\/L$. Die Säule ist nur auf Druck beansprucht (negative Normalkraft), und zwar unten am stärksten ($N(0) = -G$), wo sie das ganze Gewicht trägt, oben null.
+]
 
 #bsp[Balken auf zwei Stützen unter Gleichlast][
   Länge $L$, Gleichlast $q_0$ nach unten, also $q_y = -q_0$. Lagerkräfte: $A_y = B_y = q_0 L\/2$. Schnitt bei $x$, wir betrachten den rechten Teil (Länge $L - x$): Auf ihn wirken $B_y$ am Ende und die Teillast $q_0 (L - x)$ in seiner Mitte.
@@ -75,6 +93,10 @@ Gleichwertig und oft schneller: Die Beanspruchung am positiven Schnittufer bei $
   Das Moment ist an der Einspannung am größten: Dort bricht ein überlasteter Kragarm. Die Lagerkräfte musste man dafür gar nicht ausrechnen. Umgekehrt liest man sie aus den Schnittgrößen bei $x = 0$ ab.
 ]
 
+#bsp[Statisch unbestimmt gelagerter Träger][
+  Ein horizontaler Balken $A B$ (Eigengewicht vernachlässigt) trägt die Dreieckslast $q(x) = q_0 x\/L$. In der Mitte $M$ ist ein vertikaler Kragarm $M E$ der Länge $h$ angeschweißt, der am freien Ende die horizontale Kraft $F$ trägt. $A$ und $B$ sind reibungsfreie, aber nicht verschiebbare Gelenke: einfach statisch unbestimmt. Man trennt den Kragarm ab; sein Einfluss auf den Balken ist die Reduktion von $F$ auf $M$: eine horizontale Kraft $F$ und das Moment $h F$ in $M$. Dann schneidet man zwischen $A$ und $M$; links vom Schnitt darf die Last durch ihre Resultierende $q_0 x^2\/(2L)$ im Abstand $2x\/3$ von $A$ ersetzt werden. Liegt der Schnitt zwischen $M$ und $B$, kommen die Kraft $F$ und das Moment $h F$ dazu. Die Randbedingung «am Gelenk $B$ verschwindet das Biegemoment» liefert eine Beziehung zwischen $A_y$ und $B_y$, die gleich der Momentenbedingung am ganzen Balken ist. Die horizontale Komponente $B_x$ (gleich $N(L)$) bleibt unbestimmt, weil $A_x$ unbekannt ist: Das Problem bleibt einfach statisch unbestimmt. Das zeigt, dass die Schnittmethode die Unbestimmtheit nicht beseitigt, sondern nur sichtbar macht.
+]
+
 == Differentialbeziehungen am geraden Balken
 
 Zwischen Belastung, Querkraft und Biegemoment bestehen feste Zusammenhänge. Man erhält sie aus dem Gleichgewicht an einem Balkenelement der Länge $dif x$ unter der Streckenlast $q_y (x)$.
@@ -91,6 +113,8 @@ Kräftegleichgewicht in $y$-Richtung: $Q_y (x + dif x) - Q_y (x) + q_y dif x = 0
 #intu[
   Die Querkraft «sammelt» die Last auf: Gehst du am Balken entlang, ändert sie sich um genau die Last, an der du vorbeikommst. Das Moment sammelt wiederum die Querkraft auf. Es ist zweimal dasselbe Spiel, wie bei Beschleunigung, Geschwindigkeit und Weg. Deshalb ist der Momentenverlauf immer um einen Grad «glatter» als der Querkraftverlauf, und dieser um einen Grad glatter als die Last.
 ]
+
+Zur Herleitung der Differentialbeziehungen setzt man voraus, dass $Q_y$ und $M_z$ differenzierbar sind. Dann ist das Balkenelement zwischen den Schnitten bei $x$ und $x + dif x$ in Ruhe, und die Gleichgewichtsbedingungen liefern bis auf Größen höherer Ordnung in $dif x$ die obigen Beziehungen. Der Lastvektor soll durch die Flächenmittelpunkte gehen, damit keine Torsion entsteht. Die Beziehungen gelten nicht an Stellen, wo eine Einzellast oder ein Einzelmoment angreift. Dort springen die Funktionen, und man schneidet ein Element heraus, das die Unstetigkeit umfasst:
 
 An Stellen mit Einzellasten gelten *Sprungbedingungen*: Greift bei $x = a$ eine Einzelkraft mit der Komponente $F_y$ an und bei $x = b$ ein Einzelmoment $M$ (in $+z$-Richtung), so ist
 #gl($ Q_y (a^+) - Q_y (a^-) = -F_y, wide M_z (b^+) - M_z (b^-) = -M. $)
@@ -120,6 +144,14 @@ Daraus ergeben sich Regeln, mit denen man jedes Diagramm skizzieren und jede Rec
   Balken auf zwei Stützen, $q_y (x) = -q_0 sin(pi x \/ L)$. Zweimal integrieren:
   $ Q_y = -(q_0 L)/pi cos((pi x)/L) + C_1, wide M_z = (q_0 L^2)/pi^2 sin((pi x)/L) - C_1 x + C_2. $
   Randbedingungen $M_z (0) = 0$ und $M_z (L) = 0$ geben $C_2 = 0$ und $C_1 = 0$. Das größte Moment liegt in der Mitte: $q_0 L^2 \/ pi^2$. Die Lagerkräfte liest man aus der Querkraft an den Enden ab: je $q_0 L \/ pi$.
+]
+
+#bsp[Dreipunktbiegung durch Integration][
+  Im Bereich $x in [0, a)$ und $x in (a, L]$ verschwindet die Last, also $Q_y'' = 0$ und $M_z'' = 0$: Beide Funktionen sind jeweils linear, mit vier Integrationskonstanten. Die Randbedingungen $M_z(0) = M_z(L) = 0$ (gelenkige Lager) fixieren zwei davon. Die übrigen zwei folgen aus den Übergangsbedingungen bei $x = a$: dem Sprung $Q_y(a^+) - Q_y(a^-) = -F$ und der Stetigkeit des Moments ($M = 0$ im Punkt). Man bekommt wieder dieselben Ergebnisse wie mit der Schnittmethode, aber systematischer.
+]
+
+#merke[
+  *Extremum des Biegemoments:* Aus $M_z' = -Q_y$ folgt, dass $M_z$ dort extremal ist, wo die Querkraft verschwindet (außer bei Randextrema und an Unstetigkeiten). In den Diagrammen oben sieht man das direkt: Bei der Gleichlast ist $Q_y = 0$ in der Mitte, dort liegt das Maximum.
 ]
 
 == Gekrümmte Stabträger

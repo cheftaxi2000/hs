@@ -8,9 +8,17 @@ Ein Seil (oder eine Kette) ist das Gegenteil eines starren Körpers: Es ist voll
   Ein Seil kann nur *Zug* übertragen, und die *Seilkraft* $vS$ ist in jedem Punkt *tangential* zum Seil. Ein Seil kann weder drücken noch quer zu sich eine Kraft oder ein Moment aufnehmen.
 ]
 
+Das Seil wirkt als Verbindungselement vor allem durch seinen Dehnungswiderstand. Es ist sehr biegsam, weil seine Querabmessungen viel kleiner sind als seine Länge. Im Modell des _inextensiblen_ Seils idealisieren wir es deshalb als vollkommen biegsamen, eindimensionalen Körper unveränderlicher Länge: Biegewiderstand null, Dehnungswiderstand «unendlich». Weil es keine Druckkraft aufnehmen kann, ist die Seilkraft immer eine Zugkraft; ihren Betrag nennt man den *Seilzug*.
+
 Daraus folgt sofort:
 - Ein *gewichtsloses Seil* zwischen zwei Punkten, an dem dazwischen keine Kraft angreift, ist *gerade*, und die Seilkraft ist überall gleich. Greifen Einzellasten an, bildet es ein *Seilpolygon*: An jedem Knickpunkt herrscht Gleichgewicht zwischen der Last und den beiden Seilkräften.
 - Läuft ein gewichtsloses Seil über eine *reibungsfrei gelagerte Rolle*, so ist der Betrag der Seilkraft auf beiden Seiten *gleich* (Momentenbedingung um die Rollenachse). Die Rolle lenkt die Kraft nur um.
+
+Wie bildet sich das *Seilpolygon*? Ein gewichtsloses Seil werde in $A$ durch die Kraft ${A | vS_0}$ gehalten. Das Seilstück $A B$ nimmt die Richtung dieser Kraft an, der Seilzug in $A B$ ist ihr Betrag. Greift in $B$ eine Last ${B | vF_1}$ an, muss am Knoten $B$ Gleichgewicht herrschen: Das Seilstück $B C$ stellt sich parallel zum negativen Summenvektor $vS_1 = -(vS_0 + vF_1)$ ein, und dessen Betrag ist der Seilzug in $B C$. Eine weitere Last ${C | vF_2}$ richtet das Stück $C D$ parallel zu $-(vS_0 + vF_1 + vF_2)$. Jede Last «knickt» das Seil also in die Richtung, die das Knotengleichgewicht verlangt.
+
+Den Beweis für die Rolle erhält man durch die Momentenbedingung um die Rollenachse: Betrachtet man Rolle und angrenzende Seilstücke als System, ist die Lagerkraft in der reibungsfreien Achse ohne Moment. Die Seilzüge links und rechts haben denselben Hebelarm (den Rollenradius), also müssen sie gleich groß sein, egal in welche Richtung das Seil läuft.
+
+Lässt man die Zahl der Lasten über alle Grenzen wachsen, ihre Beträge und die Abstände gegen null gehen, wird aus dem Vieleck eine Kurve, die nur noch dort Ecken hat, wo Einzelkräfte angreifen. Diesen Grenzfall (das kontinuierlich belastete Seil) behandeln wir jetzt für das Eigengewicht.
 
 == Das schwere Seil: Kettenlinie
 
@@ -41,6 +49,10 @@ Die letzte Formel ist bemerkenswert einfach: Die Seilkraft in einem Punkt ist da
   Der Parameter $a = H\/p$ sagt, wie «straff» das Seil ist. Ist $a$ groß (starker Horizontalzug, leichtes Seil), ist die Kurve flach; bei kleinem $a$ hängt das Seil tief durch. Ein Seil völlig gerade zu spannen ist unmöglich: Dafür müsste $H$ unendlich werden, denn irgendetwas Vertikales muss das Gewicht tragen, und das geht nur mit einer Neigung.
 ]
 
+*Folgerung aus $S = p y$.* Ein Seil, das in $B$ befestigt und in $C$ über eine kleine, reibungsfrei drehbare Rolle gelegt wird, hängt mit seinem freien Ende genau bis zur Leitlinie, der $x$-Achse. Denn am Ende ist $S = p y$ das Gewicht des freien Stücks, das von der Rolle bis zum Ende herunterhängt, und das ist gerade die Länge $y$ der Rolle über der Leitlinie.
+
+*Aufhängen zwischen zwei Punkten.* Mit der Gleichung $y = a cosh(x\/a)$ ist die Gleichgewichtsform eines Seils gegebener Länge zwischen zwei Punkten $B, C$ noch nicht ganz gefunden, denn der Parameter $a$ und die Lage der Achsen sind unbekannt. Man schreibt $y = a cosh(x\/a)$ und $s = a sinh(x\/a)$ für beide Punkte an und nutzt, dass man die _Differenzen_ $x_C - x_B$, $y_C - y_B$ und $s_C - s_B$ (die Länge des Seils) kennt. Das ergibt Gleichungen für $a$ und die Lage der Achsen (nur numerisch lösbar).
+
 === Flach gespanntes Seil: Parabel
 
 Ist das Seil straff ($|x| << a$), entwickelt man $cosh$ und $sinh$ in eine Reihe:
@@ -67,12 +79,18 @@ Der Zuwachs ist proportional zum schon vorhandenen Wert: Das ist die Gleichung d
   ist ($alpha$ im Bogenmaß, $S_2$ die größere Kraft). Gleitet das Seil auf der Trommel, gilt $S_2 = S_1 e^(mu_1 alpha)$.
 ]
 
+Ein Hinweis zur Annahme: Das Modell vernachlässigt die Biegesteifigkeit des Seils und sein Gewicht gegenüber den übrigen Kräften. Gleitet das Seil nicht auf der Trommel, ist der Zug auf der auflaufenden Seite größer als auf der ablaufenden ($S_2 > S_1$, weil $mu_1, alpha > 0$), und das Verhältnis $S_2\/S_1$ wächst mit dem Umschlingungswinkel exponentiell. Die Formel legt nur das _Verhältnis_ der beiden Kräfte fest; über eine davon kann man frei verfügen. Wird die Trommel gedreht und soll das Seil mitgenommen werden, so tritt die Mitnahme ein, solange $S_2 < S_1 e^(mu alpha)$ gilt.
+
 #intu[
   Jedes Stück Umschlingung vervielfacht die Haltekraft um denselben Faktor, wie Zinseszins. Bei $mu_0 = 0.3$ ergibt eine halbe Umschlingung den Faktor $e^(0.3 pi) approx 2.6$, eine ganze $6.6$, zwei ganze $43$, drei ganze $286$. Deshalb kann ein Matrose ein Schiff halten, indem er das Tau ein paar Mal um den Poller legt. Der Radius des Pollers spielt keine Rolle, nur der Winkel.
 ]
 
+#bsp[Schiff am Poller][
+  Schiffe werden an Land festgehalten, indem man das Tau mehrmals um einen kurzen Poller schlingt. Weil der Umschlingungswinkel sehr groß ist, genügt eine kleine Kraft $S_1$, die schon die Haftreibung des Seilendes am Boden (oder die Hand des Matrosen) liefert, um eine große Kraft $S_2$ am anderen Ende auszuhalten. Schon bei einer fünffachen Umschlingung ($alpha = 10 pi$) und $mu = 0.4$ ist $S_2\/S_1 = e^(0.4 dot 10 pi) = e^(4 pi) approx 2.9 dot 10^5$. Eine Hand mit 100 N hält damit rechnerisch 29 Millionen Newton, die Reibung gibt also praktisch beliebig viel Haltekraft her.
+]
+
 #bsp[Bandbremse][
-  Ein Band umschlingt eine drehende Trommel (Radius $r = 0.2$ m) über $alpha = 3 pi\/2$ ($270°$), $mu_1 = 0.4$. Auf der schlaffen Seite wirkt $S_1 = 100$ N. Dann ist $S_2 = S_1 e^(mu_1 alpha) = 100 e^(0.4 dot 4.71) approx 100 dot 6.6 = 660$ N, und das Bremsmoment auf die Trommel ist $M = r (S_2 - S_1) = 0.2 dot 560 = 112$ N m. Mit einem Hebel, der nur die kleine Kraft $S_1$ aufbringen muss, erzeugt man ein großes Bremsmoment.
+  Ein Band umschlingt eine drehende Trommel (Radius $r = 0.2$ m) über $alpha = 3 pi\/2$ ($270°$), $mu_1 = 0.4$. Auf der schlaffen Seite wirkt $S_1 = 100$ N. Dann ist $S_2 = S_1 e^(mu_1 alpha) = 100 e^(0.4 dot 4.71) approx 100 dot 6.6 = 660$ N, und das Bremsmoment auf die Trommel ist $M = r (S_2 - S_1) = 0.2 dot 560 = 112$ N m. Mit einem Hebel, der nur die kleine Kraft $S_1$ aufbringen muss, erzeugt man ein großes Bremsmoment. Man zerlegt das System in die Trommel samt Last und den Bremshebel und löst mit den Momentenbedingungen beider Körper. Der Hebel spannt dabei den _ablaufenden_ Seilteil, weil dort der Zug kleiner ist und man mit einer geringeren Bremskraft auskommt.
 ]
 
 #kurz[
