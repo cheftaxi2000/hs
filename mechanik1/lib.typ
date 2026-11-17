@@ -66,12 +66,13 @@
 #let _aufgnr = counter("aufgabe")
 #let aufgaben() = {
   _aufgnr.update(0)
+  pagebreak(weak: true)
   heading(level: 2)[Aufgaben mit Lösungen]
   text(size: 9.5pt, style: "italic")[Durchgerechnete Aufgaben aus der Vorlesung zu diesem Kapitel. Erst selbst versuchen, dann die Lösung lesen.]
 }
 #let aufg(title, fig: none, fw: 6cm, a, l) = {
   _aufgnr.step()
-  block(width: 100%, breakable: true, spacing: 1.3em, radius: 4pt, clip: true, stroke: 0.7pt + crd, fill: luma(249), {
+  block(width: 100%, breakable: false, spacing: 1.3em, radius: 4pt, clip: true, stroke: 0.7pt + crd, fill: luma(249), {
     block(width: 100%, fill: crd, inset: (x: 10pt, y: 4.5pt), sticky: true, below: 0pt,
       text(font: sans, size: 9.5pt, weight: "bold", fill: white, context [Aufgabe #counter(heading).get().first().#_aufgnr.get().first(): #title]))
     block(width: 100%, inset: (x: 10pt, top: 8pt, bottom: 9pt), above: 0pt, {
@@ -107,7 +108,7 @@
 
 #let teil(num, title, body) = {
   pagebreak(weak: true)
-  v(6cm)
+  v(2cm)
   text(font: sans, size: 14pt, weight: "bold")[Teil #num]
   v(4pt)
   text(font: sans, size: 26pt, weight: "bold", title)
@@ -140,7 +141,7 @@
     pagebreak(weak: true)
     counter(math.equation).update(0)
     counter(figure.where(kind: image)).update(0)
-    v(2.2cm)
+    v(0.3cm)
     if it.numbering != none { text(font: sans, size: 15pt, weight: "bold")[Kapitel #counter(heading).display("1")]; v(0.1cm) }
     par(justify: false, text(font: sans, size: 23pt, weight: "bold", hyphenate: false, it.body))
     v(0.1cm); line(length: 100%, stroke: 0.8pt); v(0.7cm)

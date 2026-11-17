@@ -3,7 +3,7 @@
 
 // ---------- Titel ----------
 #page(header: none, footer: none)[
-  #v(5.5cm)
+  #v(3.5cm)
   #text(font: sans, size: 15pt, weight: "bold")[Lernskript]
   #v(4pt)
   #text(font: sans, size: 38pt, weight: "bold")[Mechanik 1]
