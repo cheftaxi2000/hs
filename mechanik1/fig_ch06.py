@@ -30,8 +30,8 @@ def paare():
     f.cap((4.0, 0.35), "$a_1 F_1 = a_2 F_2$", size=9.5)
     # Kräftepaar
     f.potato((12.1, 2.5), 5.6, 3.2, ang=3, seed=4)
-    f.arrow((10.4, 1.7), (10.4, 3.5), c=F, lw=1.6); f.text((10.4, 3.5), r"$\mathbfit{F}$", c=F, dx=-0.35, dy=0.1)
-    f.arrow((13.8, 3.5), (13.8, 1.7), c=F, lw=1.6); f.text((13.8, 1.7), r"$-\mathbfit{F}$", c=F, dx=0.5, dy=0.0)
+    f.arrow((10.4, 1.7), (10.4, 3.5), c=F, lw=1.6); f.text((10.4, 3.5), r"$\mathbfit{F}$", c=F, dx=0.35, dy=-0.1)
+    f.arrow((13.8, 3.5), (13.8, 1.7), c=F, lw=1.6); f.text((13.8, 1.7), r"$-\mathbfit{F}$", c=F, dx=-0.5, dy=0.1)
     f.dim((10.4, 1.4), (13.8, 1.4), "$b$", off=0.0)
     f.moment(P(12.1, 2.6), 0.55, 160, -140, col=M); f.text((12.1, 2.6), "$M$", c=M, size=10)
     f.cap((12.1, 0.35), "Kräftepaar: $M = b\\,F$", size=9.5)
@@ -70,7 +70,7 @@ def dyname():
     f.text((5.5, 2.2), r"$\Rightarrow$", size=15)
     f.potato((8.6, 2.2), 4.2, 3.2, ang=10, seed=6)
     B = P(8.2, 2.1); f.dot(B, 0.06); f.text(B, "$B$", dx=-0.3, dy=-0.3)
-    f.arrow(B, B + P(0.9, 1.3), c=F, lw=1.8); f.text(B + P(0.9, 1.3), r"$\mathbfit{R}$", c=F, dx=0.3, dy=0.1)
+    f.arrow(B, B + P(0.9, 1.3), c=F, lw=1.8); f.text(B + P(0.9, 1.3), r"$\mathbfit{R}$", c=F, dx=-0.3, dy=0.05)
     f.moment(B, 0.55, 20, 300, col=M); f.text(B + P(-0.6, 0.9), r"$\mathbfit{M}_B$", c=M, size=9)
     f.cap((8.6, 0.2), "Dyname ${\\mathbf{R},\\mathbf{M}_B}$", size=8.5)
     f.text((11.2, 2.2), r"$\Rightarrow$", size=15)
@@ -107,13 +107,13 @@ def schwerpunkte():
     f.guide((0.2, c[1]), (3.8, c[1])); f.text((3.95, c[1]), "$h/3$", size=8.5); f.cap((2.0, 0.35), "Dreieck")
     # Halbkreisfläche
     c0 = P(6.6, 0.9); t = np.linspace(0, 180, 60); f.poly([pol(c0, 1.5, a) for a in t]); sc = c0 + P(0, 4 * 1.5 / (3 * np.pi))
-    f.dot(sc, 0.07, c=F); f.text(sc, r"$4R/3\pi$", dx=1.1, dy=0.2, size=8.5); f.cap((6.6, 0.35), "Halbkreisfläche")
+    f.dot(sc, 0.07, c=F); f.text(sc, r"$4R/3\pi$", dx=0.0, dy=-0.32, size=8); f.cap((6.6, 0.35), "Halbkreisfläche")
     # Halbkreisbogen
     c0 = P(10.0, 0.9); f.arc(c0, 1.5, 0, 180, lw=1.6); f.line((8.4, 0.9), (11.6, 0.9), c=GREY, lw=0.6); sc = c0 + P(0, 2 * 1.5 / np.pi)
-    f.dot(sc, 0.07, c=F); f.text(sc, r"$2R/\pi$", dx=1.0, dy=-0.2, size=8.5); f.cap((10.0, 0.35), "Halbkreisbogen")
+    f.dot(sc, 0.07, c=F); f.text(sc, r"$2R/\pi$", dx=0.0, dy=-0.35, size=8); f.cap((10.0, 0.35), "Halbkreisbogen")
     # Viertelkreis
     c0 = P(12.8, 0.9); f.poly([c0] + [pol(c0, 2.0, a) for a in np.linspace(0, 90, 40)]); sc = c0 + P(1, 1) * 4 * 2.0 / (3 * np.pi)
-    f.dot(sc, 0.07, c=F); f.text(sc, r"$4R/3\pi$", dx=-0.9, dy=-0.6, size=8.5); f.cap((13.8, 0.35), "Viertelkreis")
+    f.dot(sc, 0.07, c=F); f.text(sc, r"$4R/3\pi$", dx=0.1, dy=-0.35, size=8); f.cap((13.8, 0.35), "Viertelkreis")
     f.save("k07_schwerpunkte")
 
 def lprofil():

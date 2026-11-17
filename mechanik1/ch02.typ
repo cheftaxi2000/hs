@@ -2,6 +2,8 @@
 
 = Geschwindigkeit
 
+#woche(2, [Geschwindigkeit], [24–35])
+
 Die Geschwindigkeit ist die zentrale Größe der Kinematik. Mathematisch ist sie nichts anderes als die Ableitung des Ortsvektors nach der Zeit. Weil der Ortsvektor aber ein _Vektor_ ist, der sich in Länge und Richtung ändern kann, müssen wir zuerst klären, was es heißt, einen Vektor abzuleiten. Danach rechnen wir die Geschwindigkeit in jedem der drei Koordinatensätze aus.
 
 == Ableitung einer Vektorfunktion
@@ -187,6 +189,24 @@ $ vv = dot(phi) ve_z times vr. $
   _Zeiten:_ $t_A = T\/3$, $t_B = 4T\/3$.
 
   _Schnelligkeit:_ $dot(s) = (1\/2) sqrt(k\/t)$. In $A$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(T\/3)) = 3L\/(2T)$. In $B$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(4T\/3)) = 3L\/(4T)$. Der Punkt wird unterwegs langsamer, wie man es bei einer Wurzelfunktion erwartet.
+]
+
+#aufgaben()
+
+#aufg(fig: "a02_bahn", fw: 5.4cm)[Bahnkurve, Schnelligkeit und Tangente][
+  Ein Punkt $M$ bewegt sich gemäß
+  $ vr(t) = (a t, thick a t, thick b a^2 t^2) $
+  (kartesische Komponenten, $a, b > 0$ konstant). Gesucht sind die Form der Bahn, die Geschwindigkeit $vv(t)$, die Schnelligkeit $dot(s)(t)$, der Tangenteneinheitsvektor $vtau(t)$ und die Schnelligkeit im Punkt $P = (a, a, b a^2)$.
+][
+  _Bahn._ Aus $x = a t$, $y = a t$, $z = b a^2 t^2$ folgt $x = y$ und $z = b x^2$: eine Parabel in der vertikalen Ebene $x = y$.
+
+  _Geschwindigkeit._ Komponentenweise ableiten: $vv = dot(vr) = (a, thick a, thick 2 b a^2 t)$.
+
+  _Schnelligkeit._ $dot(s) = |vv| = sqrt(a^2 + a^2 + 4 b^2 a^4 t^2) = a sqrt(2 + 4 b^2 a^2 t^2)$. Sie wächst mit der Zeit, weil die $z$-Komponente wächst.
+
+  _Tangente._ $vtau = vv \/ |vv| = (1, thick 1, thick 2 b a t) \/ sqrt(2 + 4 b^2 a^2 t^2)$. Kontrolle: Bei $t = 0$ ist $vtau = (1, 1, 0)\/sqrt(2)$, horizontal längs der Diagonalen, wie es zum Scheitel der Parabel passt.
+
+  _Punkt $P$._ $vr(t_P) = (a, a, b a^2)$ verlangt $t_P = 1$, also $dot(s)_P = a sqrt(2 + 4 b^2 a^2)$.
 ]
 
 #kurz[

@@ -15,7 +15,7 @@ def experiment():
     f.guide(o + P(0, 2.6), o + P(2.6, 2.6)); f.guide(o + P(0, 1.7), o + P(2.6, 1.7))
     f.text(o + P(-0.55, 2.6), r"$\mu_0 N$", size=8.5); f.text(o + P(-0.55, 1.7), r"$\mu_1 N$", size=8.5)
     f.text(o + P(1.1, 0.35), "Haften", c=GREY, size=8.5); f.text(o + P(4.5, 1.35), "Gleiten", c=GREY, size=8.5)
-    f.text(o + P(1.1, 0.95), r"$F_R=F$", c=F, size=8.5, dx=0.3, dy=0.2)
+    f.text(o + P(1.1, 0.95), r"$F_R=F$", c=F, size=8.5, dx=0.75, dy=-0.1)
     f.save("k12_experiment")
 
 def schief():
@@ -36,7 +36,7 @@ def schief():
     for s in (-1, 1): f.line(o, o + P(s * 3.4 * np.sin(r0), 3.4 * np.cos(r0)), c=INK, lw=0.9, dash=(5, 3))
     f.line(o + P(-3.0, 0), o + P(3.0, 0), c=INK, lw=1.2); f.hatch(o + P(3.0, 0), o + P(-3.0, 0), side=-1)
     f.arc(o + P(0, 0.0), 2.0, 90 - 25, 90 + 25, col=INK, lw=0.7); f.text(o + P(0, 2.45), r"$\rho_0$", size=9)
-    R = P(0.8, 2.5); f.arrow(o + R * 0, o + R, c=F, lw=1.7); f.text(o + R, r"$\mathbfit{R}$", c=F, dx=0.3, dy=0.2)
+    R = P(0.8, 2.5); f.arrow(o + R * 0, o + R, c=F, lw=1.7); f.text(o + R, r"$\mathbfit{R}$", c=F, dx=-0.3, dy=0.05)
     f.cap((11.2, 0.25), "Reibungskegel: $\\tan\\rho_0=\\mu_0$", size=8.5)
     f.save("k12_ebene")
 
@@ -53,7 +53,7 @@ def leiter():
     f.arrow(B + P(-1.1, 0) * 0, B, c=F, lw=0) if False else None
     f.arrow(B - P(1.0, 0), B, c=F, lw=1.5) if False else None
     f.arrow(B + P(0.0, 0), B + P(-1.1, 0), c=F, lw=1.5); f.text(B + P(-1.1, 0.35), r"$N_B$", c=F, size=9)
-    f.angle(A, 1.0, 0, 55, label=r"$\alpha$", lr=1.35, size=9)
+    f.angle(A, 0.8, 0, 55, label=r"$\alpha$", lr=0.52, size=8.5)
     f.cap((9.8, 3.2), "Wand glatt, Boden rau:", size=8.5); f.cap((9.8, 2.7), "$N_A=G,\\ F_R=N_B$", size=9); f.cap((9.8, 2.1), "$F_R\\leq\\mu_0 N_A$", size=9); f.cap((9.8, 1.5), "$\\tan\\alpha\\geq 1/(2\\mu_0)$", size=9)
     f.save("k12_leiter")
 
@@ -61,7 +61,7 @@ def rollen():
     f = Fig(15.8, 4.2)
     for x0, k in ((3.2, 0), (11.2, 1)):
         f.ground(x0 - 2.0, x0 + 2.0, 0.8); c = P(x0, 0.8 + 1.4); f.circle(c, 1.4, fc=LIGHT); f.dot(c, 0.05)
-        f.arrow(c, c - P(0, 1.0), c=F, lw=1.4); f.text(c - P(0, 1.0), r"$\mathbfit{G}$", c=F, dx=-0.4, dy=0.0)
+        f.arrow(c, c - P(0, 1.0), c=F, lw=1.4); f.text(c - P(0, 0.45), r"$\mathbfit{G}$", c=F, dx=-0.35, dy=0.0)
         if k == 0:
             f.arrow((x0 + 0.5, 0.0), (x0 + 0.5, 0.8), c=F, lw=1.6); f.text((x0 + 0.5, 0.0), r"$\mathbfit{N}$", c=F, dx=0.4, dy=0.1); f.text((x0 + 0.95, 0.4), "$e$", size=8.5)
             f.text((x0 + 0.25, -0.25), "", size=8)

@@ -2,6 +2,8 @@
 
 = Statik der Systeme
 
+#woche(10, [Systeme], [141–158])
+
 Die meisten Konstruktionen bestehen aus mehreren Körpern, die durch Gelenke, Seile oder Federn verbunden sind. Am Gesamtsystem allein kommt man dann oft nicht weiter: Es gibt mehr Unbekannte, als die drei (eben) bzw. sechs (räumlich) Gleichgewichtsbedingungen hergeben. Zwei Wege führen zum Ziel: *Zerlegen* und den Hauptsatz auf jedes Teil anwenden, oder das *PdvL* mit einem geschickt gewählten virtuellen Bewegungszustand.
 
 == Behandlung mit dem Hauptsatz: Zerlegen
@@ -19,7 +21,17 @@ Die Gleichungen am Gesamtsystem sind die Summe der Gleichungen an den Teilen und
 #bsp[Mechanismus mit Feder][
   Ein Stab $A D$ (Länge $2L$, Gewicht $2G$) ist in $A$ gelagert und in seiner Mitte $B$ gelenkig mit dem Stab $B C$ (Länge $L$, Gewicht $G$) verbunden. In $C$ drückt ein reibungsfrei geführter Kolben (Gewicht vernachlässigbar) auf eine lineare Druckfeder (Federkonstante $k$), die bei $phi = 0$ ungespannt wäre und sich in der Ruhelage um $Delta x = 2 L sin phi$ verkürzt. In $D$ greift die Last $P$ an. Gesucht ist die Beziehung zwischen $P$ und dem Winkel $phi$ in der Ruhelage.
 
-  Am Gesamtsystem (Kolben, beide Stäbe) sind die äußeren Kräfte die beiden Gewichte, $P$, die Gelenkkraft in $A$ ($A_x, A_y$), die Federkraft in $C$ und die Normalkraft $N$ der Kolbenführung. Das sind vier Unbekannte ($A_x, A_y, N$ und die gesuchte $P(phi)$) bei nur drei Gleichungen, aber das Problem ist nicht unbestimmt: Zerlegt man in $B$, kommen zwei Gelenkkraftkomponenten $B_x, B_y$ dazu (am zweiten Stab entgegengesetzt), und für zwei Körper hat man sechs Gleichungen für sechs Unbekannte. Man muss sie aber nicht alle lösen. Die Momentenbedingung um $A$ für das _Gesamtsystem_ enthält $A_x, A_y$ nicht, und die Momentenbedingung um $B$ für den _Stab $B C$_ liefert die Federkraft. Aus beiden folgt die gesuchte Beziehung $P(phi)$, in der die Federkraft $F = k Delta x = 2 k L sin phi$ vorkommt (ihre genaue Gestalt hängt von der Richtung und dem Angriffspunkt von $P$ ab; sie steht in Abschnitt 10.1 des Buchs). Eine wichtige Aussage kann man trotzdem ablesen: $P$ kann nur dann in die vorgesehene Richtung wirken, wenn die Federkraft das Gewicht übertrifft, also $2 k L sin phi > G$ gilt. Bei einer zu weichen Feder, $k < G\/(2L)$, lässt sich das in keiner Lage erfüllen (denn $sin phi <= 1$), es sei denn, man kehrt den Richtungssinn von $P$ um.
+  #align(center, image("figs/a10_feder.svg", width: 8.6cm))
+
+  Am Gesamtsystem (Kolben, beide Stäbe) sind die äußeren Kräfte die beiden Gewichte, $vP$, die Gelenkkraft in $A$ ($A_x, A_y$), die Federkraft $F = k Delta x = 2 k L sin phi$ in $C$ und die Normalkraft $N$ der Kolbenführung. Das sind vier Unbekannte ($A_x, A_y, N$ und die gesuchte $P$) bei nur drei Gleichungen. Unbestimmt ist das Problem trotzdem nicht: Zerlegt man in $B$, kommen zwei Gelenkkraftkomponenten $B_x, B_y$ dazu, und für zwei Körper hat man sechs Gleichungen für sechs Unbekannte. Man muss sie aber nicht alle lösen.
+
+  _Momentenbedingung um $A$ für das Gesamtsystem._ Sie enthält $A_x, A_y$ nicht, und die Federkraft geht durch $A$:
+  $ N dot 2 L sin phi - G dot L/2 cos phi - 2 G dot L cos phi - P dot 2 L = 0 quad => quad N = (5 G)/(4 tan phi) + P/(sin phi). $
+  _Momentenbedingung um $B$ für den Stab $B C$._ Sie enthält $B_x, B_y$ nicht:
+  $ N L sin phi + G dot L/2 cos phi - F L cos phi = 0. $
+  Setzt man $N$ und $F$ ein, bleibt die gesuchte Beziehung
+  $ P = (2 k L sin phi - 7/4 G) cos phi. $
+  _Diskussion._ $vP$ kann nur dann in die gezeichnete Richtung wirken, wenn $2 k L sin phi > 7/4 G$ gilt. Bei einer zu weichen Feder, $k < 7 G\/(8L)$, lässt sich das in keiner Lage erfüllen (denn $sin phi <= 1$), es sei denn, man kehrt den Richtungssinn von $vP$ um. Dieselbe Beziehung folgt viel schneller mit dem PdvL (Aufgabe am Kapitelende).
 ]
 
 #fg("k10_leiter", [Stehleiter auf reibungsfreiem Boden, zusammengehalten durch ein Seil in halber Höhe. Links das System, in der Mitte der Freischnitt des Ganzen (das Seil ist innen, die Böden liefern $N_A, N_B$), rechts der freigeschnittene linke Holm.])
@@ -95,6 +107,24 @@ Für ein System aus mehreren Körpern zählt man über alle Teile: $m$ = Anzahl 
 Man kann ein System also auf zwei Arten als statisch unbestimmt erkennen. *Statisch:* Man vergleicht die Anzahl $n$ der Unbekannten mit der Anzahl $m$ der zur Verfügung stehenden unabhängigen Gleichgewichtsbedingungen, bei Bedarf nach dem Zerlegen. Ist $m = n$ für das Gesamtsystem und alle Teilsysteme, heißt es statisch bestimmt; für $m < n$ statisch unbestimmt; für $m > n$ _überbestimmt_: Ein Mechanismus, der im Allgemeinen nicht in Ruhe bleibt, weil die nötigen Gleichgewichtsbedingungen nicht erfüllt werden können. (Man nennt solche Systeme auch «verschieblich» oder «kinematisch unbestimmt»; man richtet dann den Blick auf zu wenige Bindungen statt auf zu viele Gleichungen.) *Kinematisch:* Ein statisch unbestimmtes System hat mehr Bindungskomponenten, als für die Ruhe nötig sind. Hebt man $u$ Bindungskomponenten auf, und es bleibt gerade noch unbeweglich, aber bei einer weiteren wird es zum beweglichen Mechanismus, ist es $u$-fach statisch unbestimmt. Die Existenz eines zulässigen virtuellen Bewegungszustands mit nichtverschwindenden Geschwindigkeiten zeigt, dass das System ein Mechanismus ist. Bei der Beurteilung der Unbeweglichkeit zählt zunächst nur, ob irgendeine Bewegung möglich ist, nicht, welche Kräfte dabei auftreten.
 
 Statisch unbestimmte Systeme lassen sich erst lösen, wenn man die Verformungen einbezieht (Festigkeitslehre, Mechanik 2). Typisch ist dann der Ansatz: Zusätzliche Gleichungen aus «die Verschiebung am Lager ist null» bzw. «das Lager federt ein».
+
+#aufgaben()
+
+#aufg[Mechanismus mit Feder: Lösung mit dem PdvL][
+  Für den Mechanismus aus Abschnitt 10.1 (Stab $A D$ mit $2G$, Stab $B C$ mit $G$, Feder in $C$, Last $vP$ in $D$) soll die Beziehung $P(phi)$ mit dem Prinzip der virtuellen Leistungen gefunden werden.
+][
+  _Virtueller Bewegungszustand._ Der Mechanismus hat einen Freiheitsgrad. Stab $A D$ dreht mit $tilde(omega)$ um $A$; dann ist $tilde(v)_B = L tilde(omega)$ und $tilde(v)_D = 2 L tilde(omega)$, beide senkrecht zum Stab.
+
+  _Stab $B C$._ $C$ bewegt sich vertikal, sein Momentanzentrum liegt also auf der Horizontalen durch $C$. $B$ bewegt sich senkrecht zu $A B$, das Momentanzentrum liegt also auch auf der Geraden $A B$. Der Schnittpunkt ist gerade $D$: $Z_(B C) = D$. Wegen $overline(D B) = L$ dreht $B C$ ebenfalls mit dem Betrag $tilde(omega)$, im umgekehrten Sinn.
+
+  _Vertikale Schnelligkeiten_ (horizontaler Abstand vom jeweiligen Drehpunkt mal $tilde(omega)$): $B$: $L cos phi dot tilde(omega)$, Schwerpunkt $S$ von $B C$: $3/2 L cos phi dot tilde(omega)$, $C$: $2 L cos phi dot tilde(omega)$.
+
+  _Leistungsbilanz._ Die reibungsfreien Bindungskräfte in $A$, $B$, $C$ leisten nichts. Es bleiben $vP$, die beiden Gewichte und die Federkraft $F = 2 k L sin phi$ (sie wirkt der Bewegung von $C$ entgegen):
+  $ tilde(PP) = [2 L P + 2 G L cos phi + 3/2 G L cos phi - 2 L F cos phi] tilde(omega) = 0 $
+  für jedes $tilde(omega)$, also
+  $ P = (F - 7/4 G) cos phi = (2 k L sin phi - 7/4 G) cos phi. $
+  Dasselbe Ergebnis wie mit dem Hauptsatz, aber mit einer einzigen Gleichung und ohne $N$, $A_x$, $A_y$, $B_x$, $B_y$.
+]
 
 #kurz[
   - Zerlegen: Verbindungskräfte an beiden Teilen entgegengesetzt gleich eintragen; pro Körper 3 Gleichungen (eben).

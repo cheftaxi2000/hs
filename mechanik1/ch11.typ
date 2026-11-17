@@ -2,6 +2,8 @@
 
 = Statisch bestimmte Fachwerke
 
+#woche(11, [Fachwerke], [158–169])
+
 Fachwerke sind Tragwerke aus Stäben, die in *Knoten* verbunden sind: Brücken, Kräne, Dachbinder, Strommasten. Sie sind leicht und trotzdem steif, weil ihre Stäbe fast nur auf Zug oder Druck beansprucht werden, die Belastungsart, die das Material am besten ausnutzt. Für die Statik haben Fachwerke einen riesigen Vorteil: Man kann sie mit sehr einfachen Mitteln vollständig berechnen.
 
 == Ideale Fachwerke und Pendelstützen

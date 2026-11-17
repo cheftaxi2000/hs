@@ -2,6 +2,8 @@
 
 = Kinematik starrer Körper
 
+#woche(3, [Starrer Körper], [35–45])
+
 Ein starrer Körper besteht aus unendlich vielen Punkten. Müssten wir für jeden einzelnen die Geschwindigkeit angeben, kämen wir nie zu einem Ende. Die gute Nachricht dieses Kapitels: Weil alle Abstände fest sind, genügen *zwei Vektoren*, um die Geschwindigkeit _jedes_ Punktes zu kennen. Dahin arbeiten wir uns in vier Schritten vor: ein Grundsatz (der Satz der projizierten Geschwindigkeiten), drei Spezialbewegungen (Translation, Rotation, Kreiselung), die allgemeine Bewegung und schließlich der für Aufgaben wichtigste Fall, die ebene Bewegung.
 
 Was wir aus Kapitel 1 brauchen: Ein starrer Körper behält alle Abstände. Verbindet man zwei beliebige Punkte $M, M'$ des Körpers durch den Vektor $va := arrow(M M')$, so ändert $va$ im Lauf der Zeit seine Richtung, aber nie seine Länge. Auch alle Winkel zwischen solchen Verbindungsvektoren bleiben konstant, also sind alle Skalarprodukte $va dot.c vb$ von Verbindungsvektoren zeitlich konstant, insbesondere $va dot.c va = "konst."$ -- aber nur, wenn man beide Vektoren zum _gleichen_ Zeitpunkt nimmt.
@@ -90,6 +92,7 @@ Betrachte einen Kreiszylinder (Rad), der auf einer ruhenden Ebene rollt. Der mat
   Unten, im Berührungspunkt, wirken zwei Dinge gegeneinander: «vorwärts mit der Nabe» und «rückwärts durch die Drehung». Sie heben sich genau auf, deshalb steht der Punkt für einen Augenblick still. Oben addieren sich beide, die Geschwindigkeit ist $2v$. Das sieht man auf Fotos fahrender Räder: Die Speichen unten sind scharf, oben verwischt. Rollbedingung: $v_O = omega R$. Die Bahnen der Radpunkte sind Zykloiden.
 ]
 
+#woche(4, [Starrer Körper], [45–54])
 === Kreiselung
 
 #defn[Kreiselung][
@@ -187,6 +190,7 @@ Die Schraube *degeneriert*, wenn $vom dot.c vv_B = 0$ ist, also $vv_omega = bold
   table.hline(stroke: 0.7pt),
 )
 
+#woche(5, [Starrer Körper, Kraft], [54–68])
 == Die ebene Bewegung
 
 #defn[Ebene Bewegung][
@@ -304,6 +308,87 @@ Ein Beispiel ist der *Kollergang* (Mühle): Ein Rad mit Radius $R$ rollt auf ein
   - Bei einem Mechanismus mit mehreren Körpern ein gemeinsames $Z$ suchen. *Jeder* starre Körper hat sein eigenes Momentanzentrum und sein eigenes $omega$.
   - Beim Wechsel des Bezugspunkts $vom$ verändern. $vom$ ist die 1. Invariante und bleibt gleich.
   - In $vom times arrow(B M)$ den Vektor in der falschen Richtung nehmen: Er zeigt vom Bezugspunkt $B$ zum Punkt $M$, dessen Geschwindigkeit gesucht ist.
+]
+
+#aufgaben()
+
+#aufg(fig: "a03_wuerfelrot", fw: 5.8cm)[Würfel, momentane Rotation][
+  Ein Würfel (Kantenlänge $a$) führt momentan eine Rotation aus. Bekannt sind
+  $ vv_A = (v, 0, -v), quad vv_B = (v_(B x), v, -v), quad vv_E = bold(0) $
+  in den Ecken $A(0,0,0)$, $B(a,0,0)$, $E(0,a,0)$. Gesucht sind $v_(B x)$, die Rotationsgeschwindigkeit $vom$ und die Rotationsachse $mu$.
+][
+  _$v_(B x)$ mit dem SdpG._ $arrow(A B) = (a, 0, 0)$, also $vv_A dot.c arrow(A B) = a v$ und $vv_B dot.c arrow(A B) = a v_(B x)$. Gleichsetzen: $v_(B x) = v$.
+
+  _$vom$._ $E$ ruht, liegt also auf der Achse, und für jeden Punkt $P$ gilt $vv_P = vom times arrow(E P)$. (Achtung: $vv_P = vom times vr_P$ wäre hier falsch, weil der Ursprung nicht auf der Achse liegt.) Mit $arrow(E A) = (0, -a, 0)$:
+  $ vom times arrow(E A) = (a omega_z, thick 0, thick -a omega_x) = (v, 0, -v) quad => quad omega_z = omega_x = v\/a. $
+  $omega_y$ bleibt hier offen, weil ein Anteil von $vom$ parallel zu $arrow(E A)$ im Kreuzprodukt verschwindet. Mit $arrow(E B) = (a, -a, 0)$:
+  $ vom times arrow(E B) = (a omega_z, thick a omega_z, thick -a(omega_x + omega_y)) = (v, v, -v) quad => quad omega_y = 0. $
+  Also $vom = (v\/a)(1, 0, 1)$ mit $omega = sqrt(2) v\/a$.
+
+  _Achse._ Sie geht durch $E$ in Richtung $vom$: $mu: thick vr = (0, a, 0) + lambda (1, 0, 1)$. Sie trifft die gegenüberliegende Ecke $C(a, a, a)$.
+]
+
+#aufg(fig: "a03_tetraeder", fw: 5.8cm)[Pyramide, allgemeine Bewegung][
+  Eine Pyramide mit der quadratischen Fläche $D(0,0,0)$, $A(a,0,0)$, $B(a,a,0)$, $C(0,a,0)$ und der Spitze $E(a\/2, a\/2, -a)$ gleitet mit der Spitze auf der ruhenden Ebene $z = -a$. Momentan ist
+  $ vom = (omega, omega, 0), quad vv_B = (a omega, 0, v_(B z)). $
+  Gesucht sind $vv_B$, $vv_E$ und $vv_D$.
+][
+  _Bindung._ Die Spitze bleibt in der Ebene, also hat $vv_E$ keine $z$-Komponente: $vv_E = (v_(E x), v_(E y), 0)$.
+
+  _Grundgleichung._ $vv_E = vv_B + vom times arrow(B E)$ mit $arrow(B E) = (-a\/2, -a\/2, -a)$ und $vom times arrow(B E) = (-a omega, a omega, 0)$:
+  $ (v_(E x), v_(E y), 0) = (a omega - a omega, thick a omega, thick v_(B z)). $
+  Also $v_(B z) = 0$, $vv_B = (a omega, 0, 0)$ und $vv_E = (0, a omega, 0)$.
+
+  _Punkt $D$._ $arrow(B D) = (-a, -a, 0)$ ist parallel zu $vom$, das Kreuzprodukt verschwindet: $vv_D = vv_B = (a omega, 0, 0)$. Das ist allgemein so: Punkte auf einer Geraden parallel zu $vom$ haben gleiche Geschwindigkeit.
+
+  _Einordnung._ $vom dot.c vv_B = a omega^2 != 0$: Die 2. Invariante verschwindet nicht, der Bewegungszustand ist eine echte Schraubung.
+]
+
+#aufg(fig: "a03_wuerfelallg", fw: 5.8cm)[Würfel, allgemeine Bewegung][
+  Von einem Würfel (Kantenlänge $L$, Ecke $B$ im Ursprung) kennt man die Geschwindigkeiten dreier Ecken $P_1(L, L, 0)$, $P_2(0, L, L)$, $P_3(0, 0, L)$:
+  $ vv_1 = (-v, 0, 0), quad vv_2 = (0, 0, v), quad vv_3 = (-v, 0, 0). $
+  Gesucht sind $vom$ und $vv_B$.
+][
+  _Richtung von $vom$._ $vv_3 - vv_1 = bold(0) = vom times arrow(P_1 P_3)$ mit $arrow(P_1 P_3) = (-L, -L, L)$. Ein Kreuzprodukt verschwindet nur bei parallelen Vektoren, also $omega_x = omega_y = -omega_z$.
+
+  _Betrag._ $vv_2 - vv_3 = (v, 0, v) = vom times arrow(P_3 P_2)$ mit $arrow(P_3 P_2) = (0, L, 0)$ und $vom times arrow(P_3 P_2) = (-L omega_z, 0, L omega_x)$. Also $omega_x = v\/L$, $omega_z = -v\/L$ und damit
+  $ vom = v/L (1, 1, -1). $
+
+  _$vv_B$._ $vv_B = vv_3 + vom times arrow(P_3 B)$ mit $arrow(P_3 B) = (0, 0, -L)$ und $vom times arrow(P_3 B) = (-L omega_y, L omega_x, 0) = (-v, v, 0)$:
+  $ vv_B = (-2v, v, 0). $
+  Kontrolle mit dem SdpG längs $arrow(B P_3) = (0, 0, L)$: beide Projektionen sind null ✓.
+]
+
+#aufg[Zentralachse aus der Kinemate][
+  Ein starrer Körper hat im Punkt $B$ die Kinemate $vv_B = (0, 2, 2)$ m/s, $vom = (0, 2, 0)$ s#super[−1]. Gesucht sind die Zentralachse $zeta$ und die Schraube.
+][
+  _2. Invariante._ $ve_omega = (0, 1, 0)$, also $vv_omega = (vv_B dot.c ve_omega) ve_omega = (0, 2, 0)$ m/s.
+
+  _Punkte der Zentralachse_ haben genau diese Geschwindigkeit. Mit $arrow(B P) = (x, y, z)$ ist $vom times arrow(B P) = (2 z, 0, -2 x)$ und
+  $ vv_P = (2 z, thick 2, thick 2 - 2 x) = (0, 2, 0) quad => quad z = 0, quad x = 1 "m", quad y "beliebig". $
+  Die Zentralachse ist $zeta: thick arrow(B P) = (1, 0, 0) "m" + lambda (0, 1, 0)$: parallel zu $vom$, um 1 m in $x$-Richtung gegen $B$ versetzt.
+
+  _Kontrolle mit der Formel._ $arrow(B Z) = (vom times vv_B)\/omega^2 = (4, 0, 0)\/4 = (1, 0, 0)$ m ✓.
+
+  _Schraube._ ${vv_omega, vom}$: Drehung mit 2 s#super[−1] um $zeta$, gleichzeitig Vorschub mit 2 m/s längs $zeta$. Die Zentralachse muss kein materieller Teil des Körpers sein, und sie ändert sich im Allgemeinen mit der Zeit.
+]
+
+#aufg(fig: "a03_fachwerk", fw: 7cm)[Gelenkwerk mit einem Freiheitsgrad][
+  Acht Stäbe sind in den Knoten $A(0,0)$, $C(L,0)$, $D(L,-L)$, $E(2L,-L)$, $F(2L,-2L)$, $B(3L,-2L)$ gelenkig verbunden. $A$ ist fest gelagert, $B$ horizontal geführt und hat momentan die Geschwindigkeit $vv_B = (-v, 0)$.
+
+  Gesucht sind die Rotationsschnelligkeiten und Momentanzentren aller Stäbe sowie $vv_E$. (Positiv = Gegenuhrzeigersinn.)
+][
+  _Starre Teile erkennen._ Die Dreiecke $A C D$ und $C D E$ teilen sich Stab 3. Die Stäbe 1 bis 5 bilden also einen einzigen starren Körper $K$, der in $A$ gelagert ist: $Z_K = A$. Übrig bleiben die Stäbe 6, 7, 8.
+
+  _Körper $K$._ Mit $omega_K$ ist $vv_E = omega_K ve_z times arrow(A E) = omega_K (L, 2L)$. Der SdpG für Stab 8 mit $arrow(E B) = (L, -L)$ gibt $vv_E dot.c arrow(E B) = -omega_K L^2$ und $vv_B dot.c arrow(E B) = -v L$, also
+  $ omega_K = v/L, quad vv_E = (v, 2v), quad |vv_E| = sqrt(5) v, quad vv_D = omega_K ve_z times arrow(A D) = (v, v). $
+
+  _Stab 8._ $vv_B - vv_E = (-2v, -2v) = omega_8 ve_z times arrow(E B) = omega_8 (L, L)$, also $omega_8 = -2v\/L$. $Z_8$ liegt auf der Senkrechten zu $vv_B$ durch $B$ im Abstand $v\/|omega_8| = L\/2$: $Z_8 = (3L, -3L\/2)$.
+
+  _Stäbe 6 und 7._ SdpG für Stab 7 (horizontal): $v_(F x) = -v$. SdpG für Stab 6 mit $arrow(D F) = (L, -L)$: $vv_F dot.c arrow(D F) = vv_D dot.c arrow(D F) = 0$. Zusammen $vv_F = (-v, -v)$. Dann
+  $ omega_6 = -(2v)/L quad (Z_6 = "Mitte von" D F), wide omega_7 = v/L quad (Z_7 = (3L, -3L)). $
+
+  _Kontrolle mit der Parallelogrammregel._ $D E B F$ ist ein Parallelogramm. Gegenüberliegende Stäbe drehen gleich: $omega_6 = omega_8$ ✓ und $omega_7 = omega_5 = omega_K$ ✓.
 ]
 
 #kurz[

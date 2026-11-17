@@ -62,6 +62,50 @@
   [#text(font: sans, size: 10pt, weight: "bold")[Das Wichtigste in Kürze] #v(1pt) #body])
 #let gl(body) = math.equation(block: true, numbering: n => "(" + str(counter(heading).get().first()) + "." + str(n) + ")", body)
 
+// ---------- Aufgaben (aus der Vorlesungsmitschrift) ----------
+#let _aufgnr = counter("aufgabe")
+#let aufgaben() = {
+  _aufgnr.update(0)
+  heading(level: 2)[Aufgaben mit Lösungen]
+  text(size: 9.5pt, style: "italic")[Durchgerechnete Aufgaben aus der Vorlesung zu diesem Kapitel. Erst selbst versuchen, dann die Lösung lesen.]
+}
+#let aufg(title, fig: none, fw: 6cm, a, l) = {
+  _aufgnr.step()
+  block(width: 100%, breakable: true, spacing: 1.3em, radius: 4pt, clip: true, stroke: 0.7pt + crd, fill: luma(249), {
+    block(width: 100%, fill: crd, inset: (x: 10pt, y: 4.5pt), sticky: true, below: 0pt,
+      text(font: sans, size: 9.5pt, weight: "bold", fill: white, context [Aufgabe #counter(heading).get().first().#_aufgnr.get().first(): #title]))
+    block(width: 100%, inset: (x: 10pt, top: 8pt, bottom: 9pt), above: 0pt, {
+      block(breakable: false, sticky: true, width: 100%, {
+        if fig != none {
+          grid(columns: (1fr, fw), column-gutter: 12pt, align: (top, center + horizon), a, image("figs/" + fig + ".svg", width: fw))
+        } else { a }
+        v(2pt); line(length: 100%, stroke: 0.4pt + luma(170)); v(-2pt)
+        text(font: sans, size: 9pt, weight: "bold")[Lösung]
+      })
+      v(-3pt)
+      l
+    })
+  })
+}
+
+// ---------- Wochenmarken ----------
+#let woche(n, thema, seiten) = {
+  block(width: 100%, above: 1.6em, below: 0.9em, sticky: true, breakable: false, {
+    [#metadata(n) <woche>]
+    line(length: 100%, stroke: 0.5pt)
+    v(-7pt)
+    grid(columns: (auto, 1fr, auto), column-gutter: 8pt,
+      box(fill: black, inset: (x: 6pt, y: 3pt), radius: 2pt, text(font: sans, size: 9pt, weight: "bold", fill: white)[Woche #n]),
+      align(horizon, text(font: sans, size: 9pt, weight: "bold", thema)),
+      align(horizon, text(size: 9pt)[Buch S. #seiten]))
+  })
+}
+#let ohnewoche(body) = block(width: 100%, above: 1.6em, below: 0.9em, sticky: true, {
+  [#metadata(none) <woche>]
+  line(length: 100%, stroke: 0.5pt); v(-7pt)
+  text(size: 9pt, style: "italic", body)
+})
+
 #let teil(num, title, body) = {
   pagebreak(weak: true)
   v(6cm)
@@ -82,7 +126,9 @@
         let h2 = query(selector(heading.where(level: 2)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        text(size: 9pt)[#n#t #h(1fr) Mechanik 1 -- Lernskript]
+        let ws = query(<woche>).filter(m => m.location().page() <= here().page())
+        let w = if ws.len() > 0 and ws.last().value != none { [Woche #ws.last().value] } else { [Mechanik 1] }
+        text(size: 9pt)[#n#t #h(1fr) #w]
         v(-7pt); line(length: 100%, stroke: 0.5pt)
       }
     },

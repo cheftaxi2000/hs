@@ -156,6 +156,90 @@ Manchmal sind nicht die Kräfte unbekannt, sondern die Lage selbst (ein Winkel, 
   - Mehr als drei Gleichungen pro ebenem Körper aufstellen und sich wundern, dass sie nichts Neues bringen.
 ]
 
+#aufgaben()
+
+#aufg(fig: "a09_balken", fw: 6.8cm)[Balken mit schräger Kraft][
+  Ein Balken der Länge $L$ liegt in $A$ auf einem reibungsfreien Auflager und ist in $B$ gelenkig gelagert. Im Abstand $L\/3$ von $A$ greift unter dem Winkel $pi\/4$ die Kraft $vP$ an (nach rechts unten). Gesucht sind die Lagerkräfte.
+][
+  _Freischneiden._ Auflager $A$: eine Kraft $A_y$. Gelenk $B$: $B_x, B_y$. Drei Unbekannte, drei Gleichungen: statisch bestimmt.
+
+  _Gleichgewicht._
+  $ sum X: quad & sqrt(2)/2 P + B_x = 0 quad && => quad B_x = -sqrt(2)/2 P, \
+    sum M_B: quad & -A_y L + sqrt(2)/2 P dot 2/3 L = 0 quad && => quad A_y = sqrt(2)/3 P, \
+    sum Y: quad & A_y + B_y - sqrt(2)/2 P = 0 quad && => quad B_y = sqrt(2)/6 P. $
+
+  _Diskussion._ $A_y > 0$: Das einseitige Auflager drückt, wie es muss. Die vertikalen Lagerkräfte verhalten sich wie $2 : 1$, umgekehrt zu den Abständen der Last von den Lagern. $B_x$ ist negativ, wirkt also nach links: Nur das Gelenk kann den Horizontalanteil von $vP$ aufnehmen.
+]
+
+#aufg[Abzählen im Raum][
+  Ein Balken $A B$ (Länge $L$, längs $x$) ist an beiden Enden in Kugelgelenken gelagert. In der Mitte greift die Kraft $(F_x, F_y, F_z)$ an. Bestimme die Lagerkräfte. Ist die Lagerung statisch bestimmt? Was ändert sich, wenn $B$ ein kurzes Querlager ist oder wenn der Balken in $B$ eingespannt wird?
+][
+  Zwei Kugelgelenke: $n = 6$ Unbekannte $A_x, A_y, A_z, B_x, B_y, B_z$.
+  $ sum X: quad A_x + B_x + F_x = 0, wide sum Y: quad A_y + B_y + F_y = 0, wide sum Z: quad A_z + B_z + F_z = 0, $
+  $ M_x^((A)): quad 0 = 0, wide M_y^((A)): quad -F_z L/2 - B_z L = 0, wide M_z^((A)): quad F_y L/2 + B_y L = 0. $
+  Daraus $B_y = A_y = -F_y\/2$ und $B_z = A_z = -F_z\/2$. Für die Längsrichtung bleibt nur $A_x + B_x = -F_x$: Wie sich $F_x$ auf die beiden Gelenke verteilt, lässt sich mit der Statik allein nicht sagen. Es gibt nur $m = 5$ brauchbare Gleichungen für $n = 6$ Unbekannte, die Lagerung ist *einfach statisch unbestimmt*. (Die Gleichung $0 = 0$ zeigt zugleich, dass nichts die Drehung um die Balkenachse verhindert.)
+
+  - _Kurzes Querlager in $B$:_ $B_x$ entfällt, $n = 5 = m$, statisch bestimmt, $A_x = -F_x$.
+  - _Einspannung in $B$, Kugelgelenk in $A$:_ $n = 6 + 3 = 9$, $m = 6$, dreifach statisch unbestimmt.
+]
+
+#aufg(fig: "a09_dreieck", fw: 7cm)[Dreieckscheibe][
+  Eine Scheibe $A B C$ ist in $A$ gelenkig gelagert und liegt in $B$ auf. Die Kante $A C$ (Länge $2L$) ist horizontal, die Winkel bei $A$ und $C$ sind 30°. Das Gewicht $G$ greift im Abstand $3L\/2$ von $A$ an. In $C$ wirkt die Kraft $vF$ senkrecht zur Kante $B C$ nach links oben.
+
+  Gesucht sind die Lagerkräfte und die Bedingung, unter der die Scheibe liegen bleibt.
+][
+  $vF$ schließt mit der Vertikalen 30° ein: $vF = F (-1\/2, sqrt(3)\/2)$.
+  $ sum X: quad & A_x - F/2 = 0 quad && => quad A_x = F/2, \
+    sum M_A: quad & B_y L - G dot 3/2 L + sqrt(3)/2 F dot 2 L = 0 quad && => quad B_y = 3/2 G - sqrt(3) F, \
+    sum Y: quad & A_y + B_y - G + sqrt(3)/2 F = 0 quad && => quad A_y = -1/2 G + sqrt(3)/2 F. $
+
+  _Diskussion._ Das Auflager in $B$ ist einseitig, es kann nur drücken: $B_y >= 0$, also
+  $ F <= sqrt(3)/2 G. $
+  Für größeres $F$ hebt die Scheibe in $B$ ab und dreht um $A$. Das Gelenk $A$ darf dagegen in beide Richtungen belastet werden; $A_y$ wechselt bei $F = G\/sqrt(3)$ das Vorzeichen.
+]
+
+#aufg(fig: "a09_schraeg", fw: 6.8cm)[Schräger Balken][
+  Ein Balken (Neigung $alpha$) ist unten in $A$ gelenkig gelagert und liegt im Abstand $L$ davon in $B$ auf einem Auflager, dessen Unterlage parallel zum Balken ist. Das Gewicht $G$ greift im Abstand $s$ von $A$ an. Gesucht sind die Lagerkräfte.
+][
+  Die Achsen legt man längs und quer zum Balken, weil die Auflagerkraft in $B$ dann nur eine Komponente $B_y$ hat. Das Gewicht wird zerlegt: $vG = (-G sin alpha, -G cos alpha)$.
+  $ sum X: quad & A_x - G sin alpha = 0 quad && => quad A_x = G sin alpha, \
+    sum M_A: quad & B_y L - G cos alpha dot s = 0 quad && => quad B_y = G cos alpha dot s/L, \
+    sum M_B: quad & -A_y L + G cos alpha (L - s) = 0 quad && => quad A_y = G cos alpha (1 - s/L). $
+  Kontrolle: $A_y + B_y = G cos alpha$ ✓. $B_y > 0$, das Auflager drückt. Der Längsanteil $G sin alpha$ des Gewichts geht ganz ins Gelenk, den Queranteil teilen sich die Lager nach dem Hebelgesetz.
+]
+
+#aufg(fig: "a09_lkrag", fw: 5.2cm)[Eingespannter Winkelträger][
+  Ein rechtwinkliger Träger ist in $A$ eingespannt. Der Arm $A B$ (Länge $L$) liegt längs $x$, der Arm $B C$ (Länge $L$) längs $y$. Beide Arme haben das Gewicht $G$, das in ihrer Mitte senkrecht zur Zeichenebene wirkt (in sie hinein, Richtung $-z$).
+
+  Gesucht sind die Kräfte und Momente an der Einspannung.
+][
+  Eine Einspannung im Raum hat sechs Unbekannte: $A_x, A_y, A_z$ und $M_x, M_y, M_z$.
+
+  _Kräfte._ $A_x = A_y = 0$, $A_z = 2G$.
+
+  _Momente um $A$._ Die Gewichte $(0, 0, -G)$ greifen in $(L\/2, 0, 0)$ und $(L, L\/2, 0)$ an:
+  $ (L\/2, 0, 0) times (0, 0, -G) = (0, 1/2 G L, 0), wide (L, L\/2, 0) times (0, 0, -G) = (-1/2 G L, G L, 0). $
+  Das Einspannmoment hebt die Summe auf:
+  $ M_x = 1/2 G L, quad M_y = -3/2 G L, quad M_z = 0. $
+
+  _Deutung._ $M_y$ kommt vom Abstand beider Gewichte in $x$-Richtung ($L\/2$ und $L$). $M_x$ kommt allein vom zweiten Arm, dessen Gewicht um $L\/2$ neben der Achse $A B$ liegt; es verdreht den Arm $A B$ um seine Längsachse.
+]
+
+#aufg(fig: "a09_ttraeger", fw: 6.4cm)[T-Träger in zwei Querlagern][
+  Ein T-förmiger Träger besteht aus dem Balken $B C$ (Länge $4a$, längs $x$) und dem Steg $D A$ (Länge $4a$, nach unten), der im Abstand $a$ von $B$ ansetzt. Beide Teile haben das Gewicht $G$ (in $S_2$ und $S_1$). In $A$ wirkt ein Moment vom Betrag $M$, dessen Vektor nach unten zeigt. $B$ und $C$ sind kurze Querlager (Kräfte nur quer zu $B C$).
+
+  Gesucht sind die Lagerkräfte.
+][
+  Unbekannte: $B_y, B_z, C_y, C_z$.
+  $ sum Y: quad B_y + C_y - 2 G = 0, wide sum Z: quad B_z + C_z = 0. $
+  Momente um $B$ (der Momentvektor in $A$ ist $(0, -M, 0)$, die Kraft $C_z$ in $(4a, 0, 0)$ hat das Moment $(0, -4 a C_z, 0)$):
+  $ M_y^((B)): quad & -M - 4 a C_z = 0 quad && => quad C_z = -M/(4a), quad B_z = M/(4a), \
+    M_z^((B)): quad & -a G - 2 a G + 4 a C_y = 0 quad && => quad C_y = 3/4 G, quad B_y = 5/4 G. $
+  Das Moment $M$ wird von einem Kräftepaar $B_z, C_z$ mit dem Hebelarm $4a$ aufgenommen. $B$ trägt mehr Gewicht als $C$, weil beide Schwerpunkte näher bei $B$ liegen.
+
+  Die übrigen Bedingungen ($sum X$ und $M_x^((B))$) lauten $0 = 0$: Vier Gleichungen für vier Unbekannte. Sie zeigen aber auch, dass diese Lager weder eine Verschiebung längs $x$ noch eine Drehung um die Achse $B C$ verhindern.
+]
+
 #kurz[
   - Loslager 1, Gelenk 2, Einspannung 3 Unbekannte (eben).
   - Freischnitt, Gleichgewicht: $sum X = 0$, $sum Y = 0$, $sum M = 0$.

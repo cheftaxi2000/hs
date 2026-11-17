@@ -2,6 +2,8 @@
 
 = Beanspruchung
 
+#woche(13, [Beanspruchung], [191–204])
+
 Bis jetzt haben wir gefragt, welche Kräfte _von außen_ auf einen Träger wirken. Für die Frage «Hält er?» muss man wissen, was _im Inneren_ los ist: Welche Kräfte muss das Material an jeder Stelle übertragen? Das ist die *Beanspruchung*. Sie ist die Brücke von der Statik zur Festigkeitslehre.
 
 Tragstrukturen müssen unter den gegebenen Lasten halten. Übersteigen die übertragenen Kräfte örtlich oder in größeren Bereichen die Festigkeitsgrenzen des Materials, drohen Risse oder große bleibende Verformungen, und die Struktur versagt. Um das schon beim Entwurf zu erkennen, muss man die in der Struktur übertragenen Kräfte (die per Definition _inneren_ Kräfte) Punkt für Punkt ausrechnen. Beispiele kennen wir schon: die Stabkräfte der Pendelstützen im Fachwerk (Kapitel 11) und den Seilzug (Kapitel 13), der von jedem Seilelement auf seine Nachbarn übertragen wird.
@@ -97,6 +99,7 @@ Gleichwertig und oft schneller: Die Beanspruchung am positiven Schnittufer bei $
   Ein horizontaler Balken $A B$ (Eigengewicht vernachlässigt) trägt die Dreieckslast $q(x) = q_0 x\/L$. In der Mitte $M$ ist ein vertikaler Kragarm $M E$ der Länge $h$ angeschweißt, der am freien Ende die horizontale Kraft $F$ trägt. $A$ und $B$ sind reibungsfreie, aber nicht verschiebbare Gelenke: einfach statisch unbestimmt. Man trennt den Kragarm ab; sein Einfluss auf den Balken ist die Reduktion von $F$ auf $M$: eine horizontale Kraft $F$ und das Moment $h F$ in $M$. Dann schneidet man zwischen $A$ und $M$; links vom Schnitt darf die Last durch ihre Resultierende $q_0 x^2\/(2L)$ im Abstand $2x\/3$ von $A$ ersetzt werden. Liegt der Schnitt zwischen $M$ und $B$, kommen die Kraft $F$ und das Moment $h F$ dazu. Die Randbedingung «am Gelenk $B$ verschwindet das Biegemoment» liefert eine Beziehung zwischen $A_y$ und $B_y$, die gleich der Momentenbedingung am ganzen Balken ist. Die horizontale Komponente $B_x$ (gleich $N(L)$) bleibt unbestimmt, weil $A_x$ unbekannt ist: Das Problem bleibt einfach statisch unbestimmt. Das zeigt, dass die Schnittmethode die Unbestimmtheit nicht beseitigt, sondern nur sichtbar macht.
 ]
 
+#woche(14, [Beanspruchung], [205–212])
 == Differentialbeziehungen am geraden Balken
 
 Zwischen Belastung, Querkraft und Biegemoment bestehen feste Zusammenhänge. Man erhält sie aus dem Gleichgewicht an einem Balkenelement der Länge $dif x$ unter der Streckenlast $q_y (x)$.
@@ -178,6 +181,70 @@ für Belastung senkrecht dazu.
   - Am Teil, das man betrachtet, Kräfte vergessen (besonders Lagerkräfte und Einspannmomente).
   - Für die Schnittgrößen die Streckenlast durch ihre Ersatzkraft am _ganzen Träger_ ersetzen. Man darf nur den Teil der Last ersetzen, der am freigeschnittenen Stück wirkt.
   - Vorzeichen: positives und negatives Schnittufer verwechseln.
+]
+
+#aufgaben()
+
+#merke[
+  In der Vorlesung zeigt bei Balken $ve_y$ oft nach unten und $ve_z$ in die Zeichenebene hinein. Das ist ebenfalls ein Rechtssystem, die Definitionen und die Beziehungen $Q'_y = -q_y$, $M'_z = -Q_y$ gelten unverändert. Nur zeigen positive $Q_y$ und $M_z$ dann anders im Bild, und die Ergebnisse haben das umgekehrte Vorzeichen wie in den Beispielen weiter oben (dort zeigt $ve_y$ nach oben). Das Achsenkreuz steht deshalb in jedem Bild.
+]
+
+#aufg(fig: "a14_kragarm", fw: 6.6cm)[Kragarm mit Längs- und Querkraft][
+  Ein Balken (Länge $L$) ist rechts eingespannt. Am freien linken Ende wirken die Kraft $F$ nach oben und die Kraft $S$ nach links. Gesucht sind $N$, $Q_y$ und $M_z$ als Funktion von $x$ ($ve_y$ nach unten).
+][
+  Man schneidet bei $x$ und betrachtet den *linken* Teil. Dann braucht man die Einspannreaktionen nicht. Seine Schnittfläche hat die Normale $+ve_x$ (positives Schnittufer), die Schnittgrößen werden dort in positiver Achsenrichtung angesetzt.
+  $ sum X: quad N - S = 0 quad => quad N = S, wide sum Y: quad Q_y - F = 0 quad => quad Q_y = F, $
+  $ sum M "um die Schnittstelle": quad M_z + F x = 0 quad => quad M_z = -F x. $
+  $N > 0$ bedeutet Zug. Kontrolle: $M'_z = -F = -Q_y$ ✓. $N$ und $Q_y$ sind konstant, $M_z$ wächst linear und ist an der Einspannung am größten, $|M_z| = F L$: Dort ist der Balken gefährdet.
+]
+
+#aufg(fig: "a14_einfeld", fw: 6.4cm)[Balken auf zwei Stützen mit Einzellast][
+  Ein Balken liegt in $A$ (Gelenk) und $B$ (Auflager) auf. Im Abstand $a$ von $A$ und $b$ von $B$ greift die Kraft $F$ nach unten an. Gesucht sind $Q_y (x)$ und $M_z (x)$ ($ve_y$ nach unten).
+][
+  _Lagerkräfte_ (beide nach oben): $A = F b\/(a+b)$, $B = F a\/(a+b)$.
+
+  _Bereich $x < a$_, linker Teil (nur $A$):
+  $ Q_y = F b/(a+b), wide M_z = -F (b x)/(a+b). $
+  _Bereich $x > a$_, rechter Teil (nur $B$, negatives Schnittufer):
+  $ Q_y = -F a/(a+b), wide M_z = -F (a (a + b - x))/(a+b). $
+  Die Querkraft springt bei $x = a$ um $F$. Das Moment hat dort einen Knick und seinen Extremwert $M_z = -F a b\/(a+b)$. Das ist das Beispiel «Dreipunktbiegung» von oben mit umgekehrter $y$-Achse: gleiche Beträge, umgekehrte Vorzeichen.
+]
+
+#aufg(fig: "a14_winkel", fw: 6.4cm)[Räumlich belasteter Winkelträger][
+  Der Balken $B C$ (Länge $L$, längs $x$) ist in $C$ eingespannt. In $B$ ist rechtwinklig der Arm $B A$ (Länge $a$, längs $y$) angeschlossen. In $A$ greifen drei Kräfte an: $F_1$ in Richtung $-x$, $F_2$ in Richtung $+y$, $F_3$ in Richtung $+z$. Auf $B C$ wirkt in $y$-Richtung eine Dreieckslast $q_y (x) = q x\/L$.
+
+  Gesucht sind alle sechs Schnittgrößen im Balken $B C$.
+][
+  Schnitt bei $x$, linker Teil (mit dem Arm $B A$). Die Last bis $x$ hat die Resultierende $q x^2\/(2L)$, sie greift bei $2x\/3$ an, also im Abstand $x\/3$ vor der Schnittstelle.
+
+  _Kräfte._
+  $ N = F_1, wide Q_y = -F_2 - (q x^2)/(2L), wide Q_z = -F_3. $
+  _Momente um die Schnittstelle._ $A$ liegt von dort aus in $(-x, a, 0)$:
+  $ T = -F_3 a, wide M_y = -F_3 x, wide M_z = F_2 x - F_1 a + (q x^3)/(6L). $
+
+  _Deutung._ $F_3$ verdreht den Balken mit dem Hebelarm $a$ (Torsion) und biegt ihn um die $y$-Achse. $F_2$ und die verteilte Last biegen ihn um die $z$-Achse; $F_1$ gibt Zug und, weil sie um $a$ außermittig angreift, ein konstantes Biegemoment $-F_1 a$.
+
+  _Kontrolle mit den Differentialbeziehungen._ $Q'_y = -q x\/L = -q_y$ ✓ und $M'_z = F_2 + q x^2\/(2L) = -Q_y$ ✓. In der $x z$-Ebene lauten die Beziehungen $Q'_z = -q_z$ und $M'_y = +Q_z$ (anderes Vorzeichen, weil $ve_x, ve_z, ve_y$ kein Rechtssystem bilden): $M'_y = -F_3 = Q_z$ ✓.
+
+  Alle Beträge sind an der Einspannung $x = L$ am größten.
+]
+
+#aufg(fig: "a14_ltraeger", fw: 7cm)[Winkelträger mit Gelenk][
+  Der Träger $A B C$ (Länge $2L$) ist in $A$ eingespannt, hat in der Mitte $B$ ein Gelenk und liegt in $C$ auf. In $C$ ist biegesteif der Pfosten $C D$ (Länge $L$) angeschlossen, auf den die gleichmäßige Last $q = P\/L$ in $x$-Richtung wirkt ($ve_y$ nach oben).
+
+  Gesucht sind die Lagerreaktionen und die Schnittgrößen im Träger und im Pfosten.
+][
+  _Lagerreaktionen._ Das Gelenk überträgt kein Moment. Für den Teil rechts von $B$ gilt um $B$: $C_y L - P dot L/2 = 0$ (die Last hat die Resultierende $P$ in der Höhe $L\/2$), also $C_y = P\/2$. Am Ganzen folgt $A_x = -P$, $A_y = -P\/2$ und das Einspannmoment $M_A = -P L\/2$ (im Uhrzeigersinn).
+
+  _Träger, $0 < x < 2L$_ (linker Teil):
+  $ N = P, wide Q_y = P/2, wide M_z = P/2 (L - x). $
+  Kontrolle: $M_z (L) = 0$ im Gelenk ✓, $M'_z = -Q_y$ ✓. Am rechten Ende ist $M_z (2L) = -P L\/2$.
+
+  _Pfosten, $0 < y < L$_ (von $C$ aus gemessen). Am einfachsten betrachtet man den *oberen* Teil der Länge $L - y$, auf den nur die Last $q (L - y)$ wirkt:
+  $ N = 0, wide Q = q (L - y) = P (1 - y/L), wide M_z = -q (L - y)^2/2 = P (y - L/2 - y^2/(2L)). $
+  Am Fuß des Pfostens ist $M_z (0) = -P L\/2$, derselbe Wert wie am Trägerende: In der biegesteifen Ecke $C$ geht das Moment vollständig vom Pfosten in den Träger über.
+
+  Mit dem unteren Teil (Träger, Lager und Pfostenstück) kommt dasselbe heraus, die Rechnung ist nur länger. Es lohnt sich immer, den Teil mit weniger Kräften zu wählen.
 ]
 
 #kurz[

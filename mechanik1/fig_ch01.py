@@ -40,7 +40,7 @@ def koordinaten():
     for a, b in [(Mx, Mxy), (My, Mxy), (Mxy, M_), (Mz, M_)]: f.guide(a, b)
     f.line(o, Mx, lw=1.7); f.line(Mx, Mxy, lw=1.7); f.line(Mxy, M_, lw=1.7)
     f.dot(M_, 0.08); f.text(M_, "$M$", dx=0.28, dy=0.12)
-    for p, t, d in [(Mx, "$M_x$", (-0.3, -0.12)), (My, "$M_y$", (0.0, -0.3)), (Mz, "$M_z$", (-0.35, 0.0)), (Mxy, "$M_{xy}$", (0.45, -0.1))]:
+    for p, t, d in [(Mx, "$M_x$", (-0.5, 0.15)), (My, "$M_y$", (0.0, -0.3)), (Mz, "$M_z$", (-0.35, 0.0)), (Mxy, "$M_{xy}$", (0.45, -0.1))]:
         f.dot(p, 0.045); f.text(p, t, dx=d[0], dy=d[1], size=8.5)
     f.text((o[0] + 0.9, 0.3), r"kartesisch  $(x,\,y,\,z)$", size=9)
     # --- zylindrisch
@@ -145,10 +145,10 @@ def produkte():
     f.line(o + P(0.0, -0.18), pr + P(0, -0.18), c=F, lw=2.2)
     f.dim(o + P(0, 0), pr, "", off=0)  # unsichtbare Maßlinie vermeiden
     f.angle(o, 0.9, 0, 38, label=r"$\theta$", lr=1.25)
-    f.text(o + P(b[0] / 2, -0.62), r"$|\mathbf{b}|\cos\theta$", c=F, size=9)
+    f.text(o + P(b[0] / 2, -0.5), r"$|\mathbf{b}|\cos\theta$", c=F, size=9)
     f.cap((3.6, 5.0), "Skalarprodukt", size=8.5)
     f.text((3.6, 4.45), r"$\mathbf{a}\cdot\mathbf{b}=|\mathbf{a}|\,|\mathbf{b}|\cos\theta$", size=9.5)
-    f.text((3.6, 0.35), "Anteil von $\\mathbf{b}$ in Richtung $\\mathbf{a}$, mal $|\\mathbf{a}|$", size=7.8, c=GREY)
+    f.text((3.6, -0.02), "Anteil von $\\mathbf{b}$ in Richtung $\\mathbf{a}$, mal $|\\mathbf{a}|$", size=7.8, c=GREY)
     # rechts: Kreuzprodukt
     o = P(10.4, 1.6)
     a = f.proj(o, 2.4, 0, 0) - o; b = f.proj(o, 0, 3.0, 0) - o

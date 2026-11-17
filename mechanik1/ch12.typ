@@ -2,6 +2,8 @@
 
 = Reibung
 
+#woche(12, [Reibung, Statik], [169–175, 180–185, 188–190])
+
 Bisher waren alle Bindungen reibungsfrei: Eine Unterlage konnte nur senkrecht zu sich drücken. In Wirklichkeit kann sie auch _entlang_ der Berührungsfläche Kraft übertragen. Sonst könnte niemand gehen, kein Auto fahren und kein Nagel in der Wand halten. Diese tangentiale Kontaktkraft ist die *Reibungskraft*.
 
 == Physikalische Grundlagen
@@ -67,7 +69,7 @@ Genauer: Haftreibungsgesetz heißt, dass an den materiellen Berührungspunkten d
 ]
 
 #bsp[Zwei Stäbe mit Reibung][
-  Zwei gewichtslose Stäbe sind in den reibungsfreien Gelenken $A$ und $B$ gelagert und berühren sich in $C$ (Haftreibungszahl $mu_0$); der eine trägt eine vertikale Last $G$, der andere eine horizontale Last $F$. In welchem Bereich darf $F$ liegen, damit das System in Ruhe bleibt? Man trennt das System, damit Normalkraft und Reibungskraft in $C$ für jeden Stab als äußere Kräfte erscheinen. Die Richtung der Normalkraft steht wegen der einseitigen Bindung fest, die der Reibungskraft nicht: Erst das Vorzeichen von $F_R$ aus dem Gleichgewicht verrät sie. $F_R > 0$ entspricht einer Gleitgefahr wegen zu großem $G$, $F_R < 0$ einer Gleitgefahr wegen zu großem $F$. Die Haftbedingung $|F_R| <= mu_0 N$ deckt beide Fälle ab und liefert zwei Ungleichungen, die zusammen einen _Bereich_ für $F$ ergeben: eine untere und eine obere Grenze, beide aus $mu_0$ und $G$ berechnet. Zu kleines $F$ lässt den Stab wegen $G$ abrutschen, zu großes in die andere Richtung.
+  Zwei gewichtslose Stäbe sind in den reibungsfreien Gelenken $A$ und $B$ gelagert und berühren sich in $C$ (Haftreibungszahl $mu_0$); der eine trägt eine vertikale Last $G$, der andere eine horizontale Last $F$. In welchem Bereich darf $F$ liegen, damit das System in Ruhe bleibt? Man trennt das System, damit Normalkraft und Reibungskraft in $C$ für jeden Stab als äußere Kräfte erscheinen. Die Richtung der Normalkraft steht wegen der einseitigen Bindung fest, die der Reibungskraft nicht: Erst das Vorzeichen von $F_R$ aus dem Gleichgewicht verrät sie. $F_R > 0$ entspricht einer Gleitgefahr wegen zu großem $G$, $F_R < 0$ einer Gleitgefahr wegen zu großem $F$. Die Haftbedingung $|F_R| <= mu_0 N$ deckt beide Fälle ab und liefert zwei Ungleichungen, die zusammen einen _Bereich_ für $F$ ergeben: eine untere und eine obere Grenze, beide aus $mu_0$ und $G$ berechnet. Zu kleines $F$ lässt den Stab wegen $G$ abrutschen, zu großes in die andere Richtung. Mit Zahlen ist das Beispiel in den Aufgaben am Kapitelende durchgerechnet.
 ]
 
 #fg("k12_leiter", [Leiter an einer glatten Wand auf rauem Boden.])
@@ -109,6 +111,7 @@ In der Statik tritt Gleitreibung dann auf, wenn ein bewegter starrer Körper im 
   Ein Messer wird an einer Schleifscheibe (Radius $R$) geschliffen, die mit konstanter Rotationsgeschwindigkeit um ihr Lager dreht. Ist die Normalkraft $N$ auf das Messer bekannt, folgt die Reibungskraft am Umfang aus $F_R = mu_1 N$ (gegen die Bewegung gerichtet), und die Momentenbedingung um das Lager liefert das nötige Antriebsmoment $M = R F_R = mu_1 N R$. Das ist der Preis des Schleifens.
 ]
 
+#ohnewoche[Dieser Abschnitt steht nicht im Wochenplan der Vorlesung (Buch S. 175–180).]
 == Gelenk- und Lagerreibung
 
 In einem wirklichen Gelenk reibt der Zapfen (Radius $r_L$) in der Bohrung. Die Reibungskräfte am Zapfenumfang ergeben ein *Reibungsmoment* um die Gelenkachse. Mit der Gelenkkraft $vZ$ (die Kraft, mit der der Zapfen in die Bohrung gedrückt wird) gilt
@@ -125,6 +128,7 @@ Die Haftbedingung $|F_R| <= mu_0 N$ wird mit $r_L$ multipliziert und gibt links 
 
 Für ein Längslager lässt sich eine genauere Formel herleiten. Eine Welle vom Radius $R$ liege gleichmäßig auf. Das Flächenelement $dif A = r dif r dif phi$ trägt die Normalkraft $dif N = N dif A\/(pi R^2)$ und die tangentiale Reibungskraft $|dif F_R| = mu_1 dif N$ im Abstand $r$ von der Achse. Aufsummiert (integriert) ergibt sich das Reibungsmoment $M_R = integral r dif F_R = (mu_1 N \/ (pi R^2)) integral_0^R r^2 dif r integral_0^(2 pi) dif phi = (2\/3) mu_1 R N$. Das ist weniger als $mu_1 R N$, weil die Reibungskräfte im Mittel näher an der Achse angreifen als am Rand.
 
+#woche(12, [Reibung, Statik (Fortsetzung)], [180–185])
 == Rollreibung
 
 Ein starres Rad auf starrer, schiefer Ebene: Die Momentenbedingung um den Berührungspunkt $Z$ enthält nur das Gewicht (Hebelarm $R sin alpha$) und kann für $alpha != 0$ nie erfüllt sein. Nach diesem Modell würde jedes Rad schon bei der kleinsten Neigung losrollen. Die Erfahrung zeigt etwas anderes.
@@ -142,6 +146,8 @@ Die Auflösung: Rad und Unterlage verformen sich an der Berührungsstelle ein we
   Gleichgewicht: $F_R = G sin alpha$, $N = G cos alpha$, $M_R = R G sin alpha$. Damit das Rad ruht, müssen *beide* Bedingungen gelten:
   $ "nicht gleiten:" quad tan alpha <= mu_0, wide "nicht rollen:" quad tan alpha <= mu_2 / R. $
   Weil $mu_2 \/ R$ fast immer viel kleiner ist als $mu_0$, beginnt das Rad zu rollen, lange bevor es rutschen würde. Darum hat man das Rad erfunden.
+
+  Zur Größenordnung: Ein Rad mit $R approx 25$ cm hat eine Kontaktlänge von etwa 2 bis 3 cm, die Rollreibungslänge ist ungefähr halb so groß, $mu_2 approx 1$ bis $1,5$ cm. Dann ist $mu_2\/R approx 0,05$, und das Rad rollt schon ab einer Neigung von rund 3° los. Rutschen würde es erst bei $tan alpha approx mu_0$, also bei einem Vielfachen davon.
 ]
 
 #fehler[
@@ -149,6 +155,61 @@ Die Auflösung: Rad und Unterlage verformen sich an der Berührungsstelle ein we
   - Die Richtung der Reibungskraft falsch annehmen und dann mit Beträgen weiterrechnen. Beim Haften Richtung annehmen und das Vorzeichen ernst nehmen; beim Gleiten gegen die Relativgeschwindigkeit.
   - Bei mehreren Kontaktstellen annehmen, alle seien gleichzeitig an der Haftgrenze. Das muss nicht so sein.
   - Vergessen, auch das Kippen zu prüfen: Ein hoher Klotz kippt, bevor er rutscht.
+]
+
+#aufgaben()
+
+#aufg(fig: "a12_schrank", fw: 5.4cm)[Schrank schieben: Kippen oder Gleiten?][
+  Ein Schrank (Breite $b$, Gewicht $G$, Schwerpunkt in der Mitte) steht auf einem Parkettboden (Haftreibungszahl $mu_0$). In der Höhe $y$ drückt man horizontal mit der Kraft $F$.
+
+  Was passiert zuerst, wenn man $F$ steigert: Kippt der Schrank oder gleitet er?
+][
+  _Gleichgewicht in der Ruhe._ $N = G$, $F_R = F$. Die Normalkraft greift um $e$ neben der Mitte an; Momente um die Mitte der Standfläche: $N e = F y$, also $e = F y \/ G$.
+
+  _Zwei Bedingungen für die Ruhe._
+  - Nicht kippen: $vN$ muss in der Standfläche bleiben, $e < b\/2$, also $F\/G < b\/(2y)$.
+  - Nicht gleiten: $F_R < mu_0 N$, also $F\/G < mu_0$.
+
+  _Welche Grenze kommt zuerst?_ Die kleinere:
+  $ y > b/(2 mu_0): quad "Kippen vor Gleiten", wide y < b/(2 mu_0): quad "Gleiten vor Kippen". $
+  Mit $mu_0 = 1\/2$ (Metall auf Holz) gleitet der Schrank, solange man tiefer als $y = b$ angreift. Wer einen Schrank verschieben will, drückt deshalb unten.
+]
+
+#aufg(fig: "a12_scheibe", fw: 6cm)[Kreisscheibe mit Bremskraft][
+  Eine Kreisscheibe (Radius $r$, Gewicht $G$) bewegt sich gleichförmig eine schiefe Ebene (Neigung $phi$) hinunter. Am höchsten Punkt, dem Kontaktpunkt gegenüber, wirkt tangential die Bremskraft $F_B$ (parallel zur Ebene, bergwärts).
+
+  + Die Scheibe rollt gleichförmig, ohne zu gleiten. Wie groß sind $F_B$ und $F_R$, und für welche $phi$ ist das möglich?
+  + Die Scheibe gleitet gleichförmig, ohne sich zu drehen. Für welches $phi$?
+][
+  Bei gleichförmiger Bewegung sind die Gleichgewichtsbedingungen erfüllt. In beiden Fällen gilt
+  $ N = G cos phi, wide F_R + F_B = G sin phi, wide M_O: thick F_B r - F_R r = 0, $
+  also $F_B = F_R = 1/2 G sin phi$.
+
+  _1. Rollen._ Der Kontaktpunkt haftet, es gilt das Haftreibungsgesetz als Ungleichung:
+  $ F_R < mu_0 N quad => quad 1/2 G sin phi < mu_0 G cos phi quad => quad tan phi < 2 mu_0. $
+
+  _2. Gleiten._ Am Kontakt gilt das Gleitreibungsgesetz als Gleichung, $F_R = mu_1 N = mu_1 G cos phi$. Mit $F_R = 1/2 G sin phi$:
+  $ tan phi = 2 mu_1. $
+
+  _Bemerkung._ Wegen $mu_0 > mu_1$ ist der Grenzwinkel für das Haften größer als der Winkel für gleichförmiges Gleiten. Überschreitet man die Haftgrenze, sinkt die Reibungskraft sprunghaft, und die Scheibe wird beschleunigt.
+]
+
+#aufg(fig: "a12_staebe", fw: 5.4cm)[Zwei Stäbe mit rauem Kontakt][
+  Der Stab $A D$ (Länge $2L$, unter 60°) ist in $A$ gelenkig gelagert und trägt in $D$ die Last $G$. Der Stab $C B$ (Länge $L$) ist in $B$ gelenkig gelagert ($overline(A B) = L$) und stützt den ersten Stab in dessen Mitte $C$ ab; der Kontakt ist rau (Haftreibungszahl $mu_0$). In der Mitte von $C B$ wirkt die horizontale Kraft $F$ nach links. Die Stäbe sind gewichtslos.
+
+  In welchem Bereich muss $F$ liegen, damit das System in Ruhe bleibt?
+][
+  _Trennen in $C$._ Erst dann erscheinen die Kontaktkräfte: die Normalkraft $N$ senkrecht zu $A D$ und die Reibungskraft $F_R$ längs $A D$ (positiv gezählt, wenn sie am Stab $C B$ nach unten wirkt).
+
+  _Stab $A D$, Momente um $A$._ $G$ hat den Hebelarm $2 L cos 60° = L$, $N$ den Hebelarm $L$, $F_R$ geht durch $A$:
+  $ N L - G L = 0 quad => quad N = G. $
+
+  _Stab $C B$, Momente um $B$._ Das Dreieck $A B C$ ist gleichseitig. $F$ hat den Hebelarm $sqrt(3)/2 dot L/2$, $F_R$ den Hebelarm $sqrt(3)/2 L$ (Abstand von $B$ zur Geraden $A D$), $N$ den Hebelarm $L\/2$:
+  $ sqrt(3)/2 dot L/2 dot F + sqrt(3)/2 L F_R - N L/2 = 0 quad => quad F_R = sqrt(3)/3 G - 1/2 F. $
+
+  _Haftbedingung._ $|F_R| < mu_0 N = mu_0 G$ deckt beide Rutschrichtungen ab:
+  $ (2 sqrt(3))/3 G - 2 mu_0 G < F < (2 sqrt(3))/3 G + 2 mu_0 G. $
+  Bei $F = (2 sqrt(3))\/3 dot G$ ist keine Reibung nötig. Ist $F$ kleiner, rutscht $C$ wegen $G$ ab ($F_R > 0$); ist $F$ größer, schiebt $F$ den Stab in die andere Richtung ($F_R < 0$). Die Reibung macht aus dem einen Gleichgewichtswert einen ganzen Bereich.
 ]
 
 #kurz[

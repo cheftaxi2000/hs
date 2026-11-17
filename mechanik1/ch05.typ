@@ -104,6 +104,23 @@ Die Formel gilt nicht nur für zwei Kräfte. Man erweitert sie ohne Weiteres auf
   Beide Wege stimmen überein. Das Ergebnis ist negativ: Hebt der Arm die Last, bremst die Last den Arm. Der zweite Weg ist meist der schnellere, wenn die Geschwindigkeit des Angriffspunkts nicht schon gegeben ist.
 ]
 
+#aufgaben()
+
+#aufg(fig: "a05_stab", fw: 6cm)[Gesamtleistung auf zwei Wegen][
+  Ein Stab $A B$ (Länge $L$) liegt unter 45° zur $x$-Achse. Sein Ende $A$ hat die Geschwindigkeit $vv_A = (v, 0)$, der Stab dreht mit $omega$ im Gegenuhrzeigersinn. In $B$ greift das Gewicht $vG$ (Betrag $G$, nach unten) an, in der Mitte $C$ die Kraft $bold(W)$ (Betrag $W$, senkrecht zum Stab nach links oben).
+
+  Gesucht ist die Gesamtleistung, einmal als Summe der Einzelleistungen und einmal über Resultierende und Moment.
+][
+  _Weg I: Einzelleistungen._ Mit $arrow(A C) = sqrt(2)/4 L (1, 1)$ und $arrow(A B) = sqrt(2)/2 L (1, 1)$:
+  $ vv_C = vv_A + omega ve_z times arrow(A C) = (v - sqrt(2)/4 omega L, thick sqrt(2)/4 omega L), quad vv_B = (v - sqrt(2)/2 omega L, thick sqrt(2)/2 omega L). $
+  Die Kräfte sind $bold(W) = sqrt(2)/2 W (-1, 1)$ und $vG = (0, -G)$. Also
+  $ PP = bold(W) dot.c vv_C + vG dot.c vv_B = -sqrt(2)/2 W v + 1/2 W L omega - sqrt(2)/2 G L omega. $
+
+  _Weg II: Dyname in $A$._ $vR = (-sqrt(2)/2 W, thick sqrt(2)/2 W - G)$. Momente um $A$: $bold(W)$ steht senkrecht auf dem Stab und hat den Hebelarm $L\/2$, $vG$ hat den Hebelarm $sqrt(2)/2 L$ und dreht im Uhrzeigersinn: $M_A = W L\/2 - sqrt(2)/2 G L$. Damit
+  $ PP = vR dot.c vv_A + omega M_A = -sqrt(2)/2 W v + omega (1/2 W L - sqrt(2)/2 G L). $
+  Beide Wege stimmen überein. Weg II ist kürzer, weil man keine einzige Geschwindigkeit ausrechnen muss.
+]
+
 #kurz[
   - $PP = vF dot.c vv$: Kraftanteil in Bewegungsrichtung mal Schnelligkeit.
   - Leistungslos: Angriffspunkt ruht oder $vF perp vv$.

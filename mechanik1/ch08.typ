@@ -16,6 +16,7 @@ Dazu brauchen wir zuerst einige Begriffe: Ruhelage, Bindungen und Bindungskräft
 
 Statik fragt nach Ruhelagen, nicht nach Augenblicken des Stillstands. Das Pendel ist beim größten Ausschlag $phi_0$ nur momentan in Ruhe; seine Ruhelage ist die senkrechte Lage. Statt «Ruhelage» sagt man oft auch *Gleichgewichtslage*. Der Zusatz in der Definition ist wichtig: Die Lage bleibt nur dann eine Ruhelage, wenn sich die angreifenden Kräfte und die Lagerung nicht ändern. Ob eine Ruhelage _stabil_ ist (das Pendel kehrt nach einer kleinen Störung zurück) oder _labil_ (ein auf der Spitze stehender Stab kippt weg), ist eine weitere Frage, die wir hier nicht behandeln.
 
+#woche(9, [Bindungen], [118–141])
 == Bindungen und Bindungskräfte
 
 Ein System kann sich meist nicht frei bewegen. Es liegt auf, ist gelagert, und seine Teile sind durch Gelenke verbunden. Solche Einschränkungen der Bewegungsfreiheit heißen *Bindungen*. Jede Bindung erzwingt ihre Einschränkung durch Kräfte oder Momente, die *Bindungskräfte*.
@@ -131,6 +132,41 @@ Die genaue Aussage ist: Für einen *einzelnen starren Körper* bilden der Haupts
 #rezept[Welches Werkzeug wofür?][
   - *Hauptsatz* (Gleichgewichtsbedingungen): der Normalfall. Systematisch, liefert alle Lagerkräfte. Bei mehreren Körpern muss man zerlegen und bekommt viele Gleichungen mit vielen Unbekannten.
   - *PdvL*: elegant, wenn man an einem beweglichen System (Mechanismus) _eine_ Beziehung zwischen Lasten oder _eine_ bestimmte Kraft sucht, ohne alle anderen auszurechnen. Braucht dafür etwas Kinematik aus Kapitel 3.
+]
+
+#aufgaben()
+
+#aufg(fig: "a08_quader", fw: 6.2cm)[Quader auf schiefer Ebene: Wo greift $vN$ an?][
+  Ein Quader (Breite $a$ längs der Ebene, Höhe $2a$, Gewicht $G$ im Schwerpunkt $S$) liegt auf einer reibungsfreien schiefen Ebene (Neigung $alpha$). In der oberen talseitigen Ecke $A$ hält ihn eine horizontale Kraft $vF$.
+
+  Gesucht sind mit dem PdvL die Haltekraft $F$, die Normalkraft $N$ und der Abstand $x$ ihres Angriffspunkts von der Mitte der Standfläche. Steht der Quader?
+][
+  Achsen: $ve_x$ längs der Ebene talwärts, $ve_y$ senkrecht von der Ebene weg. Dann ist $vG = (G sin alpha, -G cos alpha)$, $vF = (-F cos alpha, -F sin alpha)$, $vN = (0, N)$.
+
+  _Zulässige Translation $tilde(v)$ längs der Ebene_ ($vN$ leistet nichts):
+  $ tilde(PP) = (G sin alpha - F cos alpha) tilde(v) = 0 quad => quad F = G tan alpha. $
+
+  _Unzulässige Translation $tilde(v)'$ senkrecht zur Ebene_ (die Bindung wird gelöst, $vN$ leistet mit):
+  $ (N - G cos alpha - F sin alpha) tilde(v)' = 0 quad => quad N = G/(cos alpha). $
+
+  _Unzulässige Rotation $tilde(omega)$ um $S$._ $vG$ hat kein Moment. $vF$ greift in $(a\/2, a)$ an, $vN$ in $(-x, -a)$:
+  $ [a F (cos alpha - 1/2 sin alpha) - x N] tilde(omega) = 0 quad => quad x = a sin alpha (cos alpha - 1/2 sin alpha). $
+
+  _Diskussion._ Der Quader steht, solange $vN$ innerhalb der Standfläche angreift, $|x| < a\/2$. Das ist gleichbedeutend mit $sin 2 alpha < 1 + sin^2 alpha$ und für jede Neigung erfüllt: Mit dieser Haltekraft kippt der Quader nie. Dieselben drei Gleichungen liefert der Hauptsatz ($vR = bold(0)$, $M_S = 0$); jede virtuelle Bewegung entspricht einer Gleichgewichtsbedingung.
+]
+
+#aufg(fig: "a08_waage", fw: 6cm)[Waage mit dem PdvL][
+  Ein Balken ist in $A$ gelenkig gelagert. Rechts hängt im Abstand $L$ die Last $F$, links im Abstand $x$ die Last $2F$. Das Eigengewicht wird vernachlässigt.
+
+  Für welches $x$ ist der Balken in Ruhe, und wie groß ist die Lagerkraft?
+][
+  _Ruhelage._ Der einzige zulässige Bewegungszustand ist die Rotation $tilde(omega)$ um $A$. Das rechte Ende hat die Schnelligkeit $L tilde(omega)$ nach oben (gegen $F$), der linke Angriffspunkt $x tilde(omega)$ nach unten (mit $2F$):
+  $ tilde(PP) = (2 F x - F L) tilde(omega) = 0 quad => quad x = L/2. $
+  Die Lagerkraft kommt in dieser Gleichung nicht vor. Das ist die Stärke des PdvL.
+
+  _Lagerkraft._ Um sie zu finden, löst man die Bindung in Gedanken: Bei einer virtuellen vertikalen Translation $tilde(v)'$ leistet $A_y$ mit, $(A_y - 3F) tilde(v)' = 0$, also $A_y = 3F$. Eine horizontale Translation gibt $A_x = 0$.
+
+  Der Hauptsatz liefert dasselbe: $sum X = 0$, $sum Y = 0$ geben $A_x = 0$, $A_y = 3F$, und $sum M_A = 0$ gibt $x = L\/2$.
 ]
 
 #kurz[

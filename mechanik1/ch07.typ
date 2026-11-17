@@ -109,6 +109,29 @@ Weitere nützliche Werte: Halbkugelschale $R\/2$ über der Grundfläche, Halbkug
 
 #fg("k07_beispiele", [Die beiden Beispiele: $S$ des L-Profils (links) und der Scheibe mit Loch (rechts).])
 
+#aufgaben()
+
+#aufg(fig: "a07_rahmen", fw: 6.6cm)[Kräftemittelpunkt paralleler Kräfte][
+  An einem quadratischen Rahmen (Raster 1 m) greifen fünf Kräfte parallel zur $x$-Achse an (Koordinaten in m, positiv in $+x$-Richtung):
+
+  #align(center, table(columns: 6, stroke: none, inset: (x: 5pt, y: 2.5pt), align: center,
+    [], [$A_1$], [$A_2$], [$A_3$], [$A_4$], [$A_5$],
+    table.hline(stroke: 0.4pt),
+    [Ort], [(4, 4)], [(0, 3)], [(3, 2)], [(1, 1)], [(2, 0)],
+    [Kraft], [$-3F$], [$+F$], [$-3F$], [$+3F$], [$-2F$]))
+
+  Gesucht sind die Resultierende, ihre Wirkungslinie und der Kräftemittelpunkt $S$.
+][
+  _Resultierende._ $R_x = (-3 + 1 - 3 + 3 - 2) F = -4 F$.
+
+  _Wirkungslinie._ Die Einzelkraft $vR$ auf der Geraden $y = y_S$ muss dasselbe Moment um $O$ haben wie die Gruppe: $y_S R_x = sum y_i F_i$, also
+  $ y_S = (4 dot (-3) + 3 dot 1 + 2 dot (-3) + 1 dot 3 + 0) / (-4) "m" = (-12)/(-4) "m" = 3 "m". $
+
+  _Kräftemittelpunkt._ Er muss auch dann auf der Wirkungslinie liegen, wenn man alle Kräfte um denselben Winkel dreht. Dreht man sie um 90° in die $y$-Richtung, zählt der Hebelarm $x_i$:
+  $ x_S = (4 dot (-3) + 0 dot 1 + 3 dot (-3) + 1 dot 3 + 2 dot (-2)) / (-4) "m" = (-22)/(-4) "m" = 5,5 "m". $
+  Also $S = (5,5 "m"; thick 3 "m")$. Der Punkt liegt außerhalb des Rahmens. Das ist möglich, weil die Kräfte verschiedene Vorzeichen haben; bei gleichgerichteten Kräften (Gewichten) liegt $S$ immer «zwischen» den Angriffspunkten.
+]
+
 #kurz[
   - Kräftemittelpunkt paralleler Kräfte: $vr_S = (sum F_i vr_i)\/(sum F_i)$, ein gewichteter Mittelwert.
   - Linienlast: $R$ = Fläche des Lastdiagramms, Wirkungslinie durch dessen Schwerpunkt. Gleichlast: Mitte. Dreieck: $2\/3$ von der Spitze.

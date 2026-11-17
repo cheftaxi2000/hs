@@ -5,6 +5,7 @@ import matplotlib
 matplotlib.use("svg")
 import matplotlib.pyplot as plt
 from matplotlib import font_manager as fm
+from matplotlib import patheffects as pe
 from matplotlib.patches import Polygon, Circle, FancyArrowPatch, ArrowStyle, Rectangle
 
 for f in ("cmunrm", "cmunti", "cmunbx", "cmunbi"):
@@ -76,7 +77,8 @@ class Fig:
     # ---------- Text ----------
     def text(s, p, t, c=INK, size=9, ha="center", va="center", dx=0, dy=0, z=8, bg=False, weight="normal"):
         kw = dict(bbox=dict(fc="white", ec="none", pad=0.6)) if bg else {}
-        s.ax.text(p[0] + dx, p[1] + dy, t, color=c, fontsize=size, ha=ha, va=va, zorder=z, fontweight=weight, **kw)
+        tx = s.ax.text(p[0] + dx, p[1] + dy, t, color=c, fontsize=size, ha=ha, va=va, zorder=z, fontweight=weight, **kw)
+        tx.set_path_effects([pe.withStroke(linewidth=2.6, foreground="white")])
     def cap(s, p, t, c=INK, size=7.8, **k): s.text(p, t, c=c, size=size, **k)
 
     # ---------- Pfeile ----------
@@ -195,7 +197,25 @@ class Fig:
             q = s.proj(o, *v); s.arrow(o, q, c=c, lw=0.7, head=0.6)
             d = unit(q - np.array(o)); s.text(q + d * 0.28, f"${nm}$", size=9)
 
+    def fit(s, pad=0.12):
+        """Zeichenfläche so erweitern, dass nichts abgeschnitten wird (Maßstab bleibt 1 Einheit = 1 cm)."""
+        for a in s.ax.get_children():
+            try: a.set_clip_on(False)
+            except Exception: pass
+        from matplotlib.backends.backend_agg import FigureCanvasAgg
+        r = FigureCanvasAgg(s.fig).get_renderer()
+        bb = s.fig.get_tightbbox(r)
+        x0, y0, x1, y1 = bb.x0 * 2.54, bb.y0 * 2.54, bb.x1 * 2.54, bb.y1 * 2.54
+        e = 0.02
+        X0 = 0 if x0 >= -e else x0 - pad; X1 = s.w if x1 <= s.w + e else x1 + pad
+        Y0 = 0 if y0 >= -e else y0 - pad; Y1 = s.h if y1 <= s.h + e else y1 + pad
+        if (X0, Y0, X1, Y1) != (0, 0, s.w, s.h):
+            s.fig.set_size_inches((X1 - X0) / 2.54, (Y1 - Y0) / 2.54)
+            s.ax.set_xlim(X0, X1); s.ax.set_ylim(Y0, Y1)
+        return X1 - X0, Y1 - Y0
     def save(s, name):
+        W, H = s.fit()
+        if W > s.w + 0.01 or H > s.h + 0.01: print(f"  fit {name}: {s.w:.1f}x{s.h:.1f} -> {W:.2f}x{H:.2f}")
         s.fig.savefig(os.path.join(OUT, name + ".svg"), format="svg", transparent=True)
         s.fig.savefig(os.path.join(PNG, name + ".png"), dpi=220, facecolor="white")
         plt.close(s.fig)

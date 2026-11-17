@@ -2,6 +2,8 @@
 
 = Äquivalenz und Reduktion von Kräftegruppen
 
+#woche(7, [Äquivalenz, Gleichgewicht], [83–97])
+
 An einem Bauteil greifen oft Dutzende von Kräften an: Gewicht, Lasten, Lagerkräfte, Reibung. Die Frage dieses Kapitels lautet: Kann man sie durch etwas Einfacheres ersetzen, ohne dass der (starre) Körper einen Unterschied merkt? Die Antwort ist ja, und sie ist erstaunlich handlich. Es kommt nur auf die Summe der Kräfte und die Summe ihrer Momente an.
 
 Der Gedanke ist uns schon aus Kapitel 5 vertraut. Dort haben wir gesehen, dass die Leistung einer Kräftegruppe an einem starren Körper nur von zwei Vektoren abhängt, $vR$ und $vM_B$. Jetzt machen wir daraus ein Prinzip.
@@ -168,6 +170,7 @@ Ist $vR = bold(0)$, so verschwindet $vM_O$ entweder für alle Bezugspunkte oder 
 
 Beides sind in Aufgaben mächtige Werkzeuge: Kennt man zwei Wirkungslinien, kennt man die Richtung der dritten Kraft.
 
+#woche(8, [Reduktion, Schwerpunkt, Ruhe], [98–118])
 == Reduktion einer Kräftegruppe
 
 *Reduktion* heißt: die einfachste statisch äquivalente Kräftegruppe finden. Erster Schritt ist stets die Dyname ${vR, vM_B}$ in einem bequemen Punkt $B$: eine Einzelkraft $vR$ in $B$ plus ein Kräftepaar mit dem Moment $vM_B$.
@@ -217,6 +220,27 @@ Die Dyname ${vR, vM_Z}$ auf der Zentralachse heißt (Kraft-)*Schraube*: eine Kra
   - Bei $vR = bold(0)$ auf Gleichgewicht schließen. Es kann ein Kräftepaar übrig bleiben.
   - Den Hebelarm bis zum Angriffspunkt statt senkrecht bis zur Wirkungslinie messen.
   - In der Ebene die Vorzeichen der Momente nicht konsequent nach einem festen Drehsinn vergeben.
+]
+
+#aufgaben()
+
+#aufg(fig: "a06_wuerfel", fw: 5.8cm)[Ist die Kräftegruppe im Gleichgewicht?][
+  An einem Würfel (Kantenlänge $a$) greifen vier Kräfte an:
+  - in $A(0,0,0)$: $vF_A = (-F, 0, 0)$,
+  - in $B(a,a,0)$: $vF_B = (0, F, 0)$,
+  - in $C(a,0,0)$: $vF_C = (0, 0, F)$,
+  - in $D(0,a,a)$: $vF_D = (F, -F, -F)$.
+  Ist die Kräftegruppe im Gleichgewicht?
+][
+  _Komponentenbedingungen._ $vR = (-F + F, thick F - F, thick F - F) = bold(0)$ ✓.
+
+  _Momentenbedingungen_ bezüglich $A$ ($vF_A$ hat dort kein Moment):
+  $ arrow(A C) times vF_C &= (a, 0, 0) times (0, 0, F) = (0, -a F, 0), \
+    arrow(A B) times vF_B &= (a, a, 0) times (0, F, 0) = (0, 0, a F), \
+    arrow(A D) times vF_D &= (0, a, a) times (F, -F, -F) = (0, a F, -a F). $
+  Die Summe ist $vM_A = bold(0)$ ✓.
+
+  Beide Bedingungen sind erfüllt, die Kräftegruppe ist im Gleichgewicht (eine Nullgruppe). Weil $vR = bold(0)$ ist, hängt das Moment nicht vom Bezugspunkt ab; ein einziger Bezugspunkt genügt für die Prüfung.
 ]
 
 #kurz[

@@ -2,6 +2,8 @@
 
 = Seilstatik
 
+#ohnewoche[Seilmodell und Kettenlinie stehen nicht im Wochenplan der Vorlesung (Buch S. 185–188); die Seilreibung gehört zu Woche 12.]
+
 Ein Seil (oder eine Kette) ist das Gegenteil eines starren Körpers: Es ist vollkommen biegsam. Im Modell ist es zusätzlich undehnbar. Aus der Biegsamkeit folgt die eine Eigenschaft, auf der alles aufbaut:
 
 #merke[
@@ -63,6 +65,7 @@ Die Kettenlinie wird zur *Parabel*. Für ein flaches Seil mit Spannweite $l$ zwi
   Ein Leiterseil mit $p = 20$ N/m hängt zwischen zwei Masten im Abstand $l = 300$ m mit einem Horizontalzug von $H = 20$ kN. Durchhang: $f approx p l^2\/(8H) = 20 dot 300^2\/(8 dot 20000) approx 11.3$ m. Die größte Seilkraft liegt an den Masten: $S = p y = H cosh(l\/(2a))$ mit $a = H\/p = 1000$ m, also $S approx H(1 + (l\/2a)^2\/2) = 20000 dot (1 + 0.0113) approx 20.2$ kN.
 ]
 
+#woche(12, [Reibung, Statik (Fortsetzung)], [188–190])
 == Seilreibung
 
 Ein Seil sei über einen ruhenden rauen Zylinder (Poller, Trommel) gelegt und umschlinge ihn über den Winkel $alpha$. Am einen Ende wirkt $S_1$, am anderen $S_2 > S_1$. Wie groß darf $S_2$ werden, bevor das Seil rutscht?

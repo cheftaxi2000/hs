@@ -158,7 +158,7 @@ def leiter():
     f.text(A - P(0.5, 0.5), r"$N_A$", c=F, size=9); f.text(B - P(-0.5, 0.5), r"$N_B$", c=F, size=9)
     f.cap((7.3, 0.2), "Gesamtsystem (Freischnitt)", size=8.5)
     # linker Holm
-    A, B, C = P(10.6, 1.6), P(0, 0), P(12.3, 4.9)
+    A, B, C = P(11.4, 1.6), P(0, 0), P(13.1, 4.9)
     f.beam(A, C, lw=2.6)
     f.arrow(A - P(0, 0.9), A, c=F, lw=1.6); f.text(A - P(0.5, 0.5), r"$N_A$", c=F, size=9)
     S1 = A + (C - A) * 0.30
@@ -173,11 +173,11 @@ def dreigelenk():
     A, B, C = P(0.9, 1.4), P(6.7, 1.4), P(3.8, 4.2)
     f.beam(A, C); f.beam(C, B); f.pin(A, gw=0.9); f.pin(B, gw=0.9); f.hinge(C, 0.1)
     f.arrow(P(1.2, 3.3) , P(1.2 + 0.0, 3.3) - P(0, 0.0), c=F, lw=0) if False else None
-    m = (A + C) / 2; f.arrow(m + P(-0.9, 0.4), m + P(-0.03, 0.01), c=F, lw=1.6); f.text(m + P(-1.1, 0.4), r"$\mathbfit{F}$", c=F, dx=-0.1, dy=0.3)
+    m = (A + C) / 2; f.arrow(m + P(-0.9, 0.4), m + P(-0.03, 0.01), c=F, lw=1.6); f.text(m + P(-1.1, 0.4), r"$\mathbfit{F}$", c=F, dx=-0.15, dy=0.25)
     f.text(A, "$A$", dx=-0.3, dy=0.35, size=9); f.text(B, "$B$", dx=0.3, dy=0.35, size=9); f.text(C, "$C$", dx=0.0, dy=0.4, size=9)
     f.cap((3.8, 0.15), "Gesamtsystem: 4 Unbekannte", size=8.5)
     # getrennt
-    A2, C2 = P(8.2, 1.4), P(10.9, 4.2); B2, C3 = P(14.0, 1.4), P(12.7, 4.2)
+    A2, C2 = P(8.9, 1.4), P(11.2, 4.2); B2, C3 = P(14.4, 1.4), P(13.3, 4.2)
     f.beam(A2, C2); f.beam(C3, B2); f.pin(A2, gw=0.9); f.pin(B2, gw=0.9)
     f.arrow(A2 + P(-0.9, 0.4) * 0, A2, c=F, lw=0) if False else None
     for p, d, lab, off in [(A2, P(0, 1.0), "$A_y$", P(0.4, -0.5)), (A2, P(1.0, 0), "$A_x$", P(-0.3, 0.35)), (C2, P(1.0, 0), "$C_x$", P(0.4, 0.3)), (C2, P(0, -1.0), "$C_y$", P(0.0, -1.2))]:
@@ -185,9 +185,9 @@ def dreigelenk():
     f.arrow(A2 - P(0, 1.0) * 0 + P(-0.0, -0.9) * 0, A2, lw=0) if False else None
     f.arrow(A2 + P(-1.0, 0), A2, c=F, lw=1.5); f.text(A2 + P(-1.0, 0.0), r"$A_x$", c=F, dy=0.35, size=9)
     f.arrow(A2 + P(0, -0.0), A2 + P(0, 1.0), c=F, lw=0) if False else None
-    f.arrow(C2, C2 + P(0.7, 0), c=F, lw=1.5); f.text(C2 + P(0.7, 0), r"$C_x$", c=F, dx=-0.05, dy=0.4, size=9)
+    f.arrow(C2, C2 + P(0.7, 0), c=F, lw=1.5); f.text(C2 + P(0.7, 0), r"$C_x$", c=F, dx=-0.2, dy=0.38, size=9)
     f.arrow(C2, C2 - P(0, 1.0), c=F, lw=1.5); f.text(C2 - P(0, 1.0), r"$C_y$", c=F, dx=0.35, size=9)
-    f.arrow(C3, C3 - P(0.7, 0), c=F, lw=1.5); f.text(C3 - P(0.7, 0), r"$-C_x$", c=F, dx=0.1, dy=0.4, size=9)
+    f.arrow(C3, C3 - P(0.7, 0), c=F, lw=1.5); f.text(C3 - P(0.7, 0), r"$-C_x$", c=F, dx=-0.15, dy=-0.38, size=9)
     f.arrow(C3, C3 + P(0, 1.0), c=F, lw=1.5); f.text(C3 + P(0, 1.0), r"$-C_y$", c=F, dx=0.55, size=9)
     f.arrow(B2 + P(1.0, 0), B2, c=F, lw=1.5); f.text(B2 + P(1.0, 0), r"$B_x$", c=F, dy=0.35, size=9)
     f.cap((11.1, 0.15), "zerlegt: 6 Unbekannte, 6 Gleichungen", size=8.5)

@@ -45,6 +45,6 @@ def seilreibung():
     m = pol(e, R, 90); f.arrow(m + P(0, -1.0), m, c=F, lw=1.5); f.text(m + P(0.5, -0.7), r"$\mathrm{d}N$", c=F, size=9)
     f.arrow(m, m + P(-1.0, 0), c=F, lw=1.5); f.text(m + P(-1.0, 0.35), r"$\mu\,\mathrm{d}N$", c=F, size=9)
     f.arc(e, 1.6, 62, 118, lw=0.7); f.text(e + P(0, 1.95), r"$\mathrm{d}\varphi$", size=9)
-    f.cap((3.0, 4.6), "", size=8); f.cap((11.0, 4.8), "Seilelement", size=8.5)
+    f.cap((11.0, 4.75), "Seilelement mit Reibung", size=8.5); f.cap((3.0, 4.75), "Seil über raue Rolle", size=8.5)
     f.save("k13_seilreibung")
 kette(); seilreibung()

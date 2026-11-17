@@ -9,8 +9,8 @@ def sysbox(f, x0, y0, x1, y1, label=None, lp=None):
 def reaktion():
     f = Fig(15.8, 5.2)
     f.ground(0.4, 6.2, 0.6); f.rect((1.4, 0.6), (5.2, 1.0), fc="white"); f.rect((2.4, 1.0), (4.2, 2.6)); f.dot((3.3, 1.8))
-    f.arrow((3.3, 1.8), (3.3, 0.95), c=F, lw=1.3); f.text((3.3, 0.95), r"$\mathbfit{G}$", c=F, dx=-0.4, dy=0.0)
-    f.arrow((3.9, 0.35), (3.9, 1.0), c=F, lw=1.3); f.text((4.35, 0.6), r"$\mathbfit{N}$", c=F, size=9.5)
+    f.arrow((3.3, 1.8), (3.3, 0.95), c=F, lw=1.3); f.text((3.3, 1.5), r"$\mathbfit{G}$", c=F, dx=-0.35, dy=0.0)
+    f.arrow((3.9, 0.35), (3.9, 1.0), c=F, lw=1.3); f.text((4.3, 1.25), r"$\mathbfit{N}$", c=F, size=9.5)
     f.cap((3.3, 3.2), "Klotz auf dem Tisch")
     # getrennt
     f.rect((9.0, 3.2), (10.8, 4.8)); f.dot((9.9, 4.0)); f.text((9.9, 4.0), "Klotz", dx=1.4, size=8.5)

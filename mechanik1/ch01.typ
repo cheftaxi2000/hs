@@ -2,6 +2,8 @@
 
 = Bewegung eines materiellen Punktes
 
+#woche(1, [Bewegung materieller Punkt], [10–24])
+
 Mechanik beginnt mit einer einfachen Frage: _Wo ist etwas, und wie ändert sich das?_ Bevor wir irgendeine Kraft anschauen, brauchen wir eine saubere Sprache, um Lage und Bewegung zu beschreiben. Dieses Teilgebiet nennt man *Kinematik*: reine Geometrie der Bewegung, ganz ohne Ursachen.
 
 Dieses Kapitel legt die Begriffe fest (System, Körper, Bezugskörper) und führt die Koordinaten ein, mit denen wir ab jetzt jeden Punkt adressieren. Es ist eher «Vokabeln lernen» als «Rechnen», aber alles Spätere baut darauf auf.

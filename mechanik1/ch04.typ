@@ -51,6 +51,7 @@ Zu den Einheiten: Das SI-Einheitensystem (auch MKS-System) geht von der Masse al
 
 Kräfte, die von außen vorgegeben sind (Gewichte, Nutzlasten, Wind, Schnee), heißen *Lasten*. Kräfte, die sich erst als Antwort auf diese Lasten an Stützen, Lagern und Verbindungen einstellen, heißen *Reaktionen*, später *Bindungskräfte* oder *Lagerkräfte*. Eine wichtige Lektion der Statik ist, dass man die Lasten kennt und die Reaktionen ausrechnet.
 
+#woche(6, [Reaktionsprinzip, Leistung], [68–82])
 == Das Reaktionsprinzip
 
 #satz[Reaktionsprinzip (Newton, actio = reactio)][
