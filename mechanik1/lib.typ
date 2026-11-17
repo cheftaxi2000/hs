@@ -90,14 +90,13 @@
 
 // ---------- Wochenmarken ----------
 #let woche(n, thema, seiten) = {
-  block(width: 100%, above: 1.6em, below: 0.9em, sticky: true, breakable: false, {
+  block(width: 100%, above: 1.8em, below: 1.1em, sticky: true, breakable: false, fill: black, radius: 3pt,
+    inset: (x: 12pt, y: 9pt), {
     [#metadata(n) <woche>]
-    line(length: 100%, stroke: 0.5pt)
-    v(-7pt)
-    grid(columns: (auto, 1fr, auto), column-gutter: 8pt,
-      box(fill: black, inset: (x: 6pt, y: 3pt), radius: 2pt, text(font: sans, size: 9pt, weight: "bold", fill: white)[Woche #n]),
-      align(horizon, text(font: sans, size: 9pt, weight: "bold", thema)),
-      align(horizon, text(size: 9pt)[Buch S. #seiten]))
+    grid(columns: (auto, 1fr, auto), column-gutter: 14pt, align: horizon,
+      text(font: sans, size: 20pt, weight: "bold", fill: white)[Woche #n],
+      text(font: sans, size: 11.5pt, weight: "bold", fill: white, thema),
+      text(font: sans, size: 10pt, fill: white)[Buch S. #seiten])
   })
 }
 #let ohnewoche(body) = block(width: 100%, above: 1.6em, below: 0.9em, sticky: true, {
@@ -127,7 +126,7 @@
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
         let ws = query(<woche>).filter(m => m.location().page() <= here().page())
-        let w = if ws.len() > 0 and ws.last().value != none { [Woche #ws.last().value] } else { [Mechanik 1] }
+        let w = if ws.len() > 0 and ws.last().value != none { box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9.5pt, weight: "bold", fill: white)[Woche #ws.last().value]) } else { [Mechanik 1] }
         text(size: 9pt)[#n#t #h(1fr) #w]
         v(-7pt); line(length: 100%, stroke: 0.5pt)
       }

@@ -56,7 +56,7 @@ Vektoren sind fett: $vv$, $vF$, $vom$. Ihr Betrag ist der gleiche Buchstabe norm
 
 === Wochenplan der Vorlesung
 
-Das Skript ist nach den Wochen der Vorlesung eingeteilt. Wo eine neue Woche beginnt, steht ein schwarzer Balken mit der Wochennummer; die Woche steht außerdem oben rechts auf jeder Seite.
+Das Skript ist nach den Wochen der Vorlesung eingeteilt. Wo eine neue Woche beginnt, steht ein breiter schwarzer Balken mit der Wochennummer; die Woche steht außerdem oben rechts auf jeder Seite.
 
 #set text(size: 9.5pt)
 #align(center, table(columns: (auto, auto, auto, auto), stroke: none, inset: (x: 6pt, y: 3pt), align: (center, left, left, left),
