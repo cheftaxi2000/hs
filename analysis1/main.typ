@@ -5,7 +5,7 @@
 #page(header: none, footer: none, margin: 0pt)[
   #image("figs/cover.svg", width: 100%)
   #pad(x: 2.6cm, top: 1.1cm)[
-    #text(font: sans, size: 13pt, weight: "bold", fill: rgb("#14335c"), tracking: 0.5pt)[Lernskript #h(0.6em) · #h(0.6em) Prüfungsvorbereitung]
+    #text(font: sans, size: 13pt, weight: "bold", fill: rgb("#0f3b36"), tracking: 0.5pt)[Lernskript #h(0.6em) · #h(0.6em) Prüfungsvorbereitung]
     #v(0.1cm)
     #text(font: sans, size: 46pt, weight: "bold")[Analysis I]
     #v(-0.55cm)
@@ -17,7 +17,7 @@
       Erweiterte Fassung eines PVK-Skripts zur Analysis I an der ETH Zürich. Gleicher Aufbau, gleiche Kapitelnummern und alle Beispiele der Vorlage, dazu Herleitungen, Anschauung, typische Fehler, Rezepte und Übungsaufgaben mit Lösungen.
     ]
     #v(0.2cm)
-    #text(size: 8.5pt, fill: luma(90))[Titelbild: die Taylorpolynome $P_1, P_3, dots, P_33$ von $sin x$ (Kapitel 5). Je höher der Grad, desto länger folgen sie der weissen Sinuskurve, bevor sie abbiegen.]
+    #text(size: 8.5pt, fill: luma(90))[Titelbild: die $n$-ten Einheitswurzeln für $n = 5, dots, 24$ (Kapitel 3). Verbindet man jede $k$-te Wurzel, entsteht das Sternpolygon ${n\/k}$; jede Farbe steht für ein $k$.]
   ]
 ]
 
