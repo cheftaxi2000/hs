@@ -1,5 +1,5 @@
 from plot import *
-from matplotlib.patches import Circle, Rectangle, Ellipse
+from matplotlib.patches import Circle, Rectangle, Ellipse, FancyBboxPatch
 import matplotlib.colors as mc
 
 # ---------- Lewis symbols period 2 ----------
@@ -44,7 +44,7 @@ s = Sketch(9.6, 6.9); u = 1.0
 for r_, row in enumerate(EN):
     for c_, (e, v) in enumerate(row):
         x = 0.4 + c_ * u if r_ else 0.4; y = 6.3 - r_ * u
-        s.ax.add_patch(Rectangle((x, y - u), u * 0.95, u * 0.95, fc=cmap((v - 0.7) / 3.3), ec="#999999", lw=0.4))
+        s.ax.add_patch(FancyBboxPatch((x + 0.09, y - u + 0.09), u * 0.93 - 0.18, u * 0.93 - 0.18, boxstyle="round,pad=0.09", fc=cmap((v - 0.7) / 3.3), ec="none"))
         s.text(x + u * 0.47, y - u * 0.35, e, ha="center", va="center", size=9)
         s.text(x + u * 0.47, y - u * 0.75, f"{v:.1f}", ha="center", va="center", size=7.5)
 s.arrow((7.75, 0.5), (7.75, 6.0), c=R, lw=1.1); s.text(7.9, 3.2, "increases\nupwards", size=7.5, c=R, va="center")

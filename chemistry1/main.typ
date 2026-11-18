@@ -3,7 +3,7 @@
 
 // ---------- cover ----------
 #page(header: none, footer: none, margin: 0pt)[
-  #image("figs/cover.png", width: 100%)
+  #image("figs/cover.jpg", width: 100%)
   #pad(x: 2.6cm, top: 0.5cm)[
     #text(font: sans, size: 46pt, weight: "bold")[Chemistry]
     #v(-0.35cm)

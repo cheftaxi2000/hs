@@ -5,22 +5,6 @@ def box(s, x, y, w, h, t, fc="#eef6fb", ec=B, size=8, bold=False):
     s.ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0.02,rounding_size=0.12", fc=fc, ec=ec, lw=0.8, zorder=3))
     s.ax.text(x, y, t, ha="center", va="center", fontsize=size, zorder=5, fontweight="bold" if bold else "normal")
 
-# ---------- classification of matter ----------
-s = Sketch(14, 6.2)
-box(s, 7, 5.6, 2.6, 0.7, "Matter", bold=True, fc="#f4f4f4", ec=INK)
-box(s, 3.6, 4.1, 3.6, 0.7, "Pure substance", fc=FILL_B, ec=B)
-box(s, 10.4, 4.1, 3.0, 0.7, "Mixture", fc=FILL_R, ec=R)
-for a, b in [((7, 5.25), (3.6, 4.45)), ((7, 5.25), (10.4, 4.45))]: s.seg(a, b, c=GREY, lw=0.8)
-box(s, 1.9, 2.5, 2.6, 0.7, "Element", fc=FILL_B, ec=B); box(s, 5.3, 2.5, 2.6, 0.7, "Compound", fc=FILL_B, ec=B)
-box(s, 8.8, 2.5, 2.9, 0.7, "Homogeneous", fc=FILL_R, ec=R); box(s, 12.1, 2.5, 2.9, 0.7, "Heterogeneous", fc=FILL_R, ec=R)
-for a, b in [((3.6, 3.75), (1.9, 2.85)), ((3.6, 3.75), (5.3, 2.85)), ((10.4, 3.75), (8.8, 2.85)), ((10.4, 3.75), (12.1, 2.85))]: s.seg(a, b, c=GREY, lw=0.8)
-for x, t in [(1.9, "one kind of atom\n$\\mathrm{O_2}$, Fe, He"), (5.3, "fixed ratio of elements\n$\\mathrm{H_2O}$, NaCl"),
-             (8.8, "uniform throughout\nair, mineral water"), (12.1, "not uniform\nmilk, granite, sand + water")]:
-    s.text(x, 1.95, t, ha="center", va="top", size=7.5, c="#444444")
-s.text(7, 4.2, "separate by\nphysical means", ha="center", va="center", size=7, c=GREY)
-s.ax.set_ylim(1.15, 6.2)
-s.save("c01_matter")
-
 # ---------- periodic table ----------
 EL = """H,,,,,,,,,,,,,,,,,He
 Li,Be,,,,,,,,,,,B,C,N,O,F,Ne
@@ -37,7 +21,7 @@ CM, CN, CMD = "#f1e3c8", "#d3eadf", "#e0d8ef"
 s = Sketch(16.4, 9.9); u = 0.86; x0, y0 = 0.75, 8.6
 rows = [r.split(",") for r in EL.split("\n")]
 def cell(x, y, t, fc, z=None):
-    s.ax.add_patch(plt.Rectangle((x, y), u * 0.94, u * 0.94, fc=fc, ec="#9a9a9a", lw=0.4, zorder=2))
+    s.ax.add_patch(FancyBboxPatch((x + 0.08, y + 0.08), u * 0.94 - 0.16, u * 0.94 - 0.16, boxstyle="round,pad=0.08", fc=fc, ec="none", lw=0, zorder=2))
     if z: s.ax.text(x + 0.06, y + u * 0.88, str(z), fontsize=4.6, va="top", ha="left", color="#555555", zorder=4)
     s.ax.text(x + u * 0.47, y + u * 0.40, t, fontsize=7.5, ha="center", va="center", zorder=4)
 Zs = {}; z = 0
@@ -64,7 +48,7 @@ s.text(x0 - 0.55, y0 - 4 * u, "period", ha="center", va="center", size=7, c="#55
 # legend
 for k, (fc, t) in enumerate([(CM, "metal"), (CMD, "metalloid"), (CN, "nonmetal")]):
     xx = x0 + 3.2 * u + k * 2.2
-    s.ax.add_patch(plt.Rectangle((xx, y0 - 1.25 * u), 0.35, 0.3, fc=fc, ec="#9a9a9a", lw=0.4)); s.text(xx + 0.45, y0 - 1.27 * u, t, size=7.5)
+    s.ax.add_patch(FancyBboxPatch((xx + 0.05, y0 - 1.25 * u + 0.05), 0.25, 0.2, boxstyle="round,pad=0.05", fc=fc, ec="none")); s.text(xx + 0.45, y0 - 1.27 * u, t, size=7.5)
 # block labels
 for t, c0, c1 in [("s-block", 0, 2), ("d-block (transition metals)", 2, 12), ("p-block", 12, 18)]:
     s.text(x0 + (c0 + c1) / 2 * u, y0 - 7.0 * u - 0.32, t, ha="center", va="top", size=7, c=B)
@@ -112,30 +96,6 @@ for x, t in [(1.3, "molecular\nformula"), (5.0, "structural\nformula"), (8.6, "p
     s.text(x, -0.05, t, ha="center", va="top", size=7.5, c="#444444")
 s.ax.set_ylim(-0.75, 3.4)
 s.save("c01_methane")
-
-# ---------- mole map ----------
-s = Sketch(14.5, 3.4)
-box(s, 2.0, 1.7, 2.8, 1.0, "mass $m$\n(g)", fc=FILL_G, ec=G)
-box(s, 7.25, 1.7, 2.8, 1.0, "amount $n$\n(mol)", fc=FILL_B, ec=B, bold=False)
-box(s, 12.5, 1.7, 2.8, 1.0, "number $N$\n(particles)", fc=FILL_R, ec=R)
-s.arrow((3.5, 1.95), (5.75, 1.95), c=INK); s.arrow((5.75, 1.45), (3.5, 1.45), c=INK)
-s.arrow((8.75, 1.95), (11.0, 1.95), c=INK); s.arrow((11.0, 1.45), (8.75, 1.45), c=INK)
-s.text(4.62, 2.05, "$\\div\\, M$", ha="center", size=9); s.text(4.62, 1.35, "$\\times\\, M$", ha="center", va="top", size=9)
-s.text(9.87, 2.05, "$\\times\\, N_A$", ha="center", size=9); s.text(9.87, 1.35, "$\\div\\, N_A$", ha="center", va="top", size=9)
-s.text(4.62, 0.45, "$M$ = molar mass (g/mol)", ha="center", size=7.5, c="#444444")
-s.text(9.87, 0.45, "$N_A = 6.022\\times10^{23}\\,\\mathrm{mol^{-1}}$", ha="center", size=7.5, c="#444444")
-s.save("c01_molemap")
-
-# ---------- stoichiometry road map ----------
-s = Sketch(15.6, 3.2)
-xs_ = [1.6, 5.3, 10.3, 14.0]
-box(s, xs_[0], 2.2, 2.5, 0.8, "grams of A", fc=FILL_G, ec=G); box(s, xs_[1], 2.2, 2.5, 0.8, "moles of A", fc=FILL_B, ec=B)
-box(s, xs_[2], 2.2, 2.5, 0.8, "moles of B", fc=FILL_B, ec=B); box(s, xs_[3], 2.2, 2.5, 0.8, "grams of B", fc=FILL_G, ec=G)
-s.arrow((2.9, 2.2), (4.0, 2.2)); s.arrow((6.6, 2.2), (9.0, 2.2), c=R, lw=1.4); s.arrow((11.6, 2.2), (12.7, 2.2))
-s.text(3.45, 1.55, "$\\div\\, M_A$", ha="center", va="top", size=8.5); s.text(13.15, 1.55, "$\\times\\, M_B$", ha="center", va="top", size=8.5)
-s.text(7.8, 1.55, "$\\times\\,\\dfrac{\\nu_B}{\\nu_A}$  (coefficients)", ha="center", va="top", size=8.5, c=R)
-s.text(7.8, 0.35, "the balanced equation is the only bridge between A and B", ha="center", size=7.5, c="#444444")
-s.save("c01_stoichmap")
 
 # ---------- H2 + O2 particle picture ----------
 s = Sketch(13.5, 3.0)

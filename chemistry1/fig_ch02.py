@@ -1,38 +1,6 @@
 from plot import *
 from matplotlib.patches import Circle, FancyBboxPatch, Rectangle
 
-# ---------- barometer and manometer ----------
-s = Sketch(12.5, 6.2)
-HG = "#b9c2cc"
-# barometer: dish + inverted tube
-s.ax.add_patch(Rectangle((0.6, 0.5), 3.6, 0.9, fc=HG, ec=INK, lw=0.8))
-s.seg((0.6, 1.6), (0.6, 0.5)); s.seg((4.2, 1.6), (4.2, 0.5))
-s.ax.add_patch(Rectangle((2.1, 0.9), 0.6, 3.6, fc=HG, ec="none"))
-s.ax.add_patch(Rectangle((2.1, 4.5), 0.6, 1.2, fc="white", ec="none"))
-s.seg((2.1, 0.9), (2.1, 5.7)); s.seg((2.7, 0.9), (2.7, 5.7)); s.seg((2.1, 5.7), (2.7, 5.7))
-s.text(2.4, 5.1, "vacuum", ha="center", va="center", size=6.5, c="#555555")
-s.arrow((3.3, 4.5), (3.3, 1.4), c=R); s.arrow((3.3, 1.4), (3.3, 4.5), c=R); s.text(3.45, 3.0, "$h = 760$ mm", c=R, size=8)
-for x in (0.9, 1.4, 3.6, 3.95): s.arrow((x, 2.6), (x, 1.5), c=B, lw=0.8)
-s.text(0.6, 2.75, "$P_{atm}$", c=B, size=8.5)
-s.text(2.4, 0.1, "barometer", ha="center", va="top", size=8)
-# manometer: bulb + U-tube open end
-bx = 7.0
-s.ax.add_patch(Circle((bx, 4.0), 0.95, fc=FILL_B, ec=INK, lw=0.8)); s.text(bx, 4.0, "gas\n$P_{gas}$", ha="center", va="center", size=8)
-s.seg((bx + 0.95, 4.15), (9.0, 4.15)); s.seg((bx + 0.95, 3.85), (8.7, 3.85))
-s.seg((9.0, 4.15), (9.0, 0.9)); s.seg((8.7, 3.85), (8.7, 1.2))
-s.seg((8.7, 1.2), (10.3, 1.2)); s.seg((9.0, 0.9), (10.6, 0.9))
-s.seg((10.3, 1.2), (10.3, 5.6)); s.seg((10.6, 0.9), (10.6, 5.6))
-s.ax.add_patch(Rectangle((8.7, 0.9), 1.9, 0.3, fc=HG, ec="none", zorder=0))
-s.ax.add_patch(Rectangle((8.7, 0.9), 0.3, 1.6, fc=HG, ec="none", zorder=0))
-s.ax.add_patch(Rectangle((10.3, 0.9), 0.3, 3.1, fc=HG, ec="none", zorder=0))
-s.hline = None
-s.seg((8.4, 2.5), (11.0, 2.5), c=GREY, lw=0.6, dash=(3, 2)); s.seg((10.1, 4.0), (11.0, 4.0), c=GREY, lw=0.6, dash=(3, 2))
-s.arrow((11.2, 2.5), (11.2, 4.0), c=R); s.arrow((11.2, 4.0), (11.2, 2.5), c=R); s.text(11.35, 3.2, "$h$", c=R)
-for x in (10.45,): s.arrow((x, 6.2), (x, 5.0), c=B, lw=0.8)
-s.text(10.6, 5.8, "$P_{atm}$", c=B, size=8.5)
-s.text(9.3, 0.1, "open-end manometer: $P_{gas}=P_{atm}+\\rho g h$", ha="center", va="top", size=8)
-s.save("c02_baro")
-
 # ---------- Boyle and Charles ----------
 p = Plot(6.4, 4.6, (0, 5.3), (0, 5.3), xt=[1, 2, 3, 4], yt=[1, 2, 3, 4], xl="$V$", yl="$P$")
 for k, c in [(2, B), (4, R)]:

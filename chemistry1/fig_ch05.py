@@ -2,22 +2,6 @@ from plot import *
 from matplotlib.patches import Circle, FancyBboxPatch, Rectangle
 from math import comb
 
-# ---------- free expansion ----------
-s = Sketch(13.0, 3.6); rng = np.random.default_rng(4)
-def flask(x0, y0, w, h):
-    s.ax.add_patch(FancyBboxPatch((x0, y0), w, h, boxstyle="round,pad=0.02,rounding_size=0.25", fc="white", ec=INK, lw=1.0, zorder=2))
-for X, both, lab in [(0.4, False, "before: gas left, vacuum right"), (7.0, True, "after: gas fills both flasks")]:
-    flask(X, 0.9, 2.4, 2.4); flask(X + 3.2, 0.9, 2.4, 2.4)
-    s.seg((X + 2.42, 2.1), (X + 3.18, 2.1), lw=3, c="#999999")
-    s.ax.add_patch(Circle((X + 2.8, 2.1), 0.14, fc="white" if both else INK, ec=INK, lw=0.8, zorder=5))
-    for k in range(18):
-        if both and k % 2: x = X + 3.4 + rng.uniform(0, 2.0)
-        else: x = X + 0.2 + rng.uniform(0, 2.0)
-        s.ax.add_patch(Circle((x, 1.1 + rng.uniform(0, 2.0)), 0.08, fc=B, ec="none", zorder=4))
-    s.text(X + 2.8, 0.55, lab, ha="center", va="top", size=8)
-s.arrow((6.05, 2.1), (6.85, 2.1), c=R, lw=1.4)
-s.save("c05_expansion")
-
 # ---------- microstates histogram (N = 10 molecules in two halves) ----------
 N = 10
 p = Plot(8.0, 4.6, (0, N + 1.8), (0, 275), xt=[k + 1 for k in range(N + 1)], xtl=[f"${k}$" for k in range(N + 1)], yt=[50, 100, 150, 200, 250], xl="", yl="$W$")
