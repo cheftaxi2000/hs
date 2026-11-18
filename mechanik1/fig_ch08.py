@@ -148,11 +148,11 @@ def leiter():
         A, B, C = P(x0, 1.6), P(x0 + 3.4, 1.6), P(x0 + 1.7, 4.9)
         f.beam(A, C, c=col, lw=2.6); f.beam(B, C, c=col, lw=2.6); f.hinge(C, 0.09)
         return A, B, C
-    A, B, C = ladder(0.6); f.ground(0.2, 4.4, 1.6); f.line((1.15, 2.8), (3.05, 2.8), lw=1.2)
+    A, B, C = ladder(0.6); f.ground(0.2, 4.4, 1.6); f.line(((A + C) / 2), ((B + C) / 2), lw=1.2)
     f.arrow(C + P(0, 1.0), C + P(0, 0.1), c=F, lw=1.6); f.text(C + P(0, 1.0), r"$\mathbfit{G}$", c=F, dx=0.4)
     f.text(A, "$A$", dx=-0.3, dy=0.3, size=9); f.text(B, "$B$", dx=0.3, dy=0.3, size=9); f.text(C, "$C$", dx=0.35, dy=-0.15, size=9)
     f.cap((2.3, 0.2), "System", size=8.5)
-    A, B, C = ladder(5.6, col=GREY); f.line((6.15, 2.8), (8.05, 2.8), c=GREY, lw=0.9)
+    A, B, C = ladder(5.6, col=GREY); f.line(((A + C) / 2), ((B + C) / 2), c=GREY, lw=0.9)
     f.arrow(C + P(0, 1.0), C + P(0, 0.1), c=F, lw=1.6); f.text(C + P(0, 1.0), r"$\mathbfit{G}$", c=F, dx=0.4)
     f.arrow(A - P(0, 0.9), A, c=F, lw=1.6); f.arrow(B - P(0, 0.9), B, c=F, lw=1.6)
     f.text(A - P(0.5, 0.5), r"$N_A$", c=F, size=9); f.text(B - P(-0.5, 0.5), r"$N_B$", c=F, size=9)
@@ -161,7 +161,7 @@ def leiter():
     A, B, C = P(11.4, 1.6), P(0, 0), P(13.1, 4.9)
     f.beam(A, C, lw=2.6)
     f.arrow(A - P(0, 0.9), A, c=F, lw=1.6); f.text(A - P(0.5, 0.5), r"$N_A$", c=F, size=9)
-    S1 = A + (C - A) * 0.30
+    S1 = A + (C - A) * 0.50
     f.arrow(S1, S1 + P(1.2, 0), c=F, lw=1.6); f.text(S1 + P(1.2, 0), "$S$", c=F, dx=0.3, size=9)
     f.arrow(C, C + P(1.0, 0), c=F, lw=1.6); f.arrow(C, C - P(0, 0.9), c=F, lw=1.6)
     f.text(C + P(1.0, 0), "$C_x$", c=F, dx=0.4, size=9); f.text(C - P(0, 0.9), "$C_y$", c=F, dx=0.4, dy=0.0, size=9); f.hinge(C, 0.09)
