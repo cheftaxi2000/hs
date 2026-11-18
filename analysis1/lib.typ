@@ -136,3 +136,4 @@
 #let artanh = math.op("artanh")
 #let Re = math.op("Re")
 #let Im = math.op("Im")
+#let alltag(body) = _blk([Im Alltag], body, fill: rgb("#fdf5ea"), stroke: 0.6pt + rgb("#c7741a"), col: rgb("#9a520c"))

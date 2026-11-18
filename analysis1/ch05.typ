@@ -28,6 +28,8 @@ Die Glieder gehen gegen $0$, aber zu langsam.]
 
 #fg("a05_harmonisch", [Partialsummen der harmonischen Reihe (rot) und von $sum 1\/k^2$ (grün). Die Glieder beider Reihen gehen gegen $0$, aber nur die zweite Reihe hat einen endlichen Wert.], w: 64%)
 
+#alltag[*Der Bücherstapel.* Wie weit kann ein Stapel gleicher Bücher (Länge 1) über eine Tischkante hinausragen, ohne zu kippen? Mit $n$ Büchern im besten Fall $1/2 (1 + 1/2 + 1/3 + dots + 1/n)$, also die halbe harmonische Reihe. Schon mit 4 Büchern ist das mehr als eine Buchlänge: Das oberste Buch schwebt ganz über dem Abgrund. Und weil die harmonische Reihe divergiert, ginge mit genug Büchern jeder Überhang, nur braucht man für 3 Buchlängen schon 227 Bücher.]
+
 === Geometrische Reihe
 
 #satz[Geometrische Reihe][
@@ -110,6 +112,8 @@ Der Fehler beim Abbrechen nach dem $n$-ten Glied ist höchstens so gross wie das
 
 #warum[Konvergenzradius aus dem Quotientenkriterium][Wende das Quotientenkriterium auf die Glieder $a_k (x - x_0)^k$ an: $display(|(a_(k+1)(x - x_0)^(k+1))/(a_k (x - x_0)^k)| -> |x - x_0| dot lim |a_(k+1)/a_k|)$. Konvergenz für Werte $< 1$, also $|x - x_0| < lim |a_k \/ a_(k+1)|$.]
 
+#intu[Man kann sich vorstellen, dass eine Potenzreihe um $x_0$ «nach aussen schaut», bis sie auf ein Hindernis stösst: eine Stelle, an der die Funktion unendlich wird oder nicht definiert ist. Weiter als bis zu diesem Hindernis kann sie nicht sehen, und zwar in alle Richtungen gleich weit. Deshalb ist der Konvergenzbereich symmetrisch um $x_0$, auch wenn die Funktion auf der einen Seite völlig harmlos wäre.]
+
 #bsp[Konvergenzradius][
   $display(sum_(k=0)^oo 3^k/(k + 1) x^k)$, also $a_k = 3^k\/(k+1)$, $x_0 = 0$.
   $ |a_k/a_(k+1)| = 3^k/(k + 1) dot (k + 2)/3^(k+1) = (k + 2)/(3(k + 1)) -> 1/3. $
@@ -144,6 +148,8 @@ $ P(0) = a_0, quad P'(0) = a_1, quad P''(0) = 2 a_2, quad P'''(0) = 3 dot 2 dot 
 Jeder Koeffizient bestimmt genau eine Ableitung im Entwicklungspunkt. Fordert man $P^((k))(0) = f^((k))(0)$, so folgt
 $ a_k = (f^((k))(0))/k!. $
 
+#intu[*Wo ist das Auto in einer Sekunde?* Kennst du nur den Ort, ist die beste Schätzung: am selben Ort ($P_0$). Kennst du auch die Geschwindigkeit $v$, schätzt du Ort $+ v t$ ($P_1$). Kennst du zusätzlich die Beschleunigung $a$, wird es Ort $+ v t + 1/2 a t^2$ ($P_2$), die Formel aus der Physik. Jede weitere Ableitung macht die Vorhersage genauer, und je weiter man in die Zukunft schaut, desto mehr Ableitungen braucht man. Genau das ist ein Taylorpolynom: eine Vorhersage aus dem, was man an einer einzigen Stelle über die Funktion weiss.]
+
 === Taylorpolynom
 
 #defn[Taylorpolynom vom Grad $n$ um $x_0$][
@@ -152,6 +158,12 @@ $ a_k = (f^((k))(0))/k!. $
 ]
 
 #fg("a05_exp", [$e^x$ und seine Taylorpolynome um $0$. Alle gehen durch $(0, 1)$, und jedes weitere Glied verbessert die Näherung.], w: 56%)
+
+#alltag[
+  - *Taschenrechner und Computer* können nur addieren und multiplizieren. Um $sin x$ oder $e^x$ zu berechnen, werten sie (nach geschickter Reduktion des Arguments) ein Polynom aus, das aus der Taylorreihe stammt.
+  - *Einstein und Newton:* Die Energie eines bewegten Körpers ist nach der Relativitätstheorie $E = m c^2 (1 - v^2\/c^2)^(-1\/2)$. Mit $(1 + x)^alpha approx 1 + alpha x$ wird daraus $E approx m c^2 + 1/2 m v^2$. Das zweite Glied ist die bekannte Bewegungsenergie: Newtons Physik ist das Taylorpolynom der Relativitätstheorie für kleine Geschwindigkeiten.
+  - *Gleichgewicht:* In der Nähe einer stabilen Lage ist jede Kraft ungefähr linear in der Auslenkung (das Taylorglied 1. Grades). Deshalb gilt das Hookesche Gesetz $F = -c x$ für fast jede Feder und jede Struktur, solange die Verformung klein ist.
+]
 
 #rezept[Taylorpolynom berechnen][
   + Ableitungen $f, f', f'', dots, f^((n))$ bestimmen.

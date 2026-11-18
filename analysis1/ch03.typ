@@ -16,6 +16,8 @@ Die Menge aller komplexen Zahlen heisst $CC$. Zwei komplexe Zahlen sind gleich, 
 
 #intu[Eine komplexe Zahl ist ein Punkt in der Ebene, der *Gaussschen Zahlenebene*: $x$ nach rechts, $y$ nach oben. Die reellen Zahlen sind die waagrechte Achse. $i$ liegt eine Einheit über der $0$. Man kann $z$ auch als Pfeil vom Ursprung zum Punkt $(x, y)$ sehen.]
 
+#alltag[Komplexe Zahlen sind kein Gedankenspiel, sondern Werkzeug: In der *Elektrotechnik* (wo man $j$ statt $i$ schreibt) rechnet man Wechselstromkreise mit komplexen Widerständen; eine Spule hat den Widerstand $j omega L$, ein Kondensator $1\/(j omega C)$. Ohne sie bräuchte man Differentialgleichungen, mit ihnen reicht das Ohmsche Gesetz. *Signalverarbeitung* (Handy, WLAN, MP3, JPEG), *Regelungstechnik* (Autopilot, Tempomat) und die *Quantenmechanik* sind ohne komplexe Zahlen nicht denkbar.]
+
 === Darstellungsformen
 
 #grid(columns: (1fr, 5.0cm), column-gutter: 12pt, align: horizon,
@@ -139,6 +141,8 @@ $r = |z|$ heisst *Betrag*, $phi = arg(z)$ *Argument* von $z$. Das Argument ist n
   image("figs/a03_mult.svg", width: 100%))
 ]
 
+#alltag[Eine Drehung um $90 degree$ in einem Grafikprogramm ist nichts anderes als die Multiplikation aller Punkte mit $i$; eine Drehung um den Winkel $alpha$ ist die Multiplikation mit $e^(i alpha)$. Im Stromnetz sind Strom und Spannung oft zeitlich gegeneinander verschoben (Phasenverschiebung); diese Verschiebung ist einfach das Argument einer komplexen Zahl.]
+
 === Division
 
 #formel[Division][
@@ -189,6 +193,8 @@ Sie liegen auf einem Kreis mit Radius $root(n, r)$ und bilden die Ecken eines re
 #warum[Woher kommen $n$ Lösungen?][
   Der Winkel von $z$ ist nicht eindeutig: $z = r e^(i phi) = r e^(i (phi + 2pi)) = r e^(i (phi + 4 pi)) = dots$ Beim Potenzieren mit $n$ werden Winkel mit $n$ multipliziert. Also führt jeder der Winkel $(phi + 2 pi k)\/n$ nach dem Potenzieren auf $phi + 2 pi k$, und das ist derselbe Punkt $z$. Für $k = 0, dots, n-1$ sind die Winkel $(phi + 2pi k)\/n$ verschieden (sie unterscheiden sich um $2pi\/n$), ab $k = n$ wiederholen sie sich.
 ]
+
+#alltag[*Drehstrom.* Die drei Phasen des Stromnetzes («Starkstrom» am Kochherd) sind um je $120 degree$ gegeneinander verschoben, genau wie die drei dritten Einheitswurzeln $1$, $e^(i 2pi\/3)$, $e^(i 4pi\/3)$. Ihre Summe ist $0$ (sie bilden ein gleichseitiges Dreieck um den Ursprung). Bei gleich belasteten Phasen fliesst deshalb im Neutralleiter kein Strom.]
 
 #rezept[Wurzeln einer komplexen Zahl][
   + $z$ in Exponentialform bringen: $r$ und $phi$ bestimmen (Quadrant beachten!).
@@ -263,6 +269,8 @@ $ p(z) = a_n (z - z_1)(z - z_2) dots (z - z_n). $]
 ]
 
 #merke[Folgerung: Ein reelles Polynom von *ungeradem* Grad hat mindestens eine *reelle* Nullstelle, weil die komplexen Nullstellen paarweise auftreten.]
+
+#alltag[Wie eine Brücke, ein Gebäude oder ein Auto schwingt, steht in den Nullstellen eines Polynoms (dem «charakteristischen Polynom» seiner Schwingungsgleichung). Der Imaginärteil einer Nullstelle ist die Schwingungsfrequenz, der Realteil sagt, ob die Schwingung abklingt (negativ) oder sich aufschaukelt (positiv). Ingenieure prüfen deshalb, dass alle Nullstellen in der linken Halbebene liegen. Dass sie paarweise konjugiert auftreten, kommt daher, dass die Koeffizienten (Massen, Federn, Dämpfer) reell sind.]
 
 #rezept[Alle Nullstellen eines Polynoms finden][
   + Ist eine komplexe Nullstelle $z_1$ gegeben, ist bei reellen Koeffizienten auch $overline(z_1)$ eine. Das Produkt $(z - z_1)(z - overline(z_1))$ ausrechnen (es ist reell).

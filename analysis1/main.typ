@@ -36,6 +36,7 @@ Die Vorlage dieses Skripts ist ein kompaktes PVK-Skript zur Analysis I: Formeln 
 
 Diese Fassung behält den Aufbau, die Kapitelnummern (in Klammern die Kapitel der Vorlesung) und alle Beispiele der Vorlage. Sie ergänzt, was beim Lernen fehlt:
 - *Anschauung* vor jeder Formel: Was bedeutet das, wie sieht es aus?
+- *Alltag:* Wo kommt das vor, im täglichen Leben und in der Technik?
 - *Herleitungen* in kleinen Schritten, wo sie beim Verstehen helfen.
 - *Rezepte* für die typischen Aufgabentypen und *typische Fehler*.
 - *Ausführlich gerechnete Beispiele*, bei denen jeder Umformungsschritt kommentiert ist.
@@ -53,6 +54,7 @@ Einige kleine Fehler der Vorlage sind korrigiert (zum Beispiel das Vorzeichen de
 #intu[Ein Bild oder ein Vergleich. Der schnellste Weg, eine Formel zu verstehen und zu behalten.]
 #warum[Herleitung][Warum die Formel so aussieht. Beim ersten Lesen darfst du überspringen, beim Lernen nicht.]
 #trick[Name][Ein Rechentrick, der in Prüfungen oft gebraucht wird.]
+#alltag[Wo die Mathematik ausserhalb des Hörsaals vorkommt: im Alltag, in der Technik, im Ingenieurberuf. Nicht prüfungsrelevant, aber es zeigt, wofür man das alles braucht.]
 #merke[Eine Folgerung oder ein Hinweis, der in Aufgaben den Unterschied macht.]
 #fehler[Was in Prüfungen immer wieder falsch gemacht wird.]
 #rezept[Aufgabentyp][Ein Vorgehen in Schritten.]

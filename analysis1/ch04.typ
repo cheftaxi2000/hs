@@ -28,6 +28,13 @@
   ],
   image("figs/a04_flaeche.svg", width: 100%))
 
+#alltag[
+  - Der *Stromzähler* integriert: Die Leistung $P(t)$ (in kW) ändert sich ständig, abgerechnet wird die Energie $integral P dif t$ in kWh.
+  - Ein *Fahrtenschreiber* zeichnet die Geschwindigkeit auf; der Weg ist das Integral darüber.
+  - Die *Wassermenge*, die durch ein Rohr fliesst, ist das Integral der Durchflussrate; der Regen eines Tages das Integral der Regenintensität.
+  Das Vorzeichen hat dabei eine Bedeutung: Fährst du zurück, ist $v < 0$, und das Integral gibt die Verschiebung, nicht die gefahrene Strecke.
+]
+
 #bsp[Integral ist nicht gleich Fläche][
   $integral_0^(2pi) sin x dif x = 0$, weil sich die positive und die negative Hälfte aufheben. Die Fläche zwischen Sinus und $x$-Achse ist dagegen
   $ integral_0^pi sin x dif x + |integral_pi^(2pi) sin x dif x| = 2 + 2 = 4. $
@@ -48,6 +55,8 @@ $ integral f(x) dif x = F(x) + C. $]
 #fg("a04_hauptsatz", [Warum Teil 1 gilt: Schiebt man die rechte Grenze von $x$ nach $x + h$, wächst die Fläche um einen schmalen Streifen der Fläche $approx f(x) h$. Also $(F(x + h) - F(x))\/h approx f(x)$, und für $h -> 0$ wird daraus $F'(x) = f(x)$.], w: 60%)
 
 #intu[Teil 1 sagt: Die Fläche wächst gerade so schnell, wie die Kurve hoch ist. Teil 2 ist die praktische Folgerung: Um eine Fläche zu berechnen, muss man keine Grenzwerte von Summen bilden, sondern nur eine Funktion finden, deren Ableitung $f$ ist. Integrieren ist «rückwärts ableiten».]
+
+#alltag[*Die Badewanne.* $f(t)$ ist die Menge Wasser pro Minute, die gerade einläuft, $F(t)$ die Wassermenge in der Wanne. Der Hauptsatz sagt: Die Wassermenge steigt genau so schnell, wie Wasser zufliesst, $F' = f$. Und wie viel Wasser zwischen zwei Zeitpunkten dazugekommen ist, ist der Unterschied der Füllstände $F(b) - F(a)$, egal wie der Zufluss dazwischen geschwankt hat.]
 
 #bsp[Hauptsatz am Beispiel][
   $f(t) = 3t^2$, $G(x) = integral_1^x 3t^2 dif t$. Eine Stammfunktion ist $t^3$, also
@@ -188,6 +197,8 @@ $ integral f(x) dif x = F(x) + C. $]
 
 #idee[Jede rationale Funktion $p(x)\/q(x)$ lässt sich integrieren. Der Weg: erst durch Polynomdivision den Grad des Zählers unter den des Nenners drücken, dann den Rest in einfache Brüche zerlegen, deren Integrale man kennt ($ln$, $arctan$, Potenzen).]
 
+#intu[Partialbruchzerlegung ist Bruchrechnen rückwärts. In der Schule rechnet man $1\/2 + 1\/3 = 5\/6$. Hier geht man den umgekehrten Weg: Gegeben ist ein komplizierter Bruch wie $5\/6$, gesucht sind die einfachen Brüche, aus denen er zusammengesetzt ist. Die Nenner der Bausteine sind die Faktoren des grossen Nenners, so wie $6 = 2 dot 3$.]
+
 #rezept[Partialbruchzerlegung][
   + *Grad prüfen.* Ist $deg p >= deg q$: Polynomdivision, $p\/q = "Polynom" + r\/q$ mit $deg r < deg q$.
   + *Nenner faktorisieren* in Linearfaktoren $(x - x_0)$ und nicht weiter zerlegbare quadratische Faktoren $(x^2 + p x + q)$ mit $p^2 - 4q < 0$.
@@ -261,6 +272,11 @@ $ integral f(x) dif x = F(x) + C. $]
 #formel[Fläche zwischen zwei Kurven][
   $ A = integral_a^b (g(x) - f(x)) dif x quad "mit" g >= f "auf" [a, b] $
   Die Grenzen sind meist die Schnittpunkte. Wechseln $f$ und $g$ die Rolle, muss man aufteilen.
+]
+
+#alltag[
+  - Die Fläche eines Grundstücks, das an einen Bach grenzt, misst ein Geometer mit genau dieser Formel: Bachufer als Funktion, Integral bis zur geraden Grundstücksgrenze.
+  - Die *Arbeit eines Motors* pro Takt ist die Fläche, die die Kurve im Druck-Volumen-Diagramm einschliesst. Je grösser die Fläche, desto mehr Arbeit.
 ]
 
 #bsp[Zwischen Gerade und Parabel][
@@ -348,6 +364,8 @@ Beispiel Ellipse: $integral_0^(2pi) a cos t dot b cos t dif t = pi a b$.]
   $ L = sqrt(5)/2 integral_0^1 e^(phi\/2) dif phi = sqrt(5)/2 [2 e^(phi\/2)]_0^1 = sqrt(5) (e^(1\/2) - 1) approx 1.45. $
 ]
 
+#alltag[Wie viel Kabel braucht eine Stromleitung zwischen zwei Masten, die 300 m auseinanderstehen und deren Kabel durchhängt? Die Bogenlänge der Kettenlinie $y = a cosh(x\/a)$; dank $1 + sinh^2 = cosh^2$ lässt sich das Integral exakt lösen. Auch ein Velocomputer misst eine Bogenlänge: Er zählt Radumdrehungen und multipliziert mit dem Umfang, egal wie kurvig der Weg ist.]
+
 #merke[Bogenlängen führen oft auf schwierige Integrale, weil die Wurzel stört. Aufgaben sind deshalb meist so gebaut, dass unter der Wurzel ein vollständiges Quadrat entsteht, z. B. $1 + sinh^2 = cosh^2$ oder $(a + b)^2$. Wenn sich die Wurzel nicht auflöst, nochmals rechnen!]
 
 === Volumen
@@ -364,6 +382,8 @@ Beispiel Ellipse: $integral_0^(2pi) a cos t dot b cos t dif t = pi a b$.]
 ]
 
 #intu[Bei der *Schalenmethode* zerlegt man in dünne Zylinderröhren statt in Scheiben. Eine Röhre im Abstand $x$ hat den Umfang $2 pi x$, die Höhe $f(x)$ und die Dicke $dif x$; aufgeschnitten und flach gelegt ist sie ein Quader mit Volumen $2 pi x f(x) dif x$.]
+
+#alltag[Johannes Kepler kam 1613 auf die Volumenrechnung mit dünnen Scheiben, weil ihn bei seiner Hochzeit ärgerte, wie grob die Weinhändler den Inhalt von Fässern schätzten. Heute rechnen so Ingenieure das Volumen von Tanks, Flaschen und Drehteilen. Ein Füllstandsanzeiger in einem liegenden zylindrischen Tank zeigt nicht linear an, weil das Volumen bis zur Höhe $h$ ein solches Integral ist.]
 
 #bsp[Rotationsvolumen][
   #grid(columns: (1fr, 4.4cm), column-gutter: 12pt, align: horizon,
@@ -400,6 +420,8 @@ $ V = integral_(z_1)^(z_2) F(z) dif z. $]
 
 #intu[Ein Bogenstück $dif s$ im Abstand $y$ von der Achse beschreibt beim Rotieren ein schmales Band mit Umfang $2 pi y$ und Breite $dif s$. Fläche: $2 pi y dif s$. Achtung: Man nimmt $dif s$ (die schräge Länge), nicht $dif x$. Mit $dif x$ würde man bei steilen Kurven viel zu wenig Fläche zählen.]
 
+#alltag[Die Mantelfläche braucht man, um zu wissen, wie viel Blech für einen Trichter, Stoff für einen Lampenschirm oder Lack für eine Kuppel nötig ist. Wichtig ist hier, dass man $dif s$ und nicht $dif x$ nimmt; ein Lackierer, der mit $dif x$ rechnet, kauft bei steilen Formen viel zu wenig Farbe.]
+
 #bsp[Oberfläche][
   #grid(columns: (1fr, 5.2cm), column-gutter: 12pt, align: horizon,
   [
@@ -427,6 +449,8 @@ $ V = integral_(z_1)^(z_2) F(z) dif z. $]
   intu[Der Schwerpunkt ist der gewichtete Mittelwert der Positionen. Jeder senkrechte Streifen bei $x$ hat die Fläche $H(x) dif x$ und zählt mit diesem Gewicht. Die Formel für $y_S$ unter einem Graphen kommt daher, dass der Schwerpunkt eines senkrechten Streifens auf halber Höhe $f\/2$ liegt: $integral (f\/2) dot f dif x$.],
   image("figs/a04_schwerpunkt.svg", width: 100%))
 
+#alltag[Ein Gegenstand kippt, sobald sein Schwerpunkt über die Kante hinausragt. Deshalb sind Lastwagen mit hoher Ladung in Kurven gefährlich, und deshalb liegt bei Schiffen schwerer Ballast unten. Ein Lineal kannst du auf dem Finger balancieren, wenn der Finger genau unter dem Schwerpunkt ist. In der Mechanik ersetzt man das Gewicht eines ganzen Körpers durch eine einzige Kraft im Schwerpunkt; dafür braucht man diese Integrale.]
+
 #bsp[Halbkreisscheibe][
   $f(x) = sqrt(r^2 - x^2)$ auf $[-r, r]$, $A = pi r^2\/2$. Aus Symmetrie $x_S = 0$.
   $ y_S = 1/(2A) integral_(-r)^r (r^2 - x^2) dif x = 1/(pi r^2) [r^2 x - x^3/3]_(-r)^r = 1/(pi r^2) dot (4 r^3)/3 = (4 r)/(3 pi) approx 0.42 r. $
@@ -441,6 +465,12 @@ $ V = integral_(z_1)^(z_2) F(z) dif z. $]
 ]
 
 #intu[Wie der Schwerpunkt, nur werden die Flächenstücke mit dem *Quadrat* des Abstands gewichtet. Weit entfernte Teile zählen deshalb besonders viel. Darum sind Doppel-T-Träger so steif: Das Material sitzt möglichst weit weg von der Mitte.]
+
+#alltag[
+  - *Eiskunstläuferin:* Zieht sie bei der Pirouette die Arme an, bringt sie Masse näher an die Drehachse, das Trägheitsmoment sinkt, und weil der Drehimpuls $Theta omega$ gleich bleibt, dreht sie schneller.
+  - *Stahlträger* haben die Form eines I (Doppel-T): Fast das ganze Material sitzt oben und unten, weit weg von der Mitte. Weil der Abstand im Quadrat zählt, ist der Träger damit viel steifer als ein Vollprofil gleichen Gewichts.
+  - Ein *Schwungrad* hat seine Masse aussen im Kranz, um möglichst viel Energie $1/2 Theta omega^2$ zu speichern.
+]
 
 #bsp[Rechteck][
   Rechteck der Breite $b$ und Höhe $h$, Unterkante auf der $x$-Achse. $B(y) = b$:
@@ -526,6 +556,11 @@ Existiert der Grenzwert, heisst das Integral *konvergent*, sonst *divergent*. An
   - $integral_1^oo e^(-x^2) dif x$: Für $x >= 1$ ist $x^2 >= x$, also $e^(-x^2) <= e^(-x)$, und $integral_1^oo e^(-x) dif x = 1\/e$ konvergiert. Also konvergiert auch $integral_1^oo e^(-x^2) dif x$, obwohl man es nicht elementar ausrechnen kann.
   - $integral_1^oo (2 + sin x)/x dif x$: Es ist $(2 + sin x)\/x >= 1\/x$, und $integral_1^oo 1\/x$ divergiert. Also divergiert auch dieses Integral.
   - $integral_1^oo 1/(x^2 + x) dif x$: $1\/(x^2 + x) <= 1\/x^2$, konvergent. (Mit Partialbrüchen findet man den Wert $ln 2$.)
+]
+
+#alltag[
+  - *Fluchtgeschwindigkeit.* Um eine Rakete der Masse $m$ aus dem Schwerefeld der Erde zu bringen, muss man gegen die Kraft $G M m\/r^2$ bis ins Unendliche Arbeit leisten. Das Integral $integral_R^oo G M m\/r^2 dif r = G M m\/R$ ist endlich (vom Typ $1\/x^2$). Setzt man diese Arbeit gleich der Bewegungsenergie $1/2 m v^2$, folgt $v = sqrt(2 G M\/R) approx 11.2$ km/s. Wer so schnell startet, kommt nie zurück.
+  - *Gabriels Horn.* Dreht man $y = 1\/x$ für $x >= 1$ um die $x$-Achse, entsteht ein unendlich langes Horn mit dem endlichen Volumen $pi integral_1^oo 1\/x^2 dif x = pi$, aber unendlicher Oberfläche (sie ist grösser als $2 pi integral_1^oo 1\/x dif x$). Man könnte es also mit Farbe füllen, aber nicht anmalen.
 ]
 
 #aufgaben()

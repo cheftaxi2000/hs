@@ -25,7 +25,7 @@ p.save("a02_betrag")
 f = lambda x: 1 / np.sqrt(1 + x)
 p = Plot(6.0, 4.2, (-0.9, 3.0), (-0.2, 2.6), xt=[1, 2], yt=[1, 2])
 p.f(f, -0.85, 3.0, c=B); p.text(0.6, 1.5, r"$f(x)=\frac{1}{\sqrt{1+x}}$", c=B)
-p.f(lambda x: 1 - x / 2, c=R, label=r"$t(x)=1-\frac{x}{2}$", lab_at=1.7, lab_off=(0.05, 0.05))
+p.f(lambda x: 1 - x / 2, -0.9, 2.4, c=R, label=r"$t(x)=1-\frac{x}{2}$", lab_at=1.7, lab_off=(0.05, 0.05))
 p.dot((0, 1))
 p.save("a02_tangente")
 
@@ -45,7 +45,7 @@ p.text(2.9, f(2.9) - 0.7, "Sekante", c=R, size=8, va="top"); p.text(x0 + 0.5, f(
 p.save("a02_mws")
 
 p = Plot(6.0, 4.8, (0, 4.6), (0, 17.5), xt=[1, 2.5, 4], xtl=["1", "", "4"], yt=[5, 10, 15])
-p.f(lambda x: x ** 2, c=B)
+p.f(lambda x: x ** 2, 0, 4.15, c=B)
 p.seg((1, 1), (4, 16), c=R, lw=1.0); p.f(lambda x: 6.25 + 5 * (x - 2.5), 1.4, 3.6, c=G, dash=(5, 3), lw=1.0)
 p.dot((1, 1)); p.dot((4, 16)); p.dot((2.5, 6.25), c=G); p.vline(2.5, a=0, b=6.25)
 p.text(2.5, -0.4, r"$x_0=2{,}5$", ha="center", va="top", c=G, size=8)
@@ -54,7 +54,7 @@ p.save("a02_mws_bsp")
 
 # Extremalaufgabe
 p = Plot(6.2, 4.4, (-0.9, 1.4), (-0.6, 0.65), xt=[-0.5, 0.5, 1], yt=[-0.4], ytl=["$-0{,}4$"])
-p.f(lambda x: x ** 3 - x, -0.9, 1.4, c=GREY, lw=0.7, dash=(3, 2))
+p.f(lambda x: x ** 3 - x, -0.9, 1.15, c=GREY, lw=0.7, dash=(3, 2))
 p.f(lambda x: x ** 3 - x, -0.5, 1, c=B, lw=1.6)
 p.dot((-0.5, 0.375), c=R); p.dot((1, 0)); p.dot((1 / np.sqrt(3), -2 / (3 * np.sqrt(3))), c=G)
 p.text(-0.45, 0.42, r"globales Max. $\frac{3}{8}$", c=R, size=7.5); p.text(0.58, -0.43, "globales Min.", c=G, size=7.5, ha="center", va="top")
@@ -98,13 +98,13 @@ p.text(x0 + a / 2, y0 + 0.05, "$a$", c=R, ha="center"); p.text(x0 + 0.07, y0 + b
 p.vline(x0, a=0, b=y0 - 0.0); p.text(x0, -0.08, "$x_0$", ha="center", va="top"); p.text(-0.08, y0, "$y_0$", ha="right", va="center"); p.hline(y0, a=0, b=x0 - a)
 p.save("a02_ellipse")
 p = Plot(5.6, 4.4, (-4.2, 4.2), (-3.2, 3.2), xt=[], yt=[], equal=True, grid=False)
-a, b = 1.4, 1.0; s = np.linspace(-1.9, 1.9, 300)
+a, b = 1.4, 1.0; s = np.linspace(-1.75, 1.75, 300)
 for sg in (1, -1): p.curve(sg * a * np.cosh(s), b * np.sinh(s))
 p.f(lambda x: b / a * x, c=GREY, dash=(4, 3), lw=0.7); p.f(lambda x: -b / a * x, c=GREY, dash=(4, 3), lw=0.7)
 p.dot((a, 0)); p.dot((0, b), c=GREY); p.text(a + 0.1, -0.12, "$(a,0)$", va="top", size=8); p.text(0.12, b + 0.05, "$(0,b)$", size=8, c=GREY)
 p.text(3.9, 3.0, r"$y=\frac{b}{a}x$", c=GREY, ha="right", va="top", size=8)
 p.save("a02_hyperbel")
-p = Plot(14.5, 4.6, (-0.3, 4 * np.pi + 0.5), (-0.4, 3.9), xt=[np.pi, 2 * np.pi, 3 * np.pi, 4 * np.pi], xtl=[r"$\pi a$", r"$2\pi a$", r"$3\pi a$", r"$4\pi a$"], yt=[1, 2], ytl=["$a$", "$2a$"], equal=True)
+p = Plot(14.5, 4.9, (-1.3, 4 * np.pi + 1.4), (-0.85, 3.9), xt=[np.pi, 2 * np.pi, 3 * np.pi, 4 * np.pi], xtl=[r"$\pi a$", r"$2\pi a$", r"$3\pi a$", r"$4\pi a$"], yt=[1, 2], ytl=["$a$", "$2a$"], equal=True)
 tt = np.linspace(0, 4 * np.pi, 800)
 for bb, c, lab in [(1.0, B, "gewöhnlich $b=a$"), (0.5, G, "verkürzt $b<a$"), (1.6, R, "verlängert $b>a$")]:
     p.curve(tt - bb * np.sin(tt), 1 - bb * np.cos(tt), c=c, lw=1.2 if bb == 1 else 0.9)
@@ -118,7 +118,7 @@ p.save("a02_zykloide")
 
 # Tangente und Normale an Parameterkurve
 p = Plot(6.0, 4.4, (-0.3, 4.4), (-0.3, 3.4), xt=[], yt=[], equal=True, grid=False)
-tt = np.linspace(-0.2, 3.6, 300); X = tt; Y = 0.25 * tt ** 2 + 0.3 * np.sin(2 * tt) + 0.4
+tt = np.linspace(-0.2, 3.3, 300); X = tt; Y = 0.25 * tt ** 2 + 0.3 * np.sin(2 * tt) + 0.4
 p.curve(X, Y)
 t0 = 1.6; x0, y0 = t0, 0.25 * t0 ** 2 + 0.3 * np.sin(2 * t0) + 0.4; dx, dy = 1, 0.5 * t0 + 0.6 * np.cos(2 * t0)
 L = np.hypot(dx, dy); ux, uy = dx / L, dy / L
@@ -132,7 +132,7 @@ p.save("a02_tangnorm")
 # Krümmungskreise
 p = Plot(7.2, 4.4, (-2.4, 2.6), (-0.4, 3.2), xt=[], yt=[], equal=True, grid=False)
 g = lambda x: 0.5 * x ** 2
-p.f(g, -2.4, 2.6, c=B, clip=False)
+p.f(g, -2.4, 2.4, c=B, clip=False)
 for x0, c in [(0.0, R), (1.0, G)]:
     d1, d2 = x0, 1.0; k = d2 / (1 + d1 ** 2) ** 1.5; r = 1 / k
     n = np.array([-d1, 1]) / np.hypot(d1, 1); M = np.array([x0, g(x0)]) + r * n
@@ -143,7 +143,7 @@ p.text(0.12, 0.45, r"$r=\frac{1}{k}$ klein", c=R, size=7.5); p.text(1.15, 0.35, 
 p.save("a02_kruemmung")
 
 # Evolute der Ellipse
-p = Plot(6.4, 4.6, (-3.0, 3.0), (-2.0, 2.0), xt=[], yt=[], equal=True, grid=False)
+p = Plot(6.4, 6.3, (-3.0, 3.0), (-3.1, 3.1), xt=[], yt=[], equal=True, grid=False)
 a, b = 2.5, 1.5
 p.curve(a * np.cos(t), b * np.sin(t), c=B)
 e = (a ** 2 - b ** 2)
@@ -151,5 +151,5 @@ p.curve(e / a * np.cos(t) ** 3, -e / b * np.sin(t) ** 3, c=R)
 t0 = 0.5; P0 = np.array([a * np.cos(t0), b * np.sin(t0)]); E0 = np.array([e / a * np.cos(t0) ** 3, -e / b * np.sin(t0) ** 3])
 r = np.linalg.norm(P0 - E0); p.curve(E0[0] + r * np.cos(t), E0[1] + r * np.sin(t), c=G, lw=0.7, dash=(4, 2))
 p.seg(P0, E0, c=G, lw=0.7); p.dot(P0); p.dot(E0, c=R)
-p.text(2.6, 1.3, "Kurve", c=B, size=8); p.text(0.15, 1.05, "Evolute", c=R, size=8); p.text(-2.0, -1.9, "Krümmungskreis", c=G, size=8, va="top")
+p.text(2.6, 1.3, "Kurve", c=B, size=8); p.text(0.35, 1.95, "Evolute", c=R, size=8); p.text(-2.0, -1.9, "Krümmungskreis", c=G, size=8, va="top")
 p.save("a02_evolute")

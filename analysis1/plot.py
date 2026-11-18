@@ -83,8 +83,9 @@ class Plot:
         y = np.array(y, float)
         if clip:
             span = s.ylim[1] - s.ylim[0]
-            y[(y > s.ylim[1] + 0.05 * span) | (y < s.ylim[0] - 0.05 * span)] = np.nan
+            y[(y > s.ylim[1]) | (y < s.ylim[0])] = np.nan
         ln, = s.ax.plot(x, y, color=c, lw=lw, zorder=z, solid_capstyle="round")
+        s._chk(x, y)
         if dash: ln.set_dashes(dash)
         if label is not None and lab_at is not None:
             dx, dy = s.cm2d(*lab_off)
@@ -93,6 +94,7 @@ class Plot:
 
     def curve(s, x, y, c=B, lw=1.3, dash=None, z=4):
         ln, = s.ax.plot(x, y, color=c, lw=lw, zorder=z, solid_capstyle="round", solid_joinstyle="round")
+        if hasattr(s, "_chk"): s._chk(x, y)
         if dash: ln.set_dashes(dash)
         return ln
 
@@ -129,7 +131,15 @@ class Plot:
     def text(s, x, y, t, c=INK, ha="left", va="bottom", size=8.5, z=8, **kw):
         s.ax.text(x, y, t, color=c, ha=ha, va=va, fontsize=size, zorder=z, path_effects=HALO, **kw)
 
+    def _chk(s, x, y):
+        x = np.asarray(x, float); y = np.asarray(y, float); m = np.isfinite(x) & np.isfinite(y)
+        if not m.any(): return
+        xl, yl = s.ax.get_xlim(), s.ax.get_ylim()
+        out = (x[m] < xl[0] - 1e-9) | (x[m] > xl[1] + 1e-9) | (y[m] < yl[0] - 1e-9) | (y[m] > yl[1] + 1e-9)
+        if out.any(): s._clipped = getattr(s, "_clipped", 0) + 1
+
     def save(s, name):
+        if getattr(s, "_clipped", 0): print("CLIP", name, s._clipped)
         s.fig.savefig(os.path.join(OUT, name + ".svg"), format="svg", bbox_inches="tight", pad_inches=0.03)
         s.fig.savefig(os.path.join(PNG, name + ".png"), dpi=130, bbox_inches="tight", pad_inches=0.03)
         plt.close(s.fig)

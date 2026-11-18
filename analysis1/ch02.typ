@@ -23,6 +23,13 @@
 - *Physikalisch:* die momentane Änderungsrate. Ist $s(t)$ der Ort, dann ist $s'(t)$ die Momentangeschwindigkeit.
 - *Als Näherung:* In der Nähe von $x_0$ ist $f(x_0 + h) approx f(x_0) + f'(x_0) h$. Ein kleiner Schritt $h$ im Input ändert den Output um etwa $f'(x_0)$-mal so viel.]
 
+#alltag[
+  - Der *Tacho* zeigt die Ableitung des zurückgelegten Weges nach der Zeit, die Durchschnittsgeschwindigkeit dagegen einen Differenzenquotienten.
+  - Ein Strassenschild «12 % Steigung» gibt $f'$ an: 12 m Höhe auf 100 m horizontale Strecke.
+  - *Beschleunigung* ist die Ableitung der Geschwindigkeit, *Leistung* die Ableitung der Energie, *Strom* die Ableitung der Ladung.
+  - In der Wirtschaft heisst die Ableitung «Grenz-»: Grenzkosten sind die Kosten des nächsten produzierten Stücks.
+]
+
 #bsp[Ableitung aus der Definition: $f(x) = x^2$][
   $ (f(x + h) - f(x))/h = ((x + h)^2 - x^2)/h = (2 x h + h^2)/h = 2x + h quad stretch(->)_(h -> 0) quad 2x. $
   Also $(x^2)' = 2x$. Der entscheidende Schritt: Erst kürzen, _dann_ $h -> 0$ setzen. Direktes Einsetzen gäbe $0\/0$.
@@ -53,6 +60,8 @@
 #warum[Produktregel als Rechteck][
   Stell dir $g dot h$ als Fläche eines Rechtecks mit Seiten $g$ und $h$ vor. Wachsen die Seiten um $Delta g$ und $Delta h$, kommen zwei Streifen dazu, $Delta g dot h$ und $g dot Delta h$, und ein winziges Eckstück $Delta g dot Delta h$. Teilt man durch $Delta x$ und lässt $Delta x -> 0$ gehen, verschwindet das Eckstück (es ist «doppelt klein»), und es bleibt $g' h + g h'$.
 ]
+
+#intu[*Kettenregel als Zahnräder.* Dreht sich Rad A dreimal so schnell wie Rad B, und B doppelt so schnell wie Rad C, dann dreht sich A sechsmal so schnell wie C. Änderungsraten in einer Kette multiplizieren sich. Genau das sagt $(dif f)/(dif x) = (dif f)/(dif u) dot (dif u)/(dif x)$: Wie stark reagiert $f$ auf $u$, mal wie stark reagiert $u$ auf $x$.]
 
 #rezept[Kettenregel sicher anwenden][
   + Erkenne die *äussere* Funktion $g$ (was zuletzt gerechnet wird) und die *innere* $h$ (was in $g$ eingesetzt wird).
@@ -121,6 +130,12 @@
 
 #merke[Die Linearisierung ist das Taylorpolynom 1. Grades (Kapitel 5). Wichtige Näherungen für kleine $x$: $sin x approx x$, $cos x approx 1$, $e^x approx 1 + x$, $ln(1 + x) approx x$, $(1 + x)^r approx 1 + r x$.]
 
+#alltag[
+  - *Pendeluhr.* Für kleine Auslenkungen ist $sin phi approx phi$; nur deshalb hat ein Pendel die einfache Periode $T = 2 pi sqrt(L\/g)$, unabhängig von der Auslenkung. Bei grossen Ausschlägen geht die Uhr falsch.
+  - *Kopfrechnen.* $sqrt(101) approx 10 + 1\/(2 dot 10) = 10.05$ (exakt: $10.0499$). Die Tangente von $sqrt(x)$ bei $x_0 = 100$.
+  - Fast jede Formel aus der Physik, die «linear» ist (Hooke, Ohm, Wärmeausdehnung), ist in Wahrheit eine Linearisierung, die nur für kleine Änderungen gilt.
+]
+
 === Fehlerrechnung
 
 #idee[Misst man eine Grösse $x$ mit einem kleinen Fehler $dif x$, wie gross ist dann der Fehler einer daraus berechneten Grösse $f(x)$? Antwort mit der Linearisierung: Der Fehler wird mit der Steigung $f'(x)$ multipliziert.]
@@ -136,6 +151,8 @@
   $ (dif V)/V = (2 pi r dif r)/(pi r^2) = 2 (dif r)/r = 2 dot 1 % = 2 %. $
 ]
 
+#alltag[*Pizza.* Eine Pizza mit 33 cm statt 30 cm Durchmesser hat 10 % mehr Durchmesser, aber etwa 20 % mehr Pizza (exakt 21 %), denn die Fläche geht mit $d^2$. Ebenso in der Technik: Misst man den Durchmesser einer Welle mit 1 % Fehler, ist ihre berechnete Querschnittsfläche um 2 % unsicher, und ihr Widerstand gegen Verdrehen (geht mit $d^4$) sogar um 4 %.]
+
 === Mittelwertsatz
 
 #satz[Mittelwertsatz][Ist $f$ stetig auf $[a, b]$ und differenzierbar auf $(a, b)$, dann gibt es mindestens ein $x_0 in (a, b)$ mit
@@ -144,6 +161,8 @@ $ f'(x_0) = (f(b) - f(a))/(b - a). $]
 #fg("a02_mws", [Irgendwo zwischen $a$ und $b$ ist die Tangente (grün) parallel zur Sekante (rot).], w: 55%)
 
 #intu[Fährst du in einer Stunde 100 km, dann zeigt der Tacho irgendwann während der Fahrt genau 100 km/h. Die Durchschnittsgeschwindigkeit wird mindestens einmal als Momentangeschwindigkeit erreicht.]
+
+#alltag[*Abschnittskontrolle (Section Control).* In der Schweiz und in Österreich messen Kameras die Zeit, die ein Auto für eine mehrere Kilometer lange Strecke braucht. Wer 10 km in 5 Minuten fährt, hat einen Durchschnitt von 120 km/h. Gemessen wurde die momentane Geschwindigkeit nie, aber nach dem Mittelwertsatz war das Auto mindestens in einem Moment genau 120 km/h schnell. Die Busse ist also mathematisch begründet.]
 
 #bsp[Mittelwertsatz für $f(x) = x^2$ auf $[1, 4]$][
   #grid(columns: (1fr, 5.6cm), column-gutter: 12pt, align: horizon,
@@ -253,6 +272,12 @@ sofern der rechte Grenzwert existiert. Das gilt auch für $a = plus.minus oo$ un
   *Ergebnis:* $h = 1\/(pi r^2) = 2 r$. Die optimale Dose ist so hoch wie breit.
 ]
 
+#alltag[
+  - Echte Konservendosen sind oft höher als breit, weil Deckel und Boden aus dickerem Blech sind und gefalzt werden; das ändert die Zielfunktion. Die Methode bleibt dieselbe.
+  - *Bienenwaben* sind sechseckig, weil Sechsecke unter allen Zerlegungen der Ebene in gleich grosse Zellen den kleinsten Umfang haben: am wenigsten Wachs für den meisten Platz.
+  - *Licht* nimmt zwischen zwei Punkten den zeitlich kürzesten Weg (Fermat). Minimiert man die Laufzeit mit der Ableitung, folgt das Brechungsgesetz. Ein Rettungsschwimmer, der am Strand schneller rennt als er schwimmt, sollte genau so «gebrochen» zum Ertrinkenden laufen.
+]
+
 #rezept[Textaufgabe zur Optimierung][
   + Skizze, Variablen benennen.
   + Zielfunktion aufschreiben (was soll minimal/maximal sein?).
@@ -279,6 +304,11 @@ sofern der rechte Grenzwert existiert. Das gilt auch für $a = plus.minus oo$ un
 #intu[Stell dir vor, du fährst mit dem Velo von links nach rechts über den Graphen. $f'' > 0$: Du lenkst nach links (Linkskurve, konvex). $f'' < 0$: Du lenkst nach rechts (konkav). Am Wendepunkt wechselst du die Lenkrichtung. Und $f'' > 0$ an einer Stelle mit $f' = 0$ heisst: Du bist unten in einer Schale, also beim Minimum.]
 
 #merke[Ist $f'(xi) = f''(xi) = 0$, entscheidet $f''(xi) = 0$ nichts. Dann hilft der *Vorzeichenwechsel von $f'$*: Wechselt $f'$ in $xi$ von $+$ nach $-$, ist es ein Maximum, von $-$ nach $+$ ein Minimum, ohne Wechsel kein Extremum. Beispiel: $x^4$ hat bei $0$ ein Minimum, obwohl $f''(0) = 0$. Der Vorzeichentest funktioniert immer und ist oft schneller als die zweite Ableitung.]
+
+#alltag[
+  - *Konkav im Alltag:* das erste Stück Schokolade macht glücklicher als das fünfte. Ökonomen nennen das abnehmenden Grenznutzen: Der Nutzen wächst, aber immer langsamer ($f' > 0$, $f'' < 0$).
+  - *Wendepunkt einer Epidemie:* Die Gesamtzahl der Fälle wächst zuerst immer schneller (konvex). Am Wendepunkt sind die täglichen Neuansteckungen ($f'$) maximal; danach wächst die Gesamtzahl zwar weiter, aber langsamer. Deshalb schaute man in der Pandemie so genau auf den Wendepunkt.
+]
 
 #rezept[Vollständige Kurvendiskussion][
   + Definitionsbereich, Symmetrie (gerade/ungerade), Periodizität.
@@ -329,6 +359,8 @@ Man schreibt $f(x) = o(g(x))$ und sagt: $f$ wächst langsamer als $g$.]
 #formel[Regeln für $x -> oo$][
   $ ln x = o(x^a) quad (a > 0), wide x^a = o(e^x), wide x^a = o(x^b) quad (a < b), wide e^(a x) = o(e^(b x)) quad (a < b) $
 ]
+
+#alltag[*Laufzeit von Programmen.* Informatiker beschreiben Algorithmen mit $O$: Ein einfaches Sortierverfahren braucht $O(n^2)$ Schritte, ein gutes $O(n log n)$. Bei einer Million Einträgen sind das $10^(12)$ gegen etwa $2 dot 10^7$ Schritte; bei einer Milliarde Schritten pro Sekunde 17 Minuten gegen 0.02 Sekunden. Und exponentielles Wachstum ist der Grund, warum lange Passwörter sicher sind: Jedes zusätzliche Zeichen multipliziert die Zahl der Möglichkeiten, die ein Angreifer durchprobieren muss.]
 
 #bsp[Grössenordnungen ordnen][
   Ordne nach Wachstum für $x -> oo$:
@@ -416,6 +448,12 @@ Man schreibt $f(x) = o(g(x))$ und sagt: $f$ wächst langsamer als $g$.]
 
 #fg("a02_zykloide", [Die drei Zykloiden. Der Mittelpunkt des Rades bewegt sich mit $a t$ nach rechts, der Punkt dreht sich um den Mittelpunkt: daher $a t - b sin t$.], w: 100%)
 
+#alltag[
+  - *Ellipse:* Planeten bewegen sich auf Ellipsen um die Sonne (Kepler). Ein Schall- oder Lichtstrahl aus einem Brennpunkt wird an der Ellipse in den anderen Brennpunkt reflektiert; das nutzen Flüstergewölbe und die Medizin, um Nierensteine mit Stosswellen zu zertrümmern.
+  - *Hyperbel:* Kühltürme von Kraftwerken sind Rotationshyperboloide (stabil und aus geraden Stäben baubar). Und wer die Laufzeitdifferenz eines Signals zu zwei Sendern misst, weiss, dass er auf einer Hyperbel steht; so funktionierte Funkortung vor GPS.
+  - *Zykloide:* Ein Velo-Reflektor in der Speiche zeichnet nachts eine verkürzte Zykloide. Die umgedrehte Zykloide ist die *schnellste Rutschbahn* zwischen zwei Punkten (Brachistochrone), schneller als die gerade Linie.
+]
+
 #formel[Kurven in Polarkoordinaten][
   Oft ist eine Kurve als Abstand $r$ in Abhängigkeit vom Winkel $phi$ gegeben, $r = r(phi)$. Das ist eine spezielle Parameterdarstellung mit Parameter $phi$:
   $ vr(phi) = vec(r(phi) cos phi, r(phi) sin phi). $
@@ -462,6 +500,11 @@ $ "Radius:" quad rho = 1/(|k(t)|), wide "Mittelpunkt:" quad vec(M)(t) = vr(t) + 
   Ein Kreis hat überall dieselbe Krümmung $1\/R$, und sein Krümmungskreis ist er selbst.
 
   *Parabel* $y = x^2\/2$: $f' = x$, $f'' = 1$, also $k(x) = 1\/(1 + x^2)^(3\/2)$. Am Scheitel $k(0) = 1$ (Krümmungsradius $1$), bei $x = 1$ nur noch $k = 2^(-3\/2) approx 0.35$.
+]
+
+#alltag[
+  - Wer mit dem Auto mit Geschwindigkeit $v$ durch eine Kurve mit Krümmung $k$ fährt, spürt die Querbeschleunigung $a = v^2 k = v^2\/rho$. Deshalb sind Autobahnausfahrten so geplant, dass die Krümmung nicht plötzlich springt.
+  - Strassen und Bahngleise gehen deshalb nie direkt von einer Geraden ($k = 0$) in einen Kreis ($k = 1\/R$) über, sondern über eine *Klothoide*, deren Krümmung linear mit der Bogenlänge wächst. Am Steuer heisst das: Man dreht das Lenkrad gleichmässig ein. Aus demselben Grund sind Achterbahn-Loopings keine Kreise.
 ]
 
 #defn[Evolute][Die Kurve, auf der die Mittelpunkte aller Krümmungskreise liegen:

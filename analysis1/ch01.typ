@@ -44,6 +44,8 @@ Die Folge $(s_n)$ der Partialsummen heisst *Reihe*. Existiert $lim_(n -> oo) s_n
   image("figs/a01_geomquadrat.svg", width: 100%))
 ]
 
+#alltag[*Achilles und die Schildkröte.* Der griechische Philosoph Zenon behauptete, Achilles könne eine Schildkröte mit Vorsprung nie einholen: Bis er an ihrem Startpunkt ist, ist sie schon ein Stück weiter, bis er dort ist, wieder ein Stück, und so unendlich oft. Die Auflösung ist eine konvergente Reihe. Läuft Achilles zehnmal so schnell und hat die Schildkröte 10 m Vorsprung, braucht er für die unendlich vielen Teilstrecken $10 + 1 + 0.1 + dots = 10\/(1 - 0.1) approx 11.1$ m. Unendlich viele Schritte, aber eine endliche Strecke und eine endliche Zeit.]
+
 === Monotonie und Beschränktheit
 
 #defn[Monotonie einer Folge][
@@ -73,6 +75,8 @@ Man schreibt $lim_(n -> oo) a_n = L$ oder $a_n -> L$. Eine Folge ohne Grenzwert 
 #fg("a01_epsilon", [Der $epsilon$-Schlauch. Wie schmal man den grünen Streifen um $L$ auch wählt, ab einer Stelle $N$ liegen alle weiteren Glieder darin (rot). Davor (blau) darf die Folge machen, was sie will.], w: 88%)
 
 #intu[Stell dir ein Spiel vor. Dein Gegner nennt eine Toleranz $epsilon$, etwa $0.001$. Du musst eine Stelle $N$ angeben, ab der _alle_ Glieder in den Streifen $(L - epsilon, L + epsilon)$ fallen. Konvergenz heisst: Du gewinnst dieses Spiel für jedes $epsilon$, das der Gegner nennt. Je kleiner $epsilon$, desto grösser wird in der Regel dein $N$.]
+
+#alltag[Die $epsilon$-Definition ist genau das, was in jeder technischen Zeichnung steht: «Bohrung $10 plus.minus 0.01$ mm». Der Kunde gibt die Toleranz $epsilon$ vor, und die Fertigung muss zeigen, dass sie ab einem bestimmten Punkt (nach dem Einfahren der Maschine, also ab $N$) jedes Teil innerhalb dieser Toleranz liefert. Ein Prozess «konvergiert», wenn er jede noch so enge Toleranz irgendwann einhalten kann.]
 
 #bsp[Nachweis mit $epsilon$: $a_n = 1\/n -> 0$][
   Gegeben sei $epsilon > 0$. Wir wollen $|1\/n - 0| = 1\/n < epsilon$. Das gilt genau dann, wenn $n > 1\/epsilon$. Wähle also $N$ als eine natürliche Zahl grösser als $1 \/ epsilon$. Für $epsilon = 0.001$ ist das $N = 1001$. Damit ist $1\/n -> 0$ bewiesen.
@@ -170,6 +174,8 @@ Jede Spalte ergibt dasselbe, nämlich $a_1 + a_n$ (geht man oben einen Schritt n
   Kontrolle: $6 + 9 + 12 + 15 = 42$. #h(1fr)
 ]
 
+#alltag[Arithmetische Folgen sind alles, was jeden Tag (Monat, Stockwerk) um denselben Betrag wächst: ein Sparplan mit fixem Betrag ohne Zins, die Höhe der Stufen einer Treppe, ein Stapel Rohre oder Baumstämme, bei dem jede Lage ein Stück weniger hat. Wie viele Stämme liegen in einem Stapel mit 12 unten und 1 oben? $12 dot (12 + 1)\/2 = 78$.]
+
 === Geometrische Folgen und Reihen
 
 #defn[Geometrische Folge][Der Quotient benachbarter Glieder ist konstant, $a_(n+1) = q dot a_n$. Explizit $a_n = a_1 q^(n-1)$ (oder $a_n = a_0 q^n$, wenn man bei $n = 0$ zu zählen beginnt).]
@@ -193,6 +199,12 @@ Jede Spalte ergibt dasselbe, nämlich $a_1 + a_n$ (geht man oben einen Schritt n
   Probe mit der Formel für $s_4$: $24 (1 - 1\/16)\/(1\/2) = 48 dot 15\/16 = 45$. #h(1fr)
 ]
 
+#alltag[
+  - *Springender Ball.* Ein Ball fällt aus 2 m Höhe und springt jedes Mal auf 60 % der vorherigen Höhe zurück. Welche Strecke legt er insgesamt zurück? Herunter 2 m, dann jeweils hinauf und wieder hinunter: $2 + 2 (1.2 + 0.72 + dots) = 2 + 2 dot 1.2\/(1 - 0.6) = 8$ m. Unendlich viele Sprünge, aber nur 8 m.
+  - *Medikamentenspiegel.* Wer täglich 100 mg eines Medikaments nimmt, von dem der Körper pro Tag die Hälfte abbaut, hat nach der $n$-ten Dosis $100 (1 + 1\/2 + 1\/4 + dots + 1\/2^(n-1))$ mg im Körper. Der Spiegel steigt nicht endlos, sondern nähert sich $100\/(1 - 1\/2) = 200$ mg. Genau so legt man Dosierungen fest.
+  - *Zinseszins und Leasing.* Raten, Renten und Kredite werden mit der Formel $a_1 (1 - q^n)\/(1 - q)$ berechnet; $q$ ist dort der Zinsfaktor $1 + p$.
+]
+
 #formel[Weitere nützliche Summen][
   $ sum_(k=1)^n k^2 = (n(n+1)(2n+1))/6, wide sum_(k=1)^n k^3 = ((n(n+1))/2)^2 = (sum_(k=1)^n k)^2. $
 ]
@@ -206,6 +218,8 @@ Jede Spalte ergibt dasselbe, nämlich $a_1 + a_n$ (geht man oben einen Schritt n
 #defn[Funktion][Eine *Funktion* $f: A -> B$, $x |-> f(x)$ ordnet jedem Element $x$ der Menge $A$ *genau ein* Element $f(x)$ der Menge $B$ zu.
 - *Definitionsbereich* $D$: alle $x$, die man einsetzen darf.
 - *Wertebereich* $W$ (Bild): alle Werte $f(x)$, die tatsächlich herauskommen.]
+
+#intu[Eine Funktion ist wie ein Getränkeautomat: Du drückst eine Taste ($x$) und bekommst ein Getränk ($f(x)$). Eine Taste darf nie zwei verschiedene Getränke liefern, sonst wäre der Automat kaputt. Zwei Tasten dürfen aber dasselbe Getränk liefern, und manche Getränke im Sortiment gibt es vielleicht gar nicht zu kaufen. Der Definitionsbereich sind die Tasten, die funktionieren; der Wertebereich die Getränke, die tatsächlich herauskommen.]
 
 #fg("a01_abbildung", [Eine Funktion. Von jedem $x in D$ geht genau ein Pfeil aus. Zwei Pfeile dürfen im selben Ziel enden ($b$ und $c$), und nicht jedes Element der Zielmenge muss getroffen werden ($3$).], w: 62%)
 
@@ -316,6 +330,8 @@ An Nullstellen des Nenners entstehen *Polstellen* (der Graph schiesst nach $plus
 
 #trick[Additionstheoreme nicht auswendig lernen][Wer $e^(i x) = cos x + i sin x$ kennt, kann sie jederzeit herleiten: $e^(i(x+y)) = e^(i x) e^(i y)$ ausmultiplizieren und Real- und Imaginärteil vergleichen. Das kommt in Kapitel 3.]
 
+#alltag[Sinus und Kosinus beschreiben alles, was schwingt oder sich dreht: Der Strom aus der Steckdose ist $230 sqrt(2) sin(2 pi dot 50 t)$ Volt; ein Ton ist eine Schwingung des Luftdrucks (der Kammerton a hat 440 Schwingungen pro Sekunde); die Höhe eines Punktes auf einem Riesenrad, Ebbe und Flut, die Tageslänge über das Jahr. Jede periodische Bewegung lässt sich aus Sinus- und Kosinusschwingungen zusammensetzen (Fourier), und darauf beruhen MP3 und JPEG.]
+
 ==== Hyperbolische Funktionen
 
 $ sinh x = (e^x - e^(-x))/2, quad cosh x = (e^x + e^(-x))/2, quad tanh x = (sinh x)/(cosh x). $
@@ -329,6 +345,8 @@ $ sinh x = (e^x - e^(-x))/2, quad cosh x = (e^x + e^(-x))/2, quad tanh x = (sinh
     $cosh$ ist gerade und hat sein Minimum $1$ bei $x = 0$. Er beschreibt die Form einer durchhängenden Kette (Kettenlinie). $sinh$ ist ungerade und streng wachsend. $tanh$ läuft von $-1$ nach $1$.
   ],
   image("figs/a01_hyp.svg", width: 100%))
+
+#alltag[Eine Kette, ein Stromkabel zwischen zwei Masten oder ein Seilbahnseil hängt *nicht* als Parabel durch, sondern als Kosinus hyperbolicus, $y = a cosh(x\/a)$, die *Kettenlinie*. Dreht man die Form um, erhält man einen Bogen, in dem nur Druck und keine Biegung herrscht. Deshalb hat der Gateway Arch in St. Louis diese Form, und Gaudí hat seine Gewölbe mit hängenden Ketten entworfen.]
 
 #formel[Identitäten der hyperbolischen Funktionen][
   #table(columns: (1fr, 1fr), stroke: none, inset: (x: 4pt, y: 3pt),
@@ -359,6 +377,12 @@ Der natürliche Logarithmus $ln$ ist die Umkehrfunktion von $e^x$: $e^(ln x) = x
     ]
     $e^x$ ist überall positiv und wächst schneller als jede Potenz. $ln x$ existiert nur für $x > 0$ und wächst langsamer als jede Potenz. Die Graphen sind Spiegelbilder an $y = x$.
   ])
+
+#alltag[
+  - *Exponentielles Wachstum und Zerfall:* Bakterien, die sich alle 20 Minuten teilen; Zinseszins; radioaktiver Zerfall (C-14 hat eine Halbwertszeit von 5730 Jahren, daraus bestimmt man das Alter von Funden); ein heisser Kaffee, dessen Temperaturunterschied zum Raum exponentiell abnimmt.
+  - *Logarithmische Skalen* machen riesige Bereiche handlich, weil der Logarithmus Faktoren in Summanden verwandelt: Dezibel (plus 10 dB heisst zehnfache Schallleistung, plus 3 dB etwa doppelte), der pH-Wert ($-log_(10)$ der Säurekonzentration), die Richterskala bei Erdbeben, Blendenzahlen bei Kameras.
+  - *Faustregel 72:* Bei $p$ % Zins verdoppelt sich ein Kapital in etwa $72\/p$ Jahren. Grund: Verdopplung heisst $(1 + p\/100)^n = 2$, also $n = ln 2 \/ ln(1 + p\/100) approx 0.69 dot 100\/p$, mit der Näherung $ln(1 + x) approx x$ aus Kapitel 2.
+]
 
 #fehler[$ln(x + y) != ln x + ln y$. Und $ln(x)^2$ ist mehrdeutig: $(ln x)^2 != ln(x^2) = 2 ln x$. Klammern setzen!]
 
@@ -493,6 +517,8 @@ Drei Dinge müssen also stimmen: Der Funktionswert existiert, der Grenzwert exis
 - *Hebbare Unstetigkeit:* der Grenzwert existiert, aber $f(c)$ fehlt oder ist falsch. Beispiel: $sin(x)\/x$ ist bei $0$ nicht definiert, aber mit $f(0) := 1$ wird die Funktion stetig.
 - *Oszillation:* $sin(1\/x)$ bei $0$ schwankt immer schneller, kein Grenzwert.]
 
+#alltag[Unstetige Funktionen sind im Alltag häufiger, als man denkt: Das Porto eines Briefes springt bei 100 g auf den nächsten Tarif, ein Billett kostet ab einer Zone mehr, ein Schalter ist an oder aus. Physikalische Grössen wie Temperatur, Ort oder Druck ändern sich dagegen stetig. Darum funktioniert der Zwischenwertsatz in der Natur so gut.]
+
 === Was stetige Funktionen können
 
 #satz[Zwischenwertsatz][Ist $f$ stetig auf $[a, b]$ und liegt $c$ zwischen $f(a)$ und $f(b)$, dann gibt es (mindestens) ein $x in [a, b]$ mit $f(x) = c$.
@@ -503,6 +529,11 @@ Spezialfall *Nullstellensatz*: Haben $f(a)$ und $f(b)$ verschiedene Vorzeichen, 
 
 #bsp[Existenz einer Lösung][
   Hat $x^5 + x = 1$ eine reelle Lösung? Setze $f(x) = x^5 + x - 1$. Es ist $f(0) = -1 < 0$ und $f(1) = 1 > 0$. $f$ ist stetig (Polynom), also gibt es nach dem Nullstellensatz ein $x in (0, 1)$ mit $f(x) = 0$. Da $f'(x) = 5x^4 + 1 > 0$, ist $f$ streng wachsend, und die Lösung ist sogar eindeutig.
+]
+
+#alltag[
+  - *Der wackelnde Tisch.* Ein Tisch mit vier gleich langen Beinen wackelt auf unebenem Boden. Dreht man ihn um seine Mitte, steht er irgendwann (spätestens nach einer Vierteldrehung) auf allen vier Beinen. Der Grund ist der Zwischenwertsatz: Man betrachtet, wie weit ein Bein über dem Boden schwebt, als stetige Funktion des Drehwinkels; diese wechselt beim Drehen das Vorzeichen, also hat sie dazwischen eine Nullstelle.
+  - *Die Bergwanderung.* Du steigst am Samstag von 8 bis 16 Uhr auf einen Berg und am Sonntag auf demselben Weg von 8 bis 16 Uhr hinunter. Dann gibt es eine Uhrzeit, zu der du an beiden Tagen an genau derselben Stelle warst. (Stell dir beide Wanderungen gleichzeitig vor: Die beiden Personen müssen sich begegnen.)
 ]
 
 #satz[Satz vom Maximum und Minimum][Eine stetige Funktion auf einem *abgeschlossenen und beschränkten* Intervall $[a, b]$ nimmt dort ein Maximum und ein Minimum an.]
@@ -532,6 +563,8 @@ Spezialfall *Nullstellensatz*: Haben $f(a)$ und $f(b)$ verschiedene Vorzeichen, 
   image("figs/a01_t_sx.svg"), image("figs/a01_t_dx.svg"), image("figs/a01_t_dy.svg"), image("figs/a01_t_kw.svg")),
   caption: [Die sieben Transformationen am Beispiel $f(x) = 2x^3 - 3x^2 - 6x + 6$ (grau). Beim Kehrwert (unten rechts) entsteht an jeder Nullstelle von $f$ eine Polstelle, und wo $f$ gross ist, ist $1\/f$ nahe bei $0$.])
 
+#alltag[In der Audiotechnik sind das alltägliche Operationen an einem Signal $f(t)$: $d dot f(t)$ ist Lautstärke aufdrehen, $f(t - a)$ ist eine Verzögerung (Echo, Delay), $f(2t)$ spielt die Aufnahme doppelt so schnell ab (alles eine Oktave höher, der «Mickey-Mouse-Effekt»), $f(-t)$ spielt sie rückwärts ab. Auch die Umrechnung Celsius in Fahrenheit, $F = 1.8 C + 32$, ist eine Streckung mit anschliessender Verschiebung.]
+
 #bsp[Ausgeschrieben][
   Mit $f_1(x) = 2x^3 - 3x^2 - 6x + 6$:
   - $f_1(x + 2) = 2(x+2)^3 - 3(x+2)^2 - 6(x+2) + 6$: Überall $x$ durch $(x + 2)$ ersetzen, nicht nur beim ersten Term.
@@ -546,6 +579,11 @@ Spezialfall *Nullstellensatz*: Haben $f(a)$ und $f(b)$ verschiedene Vorzeichen, 
 == Injektiv, surjektiv, bijektiv
 
 #idee[Diese drei Wörter beantworten die Frage: Kann man eine Funktion rückgängig machen? Dazu muss jeder Output von genau einem Input kommen. «Injektiv» kümmert sich um «höchstens einer», «surjektiv» um «mindestens einer».]
+
+#intu[*Der Kinosaal.* Die Besucher sind $D$, die Sitzplätze $W$, und $f$ ordnet jedem Besucher seinen Platz zu.
+- *Injektiv:* Nie sitzen zwei Besucher auf demselben Platz.
+- *Surjektiv:* Kein Platz bleibt leer.
+- *Bijektiv:* ausverkauft, und jeder sitzt allein. Nur dann kann man umgekehrt von jedem Platz eindeutig auf seinen Besucher schliessen; das ist die Umkehrfunktion.]
 
 === Surjektiv
 
@@ -604,6 +642,8 @@ $ f^(-1)(f(x)) = x quad (forall x in D), wide f(f^(-1)(y)) = y quad (forall y in
 #merke[*Geometrisch* ist der Graph von $f^(-1)$ das Spiegelbild des Graphen von $f$ an der Winkelhalbierenden $y = x$. Liegt $(a, b)$ auf $f$, dann liegt $(b, a)$ auf $f^(-1)$. Definitions- und Wertebereich tauschen die Rollen.]
 
 #fehler[$f^(-1)(x)$ bedeutet die Umkehrfunktion, *nicht* $1\/f(x)$. Insbesondere ist $sin^(-1) x = arcsin x$, nicht $1\/sin x$.]
+
+#alltag[Jedes Messgerät benutzt eine Umkehrfunktion. Ein Temperatursensor liefert eine Spannung $U = f(T)$; angezeigt werden soll aber $T = f^(-1)(U)$. Das geht nur, wenn $f$ im Messbereich streng monoton ist, sonst gehörten zu einer Spannung zwei Temperaturen. Auch Verschlüsselung muss bijektiv sein, sonst kann man nicht eindeutig entschlüsseln. Passwörter speichert man dagegen absichtlich mit einer Funktion, die man praktisch nicht umkehren kann (Hashfunktion).]
 
 #rezept[Umkehrfunktion bestimmen][
   + *Bijektivität sicherstellen:* nötigenfalls $D$ einschränken (auf ein Intervall, auf dem $f$ streng monoton ist) und $W$ als Bild wählen.
@@ -674,6 +714,12 @@ Eine *vertikale Asymptote* $x = a$ liegt vor, wenn $f(x) -> plus.minus oo$ für 
   Der Rest $1\/(x+1)$ geht für $x -> plus.minus oo$ gegen $0$. Also ist $g(x) = x - 1$ eine *schiefe Asymptote*. Dazu kommt die vertikale Asymptote $x = -1$.
   #align(center, image("figs/a01_asymptote.svg", width: 60%))
   Das Vorzeichen des Rests sagt sogar, von welcher Seite sich der Graph anschmiegt: Für $x -> +oo$ ist $1\/(x+1) > 0$, der Graph liegt _über_ der Asymptote; für $x -> -oo$ darunter.
+]
+
+#alltag[
+  - *Fallschirmspringer:* Die Geschwindigkeit nähert sich der Endgeschwindigkeit (etwa 200 km/h ohne Schirm), bei der der Luftwiderstand das Gewicht aufhebt. Waagrechte Asymptote.
+  - *Kaffee:* Seine Temperatur nähert sich der Raumtemperatur, erreicht sie aber nie ganz.
+  - *Stückkosten:* Kostet eine Produktion $F$ Franken Fixkosten plus $c$ pro Stück, sind die Kosten pro Stück $F\/n + c$. Für grosse Stückzahlen nähern sie sich $c$, darunter kommt man nie.
 ]
 
 #merke[Auch nicht-rationale Funktionen haben Asymptoten: $e^x$ hat $y = 0$ für $x -> -oo$, $arctan x$ hat $y = plus.minus pi\/2$, $ln x$ hat die vertikale Asymptote $x = 0$. Allgemein findet man eine schiefe Asymptote $y = m x + b$ über $m = lim f(x)\/x$ und $b = lim (f(x) - m x)$.]
