@@ -4,20 +4,14 @@
 // ---------- Titel ----------
 #page(header: none, footer: none, margin: 0pt)[
   #image("figs/cover.svg", width: 100%)
-  #pad(x: 2.6cm, top: 1.1cm)[
-    #text(font: sans, size: 13pt, weight: "bold", fill: rgb("#0f3b36"), tracking: 0.5pt)[Lernskript #h(0.6em) · #h(0.6em) Prüfungsvorbereitung]
-    #v(0.1cm)
+  #pad(x: 2.6cm, top: 0.5cm)[
     #text(font: sans, size: 46pt, weight: "bold")[Analysis I]
-    #v(-0.55cm)
-    #text(font: sans, size: 17pt)[Ausführlich erklärt, mit Beispielen und Aufgaben]
-    #v(0.35cm)
+    #v(-0.35cm)
     #line(length: 100%, stroke: 0.8pt)
-    #v(0.15cm)
-    #text(size: 10pt)[
-      Erweiterte Fassung eines PVK-Skripts zur Analysis I an der ETH Zürich. Gleicher Aufbau, gleiche Kapitelnummern und alle Beispiele der Vorlage, dazu Herleitungen, Anschauung, typische Fehler, Rezepte und Übungsaufgaben mit Lösungen.
-    ]
     #v(0.2cm)
-    #text(size: 8.5pt, fill: luma(90))[Titelbild: die $n$-ten Einheitswurzeln für $n = 5, dots, 24$ (Kapitel 3). Verbindet man jede $k$-te Wurzel, entsteht das Sternpolygon ${n\/k}$; jede Farbe steht für ein $k$.]
+    #text(font: sans, size: 14pt)[Maximilian Prym]
+    #v(-0.15cm)
+    #text(font: sans, size: 12pt, fill: luma(80))[Herbstsemester 2025/26]
   ]
 ]
 

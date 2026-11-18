@@ -4,20 +4,14 @@
 // ---------- Titel ----------
 #page(header: none, footer: none, margin: 0pt)[
   #image("figs/cover.svg", width: 100%)
-  #pad(x: 2.6cm, top: 1.1cm)[
-    #text(font: sans, size: 13pt, weight: "bold", fill: rgb("#14335c"), tracking: 0.5pt)[Lernskript #h(0.6em) · #h(0.6em) nach Wochen der Vorlesung]
-    #v(0.1cm)
+  #pad(x: 2.6cm, top: 0.5cm)[
     #text(font: sans, size: 46pt, weight: "bold")[Mechanik 1]
-    #v(-0.55cm)
-    #text(font: sans, size: 17pt)[Kinematik und Statik, anschaulich erklärt]
-    #v(0.35cm)
+    #v(-0.35cm)
     #line(length: 100%, stroke: 0.8pt)
-    #v(0.15cm)
-    #text(size: 10pt)[
-      Begleitskript zum Lehrbuch _Sayir, Dual, Kaufmann, Mazza: Ingenieurmechanik 1 -- Grundlagen und Statik_ (Springer Vieweg). Gleicher Aufbau, gleiche Begriffe und Formeln, neu erklärt und neu gezeichnet, mit Aufgaben aus der Vorlesung.
-    ]
     #v(0.2cm)
-    #text(size: 8.5pt, fill: luma(90))[Titelbild: Bahnkurven der Punkte eines rollenden Rades (Kapitel 3). Die kräftige Linie ist die Zykloide eines Punktes auf dem Umfang.]
+    #text(font: sans, size: 14pt)[Maximilian Prym]
+    #v(-0.15cm)
+    #text(font: sans, size: 12pt, fill: luma(80))[Herbstsemester 2025/26]
   ]
 ]
 
