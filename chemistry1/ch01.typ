@@ -165,6 +165,8 @@ Atoms at the edges of the periodic table tend to gain or lose electrons until th
 
 Because an ionic solid is a huge 3D lattice and not a discrete molecule, we always write its *empirical formula*: NaCl means "Na and Cl in a 1:1 ratio", not a molecule of two atoms.
 
+#photo(("halite",), [Rock salt (halite, NaCl). The crystals are cubes because the ions are stacked in a cubic lattice: every #ce("Na^+") is surrounded by six #ce("Cl^-") and vice versa. The shape you can see with your eyes reflects the arrangement of the ions. #credit[James St. John, CC BY 2.0, Wikimedia Commons]], ht: 4.4cm)
+
 #recipe[writing the formula of an ionic compound][
   + Write the cation and the anion with their charges.
   + Choose the smallest whole-number subscripts that make the total charge zero. A quick way: the charge number of one ion becomes the subscript of the other ("crossing over"), then reduce.

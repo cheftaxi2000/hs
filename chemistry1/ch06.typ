@@ -66,6 +66,8 @@ Niels Bohr pictured the atom as a tiny solar system and made three postulates:
 
 #everyday[*Atomic light everywhere.* *Fireworks* and *flame tests* show line spectra: sodium burns yellow (589 nm), strontium red, copper green-blue, barium green. *Sodium street lamps* emit almost only the 589 nm line, which is why everything looks monochrome orange under them. *Neon signs* glow in the lines of neon. *Extreme ultraviolet (EUV) lithography* at 13.5 nm, produced by a tin plasma, is used to print the smallest transistors on today's computer chips; the ASML machines that do this cost hundreds of millions of francs each.]
 
+#photo(("h2tube", "flame_cu", "flame_na"), [Line spectra you can see. Left: hydrogen in a gas-discharge tube glows pink, the mixture of its red (656 nm) and blue-violet Balmer lines. Middle and right: flame tests. Copper colours a gas flame blue-green, sodium bright yellow (589 nm). Each element has its own fingerprint of colours because its electron energy levels are different. #credit[left: Heinrich Pniok, Free Art License; middle, right: Søren Wedel Nielsen, CC BY-SA 3.0; all Wikimedia Commons]], ht: 4.6cm)
+
 === Limits of the Bohr model
 
 Bohr's model gets the energy levels of hydrogen right, but it cannot explain *why* the orbits are stable, and it fails for every atom with more than one electron. The correct description requires quantum mechanics.

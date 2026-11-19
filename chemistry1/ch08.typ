@@ -92,6 +92,8 @@ The effects are *additive*: a large molecule can have more total dispersion attr
 
 #everyday[*Surface tension and wetting at work.* Water striders walk on water; soap bubbles exist; water rises in thin capillaries (which helps trees transport water and lets paper towels soak). Whether a liquid *wets* a surface depends on whether it is more attracted to the surface (adhesion) or to itself (cohesion): water wets clean glass but beads up on wax. *Gore-Tex* exploits this: its PTFE membrane has pores about 20 000 times smaller than a water drop, which cannot enter them because PTFE is not wetted by water, but 700 times larger than a water molecule, so water vapour (sweat) can escape. Lubrication, coating, painting, inkjet printing and 3D printing are all applied surface science.]
 
+#photo(("strider",), [A water strider stands on water. Its legs only dent the surface; surface tension carries its weight, like a trampoline. #credit[Tim McCormack, CC BY-SA 3.0, Wikimedia Commons]], ht: 4.6cm)
+
 === Vapour pressure
 
 #grid(columns: (1fr, 6.0cm), column-gutter: 12pt, align: horizon,
@@ -165,6 +167,8 @@ Transition temperatures depend on pressure. A *phase diagram* shows, in a $P$–
 *#ce("CO2") has its triple point above 1 atm* (5.1 atm, −57 °C). At 1 atm liquid #ce("CO2") cannot exist: dry ice *sublimes* directly at −78 °C. Its critical point (31 °C, 73 atm) is at mild conditions.]
 
 #everyday[*Supercritical #ce("CO2") at work.* Because #ce("CO2") becomes supercritical so easily, it is used to decaffeinate coffee, extract hop flavours, dry-clean clothes and as a "green" solvent replacing chlorinated ones. *Critical point drying* produces aerogels, the lightest solids known (99.8 % air): the solvent is removed by going around the critical point, so no liquid surface and no surface tension ever pull the delicate structure apart. Aerogels insulate Mars rovers and high-end building facades. Freeze-drying (instant coffee, vaccines) uses the other side of the diagram: ice sublimes at low pressure without passing through the liquid.]
+
+#photo(("dryice", "aerogel"), [Left: dry ice (solid #ce("CO2")) sublimes at −78 °C; in water it makes a cold fog of condensed water droplets. Right: a block of silica aerogel, made by supercritical drying, insulates a flower from a flame below. #credit[left: Christopher from Salem, CC BY-SA 2.0; right: NASA/JPL, public domain; both Wikimedia Commons]], ht: 4.6cm)
 
 #problems()
 

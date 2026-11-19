@@ -56,7 +56,7 @@ s.text(x0 + 10.3 * u, y0 - 9.8 * u - 0.1, "f-block: lanthanides (*) and actinide
 s.save("c01_ptable")
 
 # ---------- representations of methane ----------
-s = Sketch(15.6, 3.7)
+s = Sketch(16.5, 3.9)
 s.text(1.3, 1.8, "$\\mathrm{CH_4}$", ha="center", va="center", size=13)
 # structural formula
 cx, cy = 5.0, 1.85
@@ -79,22 +79,19 @@ for k in range(6):
     yy = cy - 0.25 - t_ * 0.7; xx = cx + 0.03
     s.seg((xx - L_ * 0.5, yy - 0.0), (xx + L_ * 0.5, yy), lw=0.8)
 s.text(cx + 0.02, cy - 1.32, "H", ha="center", va="center", size=11)
-# ball and stick
-cx, cy = 12.0, 1.75
-Hs = [(0, 1.15), (-1.05, -0.45), (0.85, -0.65), (0.25, -0.15)]
-for hx, hy in Hs[:3]: s.seg((cx, cy), (cx + hx, cy + hy), lw=2.2, c="#9a9a9a")
-s.seg((cx, cy), (cx + 0.55, cy + 0.15), lw=2.2, c="#b9b9b9")
-s.ax.add_patch(Circle((cx + 0.6, cy + 0.17), 0.24, fc="#e6e6e6", ec="#7a7a7a", lw=0.6, zorder=3))
-s.ax.add_patch(Circle((cx, cy), 0.42, fc="#3a3a3a", ec=INK, lw=0.6, zorder=4))
-for hx, hy in Hs[:3]: s.ax.add_patch(Circle((cx + hx, cy + hy), 0.28, fc="#f4f4f4", ec="#7a7a7a", lw=0.6, zorder=5))
-# space filling
-cx, cy = 14.6, 1.75
-s.ax.add_patch(Circle((cx + 0.35, cy + 0.12), 0.52, fc="#e6e6e6", ec="#7a7a7a", lw=0.6, zorder=2))
-s.ax.add_patch(Circle((cx, cy), 0.75, fc="#3a3a3a", ec=INK, lw=0.6, zorder=3))
-for hx, hy in [(0, 0.78), (-0.72, -0.35), (0.6, -0.5)]: s.ax.add_patch(Circle((cx + hx, cy + hy), 0.5, fc="#f4f4f4", ec="#7a7a7a", lw=0.6, zorder=4))
-for x, t in [(1.3, "molecular\nformula"), (5.0, "structural\nformula"), (8.6, "perspective\ndrawing"), (12.0, "ball-and-stick"), (14.6, "space-filling")]:
+# ball and stick / space filling (shaded 3D spheres)
+from mol3d import molecule, ball, rot
+TET = [(0, 0, 1), (0.943, 0, -0.333), (-0.471, 0.816, -0.333), (-0.471, -0.816, -0.333)]
+Rv = rot("x", -1.35) @ rot("z", 0.35)
+molecule(s.ax, 12.1, 1.75, TET, R=1.3, Rm=Rv, rc=0.38, rl=0.27, ccol="#3d4148", lcol="#e9ecef")
+# space filling: overlapping spheres sorted by depth
+cx, cy = 15.0, 1.75
+atoms = [(np.zeros(3), 0.78, "#3d4148")] + [(Rv @ np.array(v) * 0.72, 0.55, "#e9ecef") for v in TET]
+for p3, r, c in sorted(atoms, key=lambda a: a[0][2]):
+    ball(s.ax, cx + p3[0], cy + p3[1], r * (1 + 0.08 * p3[2]), c, z=10 + p3[2])
+for x, t in [(1.3, "molecular\nformula"), (5.0, "structural\nformula"), (8.6, "perspective\ndrawing"), (12.1, "ball-and-stick"), (15.0, "space-filling")]:
     s.text(x, -0.05, t, ha="center", va="top", size=7.5, c="#444444")
-s.ax.set_ylim(-0.75, 3.4)
+s.ax.set_xlim(0, 16.5); s.ax.set_ylim(-0.75, 3.6)
 s.save("c01_methane")
 
 # ---------- H2 + O2 particle picture ----------

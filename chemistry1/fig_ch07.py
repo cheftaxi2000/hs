@@ -51,61 +51,53 @@ s.arrow((7.75, 0.5), (7.75, 6.0), c=R, lw=1.1); s.text(7.9, 3.2, "increases\nupw
 s.arrow((1.5, 6.55), (7.4, 6.55), c=R, lw=1.1); s.text(4.4, 6.65, "increases to the right", ha="center", size=7.5, c=R)
 s.save("c07_EN")
 
-# ---------- 3D molecule drawing helper ----------
-def proj(v, az=0.35, el=0.25):
-    ca, sa, ce_, se = np.cos(az), np.sin(az), np.cos(el), np.sin(el)
-    x, y, z = v
-    x1 = ca * x - sa * y; y1 = sa * x + ca * y
-    return np.array([x1, ce_ * z - se * y1]), ce_ * y1 + se * z   # (2d, depth)
-def molecule(ax, cx, cy, ligs, lps=(), sc=0.9, cc="#555555", lc="#e06a5a"):
-    items = []
-    for v in ligs:
-        p2, d = proj(np.array(v) * sc); items.append((d, "L", p2))
-    for v in lps:
-        p2, d = proj(np.array(v) * sc * 0.75); items.append((d, "P", p2, v))
-    items.sort(key=lambda t: t[0])
-    def draw(it):
-        if it[1] == "L":
-            ax.plot([cx, cx + it[2][0]], [cy, cy + it[2][1]], color="#8a8a8a", lw=2.6, zorder=2 + (0 if it[0] > 0 else 6), solid_capstyle="round")
-            ax.add_patch(Circle((cx + it[2][0], cy + it[2][1]), 0.22, fc=lc, ec="#555555", lw=0.6, zorder=3 + (0 if it[0] > 0 else 6)))
-        else:
-            v = np.array(it[3]); p2 = it[2]; ang = np.degrees(np.arctan2(p2[1], p2[0]))
-            L = np.hypot(*p2)
-            ax.add_patch(Ellipse((cx + p2[0] * 0.62, cy + p2[1] * 0.62), max(L * 1.1, 0.35), 0.42, angle=ang, fc="#cfe0f2", ec=B, lw=0.6, alpha=0.85, zorder=2 + (0 if it[0] > 0 else 6)))
-    for it in items: draw(it)
-    ax.add_patch(Circle((cx, cy), 0.28, fc=cc, ec=INK, lw=0.6, zorder=5))
-t = np.radians
+# ---------- VSEPR shapes: shaded 3D renderings ----------
+from mol3d import molecule as mol3, rot as R3
 TET = [(0, 0, 1), (0.943, 0, -0.333), (-0.471, 0.816, -0.333), (-0.471, -0.816, -0.333)]
 TBP = [(0, 0, 1), (0, 0, -1), (1, 0, 0), (-0.5, 0.866, 0), (-0.5, -0.866, 0)]
 OCT = [(0, 0, 1), (0, 0, -1), (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0)]
 TRI = [(0, 0, 1), (0.866, 0, -0.5), (-0.866, 0, -0.5)]
 LIN = [(1, 0, 0), (-1, 0, 0)]
+V_up = R3("x", -1.30) @ R3("z", 0.42)      # z axis up, seen slightly from above
+V_tri = R3("x", -1.42) @ R3("z", 0.12)   # planar molecules (xz-plane) almost face-on
+V_tet = R3("x", -1.30) @ R3("z", 0.30)
+LC, CC, LPC = "#e8705f", "#4a4f57", "#5f97d8"
+
+def canvas(w, h):
+    fig = plt.figure(figsize=(w / 2.54, h / 2.54)); ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, w); ax.set_ylim(0, h); ax.set_aspect("equal"); ax.axis("off"); return fig, ax
+def finish(fig, ax, w, h, name):
+    ax.set_xlim(0, w); ax.set_ylim(0, h)
+    fig.savefig(os.path.join(OUT, name + ".svg"), format="svg", bbox_inches="tight", pad_inches=0.03)
+    fig.savefig(os.path.join(PNG, name + ".png"), dpi=130, bbox_inches="tight", pad_inches=0.03); plt.close(fig)
 
 # electron-domain geometries
-fig = plt.figure(figsize=(15.5 / 2.54, 3.6 / 2.54)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 15.5); ax.set_ylim(0, 3.6); ax.set_aspect("equal"); ax.axis("off")
-data = [(LIN, "2: linear", "180°"), (TRI, "3: trigonal planar", "120°"), (TET, "4: tetrahedral", "109.5°"), (TBP, "5: trigonal bipyramidal", "90°, 120°"), (OCT, "6: octahedral", "90°")]
-for k, (L, lab, ang) in enumerate(data):
+W_, H_ = 15.5, 4.4
+fig, ax = canvas(W_, H_)
+data = [(LIN, V_tri, "2: linear", "180°"), (TRI, V_tri, "3: trigonal planar", "120°"), (TET, V_tet, "4: tetrahedral", "109.5°"),
+        (TBP, V_up, "5: trigonal bipyramidal", "90°, 120°"), (OCT, V_up, "6: octahedral", "90°")]
+for k, (L, V, lab, ang) in enumerate(data):
     cx = 1.55 + k * 3.1
-    molecule(ax, cx, 2.05, L, sc=1.0)
-    ax.text(cx, 0.55, lab, ha="center", va="center", fontsize=7.5); ax.text(cx, 0.15, ang, ha="center", va="center", fontsize=7.5, color=R)
-fig.savefig(os.path.join(OUT, "c07_domains.svg"), format="svg", bbox_inches="tight", pad_inches=0.03); fig.savefig(os.path.join(PNG, "c07_domains.png"), dpi=130, bbox_inches="tight"); plt.close(fig)
+    mol3(ax, cx, 2.55, L, R=1.15, Rm=V, rc=0.33, rl=0.25, ccol=CC, lcol=LC)
+    ax.text(cx, 0.75, lab, ha="center", va="center", fontsize=7.5); ax.text(cx, 0.32, ang, ha="center", va="center", fontsize=7.5, color=R)
+finish(fig, ax, W_, H_, "c07_domains")
 
 # molecular geometries with lone pairs
-rows = [
-    [(TRI[:2] if False else [TRI[1], TRI[2]], [TRI[0]], "bent ($\\mathrm{SO_2}$)\n3 domains, 1 LP"),
-     (TET[1:], [TET[0]], "trigonal pyramidal ($\\mathrm{NH_3}$)\n4 domains, 1 LP"),
-     (TET[2:], TET[:2], "bent ($\\mathrm{H_2O}$)\n4 domains, 2 LP")],
-    [([TBP[0], TBP[1], TBP[3], TBP[4]], [TBP[2]], "seesaw ($\\mathrm{SF_4}$)\n5 domains, 1 LP"),
-     ([TBP[0], TBP[1], TBP[2]], [TBP[3], TBP[4]], "T-shaped ($\\mathrm{ClF_3}$)\n5 domains, 2 LP"),
-     (OCT[1:], [OCT[0]], "square pyramidal ($\\mathrm{BrF_5}$)\n6 domains, 1 LP"),
-     (OCT[2:], OCT[:2], "square planar ($\\mathrm{XeF_4}$)\n6 domains, 2 LP")]]
-fig = plt.figure(figsize=(15.5 / 2.54, 7.4 / 2.54)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 15.5); ax.set_ylim(0, 7.4); ax.set_aspect("equal"); ax.axis("off")
+W_, H_ = 15.5, 8.4
+fig, ax = canvas(W_, H_)
+rows = [[([TRI[1], TRI[2]], [TRI[0]], V_tri, "bent ($\\mathrm{SO_2}$)\n3 domains, 1 LP"),
+         (TET[1:], [TET[0]], V_tet, "trigonal pyramidal ($\\mathrm{NH_3}$)\n4 domains, 1 LP"),
+         ([(0.79, -0.62, 0), (-0.79, -0.62, 0)], [(0, 0.58, 0.81), (0, 0.58, -0.81)], R3("x", 0.12) @ R3("y", 0.62), "bent ($\\mathrm{H_2O}$)\n4 domains, 2 LP")],
+        [([TBP[0], TBP[1], TBP[3], TBP[4]], [TBP[2]], V_up, "seesaw ($\\mathrm{SF_4}$)\n5 domains, 1 LP"),
+         ([TBP[0], TBP[1], TBP[2]], [TBP[3], TBP[4]], V_up, "T-shaped ($\\mathrm{ClF_3}$)\n5 domains, 2 LP"),
+         (OCT[1:], [OCT[0]], V_up, "square pyramidal ($\\mathrm{BrF_5}$)\n6 domains, 1 LP"),
+         (OCT[2:], OCT[:2], V_up, "square planar ($\\mathrm{XeF_4}$)\n6 domains, 2 LP")]]
 for r_, row in enumerate(rows):
-    for k, (L, LP, lab) in enumerate(row):
-        cx = 1.95 + k * 3.85 if r_ else 2.6 + k * 5.15; cy = 5.6 - r_ * 3.7
-        molecule(ax, cx, cy, L, LP, sc=1.0)
-        ax.text(cx, cy - 1.55, lab, ha="center", va="center", fontsize=7.2)
-fig.savefig(os.path.join(OUT, "c07_shapes.svg"), format="svg", bbox_inches="tight", pad_inches=0.03); fig.savefig(os.path.join(PNG, "c07_shapes.png"), dpi=130, bbox_inches="tight"); plt.close(fig)
+    for k, (L, LP, V, lab) in enumerate(row):
+        cx = 1.95 + k * 3.85 if r_ else 2.6 + k * 5.15; cy = 6.45 - r_ * 4.15
+        mol3(ax, cx, cy, L, LP, R=1.15, Rm=V, rc=0.33, rl=0.25, ccol=CC, lcol=LC, lp_col=LPC)
+        ax.text(cx, cy - 1.75, lab, ha="center", va="center", fontsize=7.2)
+finish(fig, ax, W_, H_, "c07_shapes")
 
 # ---------- bond type continuum ----------
 s = Sketch(14.0, 2.4)

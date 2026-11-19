@@ -16,6 +16,8 @@ Lecture 2 started by completing Chapter 1 with three patterns of reactivity. The
 
 #everyday[*Cement and the climate.* Concrete is the second most used substance on Earth after water. Its production starts with the decomposition #ce("CaCO3 -> CaO + CO2"), which releases #ce("CO2") _chemically_, independently of the fuel used to heat the kiln. Together with the fuel, cement production causes roughly 8 % of global #ce("CO2") emissions. Stoichiometry tells you exactly how much: 100 g of #ce("CaCO3") give 44 g of #ce("CO2"). No better burner can avoid that part; only different chemistry can.]
 
+#photo(("kiln",), [Rotary kilns of a cement plant. Inside these slowly turning steel tubes, limestone is heated to about 1450 °C and decomposes, #ce("CaCO3 -> CaO + CO2"). #credit[Dylan Moore, CC BY-SA 2.0, Wikimedia Commons (geograph.org.uk)]], ht: 4.6cm)
+
 == What makes a gas a gas?
 
 Matter comes in three states: solid, liquid and gas (vapour). Water shows all three in everyday life. Gases are special because they have similar *physical* properties even when their *chemical* properties are completely different:

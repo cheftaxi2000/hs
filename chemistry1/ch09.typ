@@ -149,6 +149,8 @@ A liquid boils when its vapour pressure reaches the external pressure. Since the
 
 #everyday[*Reverse osmosis (RO)* is the main technology for seawater desalination: applying more than the osmotic pressure of seawater (about 27 bar; real plants use 55–80 bar) pushes water *backwards* through the membrane, leaving the salt behind. In medicine, *IV drips* must be isotonic with blood (0.9 % NaCl, "physiological saline"): red blood cells swell and burst in pure water (hypotonic) and shrivel in concentrated salt solution (hypertonic). Salting or sugaring food (ham, jam) preserves it because bacteria lose their water by osmosis.]
 
+#photo(("ro",), [Seawater reverse-osmosis plant (El Prat, Barcelona). The white pressure tubes contain the membranes; high-pressure pumps push seawater through them at 55–80 bar. #credit[James Grellier, CC BY-SA 3.0, Wikimedia Commons]], ht: 6.2cm)
+
 *Determining molar masses.* Because $Pi$ is large even for tiny concentrations, osmometry is a standard lab method to determine the molar mass of large molecules such as proteins and polymers.
 
 #ex[Molar mass of an enzyme][

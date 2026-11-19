@@ -180,3 +180,9 @@
 #let dE = $Delta E$
 #let dHf = $Delta H_f^degree$
 #let dGf = $Delta G_f^degree$
+
+// ---------- real photographs (Wikimedia Commons, credited in the caption) ----------
+#let _ph(name, h) = box(clip: true, radius: 4pt, image("photos/" + name + ".jpg", height: h))
+#let photo(names, cap, ht: 4.6cm, gap: 6pt) = figure(
+  box(names.map(n => _ph(n, ht)).join(h(gap))), caption: cap)
+#let credit(t) = text(size: 7.5pt, fill: luma(110))[Photo: #t]
