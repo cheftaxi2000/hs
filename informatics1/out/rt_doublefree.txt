@@ -1,0 +1,2 @@
+both objects exist
+free(): double free detected in tcache 2

@@ -1,0 +1,4 @@
+20 30 35 40 50 60 70 80 
+30 35 40 50 60 70 80   (leaf 20 removed)
+30 35 50 60 70 80   (node 40 with one child removed)
+30 35 60 70 80   (root 50 with two children removed, new root 60)

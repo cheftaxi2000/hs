@@ -20,8 +20,9 @@
 })
 #let cpp(name, out: true) = {
   let src = read("code/" + name + ".cpp").trim("\n", at: end)
-  block(width: 100%, spacing: 1.2em, breakable: false, {
-    block(width: 100%, fill: rgb("#f5f8f7"), stroke: 0.6pt + luma(195), radius: if out { (top: 4pt) } else { 4pt },
+  let long = src.split("\n").len() > 30
+  block(width: 100%, spacing: 1.2em, breakable: long, {
+    block(width: 100%, breakable: long, fill: rgb("#f5f8f7"), stroke: 0.6pt + luma(195), radius: if out { (top: 4pt) } else { 4pt },
       inset: (x: 9pt, y: 7pt), above: 0pt, below: 0pt, raw(src, lang: "cpp", block: true))
     if out { _out(read("out/" + name + ".txt"), read("out/" + name + ".in")) }
   })

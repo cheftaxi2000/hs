@@ -1,0 +1,2 @@
+1 -> 2 -> 3 -> end
+length 3, contains 2: 1, contains 9: 0

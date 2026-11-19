@@ -1,0 +1,15 @@
+start of main
+  construct a
+  construct b
+end of inner block
+  destroy   b
+call by value:
+  copy      a (copy)
+  inside by_value
+  destroy   a (copy)
+call by reference:
+  inside by_reference
+  construct heap
+  destroy   heap
+end of main
+  destroy   a

@@ -1,0 +1,4 @@
+Animal(Rex) Dog() 
+Rex eats
+Rex says Woof
+leaving the block: ~Dog() ~Animal(Rex) 

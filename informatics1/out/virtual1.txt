@@ -1,0 +1,4 @@
+circle with area 3.14159
+rectangle with area 6
+square with area 4
+total area: 26.5664

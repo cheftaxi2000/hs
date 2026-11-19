@@ -1,0 +1,6 @@
+main.cpp: In function ‘int main()’:
+main.cpp:7:11: error: cannot declare variable ‘s’ to be of abstract type ‘Shape’
+    7 |     Shape s;               // an abstract class cannot be instantiated
+      |           ^
+main.cpp:1:7: note:   because the following virtual functions are pure within ‘Shape’:
+    1 | class Shape {

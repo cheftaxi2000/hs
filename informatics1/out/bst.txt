@@ -1,0 +1,6 @@
+inorder:   20 30 35 40 50 60 70 80 
+preorder:  50 30 20 40 35 70 60 80 
+postorder: 20 35 40 30 60 80 70 50 
+contains 60: 1, contains 65: 0
+nodes 8, height 4
+sorted insertion of 8 keys: height 8
