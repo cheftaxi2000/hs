@@ -2,7 +2,19 @@
 
 = Gases
 
-#lecture[Lecture 2 · Brown 10.1–10.8. Gases are the simplest state of matter: almost empty space, filled with molecules flying around at hundreds of metres per second. Because the molecules hardly interact, *all* gases obey the same simple law, $P V = n R T$. For engineers this is one of the most-used equations of the whole curriculum (engines, turbines, HVAC, process plants).]
+#lec(2, [Types of reactions, gases], [3.2, 10.1–10.8])
+
+#lecture[Gases are the simplest state of matter: almost empty space, filled with molecules flying around at hundreds of metres per second. Because the molecules hardly interact, *all* gases obey the same simple law, $P V = n R T$. For engineers this is one of the most-used equations of the whole curriculum (engines, turbines, HVAC, process plants).]
+
+== Warm-up: types of chemical reactions
+
+Lecture 2 started by completing Chapter 1 with three patterns of reactivity. They cover a large part of what you will meet:
+
+- *Combination:* two or more substances form one product. #ce("N2(g) + 3 H2(g) -> 2 NH3(g)") (fixation of nitrogen, the basis of all fertiliser).
+- *Decomposition:* one substance breaks into two or more. #ce("CaCO3(s) -> CaO(s) + CO2(g)") (limestone to lime, the first step of cement making); #ce("2 H2O(l) -> 2 H2(g) + O2(g)") (electrolysis of water).
+- *Combustion:* rapid reaction with #ce("O2"), producing a flame. Hydrocarbons burn to #ce("CO2") and #ce("H2O"): #ce("CH4 + 2 O2 -> CO2 + 2 H2O") (natural gas). Coal: #ce("C(s) + O2(g) -> CO2(g)").
+
+#everyday[*Cement and the climate.* Concrete is the second most used substance on Earth after water. Its production starts with the decomposition #ce("CaCO3 -> CaO + CO2"), which releases #ce("CO2") _chemically_, independently of the fuel used to heat the kiln. Together with the fuel, cement production causes roughly 8 % of global #ce("CO2") emissions. Stoichiometry tells you exactly how much: 100 g of #ce("CaCO3") give 44 g of #ce("CO2"). No better burner can avoid that part; only different chemistry can.]
 
 == What makes a gas a gas?
 

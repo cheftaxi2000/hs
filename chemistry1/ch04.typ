@@ -2,7 +2,9 @@
 
 = Thermochemistry and the First Law
 
-#lecture[Lecture 4 · Brown 5.1–5.7. When hydrogen burns in a turbine, how much heat do we get? How much work? Can we calculate it without doing the experiment? Thermodynamics is the study of energy and its transformations. It connects heat, work and chemical reactions. This chapter covers its first half: energy is conserved. Chapter 5 adds the second half: why some processes happen and others do not.]
+#lec(4, [Thermochemistry, first law], [5.1–5.7])
+
+#lecture[When hydrogen burns in a turbine, how much heat do we get? How much work? Can we calculate it without doing the experiment? Thermodynamics is the study of energy and its transformations. It connects heat, work and chemical reactions. This chapter covers its first half: energy is conserved. Chapter 5 adds the second half: why some processes happen and others do not.]
 
 == Energy, system and surroundings
 

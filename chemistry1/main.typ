@@ -3,7 +3,7 @@
 
 // ---------- cover ----------
 #page(header: none, footer: none, margin: 0pt)[
-  #image("figs/cover.jpg", width: 100%)
+  #image("figs/cover.svg", width: 100%)
   #pad(x: 2.6cm, top: 0.5cm)[
     #text(font: sans, size: 46pt, weight: "bold")[Chemistry]
     #v(-0.35cm)
@@ -19,7 +19,9 @@
 #page(header: none)[
   #text(font: sans, size: 23pt, weight: "bold")[Contents]
   #v(0.6cm)
-  #show outline.entry.where(level: 1): it => { v(0.55em); text(weight: "bold", it) }
+  #set text(size: 9.8pt)
+  #set par(leading: 0.55em)
+  #show outline.entry.where(level: 1): it => { v(0.45em); text(weight: "bold", it) }
   #outline(title: none, depth: 2, indent: 1.4em)
 ]
 

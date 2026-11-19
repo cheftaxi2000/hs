@@ -6,37 +6,48 @@ from matplotlib.patches import Circle, FancyBboxPatch
 BLUE = "#3d7cc9"; RED = "#c4473a"
 
 # =============== barometer and manometer (Ch. 2) ===============
-s = Sketch(12.6, 6.6)
-# --- barometer ---
-dish = rrect(0.5, 0.55, 3.9, 1.25, 0.32)
-s.ax.add_patch(rrect(0.5, 0.55, 3.9, 1.25, 0.32)); s.ax.patches[-1].set(fc=GLASS, ec=GLASS_EDGE, lw=1.0, zorder=2)
-grad(s, rrect(0.56, 0.61, 3.78, 0.78, 0.26), HG[0], HG[1], z=3)
-tx = 2.45; ttop = 6.05; th = 4.65
-tube(s, [(tx, 0.85), (tx, ttop)], 0.62, z=4)
-liquid(s, [(tx, 0.85), (tx, th)], 0.62, "#a9b2bc", z=5)
-s.ax.plot([tx - 0.2, tx - 0.2], [1.2, th - 0.25], color="white", lw=1.6, alpha=0.7, solid_capstyle="round", zorder=6)   # highlight
-s.text(tx, 5.42, "vacuum", ha="center", va="center", size=7, c="#7a8592")
-dimension(s, 3.35, 1.39, th + 0.25, "$h = 760$ mm")
-for x in (0.9, 1.45, 3.75):
-    s.arrow((x, 2.75), (x, 1.95), c=BLUE, lw=1.0)
-s.text(0.65, 2.9, "$P_{atm}$", c=BLUE, size=9)
-s.text(2.45, 0.2, "barometer", ha="center", va="top", size=8)
+HGc = "#a7b0ba"; HGd = "#c9d0d7"
+s = Sketch(12.6, 7.3)
+# --- barometer: dish ---
+dx0, dx1, dyb, dyt, lev = 0.5, 4.4, 0.75, 1.95, 1.5
+def cup(x0, x1, yb, yt, r):
+    return np.vstack([[x0, yt], arc(x0 + r, yb + r, r, 180, 270), arc(x1 - r, yb + r, r, 270, 360), [x1, yt]])
+c_out = cup(dx0, dx1, dyb, dyt, 0.35)
+s.ax.add_patch(Polygon(c_out, closed=True, fc=GLASS, ec="none", zorder=1))
+grad(s, Polygon(cup(dx0, dx1, dyb, lev, 0.35), closed=True), HGd, HGc, z=1.5)
+s.ax.plot(c_out[:, 0], c_out[:, 1], color=GLASS_EDGE, lw=1.1, zorder=4, solid_capstyle="round", solid_joinstyle="round")
+# --- barometer: tube (closed top, open bottom under the mercury) ---
+tx, top, col = 2.45, 6.35, 4.95
+tp = [(tx, 0.95), (tx, top)]
+glass_tube(s, tp, 0.5, ends=("open", "closed"), z=2)
+tube_fill(s, tp, 0.5, 0, col - 0.95, HGc, z=2.3)
+s.ax.add_patch(Circle((tx, col), 0.25, fc=HGc, ec="none", zorder=2.3, transform=s.ax.transData))   # convex meniscus
+s.ax.plot([tx - 0.12, tx - 0.12], [1.6, col - 0.15], color="white", lw=1.2, alpha=0.6, solid_capstyle="round", zorder=2.4)
+s.text(tx + 0.95, 5.85, "vacuum", size=7.5, c="#7a8592", va="center")
+s.ax.plot([tx + 0.3, tx + 0.88], [5.75, 5.85], color="#b9c2cc", lw=0.6, zorder=6)
+dimension(s, 3.35, lev, col + 0.25, "$h = 760$ mm")
+for x in (0.95, 1.55, 3.95): s.arrow((x, 2.75), (x, lev + 0.08), c=BLUE, lw=1.0)
+s.text(0.7, 2.85, "$P_{atm}$", c=BLUE, size=9, va="bottom")
+s.text(2.45, 0.3, "barometer", ha="center", va="top", size=8)
 # --- open-end manometer ---
-bx, by = 6.6, 4.05
-s.ax.add_patch(Circle((bx, by), 1.02, fc=GLASS, ec=GLASS_EDGE, lw=1.0, zorder=2))
-grad(s, Circle((bx, by), 0.95), GAS[0], GAS[1], z=3)
-s.text(bx, by + 0.12, "gas", ha="center", va="center", size=8.5); s.text(bx, by - 0.35, "$P_{gas}$", ha="center", va="center", size=8.5)
-xl, xr, yb = 8.7, 10.5, 0.75
-path = np.vstack([[bx + 0.95, by], [xl, by], ubend(xl, xr, yb, by, 6.1)[1:]])
-tube(s, path, 0.42, z=2)
-L = length(path); s_l = arclen_at_y(path, 2.45, "first"); s_r = arclen_at_y(path, 3.95, "last")
-liquid(s, cut(path, s_l, s_r), 0.42, "#a9b2bc", z=4)
-s.ax.plot([xl + 0.06, xr + 0.6], [2.45, 2.45], color="#c3cbd4", lw=0.7, ls=(0, (3, 2)), zorder=1)
-s.ax.plot([xr - 0.3, xr + 0.6], [3.95, 3.95], color="#c3cbd4", lw=0.7, ls=(0, (3, 2)), zorder=1)
-dimension(s, xr + 0.55, 2.45, 3.95, "$h$")
-s.arrow((xr, 6.9), (xr, 6.3), c=BLUE, lw=1.0); s.text(xr - 0.2, 6.75, "$P_{atm}$", c=BLUE, size=9, ha="right")
-s.text(8.9, 0.2, "open-end manometer: $P_{gas}=P_{atm}+\\rho g h$", ha="center", va="top", size=8)
-s.ax.set_ylim(-0.25, 7.0)
+bx, by, br = 6.55, 4.3, 0.95
+xl, xr, yb, ytop = 8.85, 10.55, 0.95, 6.4
+path = bend_path([(bx + 0.6, by), (xl, by), (xl, yb), (xr, yb), (xr, ytop)], [0.45, (xr - xl) / 2 - 0.001, (xr - xl) / 2 - 0.001])
+glass_tube(s, path, 0.42, ends=("open", "open"), z=2)
+ll, rl = 2.45, 3.95
+sl, sr = s_at(path, ll, "first"), s_at(path, rl, "last")
+tube_fill(s, path, 0.42, 0, sl, "#d8e6f6", z=2.2)
+tube_fill(s, path, 0.42, sl, sr, HGc, z=2.3)
+s.ax.add_patch(Circle((bx, by), br, fc=GLASS, ec="none", zorder=3))
+grad(s, Circle((bx, by), br - 0.04), GAS[0], GAS[1], z=3.2)
+s.ax.add_patch(Circle((bx, by), br, fc="none", ec=GLASS_EDGE, lw=1.1, zorder=3.5))
+s.text(bx, by + 0.15, "gas", ha="center", va="center", size=8.5); s.text(bx, by - 0.3, "$P_{gas}$", ha="center", va="center", size=8.5)
+s.ax.plot([xl - 0.5, xr + 0.75], [ll, ll], color="#c3cbd4", lw=0.7, ls=(0, (3, 2)), zorder=1)
+s.ax.plot([xr - 0.3, xr + 0.75], [rl, rl], color="#c3cbd4", lw=0.7, ls=(0, (3, 2)), zorder=1)
+dimension(s, xr + 0.7, ll, rl, "$h$")
+s.arrow((xr, 7.15), (xr, 6.5), c=BLUE, lw=1.0); s.text(xr - 0.2, 6.95, "$P_{atm}$", c=BLUE, size=9, ha="right")
+s.text(xr + 0.32, ytop - 0.15, "open", size=7, c="#7a8592", va="top")
+s.text(8.9, 0.3, "open-end manometer: $P_{gas}=P_{atm}+\\rho g h$", ha="center", va="top", size=8)
 s.save("c02_baro")
 
 # =============== piston (Ch. 4) ===============
@@ -102,31 +113,31 @@ s.ax.set_ylim(-0.2, 3.9)
 s.save("c05_expansion")
 
 # =============== osmosis (Ch. 9) ===============
-s = Sketch(12.4, 5.4); rng = np.random.default_rng(1)
+s = Sketch(12.4, 5.9); rng = np.random.default_rng(1)
 def osmo(x0, hl, hr, lab):
-    xl, xr, yb = x0 + 0.55, x0 + 3.05, 0.75
-    path = ubend(xl, xr, yb, 4.9, 4.9)
-    w = 0.95
-    tube(s, path, w, z=2)
-    sm = length(path) / 2
-    liquid(s, cut(path, arclen_at_y(path, hl, "first"), sm), w, "#bcd6f2", z=3, cap="butt")
-    liquid(s, cut(path, sm, arclen_at_y(path, hr, "last")), w, "#f2c4cd", z=3, cap="butt")
-    mx = (xl + xr) / 2
-    s.ax.plot([mx, mx], [yb - w / 2 + 0.04, yb + w / 2 - 0.04], color="#5d6773", lw=1.6, ls=(0, (2, 1.4)), zorder=5)
+    xl, xr, yb, w = x0 + 0.6, x0 + 3.0, 0.75, 0.9
+    path = bend_path([(xl, 5.0), (xl, yb), (xr, yb), (xr, 5.0)], [(xr - xl) / 2 - 0.001] * 2)
+    glass_tube(s, path, w, ends=("open", "open"), z=2)
+    p, tt = _resample(path); sm = tt[-1] / 2
+    tube_fill(s, path, w, s_at(path, hl, "first"), sm, "#c4dbf3", z=2.2)
+    tube_fill(s, path, w, sm, s_at(path, hr, "last"), "#f3c9d1", z=2.2)
+    mx = (xl + xr) / 2; yb2 = yb - (xr - xl) / 2 + (xr - xl) / 2
+    ybot = path[:, 1].min()
+    s.ax.plot([mx, mx], [ybot - w / 2 + 0.05, ybot + w / 2 - 0.05], color="#5d6773", lw=1.6, ls=(0, (2, 1.4)), zorder=5)
     for k in range(9):
-        y = rng.uniform(1.4, hr - 0.25); s.ax.add_patch(Circle((xr + rng.uniform(-0.28, 0.28), y), 0.07, fc=RED, ec="none", zorder=6))
-    s.text(mx, 0.0, lab, ha="center", va="top", size=7.5)
-    return xl, xr
-xl, xr = osmo(0.4, 3.0, 3.0, "start: equal levels")
-s.arrow((xl + 0.55, 1.05), (xr - 0.75, 1.05), c=BLUE, lw=1.3)
-s.text(xl, 5.15, "pure\nsolvent", ha="center", size=7.5, c=BLUE); s.text(xr, 5.15, "solution", ha="center", size=7.5, c=RED)
-xl2, xr2 = osmo(7.4, 2.2, 3.8, "equilibrium")
+        y = rng.uniform(1.5, hr - 0.25); s.ax.add_patch(Circle((xr + rng.uniform(-0.25, 0.25), y), 0.07, fc=RED, ec="none", zorder=6))
+    s.text(mx, -0.05, lab, ha="center", va="top", size=7.5)
+    return xl, xr, ybot
+from clean import _resample
+xl, xr, yb = osmo(0.4, 3.0, 3.0, "start: equal levels")
+s.arrow((xl + 0.55, yb + 0.05), (xr - 0.75, yb + 0.05), c=BLUE, lw=1.3)
+s.text(xl, 5.25, "pure\nsolvent", ha="center", va="bottom", size=7.5, c=BLUE); s.text(xr, 5.25, "solution", ha="center", va="bottom", size=7.5, c=RED)
+xl2, xr2, _ = osmo(7.4, 2.2, 3.8, "equilibrium")
 s.ax.plot([xl2 - 0.5, xr2 + 0.9], [2.2, 2.2], color="#c3cbd4", lw=0.7, ls=(0, (3, 2)), zorder=1)
 s.ax.plot([xr2 - 0.5, xr2 + 0.9], [3.8, 3.8], color="#c3cbd4", lw=0.7, ls=(0, (3, 2)), zorder=1)
 dimension(s, xr2 + 0.85, 2.2, 3.8, "$\\Pi$")
-s.text(5.75, 0.55, "semipermeable\nmembrane", ha="center", va="center", size=7, c="#555555")
-s.arrow((4.9, 0.45), (2.35, 0.45), c="#8a939e", lw=0.7)
-s.ax.set_ylim(-0.45, 5.6)
+s.text(5.75, 0.75, "semipermeable\nmembrane", ha="center", va="center", size=7, c="#555555")
+s.arrow((4.85, 0.6), (2.45, yb - 0.25), c="#8a939e", lw=0.7)
 s.save("c09_osmosis")
 
 # =============== box diagrams ===============

@@ -2,7 +2,9 @@
 
 = Entropy, Free Energy and the Second Law
 
-#lecture[Lecture 5 · Brown 19.1–19.6. The first law says energy is conserved, but it does not say *which way* things go. A hot coffee cools down in a cold room; it never spontaneously heats up, although that would not violate energy conservation. This chapter introduces the quantity that decides the direction of all natural processes, entropy, and combines it with enthalpy into the single most useful criterion of chemistry, the Gibbs free energy.]
+#lec(5, [Entropy and free energy], [19.1–19.6])
+
+#lecture[The first law says energy is conserved, but it does not say *which way* things go. A hot coffee cools down in a cold room; it never spontaneously heats up, although that would not violate energy conservation. This chapter introduces the quantity that decides the direction of all natural processes, entropy, and combines it with enthalpy into the single most useful criterion of chemistry, the Gibbs free energy.]
 
 == Spontaneous processes
 

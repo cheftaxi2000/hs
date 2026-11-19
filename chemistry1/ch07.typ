@@ -2,7 +2,9 @@
 
 = Chemical Bonding and Molecular Geometry
 
-#lecture[Lecture 7 · Brown 8.1–8.8, 5.8, 9.1–9.2. Atoms and ions are held together in molecules and solids by chemical bonds. Bonds decide whether a substance is a gas or a rock, whether it conducts electricity, how much energy it stores, and what shape its molecules have. Shape in turn decides polarity, boiling points and how molecules recognise each other (Chapter 8).]
+#lec(7, [Chemical bonding, molecular shape], [8.1–8.8, 5.8, 9.1–9.2])
+
+#lecture[Atoms and ions are held together in molecules and solids by chemical bonds. Bonds decide whether a substance is a gas or a rock, whether it conducts electricity, how much energy it stores, and what shape its molecules have. Shape in turn decides polarity, boiling points and how molecules recognise each other (Chapter 8).]
 
 == Types of chemical bonds
 

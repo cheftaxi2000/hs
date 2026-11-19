@@ -2,7 +2,9 @@
 
 = Electronic Structure of Atoms and Periodic Trends
 
-#lecture[Lecture 6 · Brown 6.1–6.9, 7.2–7.5. Electrons determine how atoms react and how they form bonds. To understand chemistry we must understand how electrons are organised in atoms, their *electronic structure*. A full treatment needs quantum mechanics (4th semester); here we sketch the essential ideas and their consequences, above all the shape of the periodic table.]
+#lec(6, [Electronic structure, periodic trends], [6.1–6.9, 7.2–7.5])
+
+#lecture[Electrons determine how atoms react and how they form bonds. To understand chemistry we must understand how electrons are organised in atoms, their *electronic structure*. A full treatment needs quantum mechanics (4th semester); here we sketch the essential ideas and their consequences, above all the shape of the periodic table.]
 
 == Light: waves and photons
 

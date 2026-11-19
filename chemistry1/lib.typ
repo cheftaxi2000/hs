@@ -117,6 +117,18 @@
   })
 }
 
+// ---------- lecture markers (like the week bars in the Mechanik script) ----------
+#let lec(n, topic, brown) = {
+  block(width: 100%, above: 1.8em, below: 1.1em, sticky: true, breakable: false, fill: black, radius: 3pt,
+    inset: (x: 12pt, y: 9pt), {
+    [#metadata(n) <lecture>]
+    grid(columns: (auto, 1fr), column-gutter: 14pt, align: horizon,
+      text(font: sans, size: 20pt, weight: "bold", fill: white)[Lecture #n],
+      par(justify: false, leading: 0.45em)[#text(font: sans, size: 11.5pt, weight: "bold", fill: white, topic) \ #text(font: sans, size: 9pt, fill: luma(210))[Brown #brown]])
+  })
+}
+#let nolec = [#metadata(none) <lecture>]
+
 // ---------- page layout ----------
 #let script(body) = {
   set page(paper: "a4", margin: (x: 2.6cm, top: 2.8cm, bottom: 2.6cm),
@@ -127,7 +139,9 @@
         let hs = query(selector(heading.where(level: 1)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let w = box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9pt, weight: "bold", fill: white)[Chemistry])
+        let ls = query(<lecture>).filter(m => m.location().page() <= here().page())
+        let lab = if ls.len() > 0 and ls.last().value != none [Lecture #ls.last().value] else [Chemistry]
+        let w = box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9pt, weight: "bold", fill: white, lab))
         text(size: 9pt)[#n#t #h(1fr) #w]
         v(-7pt); line(length: 100%, stroke: 0.5pt)
       }

@@ -2,7 +2,9 @@
 
 = Chemical Kinetics
 
-#lecture[Lecture 10 · Brown 14.1–14.4. Thermodynamics tells us whether a "driving force" exists for a reaction: does it lower the Gibbs free energy? But it says nothing about *how fast* it goes. Diamond should turn into graphite, but it takes billions of years. A mixture of hydrogen and oxygen can sit unchanged for years, or explode in a millisecond. Chemical kinetics describes the speed of reactions, and through it, *how* a reaction actually happens.]
+#lec(10, [Chemical kinetics], [14.1–14.4])
+
+#lecture[Thermodynamics tells us whether a "driving force" exists for a reaction: does it lower the Gibbs free energy? But it says nothing about *how fast* it goes. Diamond should turn into graphite, but it takes billions of years. A mixture of hydrogen and oxygen can sit unchanged for years, or explode in a millisecond. Chemical kinetics describes the speed of reactions, and through it, *how* a reaction actually happens.]
 
 == Why kinetics?
 

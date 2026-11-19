@@ -2,7 +2,9 @@
 
 = Atoms, Molecules, Ions and Stoichiometry
 
-#lecture[Lecture 1 · Brown 1.1–1.3, 2.1–2.8, 3.1–3.6. Like any subject, chemistry has its own language. This chapter teaches the alphabet (atoms and elements), the words (molecules, ions, compounds) and the sentences (chemical reactions). It also introduces the most-used tool of the whole course: the mole.]
+#lec(1, [Atoms, molecules, ions, stoichiometry], [1.1–1.3, 2.1–2.8, 3.1–3.6])
+
+#lecture[Like any subject, chemistry has its own language. This chapter teaches the alphabet (atoms and elements), the words (molecules, ions, compounds) and the sentences (chemical reactions). It also introduces the most-used tool of the whole course: the mole.]
 
 == The language of chemistry
 
@@ -214,16 +216,6 @@ The letters in brackets give the state: (s) solid, (l) liquid, (g) gas, (aq) dis
   #rxn("C3H8(g) + 5 O2(g) -> 3 CO2(g) + 4 H2O(l)")
   #step[Check.] C: 3 = 3, H: 8 = 8, O: 10 = 10. ✓
 ]
-
-=== Simple patterns of reactivity
-
-Three types of reaction cover a large part of what you will meet:
-
-- *Combination:* two or more substances form one product. #ce("N2(g) + 3 H2(g) -> 2 NH3(g)") (fixation of nitrogen, the basis of all fertiliser).
-- *Decomposition:* one substance breaks into two or more. #ce("CaCO3(s) -> CaO(s) + CO2(g)") (limestone to lime, the first step of cement making); #ce("2 H2O(l) -> 2 H2(g) + O2(g)") (electrolysis of water).
-- *Combustion:* rapid reaction with #ce("O2"), producing a flame. Hydrocarbons burn to #ce("CO2") and #ce("H2O"): #ce("CH4 + 2 O2 -> CO2 + 2 H2O") (natural gas). Coal: #ce("C(s) + O2(g) -> CO2(g)").
-
-#everyday[*Cement and the climate.* Concrete is the second most used substance on Earth after water. Its production starts with the decomposition #ce("CaCO3 -> CaO + CO2"), which releases #ce("CO2") _chemically_, independently of the fuel used to heat the kiln. Together with the fuel, cement production causes roughly 8 % of global #ce("CO2") emissions. Stoichiometry tells you exactly how much: 100 g of #ce("CaCO3") give 44 g of #ce("CO2"). No better burner can avoid that part; only different chemistry can.]
 
 == Formula weight, the mole and molar mass
 

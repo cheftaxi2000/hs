@@ -2,7 +2,9 @@
 
 = Properties of Solutions
 
-#lecture[Lecture 9 · Brown 13.1–13.5. In Chapter 3 we met solutions, focusing on water as solvent. Three questions remained open: *When* does a substance dissolve? *How much* dissolves? And how does a dissolved substance change the *properties* of the solvent? With thermodynamics (Chapters 4, 5) and intermolecular forces (Chapter 8) we can now answer all three.]
+#lec(9, [Properties of solutions], [13.1–13.5])
+
+#lecture[In Chapter 3 we met solutions, focusing on water as solvent. Three questions remained open: *When* does a substance dissolve? *How much* dissolves? And how does a dissolved substance change the *properties* of the solvent? With thermodynamics (Chapters 4, 5) and intermolecular forces (Chapter 8) we can now answer all three.]
 
 == Thermodynamics of solution formation
 

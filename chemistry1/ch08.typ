@@ -2,7 +2,9 @@
 
 = Intermolecular Forces, Liquids and Phase Changes
 
-#lecture[Lecture 8 · Brown 11.1–11.6. Chapter 7 was about the strong bonds *inside* molecules. This chapter is about the much weaker forces *between* molecules. They decide whether a substance is a gas, a liquid or a solid at room temperature, how viscous an oil is, why water climbs up a thin tube, why a pressure cooker cooks faster and why Gore-Tex keeps you dry. Engineers need to understand these forces to control and exploit them.]
+#lec(8, [Intermolecular forces, phases], [11.1–11.6])
+
+#lecture[Chapter 7 was about the strong bonds *inside* molecules. This chapter is about the much weaker forces *between* molecules. They decide whether a substance is a gas, a liquid or a solid at room temperature, how viscous an oil is, why water climbs up a thin tube, why a pressure cooker cooks faster and why Gore-Tex keeps you dry. Engineers need to understand these forces to control and exploit them.]
 
 == Gases, liquids and solids
 

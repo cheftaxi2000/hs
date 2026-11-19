@@ -2,6 +2,7 @@
 #set heading(numbering: none)
 #set par(justify: false)
 = Appendix: Constants and Formula Sheet
+#nolec
 
 #let fs(title, body) = block(width: 100%, breakable: false, spacing: 1.2em,
   [#text(font: sans, size: 10pt, weight: "bold", title) #v(-4pt) #line(length: 100%, stroke: 0.4pt) #v(-2pt) #body])

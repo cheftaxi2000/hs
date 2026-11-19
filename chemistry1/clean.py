@@ -122,3 +122,68 @@ def dimension(s, x, y0, y1, label, c="#c4473a", side="right", size=8.5):
 
 def soft_arrow(s, p, q, c="#3d7cc9", lw=1.1):
     s.arrow(p, q, c=c, lw=lw)
+
+
+# ---------------- precise glassware: walls drawn as two offset lines ----------------
+def _resample(pts, step=0.02):
+    pts = np.asarray(pts, float); d = np.r_[0, np.cumsum(np.hypot(*np.diff(pts, axis=0).T))]
+    t = np.arange(0, d[-1] + 1e-9, step); t[-1] = d[-1]
+    return np.c_[np.interp(t, d, pts[:, 0]), np.interp(t, d, pts[:, 1])], t
+
+
+def _normals(p):
+    tng = np.gradient(p, axis=0); tng /= np.linalg.norm(tng, axis=1, keepdims=True)
+    return np.c_[-tng[:, 1], tng[:, 0]]
+
+
+def bend_path(points, r):
+    """polyline with every inner corner replaced by a circular arc of radius r."""
+    P = np.asarray(points, float); out = [P[0]]
+    rs = list(r) if np.ndim(r) else [r] * (len(P) - 2)
+    for i in range(1, len(P) - 1):
+        r = rs[i - 1]
+        a, b, c = P[i - 1], P[i], P[i + 1]
+        u = (a - b) / np.linalg.norm(a - b); v = (c - b) / np.linalg.norm(c - b)
+        ang = np.arccos(np.clip(u @ v, -1, 1)); t = r / np.tan(ang / 2)
+        p1, p2 = b + u * t, b + v * t
+        bis = (u + v) / np.linalg.norm(u + v); cen = b + bis * r / np.sin(ang / 2)
+        a1, a2 = np.arctan2(*(p1 - cen)[::-1]), np.arctan2(*(p2 - cen)[::-1])
+        da = (a2 - a1 + np.pi) % (2 * np.pi) - np.pi
+        aa = a1 + np.linspace(0, da, 30)
+        out += list(np.c_[cen[0] + r * np.cos(aa), cen[1] + r * np.sin(aa)])
+    out.append(P[-1]); return np.array(out)
+
+
+def glass_tube(s, path, w, ends=("open", "open"), z=2, fill=GLASS, edge=GLASS_EDGE, lw=1.1):
+    """tube of inner width w along path. ends: 'open' or 'closed' (rounded cap) for start/end."""
+    p, _ = _resample(path); n = _normals(p); h = w / 2
+    L, Rr = p + n * h, p - n * h
+    poly = np.vstack([L, Rr[::-1]])
+    caps = []
+    for k, (e, q, nn) in enumerate([(ends[0], p[0], n[0]), (ends[1], p[-1], n[-1])]):
+        if e == "closed":
+            tang = np.array([nn[1], -nn[0]]) * (1 if k == 1 else -1)     # outward direction
+            a0 = np.arctan2(nn[1], nn[0]); sgn = -1 if k == 1 else 1
+            aa = a0 + sgn * np.linspace(0, np.pi, 40)
+            caps.append(np.c_[q[0] + h * np.cos(aa), q[1] + h * np.sin(aa)])
+    s.ax.add_patch(Polygon(poly, closed=True, fc=fill, ec="none", zorder=z))
+    for c in caps: s.ax.add_patch(Polygon(c, closed=True, fc=fill, ec="none", zorder=z))
+    for side in (L, Rr): s.ax.plot(side[:, 0], side[:, 1], color=edge, lw=lw, zorder=z + 0.5, solid_capstyle="round")
+    for c in caps: s.ax.plot(c[:, 0], c[:, 1], color=edge, lw=lw, zorder=z + 0.5, solid_capstyle="round")
+    return p
+
+
+def tube_fill(s, path, w, s0, s1, color, z=2.2, inset=0.0):
+    """fill the inside of a tube between arc lengths s0 and s1 (flat, perpendicular ends)."""
+    p, t = _resample(path); n = _normals(p); h = w / 2 - inset
+    m = (t >= s0) & (t <= s1)
+    q, nn = p[m], n[m]
+    poly = np.vstack([q + nn * h, (q - nn * h)[::-1]])
+    s.ax.add_patch(Polygon(poly, closed=True, fc=color, ec="none", zorder=z))
+
+
+def s_at(path, y, which="first"):
+    p, t = _resample(path)
+    idx = np.nonzero(np.diff(np.sign(p[:, 1] - y)))[0]
+    i = idx[0] if which == "first" else idx[-1]
+    return t[i]

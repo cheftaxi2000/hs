@@ -2,7 +2,9 @@
 
 = Reactions in Aqueous Solution
 
-#lecture[Lecture 3 · Brown 4.1–4.5. Most of the chemistry on our planet happens in water: in oceans, in cells, in cooling circuits, in batteries, on a wet steel bridge. This chapter introduces the three big families of reactions in water. In precipitation an insoluble solid forms. In acid–base reactions a proton ($ce("H^+")$) is transferred. In redox reactions electrons are transferred.]
+#lec(3, [Reactions in aqueous solution], [4.1–4.5])
+
+#lecture[Most of the chemistry on our planet happens in water: in oceans, in cells, in cooling circuits, in batteries, on a wet steel bridge. This chapter introduces the three big families of reactions in water. In precipitation an insoluble solid forms. In acid–base reactions a proton ($ce("H^+")$) is transferred. In redox reactions electrons are transferred.]
 
 == Solutions, electrolytes and nonelectrolytes
 

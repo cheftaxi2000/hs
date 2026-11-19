@@ -53,7 +53,7 @@ s.ax.set_ylim(0.3, 6.3)
 s.save("c06_bohr")
 
 # ---------- orbital shapes: density cuts ----------
-from fig_cover import psi
+from orbitals import psi
 def orb_img(n, l, m, ext, N=300, rot=False):
     t = np.linspace(-ext, ext, N); X_, Z_ = np.meshgrid(t, t)
     if rot: X_, Z_ = (X_ + Z_) / np.sqrt(2), (Z_ - X_) / np.sqrt(2)
