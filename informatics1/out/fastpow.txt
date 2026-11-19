@@ -1,0 +1,2 @@
+1024 (multiplications: 6)
+2.67471e+43 (multiplications: 27)

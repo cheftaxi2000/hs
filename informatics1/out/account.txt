@@ -1,0 +1,2 @@
+withdraw 200: 0, balance 150
+withdraw 120: 1, balance 30

@@ -1,0 +1,5 @@
+A has the code 65
+next letter: B
+digit '7' minus '0' = 7
+q -> Q
+abcde

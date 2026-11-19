@@ -1,0 +1,2 @@
+"the quick brown fox" has 4 words and 19 characters
+next word: second

@@ -1,0 +1,8 @@
+00000000  signed: 0  unsigned: 0
+00000001  signed: 1  unsigned: 1
+01111111  signed: 127  unsigned: 127
+11111111  signed: -1  unsigned: 255
+11111110  signed: -2  unsigned: 254
+10000000  signed: -128  unsigned: 128
+127 + 1 in 8 bits: -128
+40000 in 16 bits: -25536

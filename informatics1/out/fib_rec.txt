@@ -1,0 +1,3 @@
+fib(10) = 55 needed 177 calls
+fib(20) = 6765 needed 21891 calls
+fib(30) = 832040 needed 2692537 calls

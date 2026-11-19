@@ -1,0 +1,2 @@
+30 10 40 10 50 
+third element: 40, distance to end: 3

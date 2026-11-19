@@ -1,0 +1,6 @@
+main.cpp: In function ‘int main()’:
+main.cpp:9:7: error: ‘int Account::balance’ is private within this context
+    9 |     a.balance = 1000000;   // not allowed from outside
+      |       ^~~~~~~
+main.cpp:2:9: note: declared private here
+    2 |     int balance;           // private by default in a class

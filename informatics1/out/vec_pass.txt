@@ -1,0 +1,2 @@
+after broken_double_all: sum = 6
+after double_all:        sum = 12

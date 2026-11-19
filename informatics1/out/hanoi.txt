@@ -1,0 +1,9 @@
+move disc 1 from A to C
+move disc 2 from A to B
+move disc 1 from C to B
+move disc 3 from A to C
+move disc 1 from B to A
+move disc 2 from B to C
+move disc 1 from A to C
+7 moves for 3 discs
+1048575 moves for 20 discs

@@ -1,0 +1,2 @@
+max = 5, average = 2.8
+reversed: 5 1 4 1 3

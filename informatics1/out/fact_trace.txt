@@ -1,0 +1,8 @@
+factorial(3) called
+  factorial(2) called
+    factorial(1) called
+      factorial(0) called
+      factorial(0) returns 1
+    factorial(1) returns 1
+  factorial(2) returns 2
+factorial(3) returns 6

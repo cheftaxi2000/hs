@@ -1,0 +1,8 @@
+Hello, World!
+length: 13
+s[0] = H, last = !
+Jello, World!
+World
+find "World": 7
+find "xyz":   not found
+true true
