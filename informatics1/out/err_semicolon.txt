@@ -1,0 +1,6 @@
+main.cpp: In function ‘int main()’:
+main.cpp:4:35: error: expected ‘;’ before ‘return’
+    4 |     std::cout << "Hello, world!\n"
+      |                                   ^
+      |                                   ;
+    5 |     return 0;

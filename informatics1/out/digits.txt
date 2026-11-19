@@ -1,0 +1,1 @@
+n = digits: 4, digit sum: 14

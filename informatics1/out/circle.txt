@@ -1,0 +1,2 @@
+radius r = circumference = 15.708
+area          = 19.635

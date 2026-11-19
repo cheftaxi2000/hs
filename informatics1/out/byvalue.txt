@@ -1,0 +1,2 @@
+in increment: x = 6
+in main:      a = 5

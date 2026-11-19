@@ -1,0 +1,2 @@
+3
+main: main.cpp:7: int divide(int, int): Assertion `b != 0' failed.
