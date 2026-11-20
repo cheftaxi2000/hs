@@ -26,6 +26,10 @@ for k in range(16):
     cx, cy = (i + 0.5) * dx, H - (j + 0.5) * dy
     M = fam(k)
     sc = 0.27 * min(dx, dy)
+    # Skalierung so, dass das verformte Gitter sicher in seine Zelle passt
+    corners = M @ np.array([[-1, 1, 1, -1], [-1, -1, 1, 1]])
+    ext = max(np.abs(corners[0]).max() / (0.43 * dx), np.abs(corners[1]).max() / (0.43 * dy))
+    sc = min(sc, 1.0 / ext) if ext > 0 else sc
     segs, cols = [], []
     for fixed in g:
         for horiz in (True, False):
