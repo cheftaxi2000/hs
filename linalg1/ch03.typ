@@ -95,7 +95,8 @@ Wir haben gesehen: Bei zwei Unbekannten ist jede Gleichung $a x + b y = c$ eine 
   [$n = 3$], [eine Ebene], [leer, ein Punkt, eine Gerade, eine Ebene],
   [$n$ beliebig], [eine Hyperebene], [leer, oder ein «flaches Gebilde» der Dimension $n - r$ (Punkt, Gerade, Ebene, ...)])
 
-#fgs(("l03_punkt", "l03_gerade", "l03_parallel", "l03_prisma"), [Drei Ebenen im Raum ($3$ Gleichungen, $3$ Unbekannte): die vier typischen Lagen.])
+#fgs(("l03_punkt", "l03_gerade"), [Drei Ebenen im Raum ($3$ Gleichungen, $3$ Unbekannte): genau ein Schnittpunkt (links) oder eine Schnittgerade (rechts).], gap: 14pt)
+#fgs(("l03_parallel", "l03_prisma"), [Zwei Fälle ohne Lösung: zwei Ebenen sind parallel (links), oder je zwei schneiden sich, aber die drei Schnittgeraden sind parallel («Prisma», rechts).], gap: 14pt)
 
 #bsp[Vier Systeme, vier Bilder][
 Jedes der vier Bilder gehört zu einem System. Prüfe die Aussagen mit dem Gauss-Verfahren.
