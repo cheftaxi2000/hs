@@ -68,8 +68,8 @@ code { font: 400 .9em var(--mono); }
 
 /* ---------- index ---------- */
 .idx { padding-left: var(--gut); padding-right: var(--gut-r); max-width: 1320px; margin: 0 auto; padding-block: 0 96px; }
-.hero { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding-block: 88px 8px; border-bottom: 1px solid var(--ink); }
-.hero h1 { grid-column: 1 / span 7; margin: 0; font: 500 clamp(40px, 6.2vw, 84px)/0.98 var(--sans); letter-spacing: -0.035em; }
+.hero { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding-block: 88px 56px; border-bottom: 1px solid var(--ink); }
+.hero h1 { grid-column: 1 / -1; margin: 0; font: 500 clamp(40px, 6.2vw, 84px)/0.98 var(--sans); letter-spacing: -0.035em; }
 .hero p { grid-column: 8 / span 5; align-self: end; margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--ink-2); max-width: 46ch; }
 .hero dl { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 40px; margin: 56px 0 0; font-size: 13px; }
 .hero dt { color: var(--muted); }

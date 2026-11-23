@@ -1,4 +1,4 @@
-# Lernskripte
+# Lernstoff DMAVT
 
 Fünf Lernskripte für das erste Studienjahr (Mechanik 1, Analysis 1, Lineare Algebra, Informatik, Chemie) als PDF, dazu zwölf interaktive Modelle im Browser.
 

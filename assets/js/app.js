@@ -43,11 +43,7 @@ let current = null;
 function index() {
   crumbs.innerHTML = ''; pager.innerHTML = '';
   const root = el('div', { class: 'idx' });
-  const pages = SUBJECTS.reduce((s, x) => s + x.pages, 0);
-  root.append(el('section', { class: 'hero' },
-    el('h1', { html: 'Lernskripte' }),
-    el('p', { html: 'Fünf Skripte für das erste Studienjahr, zum Lesen als PDF. Dazu zwölf interaktive Modelle für die Stellen, an denen eine Zeichnung nicht reicht: wo sich etwas bewegt, ein Punkt wandert oder eine Aussage erst greifbar wird, wenn man einen Parameter verändert.' }),
-    el('dl', { html: `<div><dt>Skripte</dt><dd>${SUBJECTS.length}</dd></div><div><dt>Seiten</dt><dd>${pages}</dd></div><div><dt>Modelle</dt><dd>${ALL.length}</dd></div><div><dt>Format</dt><dd>PDF · Browser</dd></div>` })));
+  root.append(el('section', { class: 'hero' }, el('h1', { html: 'Lernstoff DMAVT' })));
   const shelf = el('ol', { class: 'shelf' });
   SUBJECTS.forEach((s, si) => {
     const file = s.pdf.split('/').pop();
@@ -127,8 +123,8 @@ function route() {
   window.scrollTo(0, 0);
   readTheme();
   const v = byId[id];
-  if (v) { document.title = `${v.name} · Lernskripte`; current = vizPage(v); }
-  else { document.title = 'Lernskripte'; current = index(); if (id.startsWith('fach-')) document.getElementById(id)?.scrollIntoView(); }
+  if (v) { document.title = `${v.name} · Lernstoff DMAVT`; current = vizPage(v); }
+  else { document.title = 'Lernstoff DMAVT'; current = index(); if (id.startsWith('fach-')) document.getElementById(id)?.scrollIntoView(); }
 }
 addEventListener('hashchange', route);
 route();
