@@ -202,8 +202,16 @@ const sup = (n) => (n < 0 ? '⁻' : '') + String(Math.abs(n)).split('').map((d) 
 /* ---------- thumbnail ---------- */
 export function thumb(ctx, W, H) {
   ctx.fillStyle = C.surface; ctx.fillRect(0, 0, W, H);
-  const fn = FN.rat; const S = { fn: 'rat', x0: 0.5, n: 10, s: 0, a: coefs(fn, 0.5) };
-  draw(ctx, W, H, S, { thumb: true });
+  // 1/(1+x²), its Taylor polynomial of degree 12 and the disc |z| < 1 below
+  const X = (x) => W / 2 + x * W * 0.2, Y = (y) => H * 0.5 - y * H * 0.32;
+  const a = coefs(FN.rat, 0);
+  const f = [], p = [];
+  for (let i = 0; i <= 160; i++) { const x = -2.4 + 4.8 * i / 160; f.push([X(x), Y(1 / (1 + x * x))]); const v = evalP(a, 12, 0, x); p.push(Math.abs(v) < 3 ? [X(x), Y(v)] : null); }
+  ctx.fillStyle = alpha(C.m, 0.07); ctx.fillRect(X(-1), 6, X(1) - X(-1), H - 12);
+  line(ctx, X(-2.5), Y(0), X(2.5), Y(0), C.hair, 1);
+  path(ctx, f, C.ink, 1.6); path(ctx, p, C.v, 1.4);
+  for (const s of [1, -1]) { const x = X(0), y = Y(0) - s * W * 0.2; line(ctx, x - 3, y - 3, x + 3, y + 3, C.f, 1.4); line(ctx, x - 3, y + 3, x + 3, y - 3, C.f, 1.4); }
+  circle(ctx, X(0), Y(0), W * 0.2, C.m, 1, null, [3, 3]);
 }
 
 const STEPS = [

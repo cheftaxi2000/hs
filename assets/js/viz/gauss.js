@@ -88,14 +88,16 @@ export function opText(op) {
 /* ---------- thumbnail ---------- */
 export function thumb(ctx, W, H) {
   ctx.fillStyle = C.surface; ctx.fillRect(0, 0, W, H);
-  // three planes in an oblique projection meeting at one point
-  const pr = (p) => [W * 0.5 + (p[1] - 1) * 52 - (p[0] - 1) * 30, H * 0.55 - (p[2] - 1) * 52 + (p[0] - 1) * 18];
-  const quad = (pts, col) => { ctx.save(); ctx.beginPath(); pts.map(pr).forEach((q, i) => (i ? ctx.lineTo(...q) : ctx.moveTo(...q))); ctx.closePath(); ctx.fillStyle = alpha(col, 0.2); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.3; ctx.stroke(); ctx.restore(); };
-  quad([[1, -0.6, -0.4], [1, 2.6, -0.4], [1, 2.6, 2.4], [1, -0.6, 2.4]], C.v);
-  quad([[-0.6, 1, -0.4], [2.6, 1, -0.4], [2.6, 1, 2.4], [-0.6, 1, 2.4]], C.f);
-  quad([[-0.6, -0.6, 1], [2.6, -0.6, 1], [2.6, 2.6, 1], [-0.6, 2.6, 1]], C.m);
-  const p = pr([1, 1, 1]);
-  ctx.beginPath(); ctx.arc(p[0], p[1], 5, 0, 7); ctx.fillStyle = C.k; ctx.fill();
+  // three planes through one point, oblique projection, outlines only
+  const k = Math.min(W, H) * 0.3, cx = W * 0.5, cy = H * 0.55;
+  const pr = (p) => [cx + (p[1] - p[0] * 0.55) * k, cy - (p[2] - p[0] * 0.32) * k];
+  const quad = (pts, col) => { ctx.save(); ctx.beginPath(); pts.map(pr).forEach((q, i) => (i ? ctx.lineTo(...q) : ctx.moveTo(...q))); ctx.closePath(); ctx.fillStyle = alpha(col, 0.07); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.stroke(); ctx.restore(); };
+  const a = 1.1;
+  quad([[0, -a, -a], [0, a, -a], [0, a, a], [0, -a, a]], C.v);
+  quad([[-a, 0, -a], [a, 0, -a], [a, 0, a], [-a, 0, a]], C.f);
+  quad([[-a, -a, 0], [a, -a, 0], [a, a, 0], [-a, a, 0]], C.m);
+  const p = pr([0, 0, 0]);
+  ctx.beginPath(); ctx.arc(p[0], p[1], 3.2, 0, 7); ctx.fillStyle = C.k; ctx.fill();
 }
 
 /* ---------- steps ---------- */

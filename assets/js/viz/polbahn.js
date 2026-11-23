@@ -195,9 +195,9 @@ function drawScene(ctx, W, H, S, opt = {}) {
     hatch(ctx, 0, gy, W, gy, C.muted, -1, 10, 8);
     const c = X(b.o), r = s * R;
     ctx.save();
-    ctx.beginPath(); ctx.arc(c[0], c[1], r, 0, TAU); ctx.fillStyle = alpha(C.ink, C.dark ? 0.08 : 0.045); ctx.fill();
-    ctx.lineWidth = Math.max(3, r * 0.07); ctx.strokeStyle = C.ink; ctx.stroke();
-    ctx.lineWidth = 1.2; ctx.strokeStyle = alpha(C.ink, 0.7);
+    ctx.beginPath(); ctx.arc(c[0], c[1], r, 0, TAU); ctx.fillStyle = alpha(C.ink, C.dark ? 0.06 : 0.025); ctx.fill();
+    ctx.lineWidth = 2.4; ctx.strokeStyle = C.ink; ctx.stroke();
+    ctx.lineWidth = 0.8; ctx.strokeStyle = alpha(C.ink, 0.55);
     for (let k = 0; k < 6; k++) {
       const a = toWorld(b, rot(k * TAU / 6, [R * 0.92, 0]));
       const p = X(a); ctx.beginPath(); ctx.moveTo(c[0], c[1]); ctx.lineTo(p[0], p[1]); ctx.stroke();
@@ -249,7 +249,7 @@ function drawScene(ctx, W, H, S, opt = {}) {
     ctx.beginPath(); ctx.rect(Bp[0], Bp[1] - bw / 2, bh, bw); ctx.fill(); ctx.stroke();
     ctx.restore();
     // bar
-    ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.lineWidth = Math.max(4, s * 0.028);
+    ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.lineWidth = 3.2;
     ctx.beginPath(); ctx.moveTo(Ap[0], Ap[1]); ctx.lineTo(Bp[0], Bp[1]); ctx.stroke(); ctx.restore();
     ring(ctx, Ap[0], Ap[1], 4, C.ink, 1.6); ring(ctx, Bp[0], Bp[1], 4, C.ink, 1.6);
     if (!opt.thumb) {
@@ -290,9 +290,9 @@ function drawScene(ctx, W, H, S, opt = {}) {
     ctx.beginPath(); ctx.roundRect(Ap[0] - pw * 0.25, gy - ph2 / 2, pw, ph2, 3); ctx.fill(); ctx.stroke(); ctx.restore();
     // crank
     ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = C.ink;
-    ctx.lineWidth = Math.max(5, s * 0.07); ctx.beginPath(); ctx.moveTo(O[0], O[1]); ctx.lineTo(Bp[0], Bp[1]); ctx.stroke();
+    ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(O[0], O[1]); ctx.lineTo(Bp[0], Bp[1]); ctx.stroke();
     // rod
-    ctx.lineWidth = Math.max(4, s * 0.05); ctx.globalAlpha = 0.92; ctx.beginPath(); ctx.moveTo(Bp[0], Bp[1]); ctx.lineTo(Ap[0], Ap[1]); ctx.stroke(); ctx.restore();
+    ctx.lineWidth = 3; ctx.globalAlpha = 0.92; ctx.beginPath(); ctx.moveTo(Bp[0], Bp[1]); ctx.lineTo(Ap[0], Ap[1]); ctx.stroke(); ctx.restore();
     ring(ctx, O[0], O[1], 5, C.ink, 1.8); ring(ctx, Bp[0], Bp[1], 4, C.ink, 1.6); ring(ctx, Ap[0], Ap[1], 4, C.ink, 1.6);
     // fixed bearing O
     ctx.save(); ctx.strokeStyle = C.ink; ctx.lineWidth = 1.4; ctx.beginPath();

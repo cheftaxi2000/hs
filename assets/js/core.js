@@ -40,7 +40,7 @@ export function mix(h1, h2, t) {
 
 export const FONT = {
   sans: '"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif',
-  serif: '"Source Serif 4", Georgia, "Times New Roman", serif',
+  serif: '"STIX Two Text", "Times New Roman", Times, serif',
   mono: '"IBM Plex Mono", ui-monospace, Menlo, monospace',
 };
 
@@ -186,16 +186,18 @@ export function ring(ctx, x, y, r, color, w = 1.6) {
 }
 /** arrow from (x0,y0) to (x1,y1) in px */
 export function arrow(ctx, x0, y0, x1, y1, color, w = 2, head = 10) {
+  // technical-drawing arrow: slender filled head, shaft slightly lighter than the caller asks for
+  w = w * 0.82;
   const dx = x1 - x0, dy = y1 - y0, L = Math.hypot(dx, dy);
   if (L < 0.5) return;
   const ux = dx / L, uy = dy / L;
-  const h = Math.min(head, L * 0.55), hw = h * 0.42;
-  const bx = x1 - ux * h * 0.82, by = y1 - uy * h * 0.82;
-  ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = w; ctx.lineCap = 'round';
+  const h = Math.min(head * 0.95 + w, L * 0.6), hw = h * 0.3;
+  const bx = x1 - ux * h * 0.7, by = y1 - uy * h * 0.7;
+  ctx.save(); ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = w; ctx.lineCap = 'butt';
   ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(bx, by); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(x1, y1);
   ctx.lineTo(x1 - ux * h - uy * hw, y1 - uy * h + ux * hw);
-  ctx.lineTo(x1 - ux * h * 0.78, y1 - uy * h * 0.78);
+  ctx.lineTo(x1 - ux * h * 0.8, y1 - uy * h * 0.8);
   ctx.lineTo(x1 - ux * h + uy * hw, y1 - uy * h - ux * hw);
   ctx.closePath(); ctx.fill(); ctx.restore();
 }
@@ -368,18 +370,18 @@ export function stepper(steps, onStep) {
   const dots = el('div', { class: 'dots' });
   const h = el('h2');
   const body = el('div', { class: 'body' });
-  const bPrev = el('button', { type: 'button', class: 'btn', html: ICON.prev.replace('<svg', '<svg width="14" height="14"') + 'Zurück' });
-  const bNext = el('button', { type: 'button', class: 'btn solid', html: 'Weiter' + ICON.next.replace('<svg', '<svg width="14" height="14"') });
+  const bPrev = el('button', { type: 'button', class: 'btn', html: '← Zurück' });
+  const bNext = el('button', { type: 'button', class: 'btn solid', html: 'Weiter →' });
   const card = el('section', { class: 'steps', 'aria-live': 'polite' },
-    el('div', { class: 'steps-top' }, count, dots), h, body, el('div', { class: 'step-nav' }, bPrev, bNext));
+    el('div', { class: 'steps-top' }, dots, count), h, body, el('div', { class: 'step-nav' }, bPrev, bNext));
   const ds = steps.map((s, k) => {
-    const d = el('button', { type: 'button', 'aria-label': `Schritt ${k + 1}: ${s.title}` });
+    const d = el('button', { type: 'button', 'aria-label': `Schritt ${k + 1}: ${s.title}`, html: String(k + 1).padStart(2, '0') });
     d.addEventListener('click', () => go(k)); dots.append(d); return d;
   });
   function go(k) {
     i = clamp(k, 0, steps.length - 1);
     const s = steps[i];
-    count.textContent = `SCHRITT ${i + 1} / ${steps.length}`;
+    count.textContent = 'Erklärung';
     h.innerHTML = s.title; body.innerHTML = s.html;
     ds.forEach((d, j) => j === i ? d.setAttribute('aria-current', 'step') : d.removeAttribute('aria-current'));
     bPrev.disabled = i === 0; bNext.disabled = i === steps.length - 1;

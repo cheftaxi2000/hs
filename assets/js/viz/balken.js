@@ -133,7 +133,7 @@ function drawAll(ctx, W, H, S, opt = {}) {
   // beam (left / right of cut)
   const drawBeam = (xa, xb, a = 1) => {
     ctx.save(); ctx.globalAlpha = a;
-    ctx.fillStyle = C.dark ? '#2a3540' : '#dfe5ea'; ctx.strokeStyle = C.ink; ctx.lineWidth = 1.6;
+    ctx.fillStyle = C.surface2; ctx.strokeStyle = C.ink; ctx.lineWidth = 1.6;
     ctx.beginPath(); ctx.rect(X(xa), by - bh / 2, X(xb) - X(xa), bh); ctx.fill(); ctx.stroke(); ctx.restore();
   };
   if (cut != null) { drawBeam(0, cut); drawBeam(cut, LEN, 0.28); } else drawBeam(0, LEN);
