@@ -256,3 +256,75 @@ input[type="range"]::-moz-range-thumb { width: 11px; height: 11px; background: v
   .scenes { gap: 0 16px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- feedback ---------- */
+.fb-open { appearance: none; border: 0; background: none; color: var(--ink-2); font: 400 13.5px var(--sans); cursor: pointer; padding: 6px 0 6px 14px; margin-left: 4px; border-left: 1px solid var(--hair); white-space: nowrap; }
+.pager:empty + .fb-open { margin-left: auto; border-left: 0; }
+.fb-open:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.fb-open .short { display: none; }
+dialog.fb { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid var(--ink); background: var(--bg); color: var(--ink); }
+dialog.fb::backdrop { background: rgba(10, 10, 10, .42); }
+.fb-form { display: grid; gap: 8px; padding: 28px 28px 24px; }
+.fb-head h2 { margin: 0 0 6px; font: 500 22px/1.2 var(--sans); letter-spacing: -0.015em; }
+.fb-head p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.fb-form fieldset { border: 0; margin: 0 0 6px; padding: 0; }
+.fb-form legend, .fb-form label { font: 500 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 0; margin-top: 6px; }
+.fb-kind { display: flex; flex-wrap: wrap; border: 1px solid var(--hair); width: fit-content; max-width: 100%; margin-top: 6px; }
+.fb-kind input { position: absolute; opacity: 0; pointer-events: none; }
+.fb-kind label { margin: 0; padding: 0 12px; height: 32px; display: flex; align-items: center; border-right: 1px solid var(--hair); font: 400 13px var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink-2); cursor: pointer; }
+.fb-kind label:last-child { border-right: 0; }
+.fb-kind input:checked + label { background: var(--ink); color: var(--bg); }
+.fb-kind input:focus-visible + label { outline: 1.5px solid var(--ink); outline-offset: 2px; }
+.fb-form input[type="text"], .fb-form input[type="email"], .fb-form input[type="password"], .fb-form textarea, .inbox-login input {
+  width: 100%; border: 0; border-bottom: 1px solid var(--hair); background: transparent; color: var(--ink); font: 400 15px/1.5 var(--sans); padding: 8px 0; border-radius: 0; }
+.fb-form textarea { border: 1px solid var(--hair); padding: 10px 12px; resize: vertical; min-height: 120px; }
+.fb-form input:focus, .fb-form textarea:focus, .inbox-login input:focus { outline: none; border-color: var(--ink); }
+.fb-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fb-trap { position: absolute; left: -9999px; width: 1px; height: 1px; }
+.fb-note { margin: 4px 0 0; font-size: 13px; color: var(--f); min-height: 1em; }
+.fb-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+
+/* ---------- reader ---------- */
+body.reading { background: var(--surface-2); }
+.reader { min-height: calc(100dvh - var(--bar)); }
+.rd-bar { position: sticky; top: calc(var(--bar) + env(safe-area-inset-top, 0px)); z-index: 15; display: flex; align-items: center; gap: 16px; padding: 10px var(--gut-r) 10px var(--gut); background: var(--bg); border-bottom: 1px solid var(--hair); }
+.rd-back { appearance: none; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); font: 400 13.5px var(--sans); height: 34px; padding: 0 14px; cursor: pointer; white-space: nowrap; }
+.rd-back:hover { background: var(--bg); color: var(--ink); }
+.rd-title { display: flex; align-items: baseline; gap: 14px; min-width: 0; font-weight: 500; font-size: 14.5px; }
+.rd-title > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rd-count { font-size: 12px; color: var(--muted); font-weight: 400; white-space: nowrap; }
+.rd-tools { margin-left: auto; display: flex; gap: 6px; }
+.rd-btn { appearance: none; min-width: 34px; height: 34px; padding: 0 10px; border: 1px solid var(--hair); background: var(--bg); color: var(--ink); font: 400 14px var(--sans); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; }
+.rd-btn:hover { border-color: var(--ink); }
+.rd-status { padding: 80px var(--gut); text-align: center; color: var(--muted); font-size: 14px; }
+.rd-status a { border-bottom: 1px solid var(--ink); color: var(--ink); }
+.rd-pages { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 28px 16px 80px; }
+.rd-page { background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 6px 20px -10px rgba(0,0,0,.25); max-width: 100%; }
+.rd-page canvas { width: 100%; height: 100%; display: block; }
+
+/* ---------- inbox (/errors) ---------- */
+.inbox { padding-top: 24px; }
+.inbox-h { padding-bottom: 18px; }
+.inbox-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--ink); }
+.inbox-list { list-style: none; margin: 0; padding: 0; }
+.inbox-item { display: grid; grid-template-columns: 190px minmax(0, 1fr) auto; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--hair); align-items: start; }
+.inbox-item.done { opacity: .55; }
+.inbox-meta { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
+.inbox-kind { font: 500 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+.inbox-item h3 { margin: 0 0 6px; font: 500 15.5px var(--sans); }
+.inbox-msg { margin: 0; white-space: pre-wrap; font-size: 14.5px; color: var(--ink-2); }
+.inbox-from { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
+.inbox-from a { border-bottom: 1px solid var(--muted); }
+.inbox-empty { color: var(--muted); padding: 24px 0; max-width: 64ch; }
+.inbox-login { display: grid; gap: 10px; max-width: 320px; padding-top: 12px; }
+.inbox-login label { font: 500 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.inbox-login .btn { justify-self: start; }
+
+@media (max-width: 640px) {
+  .fb-open .long { display: none; } .fb-open .short { display: inline; }
+  .rd-count { display: none; }
+  .rd-btn[aria-label] { display: none; }
+  .fb-two { grid-template-columns: 1fr; }
+  .fb-form { padding: 22px 18px 18px; }
+  .inbox-item { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
