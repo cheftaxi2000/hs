@@ -1,5 +1,4 @@
 import { el, onTheme, readTheme } from './core.js';
-import { openReader } from './reader.js';
 import { openFeedback } from './feedback.js';
 import * as polbahn from './viz/polbahn.js';
 import * as schraube from './viz/schraube.js';
@@ -40,7 +39,7 @@ const crumbs = document.getElementById('crumbs');
 const pager = document.getElementById('pager');
 const nn = (n) => String(n).padStart(2, '0');
 const cover = (s) => `assets/covers/${s.pdf.split('/')[0]}.webp`;
-const readHref = (s) => '#lesen-' + s.pdf.split('/')[0];
+const dl = (s) => ({ href: s.pdf, download: s.pdf.split('/').pop() });
 let current = null;
 
 function index() {
@@ -51,16 +50,15 @@ function index() {
   SUBJECTS.forEach((s, si) => {
     const file = s.pdf.split('/').pop();
     shelf.append(el('li', { class: 'book' },
-      el('a', { class: 'book-cover', href: readHref(s), 'aria-label': `Lernskript ${s.group} lesen` },
+      el('a', { class: 'book-cover', ...dl(s), 'aria-label': `Lernskript ${s.group} herunterladen` },
         el('img', { src: cover(s), alt: `Umschlag Lernskript ${s.group}`, width: 640, height: 905, loading: si < 3 ? 'eager' : 'lazy', decoding: 'async' })),
       el('div', { class: 'book-t', html: s.group }),
       el('div', { class: 'book-m', html: `${s.pages} Seiten · ${s.size} · ${s.lang}` }),
       el('div', { class: 'book-a' },
-        el('a', { href: readHref(s), html: 'Lesen' }),
-        el('a', { href: s.pdf, download: file, html: 'Laden ↓' }))));
+        el('a', { ...dl(s), html: 'Herunterladen ↓' }))));
   });
   root.append(el('section', { class: 'library' },
-    el('div', { class: 'sec-h' }, el('h2', { html: 'Bibliothek' }), el('p', { html: 'Die Skripte als PDF. Antippen öffnet das Buch.' })),
+    el('div', { class: 'sec-h' }, el('h2', { html: 'Bibliothek' }), el('p', { html: 'Die Skripte als PDF. Antippen lädt das Buch herunter.' })),
     shelf));
   root.append(el('div', { class: 'sec-h models-h' }, el('h2', { html: 'Modelle' }), el('p', { html: 'Interaktive Visualisierungen, geordnet nach Fach.' })));
   const thumbs = [];
@@ -81,12 +79,11 @@ function index() {
         el('h2', { html: s.group }),
         el('p', { html: s.desc }),
         el('div', { class: 'doc' },
-          el('a', { class: 'doc-ic', href: readHref(s), 'aria-hidden': 'true', tabindex: '-1' }, el('img', { src: cover(s), alt: '', loading: 'lazy' })),
+          el('a', { class: 'doc-ic', ...dl(s), 'aria-hidden': 'true', tabindex: '-1' }, el('img', { src: cover(s), alt: '', loading: 'lazy' })),
           el('span', { class: 'doc-t', html: `Lernskript ${s.group}` }),
           el('span', { class: 'doc-m', html: `PDF · ${s.pages} Seiten · ${s.size} · ${s.lang}` }),
           el('span', { class: 'doc-a' },
-            el('a', { href: readHref(s), html: 'Lesen' }),
-            el('a', { href: s.pdf, download: file, html: 'Herunterladen' })))),
+            el('a', { ...dl(s), html: 'Herunterladen ↓' })))),
       list));
   });
   root.append(el('footer', { class: 'colophon' },
@@ -107,24 +104,17 @@ function vizPage(v) {
   crumbs.innerHTML = '';
   crumbs.append(el('span', { class: 'sl', html: '/' }), el('a', { href: '#fach-' + (SUBJECTS.indexOf(v.subject) + 1), html: v.subject.group }), el('span', { class: 'sl', html: '/' }), el('span', { class: 'here', html: `${nn(v.n)} ${v.name}` }));
   pager.innerHTML = '';
-  pager.append(el('a', { class: 'pdf', href: readHref(v.subject), title: `Lernskript ${v.subject.group} lesen`, html: 'Skript' }));
+  pager.append(el('a', { class: 'pdf', ...dl(v.subject), title: `Lernskript ${v.subject.group} herunterladen`, html: 'Skript ↓' }));
   if (prev) pager.append(el('a', { class: 'pv', href: '#' + prev.m.meta.id, html: `← ${nn(prev.n)}` }));
   pager.append(el('a', { href: '#', html: 'Index' }));
   if (next) pager.append(el('a', { href: '#' + next.m.meta.id, html: `${nn(next.n)} →` }));
   const h = v.m.mount(app);
   const src = app.querySelector('.panel .src');
-  if (src) src.append(' ', el('a', { href: readHref(v.subject), html: 'Im Skript nachlesen' }));
+  if (src) src.append(' ', el('a', { ...dl(v.subject), html: 'Skript herunterladen' }));
   const eb = app.querySelector('.stage-head .eyebrow'); if (eb) eb.textContent = `${nn(v.n)} — ${v.m.meta.tag}`;
   return h;
 }
 
-function readerPage(subject) {
-  crumbs.innerHTML = '';
-  crumbs.append(el('span', { class: 'sl', html: '/' }), el('span', { html: 'Bibliothek' }), el('span', { class: 'sl', html: '/' }), el('span', { class: 'here', html: subject.group }));
-  pager.innerHTML = '';
-  return openReader(app, subject, { onBack: () => { if (cameFromSite) history.back(); else location.hash = ''; } });
-}
-let cameFromSite = false;
 
 function route() {
   const id = location.hash.replace('#', '');
@@ -133,16 +123,13 @@ function route() {
   window.scrollTo(0, 0);
   readTheme();
   const v = byId[id];
-  const rd = id.startsWith('lesen-') ? SUBJECTS.find((x) => x.pdf.split('/')[0] === id.slice(6)) : null;
-  document.body.classList.toggle('reading', !!rd);
-  if (rd) { document.title = `Lernskript ${rd.group} · Lernstoff DMAVT`; current = readerPage(rd); return; }
   if (v) { document.title = `${v.name} · Lernstoff DMAVT`; current = vizPage(v); }
   else { document.title = 'Lernstoff DMAVT'; current = index(); if (id.startsWith('fach-')) document.getElementById(id)?.scrollIntoView(); }
 }
-addEventListener('hashchange', () => { cameFromSite = true; route(); });
+addEventListener('hashchange', route);
 
 /* «Verbesserung vorschlagen» in the bar on every page */
 const fb = el('button', { type: 'button', class: 'fb-open', html: '<span class="long">Verbesserung vorschlagen</span><span class="short">Feedback</span>' });
-fb.addEventListener('click', () => { const id = location.hash.slice(1), v = byId[id], rd = id.startsWith('lesen-') ? SUBJECTS.find((x) => x.pdf.split('/')[0] === id.slice(6)) : null; openFeedback(v ? `${v.subject.group}, Modell ${nn(v.n)} ${v.name}` : rd ? `Lernskript ${rd.group}, Seite ` : ''); });
+fb.addEventListener('click', () => { const v = byId[location.hash.slice(1)]; openFeedback(v ? `${v.subject.group}, Modell ${nn(v.n)} ${v.name}` : ''); });
 document.querySelector('.bar-in').append(fb);
 route();

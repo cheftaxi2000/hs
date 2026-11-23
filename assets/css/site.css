@@ -284,24 +284,6 @@ dialog.fb::backdrop { background: rgba(10, 10, 10, .42); }
 .fb-note { margin: 4px 0 0; font-size: 13px; color: var(--f); min-height: 1em; }
 .fb-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
 
-/* ---------- reader ---------- */
-body.reading { background: var(--surface-2); }
-.reader { min-height: calc(100dvh - var(--bar)); }
-.rd-bar { position: sticky; top: calc(var(--bar) + env(safe-area-inset-top, 0px)); z-index: 15; display: flex; align-items: center; gap: 16px; padding: 10px var(--gut-r) 10px var(--gut); background: var(--bg); border-bottom: 1px solid var(--hair); }
-.rd-back { appearance: none; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); font: 400 13.5px var(--sans); height: 34px; padding: 0 14px; cursor: pointer; white-space: nowrap; }
-.rd-back:hover { background: var(--bg); color: var(--ink); }
-.rd-title { display: flex; align-items: baseline; gap: 14px; min-width: 0; font-weight: 500; font-size: 14.5px; }
-.rd-title > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.rd-count { font-size: 12px; color: var(--muted); font-weight: 400; white-space: nowrap; }
-.rd-tools { margin-left: auto; display: flex; gap: 6px; }
-.rd-btn { appearance: none; min-width: 34px; height: 34px; padding: 0 10px; border: 1px solid var(--hair); background: var(--bg); color: var(--ink); font: 400 14px var(--sans); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; }
-.rd-btn:hover { border-color: var(--ink); }
-.rd-status { padding: 80px var(--gut); text-align: center; color: var(--muted); font-size: 14px; }
-.rd-status a { border-bottom: 1px solid var(--ink); color: var(--ink); }
-.rd-pages { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 28px 16px 80px; }
-.rd-page { background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 6px 20px -10px rgba(0,0,0,.25); max-width: 100%; }
-.rd-page canvas { width: 100%; height: 100%; display: block; }
-
 /* ---------- inbox (/errors) ---------- */
 .inbox { padding-top: 24px; }
 .inbox-h { padding-bottom: 18px; }
@@ -322,8 +304,6 @@ body.reading { background: var(--surface-2); }
 
 @media (max-width: 640px) {
   .fb-open .long { display: none; } .fb-open .short { display: inline; }
-  .rd-count { display: none; }
-  .rd-btn[aria-label] { display: none; }
   .fb-two { grid-template-columns: 1fr; }
   .fb-form { padding: 22px 18px 18px; }
   .inbox-item { grid-template-columns: minmax(0, 1fr); gap: 8px; }
