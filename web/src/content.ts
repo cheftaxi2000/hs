@@ -45,5 +45,6 @@ export const SUBJECTS: Subject[] = [
 ];
 /** Which subject a hash belongs to: its own id, or one of its chapter or plate anchors. */
 export function subjectOf(hash: string): Subject {
-  return SUBJECTS.find((s) => s.id === hash || s.chapters.some((c) => c.id === hash)) ?? SUBJECTS[0];
+  const byPath = typeof location !== 'undefined' && /\/analysis\/?$/.test(location.pathname) ? SUBJECTS[1] : SUBJECTS[0];
+  return SUBJECTS.find((s) => s.id === hash || s.chapters.some((c) => c.id === hash)) ?? byPath;
 }

@@ -1,7 +1,7 @@
 name: GitHub Pages
 
 # Baut die Mechanik-Tafeln (web/, React/Vite) und veröffentlicht sie zusammen mit der
-# Lernstoff-Seite: /hs/ = index.html + assets/ + PDFs, /hs/mechanik/ = Tafeln, /hs/errors/ = Meldungen.
+# Lernstoff-Seite: /hs/ = index.html + assets/ + PDFs, /hs/mechanik/ und /hs/analysis/ = Tafeln, /hs/errors/ = Meldungen.
 on:
   push:
     branches: [main]
@@ -40,6 +40,7 @@ jobs:
             mkdir -p "_site/$d" && cp "$d"/*.pdf "_site/$d/"
           done
           cp -r web/dist _site/mechanik
+          mkdir -p _site/analysis && cp web/dist/index.html _site/analysis/   # same app, opens on Analysis
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
