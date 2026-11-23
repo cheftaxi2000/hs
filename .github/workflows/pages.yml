@@ -41,6 +41,12 @@ jobs:
           done
           cp -r web/dist _site/mechanik
           mkdir -p _site/analysis && cp web/dist/index.html _site/analysis/   # same app, opens on Analysis
+      - name: Dateien versionieren (Browser lädt nach jedem Deployment neu)
+        run: |
+          V="${GITHUB_SHA::7}"
+          sed -i -E "s#((href|src)=\"(\.\./)?assets/[^\"]+\.(css|js))\"#\1?v=$V\"#g" _site/index.html _site/errors/index.html
+          find _site/assets/js -name '*.js' -exec sed -i -E "s#((from|import\() *'\.{1,2}/[^']+\.js)'#\1?v=$V'#g" {} +
+          grep -c "?v=$V" _site/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
