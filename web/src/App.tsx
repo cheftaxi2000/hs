@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { CHAPTERS } from './content';
+import { useEffect, useLayoutEffect, useState } from 'react';
+import { SUBJECTS, subjectOf, type Subject } from './content';
 
 function useTheme() {
   const read = (): 'light' | 'dark' | null => { try { const v = localStorage.getItem('atlas.theme'); return v === 'light' || v === 'dark' ? v : null; } catch { return null; } };
@@ -16,53 +16,84 @@ function useTheme() {
   return { toggle, dark: isDark() };
 }
 
-function useCurrentChapter() {
-  const [cur, setCur] = useState(CHAPTERS[0].id);
+const readHash = () => (typeof location !== 'undefined' ? decodeURIComponent(location.hash.replace(/^#/, '')) : '');
+
+/** The subject comes from the hash (#analysis, #mechanik, or a chapter anchor such as #a3). */
+function useSubject() {
+  const [hash, setHash] = useState(readHash);
+  const [subject, setSubject] = useState<Subject>(() => subjectOf(readHash()));
   useEffect(() => {
+    const on = () => {
+      const h = readHash();
+      setHash(h);
+      if (h) setSubject((s) => (s.chapters.some((c) => c.id === h) ? s : subjectOf(h)));
+    };
+    addEventListener('hashchange', on);
+    return () => removeEventListener('hashchange', on);
+  }, []);
+  // after a switch: a subject link goes to the top, a chapter link to its chapter
+  useLayoutEffect(() => {
+    const el = hash && subject.chapters.some((c) => c.id === hash) ? document.getElementById(hash) : null;
+    if (el) el.scrollIntoView(); else if (SUBJECTS.some((s) => s.id === hash)) scrollTo(0, 0);
+  }, [subject, hash]);
+  return subject;
+}
+
+function useCurrentChapter(subject: Subject) {
+  const [cur, setCur] = useState(subject.chapters[0].id);
+  useEffect(() => {
+    setCur(subject.chapters[0].id);
     if (typeof IntersectionObserver === 'undefined') return;
     const io = new IntersectionObserver((es) => {
       for (const e of es) if (e.isIntersecting) setCur(e.target.id);
     }, { rootMargin: '-35% 0px -60% 0px' });
-    CHAPTERS.forEach((c) => { const el = document.getElementById(c.id); if (el) io.observe(el); });
+    subject.chapters.forEach((c) => { const el = document.getElementById(c.id); if (el) io.observe(el); });
     return () => io.disconnect();
-  }, []);
+  }, [subject]);
   return cur;
 }
 
 export function App() {
   const { toggle, dark } = useTheme();
-  const cur = useCurrentChapter();
-  const plates = CHAPTERS.reduce((n, c) => n + c.plates.length, 0);
+  const subject = useSubject();
+  const cur = useCurrentChapter(subject);
+  useEffect(() => { document.title = `${subject.name} in Tafeln`; }, [subject]);
   return (
     <>
       <header className="top">
-        <a className="mark" href="#">Mechanik 1</a>
+        <nav className="subjects" aria-label="Fach">
+          {SUBJECTS.map((s) => (
+            <a key={s.id} href={'#' + s.id} className={s.id === subject.id ? 'on' : ''} aria-current={s.id === subject.id ? 'page' : undefined}>{s.name}</a>
+          ))}
+        </nav>
         <button className="theme" onClick={toggle} aria-label={dark ? 'Helle Darstellung' : 'Dunkle Darstellung'}>
           {dark
             ? <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="10" cy="10" r="3.6" /><path d="M10 1.8v2.4M10 15.8v2.4M1.8 10h2.4M15.8 10h2.4M4.2 4.2l1.7 1.7M14.1 14.1l1.7 1.7M4.2 15.8l1.7-1.7M14.1 5.9l1.7-1.7" /></svg>
             : <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16.5 12.6A7 7 0 0 1 7.4 3.5a7 7 0 1 0 9.1 9.1Z" /></svg>}
         </button>
       </header>
-      <main className="shell">
+      <main className="shell" key={subject.id}>
         <nav className="toc" aria-label="Kapitel">
           <ol>
-            {CHAPTERS.map((c) => (
+            {subject.chapters.map((c) => (
               <li key={c.id}><a href={'#' + c.id} className={cur === c.id ? 'here' : ''}><span className="n">{c.num}</span><span>{c.title}</span></a></li>
             ))}
           </ol>
         </nav>
         <div className="hero">
-          <h1>Mechanik 1 in bewegten Tafeln</h1>
-          <p>{plates} Figuren zum Lernskript, eine pro Begriff. Jede Bewegung ist aus den Gleichungen berechnet, nicht gezeichnet.</p>
+          <h1>{subject.title}</h1>
+          <p>{subject.lede}</p>
         </div>
-        {CHAPTERS.map((c) => (
+        {subject.chapters.map((c) => (
           <section key={c.id} id={c.id} className="chapter" aria-labelledby={c.id + '-t'}>
             <div className="chapter-h"><span className="n">{c.num}</span><h2 id={c.id + '-t'}>{c.title}</h2></div>
             {c.plates.map((P, i) => <P key={i} />)}
           </section>
         ))}
         <footer className="foot">
-          Farben wie im Skript: Geschwindigkeiten blau, Kräfte rot, Drehungen und Momente grün. Vektoren fett.
+          {subject.id === 'mechanik'
+            ? 'Farben wie im Skript: Geschwindigkeiten blau, Kräfte rot, Drehungen und Momente grün. Vektoren fett.'
+            : 'Schwarz die Funktion, blau ihre Steigung und Näherungen, grün Flächen, violett Konstruktionen.'}
         </footer>
       </main>
     </>

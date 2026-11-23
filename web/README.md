@@ -1,6 +1,6 @@
-# Mechanik 1 in Tafeln
+# Bewegte Tafeln: Mechanik 1 und Analysis I
 
-Eine Seite mit bewegten Figuren zum Lernskript `../mechanik1`: pro Begriff eine Tafel, darunter nur Name und Formel.
+Eine Seite mit bewegten Figuren zu den Lernskripten `../mechanik1` und `../analysis1`: pro Begriff eine Tafel, darunter nur Name und Formel.
 Jede Bewegung wird aus den Gleichungen berechnet (`src/phys/`, mit Tests), nicht von Hand animiert.
 
 ```
@@ -14,7 +14,8 @@ npm run build:artifact   # eine einzige HTML-Datei (dist-artifact/)
 
 - `src/phys/` Kinematik und Statik (Rollen, Leiter, Schubkurbel, Fachwerk-Löser, Kettenlinie, Seilreibung, Schnittgrössen …), jede Formel in `*.test.ts` numerisch geprüft.
 - `src/ui/` Tafel (Uhr, Abspielen/Anhalten, pausiert ausserhalb des Bildschirms), SVG-Grundformen (Pfeile, Fest- und Loslager, Schraffur), KaTeX-Beschriftungen, 3D-Projektion zum Ziehen.
-- `src/plates/` die Tafeln, nach Kapiteln des Skripts.
+- `src/math/` Analysis (Folgen, Bisektion, Krümmung und Evolute, komplexe Zahlen, Ober-/Untersummen, Taylor), ebenfalls getestet.
+- `src/plates/` die Tafeln, nach Kapiteln der Skripte. Fachwahl über `#mechanik` / `#analysis`.
 
 ## Regeln
 

@@ -18,6 +18,7 @@
   --v-wash: rgba(31, 95, 168, 0.1);
   --f-wash: rgba(179, 56, 44, 0.1);
   --m-wash: rgba(42, 127, 90, 0.12);
+  --k-wash: rgba(106, 79, 160, 0.1);
   --sans: 'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif;
   color-scheme: light;
 }
@@ -40,6 +41,7 @@
     --v-wash: rgba(110, 166, 230, 0.14);
     --f-wash: rgba(236, 123, 108, 0.14);
     --m-wash: rgba(92, 194, 147, 0.16);
+    --k-wash: rgba(168, 145, 219, 0.14);
     color-scheme: dark;
   }
 }
@@ -61,6 +63,7 @@
   --v-wash: rgba(110, 166, 230, 0.14);
   --f-wash: rgba(236, 123, 108, 0.14);
   --m-wash: rgba(92, 194, 147, 0.16);
+  --k-wash: rgba(168, 145, 219, 0.14);
   color-scheme: dark;
 }
 
@@ -85,7 +88,13 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 22px clamp(16px, 4vw, 56px) 0;
 }
-.mark { font-weight: 600; font-size: 15px; letter-spacing: 0.01em; text-decoration: none; }
+.subjects { display: flex; gap: 4px; margin-left: -10px; }
+.subjects a {
+  text-decoration: none; font-size: 15px; color: var(--muted); padding: 6px 10px; border-radius: 16px;
+  transition: color 0.15s, background-color 0.15s;
+}
+.subjects a:hover { color: var(--ink); }
+.subjects a.on { color: var(--ink); font-weight: 600; background: var(--plate); }
 .theme {
   width: 34px; height: 34px; border: 0; background: transparent; cursor: pointer; border-radius: 50%;
   display: grid; place-items: center; color: var(--ink-2);
@@ -158,7 +167,8 @@ a { color: inherit; }
 .cap-name { display: flex; align-items: baseline; gap: 14px; }
 .cap-num { color: var(--graphite); font-variant-numeric: tabular-nums; font-size: 15px; min-width: 2.2em; }
 .plate-cap h2 { margin: 0; font-size: 22px; font-weight: 560; letter-spacing: -0.01em; line-height: 1.2; }
-.cap-formula { font-size: 17px; }
+.cap-formula { font-size: 17px; min-width: 0; max-width: 100%; }
+.cap-name { min-width: 0; }
 .cap-formula .katex-display { margin: 0; text-align: right; }
 .cap-note { grid-column: 1 / -1; margin: 2px 0 0 calc(2.2em + 14px); color: var(--muted); font-size: 15px; max-width: 40rem; }
 @media (max-width: 760px) {
@@ -215,6 +225,9 @@ svg .ln.wash-v { fill: var(--v-wash); stroke: none; }
 svg .ln.wash-f { fill: var(--f-wash); stroke: none; }
 svg .ln.wash-m { fill: var(--m-wash); stroke: none; }
 svg .ln.wash { fill: var(--wash); stroke: none; }
+svg .ln.wash-k { fill: var(--k-wash); stroke: none; }
+svg .ln.ln-g { stroke: var(--graphite); stroke-width: 1; }
+svg .tile { fill: var(--v); stroke: none; }
 svg .arrow line { stroke-linecap: butt; }
 svg .arrow.c-ink line { stroke: var(--ink); } svg .arrow.c-ink polygon { fill: var(--ink); }
 svg .arrow.c-v line { stroke: var(--v); } svg .arrow.c-v polygon { fill: var(--v); }
