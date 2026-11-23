@@ -16,6 +16,7 @@ import * as entropie from './viz/entropie.js';
 /* the five scripts, with the PDFs that live next to their sources in this repository */
 const SUBJECTS = [
   { group: 'Mechanik 1', pdf: 'mechanik1/Mechanik1_Lernskript.pdf', pages: 131, size: '5.3 MB', lang: 'Deutsch',
+    atlas: { href: 'mechanik/', title: 'Mechanik 1 in Tafeln', text: '19 bewegte Figuren zu den Kapiteln 1 bis 14: von der Zykloide über Polbahnen, Fachwerke und Reibungskegel bis zur Kettenlinie.', ch: 'Kapitel 1–14' },
     desc: 'Kinematik des Punktes und des starren Körpers, Kräfte und Momente, Statik, Reibung, Seile, Beanspruchung.',
     viz: [[polbahn, 'Momentanzentrum und Polbahnen'], [schraube, 'Kinemate und Schraube'], [balken, 'Querkraft und Biegemoment']] },
   { group: 'Analysis 1', pdf: 'analysis1/Analysis1_Lernskript.pdf', pages: 106, size: '3.6 MB', lang: 'Deutsch',
@@ -72,6 +73,10 @@ function index() {
         el('div', {}, el('h3', { html: v.name }), el('p', { html: v.m.meta.title }), el('span', { class: 'ch', html: v.m.meta.tag.split('·')[1]?.trim() || '' })),
         cv)));
     }
+    if (s.atlas) list.append(el('li', { class: 'vrow atlas' }, el('a', { href: s.atlas.href },
+      el('span', { class: 'n', html: '↗' }),
+      el('div', {}, el('h3', { html: s.atlas.title }), el('p', { html: s.atlas.text }), el('span', { class: 'ch', html: s.atlas.ch })),
+      el('span', { class: 'atlas-mark', html: '<b>19</b><span>Tafeln</span>' }))));
     const file = s.pdf.split('/').pop();
     root.append(el('section', { class: 'subject', id: 'fach-' + (si + 1) },
       el('div', { class: 'subject-head' },

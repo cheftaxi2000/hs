@@ -5,7 +5,7 @@ Jede Bewegung wird aus den Gleichungen berechnet (`src/phys/`, mit Tests), nicht
 
 ```
 npm install
-npm run dev              # lokale Vorschau
+npm run dev              # lokale Vorschau (veröffentlicht unter /hs/mechanik/)
 npm run check            # Typen, Physik-Tests, Build
 npm run build:artifact   # eine einzige HTML-Datei (dist-artifact/)
 ```

@@ -5,9 +5,12 @@ Fünf Lernskripte für das erste Studienjahr (Mechanik 1, Analysis 1, Lineare Al
 - `index.html`, `assets/` – die Website (statisch, kein Build-Schritt)
 - `mechanik1/`, `analysis1/`, `linalg1/`, `informatics1/`, `chemistry1/` – Typst-Quellen, Abbildungen und die fertigen PDFs, die die Website verlinkt
 
+- `web/` – «Mechanik 1 in Tafeln» (React/Vite), wird beim Veröffentlichen gebaut und unter `/mechanik/` eingebunden
+
 ## Veröffentlichen mit GitHub Pages
 
-Settings → Pages → Source: *Deploy from a branch*, Branch `main`, Ordner `/ (root)`.
+Settings → Pages → Source: **GitHub Actions**. Jeder Push auf `main` startet `.github/workflows/pages.yml`:
+Tafeln bauen und testen, dann Lernstoff-Seite, PDFs, `/errors` und `/mechanik/` zusammen veröffentlichen.
 
 ## Lokal ansehen
 

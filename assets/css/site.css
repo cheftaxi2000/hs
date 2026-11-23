@@ -308,3 +308,10 @@ dialog.fb::backdrop { background: rgba(10, 10, 10, .42); }
   .fb-form { padding: 22px 18px 18px; }
   .inbox-item { grid-template-columns: minmax(0, 1fr); gap: 8px; }
 }
+.atlas-mark { width: 168px; height: 96px; border: 1px solid var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.atlas-mark b { font: 500 34px/1 var(--sans); letter-spacing: -0.03em; }
+.atlas-mark span { font: 400 11px var(--mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.vrow.atlas a:hover .atlas-mark { background: var(--ink); color: var(--bg); }
+.vrow.atlas a:hover .atlas-mark span { color: var(--bg); }
+@media (max-width: 1180px) { .atlas-mark { width: 140px; height: 80px; } }
+@media (max-width: 640px) { .atlas-mark { display: none; } }
