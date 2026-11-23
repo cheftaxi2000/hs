@@ -37,6 +37,7 @@ const app = document.getElementById('app');
 const crumbs = document.getElementById('crumbs');
 const pager = document.getElementById('pager');
 const nn = (n) => String(n).padStart(2, '0');
+const cover = (s) => `assets/covers/${s.pdf.split('/')[0]}.webp`;
 let current = null;
 
 function index() {
@@ -47,6 +48,23 @@ function index() {
     el('h1', { html: 'Lernskripte' }),
     el('p', { html: 'Fünf Skripte für das erste Studienjahr, zum Lesen als PDF. Dazu zwölf interaktive Modelle für die Stellen, an denen eine Zeichnung nicht reicht: wo sich etwas bewegt, ein Punkt wandert oder eine Aussage erst greifbar wird, wenn man einen Parameter verändert.' }),
     el('dl', { html: `<div><dt>Skripte</dt><dd>${SUBJECTS.length}</dd></div><div><dt>Seiten</dt><dd>${pages}</dd></div><div><dt>Modelle</dt><dd>${ALL.length}</dd></div><div><dt>Format</dt><dd>PDF · Browser</dd></div>` })));
+  const shelf = el('ol', { class: 'shelf' });
+  SUBJECTS.forEach((s, si) => {
+    const file = s.pdf.split('/').pop();
+    shelf.append(el('li', { class: 'book' },
+      el('a', { class: 'book-cover', href: s.pdf, target: '_blank', rel: 'noopener', 'aria-label': `Lernskript ${s.group} öffnen` },
+        el('img', { src: cover(s), alt: `Umschlag Lernskript ${s.group}`, width: 640, height: 905, loading: si < 3 ? 'eager' : 'lazy', decoding: 'async' })),
+      el('div', { class: 'book-t', html: s.group }),
+      el('div', { class: 'book-m', html: `${s.pages} Seiten · ${s.size} · ${s.lang}` }),
+      el('div', { class: 'book-a' },
+        el('a', { href: s.pdf, target: '_blank', rel: 'noopener', html: 'Lesen' }),
+        el('a', { href: s.pdf, download: file, html: 'Laden ↓' }),
+        el('a', { href: '#fach-' + (si + 1), class: 'mut', html: `${s.viz.length} Modelle` }))));
+  });
+  root.append(el('section', { class: 'library' },
+    el('div', { class: 'sec-h' }, el('h2', { html: 'Bibliothek' }), el('p', { html: 'Die Skripte als PDF. Antippen öffnet das Buch im Browser.' })),
+    shelf));
+  root.append(el('div', { class: 'sec-h models-h' }, el('h2', { html: 'Modelle' }), el('p', { html: 'Interaktive Visualisierungen, geordnet nach Fach.' })));
   const thumbs = [];
   SUBJECTS.forEach((s, si) => {
     const list = el('ol', { class: 'vlist' });
@@ -65,7 +83,7 @@ function index() {
         el('h2', { html: s.group }),
         el('p', { html: s.desc }),
         el('div', { class: 'doc' },
-          el('span', { class: 'doc-ic', 'aria-hidden': 'true' }),
+          el('a', { class: 'doc-ic', href: s.pdf, target: '_blank', rel: 'noopener', 'aria-hidden': 'true', tabindex: '-1' }, el('img', { src: cover(s), alt: '', loading: 'lazy' })),
           el('span', { class: 'doc-t', html: `Lernskript ${s.group}` }),
           el('span', { class: 'doc-m', html: `PDF · ${s.pages} Seiten · ${s.size} · ${s.lang}` }),
           el('span', { class: 'doc-a' },
