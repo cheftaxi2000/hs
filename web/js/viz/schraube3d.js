@@ -5,7 +5,7 @@ import { C, onTheme, readTheme } from '../core.js';
 
 const V3 = (a) => new THREE.Vector3(a[0], a[1], a[2]);
 
-class Arrow3D {
+export class Arrow3D {
   constructor(parent, { r = 0.016, head = 0.09, headR = 0.042 } = {}) {
     this.mat = new THREE.MeshStandardMaterial({ roughness: 0.45, metalness: 0.0 });
     this.shaft = new THREE.Mesh(Arrow3D.cyl, this.mat);
