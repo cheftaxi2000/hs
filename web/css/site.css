@@ -249,3 +249,5 @@ html, body { overflow-x: clip; }
 .gauss-mat tr:nth-child(1) th { color: var(--v); } .gauss-mat tr:nth-child(2) th { color: var(--f); } .gauss-mat tr:nth-child(3) th { color: var(--m); }
 .gauss-mat tr.hot td { background: color-mix(in srgb, var(--k) 18%, transparent); }
 .gauss-mat tr.src td { background: var(--surface-2); }
+.stage-head { flex-wrap: wrap; }
+.stage-head > div:first-child { min-width: 0; flex: 1 1 320px; }
