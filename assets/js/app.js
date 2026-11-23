@@ -44,58 +44,60 @@ const cover = (s) => `assets/covers/${s.pdf.split('/')[0]}.webp`;
 const dl = (s) => ({ href: s.pdf, download: s.pdf.split('/').pop() });
 let current = null;
 
-function index() {
+const SEL_KEY = 'lernstoff.book';
+const readSel = () => { try { const v = +localStorage.getItem(SEL_KEY); return v >= 0 && v < SUBJECTS.length ? v : 0; } catch { return 0; } };
+
+/* The start page is one gesture: choose a book. The five covers are the page; the chosen book opens its plates below. */
+function index(initial) {
   crumbs.innerHTML = ''; pager.innerHTML = '';
-  /* One grid: a margin column for the row labels, then one column per book.
-     Under each book stands what belongs to it: its description, its models, its Tafeln. */
   const root = el('div', { class: 'idx' });
-  root.append(el('header', { class: 'hero' }, el('h1', { html: 'Lernstoff DMAVT' })));
-  const atlas = el('div', { class: 'atlas' });
-  atlas.append(
-    el('div', { class: 'row-label rl-books' }, el('h2', { html: 'Bibliothek' }), el('p', { html: 'Die Skripte als PDF. Antippen lädt das Buch herunter.' })),
-    el('ol', { class: 'shelf-strip' }, ...SUBJECTS.map((s) => el('li', {},
-      el('a', { class: 'book-cover', ...dl(s), 'aria-label': `Lernskript ${s.group} herunterladen` },
-        el('img', { src: cover(s), alt: `Umschlag Lernskript ${s.group}`, width: 640, height: 905, loading: 'lazy', decoding: 'async' })),
-      el('span', { html: s.group })))),
-    el('div', { class: 'row-rule', 'aria-hidden': 'true' }),
-    el('div', { class: 'row-label rl-models' }, el('h2', { html: 'Modelle' }), el('p', { html: 'Interaktive Visualisierungen, geordnet nach Fach.' })));
-  const thumbs = [];
-  SUBJECTS.forEach((s, si) => {
-    const models = el('ol', { class: 'models' });
+  root.append(el('h1', { class: 'vh', html: 'Lernstoff DMAVT' }));
+  const covers = SUBJECTS.map((s, si) => el('li', {},
+    el('button', { type: 'button', class: 'pick', 'aria-pressed': 'false', 'aria-controls': 'room' },
+      el('img', { src: cover(s), alt: '', width: 640, height: 905, decoding: 'async' }),
+      el('span', { class: 'pick-t', html: s.group }))));
+  const shelf = el('ol', { class: 'shelf', 'aria-label': 'Skripte' }, ...covers);
+  const room = el('section', { class: 'room', id: 'room', 'aria-live': 'polite' });
+  root.append(shelf, room);
+  root.append(el('footer', { class: 'legend-line' }, el('ul', { class: 'legend', html:
+    '<li><i style="background:var(--v)"></i>Geschwindigkeit, Näherung</li><li><i style="background:var(--f)"></i>Kraft, Singularität</li><li><i style="background:var(--m)"></i>Drehung, Moment, Krümmung</li><li><i style="background:var(--k)"></i>Momentanzentrum, aktiver Zustand</li>' })));
+  app.append(root);
+
+  let thumbs = [];
+  const draw = () => { readTheme(); for (const [cv, m] of thumbs) { const r = cv.getBoundingClientRect(); if (!r.width) continue; const dpr = Math.min(2, devicePixelRatio || 1); cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr); const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); try { m.thumb(ctx, r.width, r.height); } catch (e) { console.error(e); } } };
+  const ro = new ResizeObserver(() => draw());
+
+  function select(si, { scroll = false } = {}) {
+    const s = SUBJECTS[si];
+    covers.forEach((li, k) => { li.classList.toggle('on', k === si); li.querySelector('.pick').setAttribute('aria-pressed', String(k === si)); });
+    shelf.classList.add('has-sel');
+    try { localStorage.setItem(SEL_KEY, String(si)); } catch { /* private mode */ }
+    history.replaceState(null, '', '#fach-' + (si + 1));
+    ro.disconnect(); thumbs = [];
+    const plates = el('ol', { class: 'plates' });
     for (const v of ALL.filter((x) => x.subject === s)) {
       const cv = el('canvas', { 'aria-hidden': 'true' });
-      thumbs.push([cv, v.m]);
-      models.append(el('li', {}, el('a', { class: 'card', href: '#' + v.m.meta.id },
-        cv,
-        el('h3', {}, el('span', { class: 'n', html: nn(v.n) }), el('span', { class: 't', html: v.name })),
-        el('p', { html: v.m.meta.title }),
-        el('span', { class: 'ch', html: v.m.meta.tag.split('·')[1]?.trim() || '' }))));
+      thumbs.push([cv, v.m]); ro.observe(cv);
+      plates.append(el('li', {}, el('a', { class: 'plate', href: '#' + v.m.meta.id },
+        cv, el('span', { class: 'plate-t' }, el('span', { class: 'n', html: nn(v.n) }), el('span', { html: v.name })))));
     }
-    const tafeln = s.atlas
-      ? el('a', { class: 'tafeln', href: s.atlas.href },
-        el('h3', { html: s.atlas.title }), el('p', { html: s.atlas.text }), el('span', { class: 'ch', html: s.atlas.ch }))
-      : el('span', { class: 'tafeln empty', 'aria-hidden': 'true' });
-    atlas.append(el('section', { class: 'subj', id: 'fach-' + (si + 1), style: `--c:${si + 2}`, 'aria-label': s.group },
-      el('a', { class: 'book-cover', ...dl(s), 'aria-label': `Lernskript ${s.group} herunterladen` },
-        el('img', { src: cover(s), alt: `Umschlag Lernskript ${s.group}`, width: 640, height: 905, loading: si < 3 ? 'eager' : 'lazy', decoding: 'async' })),
-      el('div', { class: 'book-id' },
-        el('h2', { class: 'book-t', html: s.group }),
-        el('div', { class: 'book-m', html: `${s.pages} Seiten · ${s.size} · ${s.lang}` }),
-        el('div', { class: 'book-a' }, el('a', { ...dl(s), html: 'Herunterladen ↓' }))),
-      el('p', { class: 'book-d', html: s.desc }),
-      models,
-      tafeln));
-  });
-  root.append(atlas);
-  root.append(el('footer', { class: 'colophon' },
-    el('div', {}, el('h4', { html: 'Farben' }), el('ul', { class: 'legend', html:
-      '<li><i style="background:var(--v)"></i>Geschwindigkeit, Näherung</li><li><i style="background:var(--f)"></i>Kraft, Singularität</li><li><i style="background:var(--m)"></i>Drehung, Moment, Krümmung</li><li><i style="background:var(--k)"></i>Momentanzentrum, aktiver Zustand</li>' })),
-    el('div', {}, el('h4', { html: 'Auswahl' }), el('p', { html: 'Modelliert wurde nur, was in Bewegung verständlicher wird. Alles andere steht im Skript, wo Text, Rechnung und Abbildung das bessere Medium sind.' })),
-    el('div', {}, el('h4', { html: 'Bedienung' }), el('p', { html: 'Jedes Modell führt in nummerierten Schritten durch die Idee. Danach ist alles frei: ziehen, verschieben, Parameter ändern. Funktioniert mit Maus, Trackpad und Touch.' }))));
-  app.append(root);
-  const draw = () => { readTheme(); for (const [cv, m] of thumbs) { const r = cv.getBoundingClientRect(); if (!r.width) continue; const dpr = Math.min(2, devicePixelRatio || 1); cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr); const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); try { m.thumb(ctx, r.width, r.height); } catch (e) { console.error(e); } } };
-  requestAnimationFrame(draw); document.fonts?.ready.then(draw);
-  const ro = new ResizeObserver(() => draw()); thumbs.forEach(([cv]) => ro.observe(cv));
+    if (s.atlas) plates.append(el('li', {}, el('a', { class: 'plate tafeln', href: s.atlas.href },
+      el('picture', { class: 'tafeln-face' },
+        el('source', { srcset: `assets/tafeln/${s.atlas.href.replace('/', '')}-dark.webp`, media: '(prefers-color-scheme: dark)' }),
+        el('img', { src: `assets/tafeln/${s.atlas.href.replace('/', '')}-light.webp`, alt: '', width: 960, height: 600, loading: 'lazy', decoding: 'async' })),
+      el('span', { class: 'plate-t' }, el('span', { class: 'n', html: '' }), el('span', { html: s.atlas.title })))));
+    room.replaceChildren(
+      el('header', { class: 'room-h' },
+        el('h2', { html: s.group }),
+        el('a', { class: 'pdf', ...dl(s), html: `<span class="l">PDF herunterladen</span><span class="m">${s.pages} Seiten · ${s.size}</span>` })),
+      plates);
+    room.classList.remove('in'); void room.offsetWidth; room.classList.add('in');
+    requestAnimationFrame(draw);
+    if (scroll) room.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+  covers.forEach((li, si) => li.querySelector('.pick').addEventListener('click', () => select(si, { scroll: innerWidth < 980 })));
+  select(initial ?? readSel(), { scroll: initial != null && innerWidth < 980 });
+  document.fonts?.ready.then(draw);
   const off = onTheme(draw);
   return { destroy() { ro.disconnect(); off(); } };
 }
@@ -126,7 +128,7 @@ function route() {
   const v = byId[id];
   document.body.dataset.page = v ? 'model' : 'index';
   if (v) { document.title = `${v.name} · Lernstoff DMAVT`; current = vizPage(v); }
-  else { document.title = 'Lernstoff DMAVT'; current = index(); if (id.startsWith('fach-')) document.getElementById(id)?.scrollIntoView(); }
+  else { document.title = 'Lernstoff DMAVT'; const f = /^fach-(\d)$/.exec(id); current = index(f ? +f[1] - 1 : undefined); }
 }
 addEventListener('hashchange', route);
 
