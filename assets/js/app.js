@@ -46,50 +46,47 @@ let current = null;
 
 function index() {
   crumbs.innerHTML = ''; pager.innerHTML = '';
+  /* One grid: a margin column for the row labels, then one column per book.
+     Under each book stands what belongs to it: its description, its models, its Tafeln. */
   const root = el('div', { class: 'idx' });
-  root.append(el('section', { class: 'hero' }, el('h1', { html: 'Lernstoff DMAVT' })));
-  const shelf = el('ol', { class: 'shelf' });
-  SUBJECTS.forEach((s, si) => {
-    const file = s.pdf.split('/').pop();
-    shelf.append(el('li', { class: 'book' },
+  root.append(el('header', { class: 'hero' }, el('h1', { html: 'Lernstoff DMAVT' })));
+  const atlas = el('div', { class: 'atlas' });
+  atlas.append(
+    el('div', { class: 'row-label rl-books' }, el('h2', { html: 'Bibliothek' }), el('p', { html: 'Die Skripte als PDF. Antippen lädt das Buch herunter.' })),
+    el('ol', { class: 'shelf-strip' }, ...SUBJECTS.map((s) => el('li', {},
       el('a', { class: 'book-cover', ...dl(s), 'aria-label': `Lernskript ${s.group} herunterladen` },
-        el('img', { src: cover(s), alt: `Umschlag Lernskript ${s.group}`, width: 640, height: 905, loading: si < 3 ? 'eager' : 'lazy', decoding: 'async' })),
-      el('div', { class: 'book-t', html: s.group }),
-      el('div', { class: 'book-m', html: `${s.pages} Seiten · ${s.size} · ${s.lang}` }),
-      el('div', { class: 'book-a' },
-        el('a', { ...dl(s), html: 'Herunterladen ↓' }))));
-  });
-  root.append(el('section', { class: 'library' },
-    el('div', { class: 'sec-h' }, el('h2', { html: 'Bibliothek' }), el('p', { html: 'Die Skripte als PDF. Antippen lädt das Buch herunter.' })),
-    shelf));
-  root.append(el('div', { class: 'sec-h models-h' }, el('h2', { html: 'Modelle' }), el('p', { html: 'Interaktive Visualisierungen, geordnet nach Fach.' })));
+        el('img', { src: cover(s), alt: `Umschlag Lernskript ${s.group}`, width: 640, height: 905, loading: 'lazy', decoding: 'async' })),
+      el('span', { html: s.group })))),
+    el('div', { class: 'row-rule', 'aria-hidden': 'true' }),
+    el('div', { class: 'row-label rl-models' }, el('h2', { html: 'Modelle' }), el('p', { html: 'Interaktive Visualisierungen, geordnet nach Fach.' })));
   const thumbs = [];
   SUBJECTS.forEach((s, si) => {
-    const list = el('ol', { class: 'vlist' });
+    const models = el('ol', { class: 'models' });
     for (const v of ALL.filter((x) => x.subject === s)) {
       const cv = el('canvas', { 'aria-hidden': 'true' });
       thumbs.push([cv, v.m]);
-      list.append(el('li', { class: 'vrow' }, el('a', { href: '#' + v.m.meta.id },
-        el('span', { class: 'n', html: nn(v.n) }),
-        el('div', {}, el('h3', { html: v.name }), el('p', { html: v.m.meta.title }), el('span', { class: 'ch', html: v.m.meta.tag.split('·')[1]?.trim() || '' })),
-        cv)));
+      models.append(el('li', {}, el('a', { class: 'card', href: '#' + v.m.meta.id },
+        cv,
+        el('h3', {}, el('span', { class: 'n', html: nn(v.n) }), el('span', { class: 't', html: v.name })),
+        el('p', { html: v.m.meta.title }),
+        el('span', { class: 'ch', html: v.m.meta.tag.split('·')[1]?.trim() || '' }))));
     }
-    if (s.atlas) list.append(el('li', { class: 'vrow atlas' }, el('a', { href: s.atlas.href },
-      el('span', { class: 'n', 'aria-hidden': 'true' }),
-      el('div', {}, el('h3', { html: s.atlas.title }), el('p', { html: s.atlas.text }), el('span', { class: 'ch', html: s.atlas.ch })))));
-    const file = s.pdf.split('/').pop();
-    root.append(el('section', { class: 'subject', id: 'fach-' + (si + 1) },
-      el('div', { class: 'subject-head' },
-        el('h2', { html: s.group }),
-        el('p', { html: s.desc }),
-        el('div', { class: 'doc' },
-          el('a', { class: 'doc-ic', ...dl(s), 'aria-hidden': 'true', tabindex: '-1' }, el('img', { src: cover(s), alt: '', loading: 'lazy' })),
-          el('span', { class: 'doc-t', html: `Lernskript ${s.group}` }),
-          el('span', { class: 'doc-m', html: `PDF · ${s.pages} Seiten · ${s.size} · ${s.lang}` }),
-          el('span', { class: 'doc-a' },
-            el('a', { ...dl(s), html: 'Herunterladen ↓' })))),
-      list));
+    const tafeln = s.atlas
+      ? el('a', { class: 'tafeln', href: s.atlas.href },
+        el('h3', { html: s.atlas.title }), el('p', { html: s.atlas.text }), el('span', { class: 'ch', html: s.atlas.ch }))
+      : el('span', { class: 'tafeln empty', 'aria-hidden': 'true' });
+    atlas.append(el('section', { class: 'subj', id: 'fach-' + (si + 1), style: `--c:${si + 2}`, 'aria-label': s.group },
+      el('a', { class: 'book-cover', ...dl(s), 'aria-label': `Lernskript ${s.group} herunterladen` },
+        el('img', { src: cover(s), alt: `Umschlag Lernskript ${s.group}`, width: 640, height: 905, loading: si < 3 ? 'eager' : 'lazy', decoding: 'async' })),
+      el('div', { class: 'book-id' },
+        el('h2', { class: 'book-t', html: s.group }),
+        el('div', { class: 'book-m', html: `${s.pages} Seiten · ${s.size} · ${s.lang}` }),
+        el('div', { class: 'book-a' }, el('a', { ...dl(s), html: 'Herunterladen ↓' }))),
+      el('p', { class: 'book-d', html: s.desc }),
+      models,
+      tafeln));
   });
+  root.append(atlas);
   root.append(el('footer', { class: 'colophon' },
     el('div', {}, el('h4', { html: 'Farben' }), el('ul', { class: 'legend', html:
       '<li><i style="background:var(--v)"></i>Geschwindigkeit, Näherung</li><li><i style="background:var(--f)"></i>Kraft, Singularität</li><li><i style="background:var(--m)"></i>Drehung, Moment, Krümmung</li><li><i style="background:var(--k)"></i>Momentanzentrum, aktiver Zustand</li>' })),
