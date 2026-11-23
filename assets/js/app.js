@@ -75,13 +75,11 @@ function index() {
         cv)));
     }
     if (s.atlas) list.append(el('li', { class: 'vrow atlas' }, el('a', { href: s.atlas.href },
-      el('span', { class: 'n', html: '↗' }),
-      el('div', {}, el('h3', { html: s.atlas.title }), el('p', { html: s.atlas.text }), el('span', { class: 'ch', html: s.atlas.ch })),
-      el('span', { class: 'atlas-mark', html: `<b>${s.atlas.n}</b><span>Tafeln</span>` }))));
+      el('span', { class: 'n', 'aria-hidden': 'true' }),
+      el('div', {}, el('h3', { html: s.atlas.title }), el('p', { html: s.atlas.text }), el('span', { class: 'ch', html: s.atlas.ch })))));
     const file = s.pdf.split('/').pop();
     root.append(el('section', { class: 'subject', id: 'fach-' + (si + 1) },
       el('div', { class: 'subject-head' },
-        el('span', { class: 'no', html: `${nn(si + 1)} / ${nn(SUBJECTS.length)}` }),
         el('h2', { html: s.group }),
         el('p', { html: s.desc }),
         el('div', { class: 'doc' },
@@ -93,10 +91,10 @@ function index() {
       list));
   });
   root.append(el('footer', { class: 'colophon' },
-    el('div', {}, el('h4', { html: 'FARBEN' }), el('ul', { class: 'legend', html:
+    el('div', {}, el('h4', { html: 'Farben' }), el('ul', { class: 'legend', html:
       '<li><i style="background:var(--v)"></i>Geschwindigkeit, Näherung</li><li><i style="background:var(--f)"></i>Kraft, Singularität</li><li><i style="background:var(--m)"></i>Drehung, Moment, Krümmung</li><li><i style="background:var(--k)"></i>Momentanzentrum, aktiver Zustand</li>' })),
-    el('div', {}, el('h4', { html: 'AUSWAHL' }), el('p', { html: 'Modelliert wurde nur, was in Bewegung verständlicher wird. Alles andere steht im Skript, wo Text, Rechnung und Abbildung das bessere Medium sind.' })),
-    el('div', {}, el('h4', { html: 'BEDIENUNG' }), el('p', { html: 'Jedes Modell führt in nummerierten Schritten durch die Idee. Danach ist alles frei: ziehen, verschieben, Parameter ändern. Funktioniert mit Maus, Trackpad und Touch.' }))));
+    el('div', {}, el('h4', { html: 'Auswahl' }), el('p', { html: 'Modelliert wurde nur, was in Bewegung verständlicher wird. Alles andere steht im Skript, wo Text, Rechnung und Abbildung das bessere Medium sind.' })),
+    el('div', {}, el('h4', { html: 'Bedienung' }), el('p', { html: 'Jedes Modell führt in nummerierten Schritten durch die Idee. Danach ist alles frei: ziehen, verschieben, Parameter ändern. Funktioniert mit Maus, Trackpad und Touch.' }))));
   app.append(root);
   const draw = () => { readTheme(); for (const [cv, m] of thumbs) { const r = cv.getBoundingClientRect(); if (!r.width) continue; const dpr = Math.min(2, devicePixelRatio || 1); cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr); const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); try { m.thumb(ctx, r.width, r.height); } catch (e) { console.error(e); } } };
   requestAnimationFrame(draw); document.fonts?.ready.then(draw);
@@ -129,6 +127,7 @@ function route() {
   window.scrollTo(0, 0);
   readTheme();
   const v = byId[id];
+  document.body.dataset.page = v ? 'model' : 'index';
   if (v) { document.title = `${v.name} · Lernstoff DMAVT`; current = vizPage(v); }
   else { document.title = 'Lernstoff DMAVT'; current = index(); if (id.startsWith('fach-')) document.getElementById(id)?.scrollIntoView(); }
 }

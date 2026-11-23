@@ -16,6 +16,9 @@ function useTheme() {
   return { toggle, dark: isDark() };
 }
 
+/** Back to the library: relative on GitHub Pages (/hs/mechanik/ → /hs/), absolute elsewhere (single-file preview). */
+const LIBRARY = typeof location !== 'undefined' && /\/hs\/(mechanik|analysis)\/?$/.test(location.pathname) ? '../' : 'https://cheftaxi2000.github.io/hs/';
+
 const readHash = () => (typeof location !== 'undefined' ? decodeURIComponent(location.hash.replace(/^#/, '')) : '');
 
 /** The subject comes from the hash (#analysis, #mechanik, or a chapter anchor such as #a3). */
@@ -61,16 +64,16 @@ export function App() {
   return (
     <>
       <header className="top">
-        <nav className="subjects" aria-label="Fach">
-          {SUBJECTS.map((s) => (
-            <a key={s.id} href={'#' + s.id} className={s.id === subject.id ? 'on' : ''} aria-current={s.id === subject.id ? 'page' : undefined}>{s.name}</a>
-          ))}
-        </nav>
-        <button className="theme" onClick={toggle} aria-label={dark ? 'Helle Darstellung' : 'Dunkle Darstellung'}>
-          {dark
-            ? <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="10" cy="10" r="3.6" /><path d="M10 1.8v2.4M10 15.8v2.4M1.8 10h2.4M15.8 10h2.4M4.2 4.2l1.7 1.7M14.1 14.1l1.7 1.7M4.2 15.8l1.7-1.7M14.1 5.9l1.7-1.7" /></svg>
-            : <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16.5 12.6A7 7 0 0 1 7.4 3.5a7 7 0 1 0 9.1 9.1Z" /></svg>}
-        </button>
+        <div className="top-in">
+          <a className="mark" href={LIBRARY}>Lernstoff DMAVT</a>
+          <span className="sl crumb-sl" aria-hidden="true">/</span>
+          <nav className="subjects" aria-label="Fach">
+            {SUBJECTS.map((s) => (
+              <a key={s.id} href={'#' + s.id} className={s.id === subject.id ? 'on' : ''} aria-current={s.id === subject.id ? 'page' : undefined}>{s.name}</a>
+            ))}
+          </nav>
+          <button className="theme" onClick={toggle}>{dark ? 'Hell' : 'Dunkel'}</button>
+        </div>
       </header>
       <main className="shell" key={subject.id}>
         <nav className="toc" aria-label="Kapitel">
