@@ -20,3 +20,6 @@ python3 -m http.server 8000
 ```
 
 Die Seite lädt Schriften (Google Fonts), MathJax und Three.js von CDNs und braucht deshalb eine Internetverbindung.
+
+**Hinweis:** Unter *Settings → Pages* muss die Quelle «GitHub Actions» sein. Mit «Deploy from a branch»
+läuft zusätzlich eine zweite Veröffentlichung ohne die gebauten Tafeln und überschreibt `/mechanik/` und `/analysis/`.
