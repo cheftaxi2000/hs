@@ -39,9 +39,9 @@ export function mix(h1, h2, t) {
 }
 
 export const FONT = {
-  sans: '"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif',
+  sans: '"Atkinson Hyperlegible Next", "Helvetica Neue", Arial, sans-serif',
   serif: '"STIX Two Text", "Times New Roman", Times, serif',
-  mono: '"IBM Plex Mono", ui-monospace, Menlo, monospace',
+  mono: '"Atkinson Hyperlegible Mono", ui-monospace, Menlo, monospace',
 };
 
 /* ---------------- stage ---------------- */

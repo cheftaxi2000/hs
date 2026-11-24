@@ -60,7 +60,7 @@ export function App() {
   const { toggle, dark } = useTheme();
   const subject = useSubject();
   const cur = useCurrentChapter(subject);
-  useEffect(() => { document.title = `${subject.name} in Tafeln`; }, [subject]);
+  useEffect(() => { document.title = `${subject.name} in Tafeln`; document.documentElement.dataset.subject = subject.id; }, [subject]);
   return (
     <>
       <header className="top">
@@ -72,6 +72,7 @@ export function App() {
               <a key={s.id} href={'#' + s.id} className={s.id === subject.id ? 'on' : ''} aria-current={s.id === subject.id ? 'page' : undefined}>{s.name}</a>
             ))}
           </nav>
+          <a className="to-room" href={`${LIBRARY}#${subject.id}`}>Zum Skript</a>
           <button className="theme" onClick={toggle}>{dark ? 'Hell' : 'Dunkel'}</button>
         </div>
       </header>

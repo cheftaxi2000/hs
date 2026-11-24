@@ -4,11 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lernstoff DMAVT</title>
-<meta name="description" content="Lernskripte zu Mechanik 1, Analysis 1, Lineare Algebra, Informatik und Chemie, mit interaktiven Visualisierungen.">
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Lernskripte zu Mechanik 1, Analysis 1, Lineare Algebra, Informatik und Chemie: Inhaltsverzeichnis mit Seitenvorschau, Suche, interaktive Modelle.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbf8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141619" media="(prefers-color-scheme: dark)">
+<script>
+  /* the chosen theme before the first paint: no white flash at night */
+  try { const t = localStorage.getItem('atlas.theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400&family=STIX+Two+Text:ital,wght@0,400;1,400;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Atkinson+Hyperlegible+Next:wght@400;500;600&family=Atkinson+Hyperlegible+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;1,400;1,600&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="importmap">
 { "imports": {
@@ -28,14 +34,16 @@
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
 </head>
 <body>
+<a class="skip" href="#app">Zum Inhalt</a>
 <header class="bar">
   <div class="bar-in">
     <a class="mark" href="#">Lernstoff DMAVT</a>
     <nav class="crumbs" id="crumbs" aria-label="Pfad"></nav>
     <nav class="pager" id="pager" aria-label="Blättern"></nav>
+    <div class="tools" id="tools"></div>
   </div>
 </header>
-<main id="app"></main>
+<main id="app" tabindex="-1"></main>
 <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
