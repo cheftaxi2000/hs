@@ -144,7 +144,7 @@ Programming is a practical skill, like playing an instrument: reading about it h
 
 #everyday[*Why compiled code is fast.* The compile step you met in this chapter is why a C++ program starts instantly: the work of translating has already been done, and the processor reads machine code directly. Languages that translate while running (Python, JavaScript) are more convenient but need more time and memory. This is also why your phone's camera pipeline, your car's brakes and your smartwatch use compiled code: the program must react in milliseconds, every time.]
 
-#photo(("i_eniac",), [ENIAC (1945), one of the first electronic computers. It was «programmed» by plugging cables; later machines used stacks of punched cards. #credit[USGov-Military-Army, Public Domain, Wikimedia Commons]], ht: 5cm)
+#photo(("i_eniac", "i_punch",), [Left: ENIAC (1945), one of the first electronic computers, «programmed» by plugging cables. Right: a punched card; later programs were stacks of such cards. #credit[USGov-Military-Army, Public Domain, Wikimedia Commons; Maksym Kozlenko, CC BY-SA 4.0, Wikimedia Commons]], ht: 4.4cm)
 // ALLTAG-END
 
 #summary[

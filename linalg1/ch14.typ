@@ -202,6 +202,8 @@ Alle vier Abbildungen sind Kontraktionen (die Spektralnormen der Matrizen sind $
 #alltag[*Lineare Abbildungen in der Grafik.* Drehen, Skalieren, Spiegeln und Scheren eines Bildes sind lineare Abbildungen und werden durch Matrizen beschrieben. Wer in einem Bildbearbeitungsprogramm ein Foto neigt oder dreht, multipliziert die Koordinaten jedes Pixels mit einer Matrix. Eine Kamera, die Perspektive erzeugt, macht dasselbe mit einer $4 times 4$-Matrix (in homogenen Koordinaten): Jeder Frame eines modernen Spiels besteht aus Millionen solcher Produkte.]
 
 #alltag[*Fraktale in der Natur und in der Technik.* Ein Farnblatt besteht aus kleinen Kopien seiner selbst; Brokkoli, Küstenlinien, Flussnetze und Blutgefässe zeigen dasselbe Muster. Der Mathematiker Michael Barnsley zeigte 1988, dass ein paar affine Abbildungen genügen, um einen Farn zu erzeugen: Vier Matrizen mit Wahrscheinlichkeiten ergeben ein Bild, das aussieht wie ein echtes Blatt. Fraktale Antennen in Handys und Fraktalkompression von Bildern nutzen dieselbe Idee der Selbstähnlichkeit.]
+
+#photo(("l_fern", "a_romanesco",), [Selbstähnlichkeit in der Natur: Jedes Teilblatt des Farns und jede Spitze des Romanesco sieht aus wie eine verkleinerte Kopie des Ganzen. #credit[Mar Mkrtchyan, CC0, Wikimedia Commons; Ivar Leidus, CC BY-SA 4.0, Wikimedia Commons]], ht: 4.4cm)
 // ALLTAG-END
 
 #kurz[

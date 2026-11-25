@@ -156,7 +156,7 @@ When `head` is null, `prev` points to the new first node: `return prev`.]
 
 #everyday[*Memory safety is the biggest class of security bugs.* Microsoft and the Chrome team have both reported that about 70% of their serious security vulnerabilities are memory-safety problems: dangling pointers, buffer overflows, use after free. That is why the industry is moving to safer languages (Rust is one) and to safer habits in C++: smart pointers, containers instead of raw arrays, and tools like AddressSanitizer that crash the program the moment it does something illegal. What you learn here is what you need to read their reports.]
 
-#photo(("i_dram",), [A modern memory chip. A pointer is nothing but the number of one of its billions of storage cells. #credit[Mister rf, CC BY-SA 4.0, Wikimedia Commons]], ht: 4.6cm)
+#photo(("i_core", "i_dram",), [Left: magnetic core memory, where each tiny ring stores one bit. Right: a modern memory chip. A pointer is nothing but the number of one of these storage cells. #credit[Johann H. Addicks, CC BY-SA 3.0, Wikimedia Commons; Mister rf, CC BY-SA 4.0, Wikimedia Commons]], ht: 4.4cm)
 // ALLTAG-END
 
 #summary[

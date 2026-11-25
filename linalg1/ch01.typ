@@ -174,6 +174,8 @@ Der Fall «Widerspruch» (eine Gleichung der Form $0 = c$ mit $c != 0$) bedeutet
 #alltag[*Reaktionsgleichungen ausgleichen.* Wie viele Sauerstoffmoleküle verbrennen ein Propanmolekül? Ansatz: $a thin "C"_3 "H"_8 + b thin "O"_2 -> c thin "CO"_2 + d thin "H"_2 "O"$. Aus «gleich viele Atome vorher und nachher» folgen drei lineare Gleichungen: $3a = c$, $8a = 2d$, $2b = 2c + d$. Mit $a = 1$ ergibt sich $c = 3$, $d = 4$, $b = 5$. Chemiker lösen auf diese Weise auch grosse Reaktionsnetze, mit Hunderten von Stoffen und einem LGS, das ein Computer rechnet.]
 
 #alltag[*Verkehr und Netzwerke.* An jedem Knoten eines Strassennetzes oder Stromnetzes gilt: Was hineinfliesst, fliesst auch wieder hinaus (Kirchhoff'sche Knotenregel). Jeder Knoten liefert eine lineare Gleichung für die unbekannten Flüsse. So rechnen Verkehrsplaner Zählstellendaten auf nicht gemessene Strassen hoch, und Elektroingenieure bestimmen Ströme in einem Netz mit hunderten Knoten. Dass das lösbar ist (oder nicht eindeutig), entscheidet sich genau mit den Methoden dieses Kapitels.]
+
+#photo(("l_gps", "l_mri",), [Links: ein GPS-Satellit (Block IIIA). Dein Handy löst aus den Signalen von mindestens vier solchen Satelliten ein Gleichungssystem für Ort und Uhrzeit. Rechts: ein MRT-Gerät, das aus vielen Messwerten ein Schnittbild berechnet. #credit[U.S. Air Force, Public Domain, Wikimedia Commons; Mj-bird, CC BY-SA 3.0, Wikimedia Commons]], ht: 4.6cm)
 // ALLTAG-END
 
 #kurz[
