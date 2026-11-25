@@ -520,6 +520,8 @@ $ vec(E)(t) = vr(t) + 1/(k(t)) hat(vn)(t) = vec(x - dot(y) (dot(x)^2 + dot(y)^2)
 #alltag[*Steigung, Gefälle und die Strasse.* Auf einem Strassenschild steht «$10 %$»: Das ist $f' = 0.10$, also $10$ m Höhenunterschied auf $100$ m horizontal. Die Rampen der Alpenpässe, die Neigung einer Rollstuhlrampe (maximal $6 %$) und der Anstieg im Fahrradcomputer sind alles Ableitungen. Die zweite Ableitung ist die Krümmung. Darum werden Autobahnkurven als Klothoiden gebaut, deren Krümmung linear mit der Länge wächst: Der Fahrer dreht das Lenkrad gleichmässig, und die Querbeschleunigung baut sich ruckfrei auf.]
 
 #alltag[*Linearisieren: die Kleinwinkelnäherung.* Für kleine Winkel gilt $sin x approx x$: Bei $x = 0.1$ ($5.7 degree$) ist $sin x = 0.0998$, also nur $0.2 %$ Abweichung. Dank dieser Näherung ist die Pendelbewegung eine einfache Schwingung mit Periode $T = 2 pi sqrt(l\/g)$, unabhängig von der Auslenkung. Das macht Pendeluhren möglich: Ein Pendel von $1$ m Länge schwingt in etwa $2$ s hin und zurück. Ingenieure ersetzen so ständig komplizierte Funktionen durch ihre Tangente, um schnell und mit Bleistift abzuschätzen, bevor sie die Simulation starten.]
+
+#photo(("a_pendel",), [Pendeluhr: Dank der Kleinwinkelnäherung ist die Schwingdauer fast unabhängig von der Auslenkung. #credit[Christoph Braun, CC0, Wikimedia Commons]], ht: 6.5cm)
 // ALLTAG-END
 
 #aufgaben()

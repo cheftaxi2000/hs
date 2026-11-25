@@ -102,6 +102,8 @@ Ein Hinweis zur Annahme: Das Modell vernachlässigt die Biegesteifigkeit des Sei
 #alltag[*Hängebrücken.* Das Tragseil einer Hängebrücke trägt die ganze Fahrbahn. Weil die Last gleichmässig über die Spannweite verteilt ist, hängt es in Form einer Parabel; das Eigengewicht des Seils allein ergibt eine Kettenlinie, also einen $cosh$. Die Golden Gate Bridge hat eine Hauptspannweite von $1280$ m und Tragkabel von etwa $90$ cm Durchmesser aus je gut $27 thin 000$ Einzeldrähten. Mit den Formeln dieses Kapitels berechnet man die Seilkraft am Pylon: Sie ist am grössten dort, wo das Seil am steilsten ist.]
 
 #alltag[*Freileitungen und Wäscheleine.* Eine Stromleitung zwischen zwei Masten hängt durch. Im Sommer, bei Hitze, dehnt sie sich aus und hängt noch stärker durch; im Winter zieht sie sich straff. Die Betreiber berechnen den Durchhang als Kettenlinie, damit sie auch bei Hitze mindestens den vorgeschriebenen Abstand zum Boden hält. Dasselbe gilt für die Wäscheleine: Je straffer sie gespannt ist, desto grösser wird die Seilkraft, die an den Befestigungen zieht, ein Fall wie in Kapitel 4.]
+
+#photo(("m_golden",), [Tragkabel der Golden Gate Bridge: Tausende Drähte, zu einem Seil gebündelt, das nur Zug aufnimmt. #credit[Guillaume Paumier, CC BY-SA 3.0, Wikimedia Commons]], ht: 5cm)
 // ALLTAG-END
 
 #kurz[

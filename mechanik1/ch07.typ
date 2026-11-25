@@ -115,6 +115,8 @@ Weitere nützliche Werte: Halbkugelschale $R\/2$ über der Grundfläche, Halbkug
 #alltag[*Schwerpunkt und Kippen.* Ein Fahrzeug kippt, wenn die Senkrechte durch den Schwerpunkt ausserhalb der Aufstandsfläche liegt. Ein SUV mit hohem Schwerpunkt kippt in der Kurve deshalb früher als ein Sportwagen. Aus demselben Grund stellt man schwere Dinge unten ins Regal, stapelt Paletten mit dem schwersten Gut unten und trägt ein Kind auf den Schultern nur bei breiten, stabilen Schritten. Auch Schiffe sind so gebaut: Der Ballast sitzt tief im Rumpf, damit sich das Schiff nach jeder Welle wieder aufrichtet.]
 
 #alltag[*Beladen von Flugzeugen.* Vor jedem Flug berechnet die Crew den Gesamtschwerpunkt aus den Massen und Positionen von Passagieren, Gepäck und Treibstoff, genau mit der Formel $vr_S = (sum m_i vr_i)\/(sum m_i)$. Liegt der Schwerpunkt zu weit hinten, wird das Flugzeug instabil. Darum schreibt der Beladeplan bei kleinen Flugzeugen sogar vor, welche Sitze zuerst besetzt werden. Auch Hochspringer nutzen das: Beim Fosbury Flop geht der Körper über die Latte, während der Schwerpunkt darunter durchgeht.]
+
+#photo(("m_balance",), [Ein Seiltänzer muss seinen Schwerpunkt dauernd senkrecht über dem Seil halten. #credit[David E. Lucas, Public Domain, Wikimedia Commons]], ht: 6cm)
 // ALLTAG-END
 
 #aufgaben()

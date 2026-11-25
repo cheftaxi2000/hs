@@ -732,6 +732,8 @@ Eine *vertikale Asymptote* $x = a$ liegt vor, wenn $f(x) -> plus.minus oo$ für 
 #alltag[*Logarithmen: Dezibel, Richter und pH.* Wo Grössen über viele Zehnerpotenzen laufen, misst man den Logarithmus. $+10$ dB heisst zehnmal mehr Schallintensität, $+3$ dB ungefähr doppelt so viel; ein Presslufthammer ($approx 100$ dB) ist deshalb nicht «ein bisschen» lauter als Flüstern ($approx 30$ dB), sondern $10^7$-mal intensiver. Bei der Richterskala bedeutet eine Magnitude mehr $10 times$ grössere Bodenbewegung und rund $32 times$ mehr Energie. Ein pH-Wert um eins kleiner heisst zehnmal mehr $H^+$. Immer, wenn eine Skala logarithmisch ist, steckt diese Funktion dahinter.]
 
 #alltag[*Wie der Taschenrechner Wurzeln zieht.* Die Folge $x_(n+1) = (x_n + 2\/x_n)\/2$ mit $x_0 = 1$ liefert $1$, $1.5$, $1.41667$, $1.414216$, also schon nach drei Schritten $sqrt(2)$ auf sechs Stellen. Sie konvergiert so schnell, dass die Zahl der richtigen Stellen sich pro Schritt etwa verdoppelt. Das ist das Newton-Verfahren, und es steckt (in Varianten) in den Grafikkarten- und Taschenrechner-Routinen für Wurzel und Kehrwert. Jedes Programm, das eine Zahl «auf Genauigkeit $epsilon$ berechnen» soll, läuft nach demselben Muster: iterieren, bis sich die Folge nicht mehr nennenswert ändert.]
+
+#photo(("a_romanesco",), [Romanesco: Jede Spitze besteht aus kleineren Spitzen derselben Form. Selbstähnlichkeit ist das Bild einer Iteration, und die Zahl der Spiralen ist oft eine Fibonacci-Zahl. #credit[Ivar Leidus, CC BY-SA 4.0, Wikimedia Commons]], ht: 5.5cm)
 // ALLTAG-END
 
 #aufgaben()

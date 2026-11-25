@@ -194,9 +194,11 @@ $ vv = dot(phi) ve_z times vr. $
 // ALLTAG-BEGIN
 == Wo man das im Alltag und im Beruf braucht
 
-#alltag[*Tacho, Blitzer und Fahrtschreiber.* Der Tacho zeigt die Momentangeschwindigkeit, also die Ableitung $dot(vr)$ des Ortes. Ein Blitzer auf der Autobahn misst sie direkt (Radar nutzt den Doppler-Effekt). Ein Abschnittskontrolle dagegen misst die _mittlere_ Geschwindigkeit: Strecke durch Zeit zwischen zwei Kameras. Beides ist richtig, aber es sind zwei verschiedene Grössen. Wer gerade 30 s lang 140 km/h gefahren ist, kann trotzdem im Mittel unter 100 km/h liegen.]
+#alltag[*Tacho, Blitzer und Fahrtschreiber.* Der Tacho zeigt die Momentangeschwindigkeit, also die Ableitung $dot(vr)$ des Ortes. Ein Blitzer auf der Autobahn misst sie direkt (Radar nutzt den Doppler-Effekt). Eine Abschnittskontrolle dagegen misst die _mittlere_ Geschwindigkeit: Strecke durch Zeit zwischen zwei Kameras. Beides ist richtig, aber es sind zwei verschiedene Grössen. Wer gerade 30 s lang 140 km/h gefahren ist, kann trotzdem im Mittel unter 100 km/h liegen.]
 
 #alltag[*Warum man in der Kurve nach aussen gedrückt wird.* Auf einer Kreisbahn ändert sich die Richtung der Geschwindigkeit ständig, obwohl der Betrag konstant bleibt. Eine Richtungsänderung ist eine Beschleunigung, nämlich $a = v^2\/r$ nach innen. Bei 90 km/h ($25$ m/s) in einer Kurve mit $r = 100$ m sind das $6.25$ m/s², fast zwei Drittel der Erdbeschleunigung. Das spürt der Körper als «Kraft nach aussen»; in Wahrheit will er nur geradeaus weiter.]
+
+#photo(("m_speed",), [Ein Radar-Blitzer misst die Momentangeschwindigkeit, eine Abschnittskontrolle die mittlere Geschwindigkeit über eine Strecke. #credit[Triplec85, CC BY-SA 4.0, Wikimedia Commons]], ht: 5cm)
 // ALLTAG-END
 
 #aufgaben()

@@ -155,6 +155,8 @@ When `head` is null, `prev` points to the new first node: `return prev`.]
 #everyday[*Heartbleed.* In 2014 a bug in OpenSSL, the library that secures a large part of the world's web traffic, let an attacker read memory that did not belong to the request. The code copied a number of bytes that the sender had claimed, without checking that the sender had actually sent that many; the surplus came from neighbouring memory, with passwords and private keys. It is the classical out-of-bounds read, the same bug you can write with a pointer or a `char` array in this chapter. The vulnerability affected hundreds of thousands of servers.]
 
 #everyday[*Memory safety is the biggest class of security bugs.* Microsoft and the Chrome team have both reported that about 70% of their serious security vulnerabilities are memory-safety problems: dangling pointers, buffer overflows, use after free. That is why the industry is moving to safer languages (Rust is one) and to safer habits in C++: smart pointers, containers instead of raw arrays, and tools like AddressSanitizer that crash the program the moment it does something illegal. What you learn here is what you need to read their reports.]
+
+#photo(("i_dram",), [A modern memory chip. A pointer is nothing but the number of one of its billions of storage cells. #credit[Mister rf, CC BY-SA 4.0, Wikimedia Commons]], ht: 4.6cm)
 // ALLTAG-END
 
 #summary[

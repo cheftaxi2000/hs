@@ -138,6 +138,8 @@ Die räumliche Grundfigur ist das Tetraeder (vier Knoten, sechs Stäbe).
 #alltag[*Fachwerke sind überall.* Brücken, Kräne, Hochspannungsmasten, Dachstühle, der Eiffelturm und die Streben im Flugzeugflügel sind Fachwerke: Dreiecke aus geraden Stäben, die nur Zug oder Druck aufnehmen. Dreiecke sind steif, Vierecke nicht, deshalb setzt man auf jeder Baustelle schräge Streben ein. Der Stab ist dabei nur so schwer wie nötig, weil man ihm nur eine einzige Aufgabe gibt: längs zu halten. Das ist der Grund, warum eine Fachwerkbrücke bei gleicher Spannweite deutlich weniger Stahl braucht als ein Vollwandträger.]
 
 #alltag[*Nullstäbe und Knotenverfahren in der Praxis.* Beim Knotenverfahren zeichnet man um jeden Knoten ein Kräftegleichgewicht. Dabei findet man Stäbe, die gar keine Kraft führen (Nullstäbe). Sie sind nicht überflüssig: Sie verhindern, dass sich ein anderer Stab seitlich verformt (knickt), und halten das System bei geänderter Last stabil. Wer ein Fachwerk entwirft, rechnet mit mehreren Lastfällen (Schnee, Wind, Verkehr), und ein Stab, der für den einen Fall ein Nullstab ist, trägt im nächsten.]
+
+#photo(("m_fachwerk",), [Eine Eisenbahnbrücke als Fachwerk: Dreiecke aus Stäben, die nur auf Zug und Druck beansprucht werden. #credit[Asurnipal, CC BY-SA 4.0, Wikimedia Commons]], ht: 5cm)
 // ALLTAG-END
 
 #kurz[

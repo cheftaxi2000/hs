@@ -151,6 +151,8 @@ Reading the output:
 #everyday[*Hexadecimal in colours and addresses.* Web colours like `#FF8800` are three bytes written in hexadecimal: red $=$ `FF` ($255$), green $=$ `88` ($136$), blue $=$ `00`. Hardware addresses of network cards (`3C:22:FB:...`), memory addresses in error messages and the checksums of downloads all use hex. Two hex digits are exactly one byte, which is why programmers like it: $16 = 2^4$, so each hex digit corresponds to exactly four bits.]
 
 #everyday[*Rounding in finance and engineering.* Spreadsheets display $0.1 + 0.2$ as $0.3$ because they round the output, not the stored value. When thousands of such small errors add up (interest calculation, structural analysis over many steps), the order of operations matters: summing $10^6$ numbers from small to large gives a different, usually better, result than from large to small. Numerical software is designed with these effects in mind.]
+
+#photo(("i_ariane",), [An Ariane 5 on the launch pad (here with the James Webb Space Telescope, 2021). The first Ariane 5 flight failed in 1996 because of an integer overflow. #credit[Bill Ingalls, Public Domain, Wikimedia Commons]], ht: 5.5cm)
 // ALLTAG-END
 
 #summary[

@@ -571,6 +571,8 @@ Existiert der Grenzwert, heisst das Integral *konvergent*, sonst *divergent*. An
 #alltag[*Effektivwert: warum die Steckdose $230$ V und nicht $325$ V heisst.* Die Spannung schwingt zwischen $-325$ V und $+325$ V. Wichtig ist, wie viel Leistung sie im Mittel liefert, und das ist der quadratische Mittelwert $U_("eff") = sqrt(1\/T integral_0^T u(t)^2 thin dif t) = hat(u)\/sqrt(2)$. Mit $hat(u) = 325$ V ergibt das $325\/1.414 approx 230$ V. Der «Effektivwert» ist das, was auf dem Typenschild jedes Geräts steht. Dasselbe Prinzip steckt im Mittel von Lärm (Schallpegel), von Vibrationen und von Messfehlern.]
 
 #alltag[*Wahrscheinlichkeiten als Flächen.* Wie gross ist die Chance, dass eine Maschine ein Teil produziert, das mehr als $0.1$ mm zu gross ist? Dafür integriert man die Dichtefunktion der Normalverteilung von $0.1$ bis unendlich. Die Fläche unter der Glockenkurve zwischen $mu - sigma$ und $mu + sigma$ beträgt $68 %$, zwischen $mu plus.minus 2 sigma$ sind es $95 %$, zwischen $mu plus.minus 3 sigma$ $99.7 %$. Qualitätssicherung («Six Sigma»), Versicherungen, Wetterprognosen und jede Umfrage mit «Fehlermarge» beruhen darauf. Ein bestimmtes Integral ist hier buchstäblich eine Wahrscheinlichkeit.]
+
+#photo(("a_hoover",), [Die Hoover-Staumauer ist 221 m hoch. Der Wasserdruck wächst linear mit der Tiefe, die Gesamtkraft ist ein Integral. #credit[Dietmar Rabich, CC BY-SA 4.0, Wikimedia Commons]], ht: 5cm)
 // ALLTAG-END
 
 #aufgaben()

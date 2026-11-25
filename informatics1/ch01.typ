@@ -143,6 +143,8 @@ Programming is a practical skill, like playing an instrument: reading about it h
 #everyday[*Who writes C++?* Almost everything where speed or direct control of the hardware matters: web browsers (Chrome, Firefox), game engines (Unreal), Photoshop and most other professional graphics tools, car and aircraft control software, trading systems in banks, and the data analysis framework ROOT at CERN, where physicists process the collisions of the Large Hadron Collider. The Ingenuity helicopter on Mars flew with software built on F Prime, a C++ framework from NASA's Jet Propulsion Laboratory. When something has to be fast, small and predictable, there is a good chance it is C++.]
 
 #everyday[*Why compiled code is fast.* The compile step you met in this chapter is why a C++ program starts instantly: the work of translating has already been done, and the processor reads machine code directly. Languages that translate while running (Python, JavaScript) are more convenient but need more time and memory. This is also why your phone's camera pipeline, your car's brakes and your smartwatch use compiled code: the program must react in milliseconds, every time.]
+
+#photo(("i_eniac",), [ENIAC (1945), one of the first electronic computers. It was «programmed» by plugging cables; later machines used stacks of punched cards. #credit[USGov-Military-Army, Public Domain, Wikimedia Commons]], ht: 5cm)
 // ALLTAG-END
 
 #summary[

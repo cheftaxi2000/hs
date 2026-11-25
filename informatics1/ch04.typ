@@ -115,6 +115,8 @@ Where do the local variables of all active calls live? On the *call stack*: a re
 #everyday[*Assertions at NASA.* Gerard Holzmann of NASA's Jet Propulsion Laboratory proposed «ten rules» for code in space missions. They include: keep functions short enough to fit on one printed page, give every loop a fixed upper bound, and write on average at least two `assert`s per function. A function states what it expects (precondition) and what it promises (postcondition), and the program checks this while running. In ordinary desktop programs assertions are switched off in release builds; in your exercises they are the quickest way to find out which function broke the contract.]
 
 #everyday[*The standard library as a toolbox.* `<cmath>`, `<algorithm>` and `<string>` contain functions that thousands of experts have tested for decades. Writing your own `sqrt` or `sort` is a good exercise, but in production code you almost always call the library one. Part of the profession is knowing what already exists and what to call it.]
+
+#photo(("i_bug",), [A moth found in a relay of the Harvard Mark II in 1947 and taped into the logbook with the note «First actual case of bug being found». The word «bug» for a fault is older, but the story stuck. #credit[Courtesy of the Naval Surface Warfare Center,…, Public Domain, Wikimedia Commons]], ht: 5cm)
 // ALLTAG-END
 
 #summary[
