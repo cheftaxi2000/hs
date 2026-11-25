@@ -108,6 +108,14 @@ Man kann ein System also auf zwei Arten als statisch unbestimmt erkennen. *Stati
 
 Statisch unbestimmte Systeme lassen sich erst lösen, wenn man die Verformungen einbezieht (Festigkeitslehre, Mechanik 2). Typisch ist dann der Ansatz: Zusätzliche Gleichungen aus «die Verschiebung am Lager ist null» bzw. «das Lager federt ein».
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Warum Brücken «statisch bestimmt» sein sollen.* Ein statisch bestimmtes System lässt sich allein mit den Gleichgewichtsbedingungen berechnen. Das ist angenehm, weil man dann ohne Kenntnis des Materials die Kräfte kennt. Ein Gerberträger (Brückenbalken mit Gelenken) und der Dreigelenkbogen sind solche Systeme: Sie sind unempfindlich, wenn sich ein Fundament leicht setzt, weil die Gelenke Verformungen aufnehmen. Statisch unbestimmte Systeme (zum Beispiel Durchlaufträger) sind sparsamer, aber setzt sich eine Stütze, ändern sich plötzlich alle Kräfte.]
+
+#alltag[*Der Dreigelenkbogen.* Viele Brücken, Bahnhofshallen und Hallendächer sind als Dreigelenkbogen gebaut: Zwei Teile treffen sich in einem Gelenk im Scheitel und stützen sich in zwei Gelenken am Boden ab. Weil es drei Gelenke sind, kann man die Kräfte allein mit Gleichgewicht ausrechnen, wie im Beispiel dieses Kapitels. Der Vorteil: Der Bogen leitet das Gewicht als Druck in den Boden und kommt mit wenig Material aus, wie die Steinbögen der Römer.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg[Mechanismus mit Feder: Lösung mit dem PdvL][

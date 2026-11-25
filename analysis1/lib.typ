@@ -136,4 +136,10 @@
 #let artanh = math.op("artanh")
 #let Re = math.op("Re")
 #let Im = math.op("Im")
-#let alltag(body) = _blk([Im Alltag], body, fill: rgb("#fdf5ea"), stroke: 0.6pt + rgb("#c7741a"), col: rgb("#9a520c"))
+#let alltag(body) = _blk([Im Alltag], body, fill: rgb("#fdf5ea"), stroke: 0.6pt + rgb("#c7741a"), col: rgb("#9a520c"), brk: true)
+
+// ---------- Fotos (Wikimedia Commons, Quelle in der Bildunterschrift) ----------
+#let _ph(name, h) = box(clip: true, radius: 4pt, image("photos/" + name + ".jpg", height: h))
+#let photo(names, cap, ht: 4.6cm, gap: 6pt) = figure(
+  box(names.map(n => _ph(n, ht)).join(h(gap))), caption: cap)
+#let credit(t) = text(size: 7.5pt, fill: luma(110))[Foto: #t]

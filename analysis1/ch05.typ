@@ -272,6 +272,16 @@ Vorsicht: Die Problemstelle kann auch komplex sein. $1\/(1 + x^2)$ ist auf ganz 
 
 #rezept[Wie viele Glieder braucht man?][So viele, bis nach dem Kürzen ein Glied übrig bleibt, das nicht verschwindet. Steht im Nenner $x^4$, muss man im Zähler alle Reihen mindestens bis $x^4$ mitnehmen.]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Wie ein Rechner $sin$ und $exp$ berechnet.* Ein Prozessor kann nur addieren und multiplizieren. Für $sin x$ nimmt er ein Polynom: $sin x approx x - x^3\/6 + x^5\/120 - x^7\/5040$. Für $x = 1$ ergibt das $0.841468$, richtig ist $0.841471$, also ein Fehler in der sechsten Stelle. Mit der Fehlerabschätzung der Taylor-Reihe weiss man ausserdem vorher, wie viele Terme man braucht. Jeder Taschenrechner, jede Grafikkarte und jede Tabellenkalkulation lebt von solchen Polynomen (oder verwandten Verfahren).]
+
+#alltag[*Physik: Näherungen erster Ordnung.* Die kinetische Energie $m v^2\/2$ ist nur der erste Term einer Taylor-Reihe: Die relativistische Energie $(gamma - 1) m c^2$ mit $gamma = 1\/sqrt(1 - v^2\/c^2)$ liefert $m v^2\/2 + 3 m v^4\/(8 c^2) + dots$. Bei $v = 0.01 c$ ist der zweite Term schon um den Faktor $10^(-4)$ kleiner, und Newton genügt. Ähnlich rechnet man die Schwingung eines Pendels oder die Durchbiegung eines Balkens bei kleiner Last in der Praxis mit der ersten Ordnung der Reihe, weil die höheren Terme vernachlässigbar sind.]
+
+#alltag[*Simulationen: Wetter und Crashtests.* Wettermodelle und Crashsimulationen lösen Differentialgleichungen, indem sie den Zustand in kleinen Zeitschritten $h$ weiterschieben: $y(t + h) approx y(t) + h y'(t)$. Das ist die Taylor-Reihe nach dem ersten Term, das Euler-Verfahren. Bessere Verfahren nehmen mehr Terme mit. Wie gross der Fehler pro Schritt ist (proportional zu $h^2$), sagt das Restglied. Darum muss man für eine genaue Prognose die Schritte klein wählen, und darum braucht der Wetterdienst Supercomputer.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg[Konvergenz von Reihen][

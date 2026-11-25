@@ -215,6 +215,14 @@ $ va times vb = (a_2 b_3 - a_3 b_2,thick a_3 b_1 - a_1 b_3,thick a_1 b_2 - a_2 b
 
 *Spatprodukt.* $va dot.c (vb times vc)$ darf man zyklisch vertauschen: $va dot.c (vb times vc) = vb dot.c (vc times va) = vc dot.c (va times vb)$. Das wird in Kapitel 5 gebraucht.
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Navigation und Roboter.* Jedes Navi rechnet mit Ortsvektoren: Die Position wird als Punkt in einem Koordinatensystem (Länge, Breite, Höhe) gespeichert, die Strecke als Bahnkurve $vr(t)$. Wer Sensordaten eines Smartphones auswertet, wechselt dauernd zwischen Koordinatensystemen: Die Beschleunigung wird im Gerätesystem gemessen, die Karte lebt im Erdsystem. Ein Industrieroboter macht dasselbe mit seinem Greifer: Die Software kennt die Gelenkwinkel und rechnet daraus die Lage der Spitze aus, also eine Basiswechsel-Kette, wie sie in diesem Kapitel steht.]
+
+#alltag[*Polarkoordinaten im Alltag.* Ein Radar (Flugsicherung, Wetterradar) misst Abstand und Richtung, also Polarkoordinaten $(r, phi)$. Der Fluglotse sieht aber ein kartesisches Bild. Die Umrechnung $x = r cos phi$, $y = r sin phi$ läuft pro Sekunde tausendfach im Hintergrund. Auch der Plattenspieler und das Karussell beschreiben Bewegungen in Polarkoordinaten viel einfacher als in $x, y$.]
+// ALLTAG-END
+
 #kurz[
   - Bewegung ist immer *relativ* zu einem starren *Bezugskörper* mit Achsen $O x y z$ (Rechtssystem).
   - Drei Zahlen legen eine Lage fest: kartesisch $(x, y, z)$, zylindrisch $(rho, phi, z)$, sphärisch $(r, theta, psi)$.

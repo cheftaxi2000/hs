@@ -109,6 +109,14 @@ Where do the local variables of all active calls live? On the *call stack*: a re
 
 #everyday[Even the biggest systems consist of functions, each of which fits on a screen. Typical rules of thumb are: a function has a clear name (`is_prime`, not `check`), has at most a few parameters, and fits on one screen. A name that describes the result (`square`, `is_prime`) is easier to read than a name that describes the how (`do_loop`).]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Assertions at NASA.* Gerard Holzmann of NASA's Jet Propulsion Laboratory proposed «ten rules» for code in space missions. They include: keep functions short enough to fit on one printed page, give every loop a fixed upper bound, and write on average at least two `assert`s per function. A function states what it expects (precondition) and what it promises (postcondition), and the program checks this while running. In ordinary desktop programs assertions are switched off in release builds; in your exercises they are the quickest way to find out which function broke the contract.]
+
+#everyday[*The standard library as a toolbox.* `<cmath>`, `<algorithm>` and `<string>` contain functions that thousands of experts have tested for decades. Writing your own `sqrt` or `sort` is a good exercise, but in production code you almost always call the library one. Part of the profession is knowing what already exists and what to call it.]
+// ALLTAG-END
+
 #summary[
 - Nested loops: the inner loop runs fully for each pass of the outer loop. `break` leaves the innermost loop; `continue` skips to the next pass. `switch` selects by value; do not forget `break`.
 - A loop *invariant* is true before and after each pass; with a termination argument it proves the loop correct (Euclid's algorithm).

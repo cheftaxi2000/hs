@@ -133,6 +133,14 @@ $ adj(A) = (C_(i j))^tp, quad "also" quad (adj(A))_(i j) = C_(j i). $]
 $ adj(A) = mat(5, -2, 1; -2, 4, -2; 1, -2, 5). $
 (Die Matrix ist symmetrisch, weil $A$ symmetrisch ist.) Nachrechnen: $A adj(A) = 8 I$ (der Eintrag $(1, 1)$: $2 dot 5 + 1 dot (-2) + 0 = 8$ ✓, der Eintrag $(1, 2)$: $2 dot (-2) + 1 dot 4 + 0 dot (-2) = 0$ ✓). Das ist genau $det(A) dot I$. Dieser Zusammenhang ist der Inhalt von Woche 10: $A^(-1) = adj(A)\/det(A)$.]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Die Determinante ist ein Volumenfaktor.* $|det A|$ sagt, um welchen Faktor die Abbildung $x |-> A x$ Flächen (in der Ebene) oder Volumen (im Raum) ändert. Ist $det A = 2$, werden Flächen verdoppelt; ist $det A = 0$, wird alles auf eine Gerade oder einen Punkt zusammengedrückt. Das Vorzeichen sagt, ob die Orientierung erhalten bleibt oder gespiegelt wird. Das nutzen CAD-Programme, um Spiegelungen zu erkennen, und Computerspiele, um zu entscheiden, ob ein Dreieck dem Betrachter zu- oder abgewandt ist.]
+
+#alltag[*Landvermessung mit Determinanten.* Die Fläche eines Grundstücks mit Eckpunkten $(x_1, y_1), dots, (x_n, y_n)$ berechnet der Vermesser mit der «Gauss'schen Flächenformel»: $A = 1\/2 |sum (x_i y_(i+1) - x_(i+1) y_i)|$. Jeder Summand ist eine $2 times 2$-Determinante, nämlich die Fläche eines Dreiecks vom Ursprung. Dieselbe Formel arbeitet in GIS-Software, wenn sie die Fläche eines Waldes oder Sees aus Koordinaten berechnet.]
+// ALLTAG-END
+
 #kurz[
 - LR löst $A bold(x) = bold(b)$ in zwei Dreieckssystemen; die Zerlegung ($approx n^3\/3$) wird einmal berechnet, jede weitere rechte Seite kostet nur $approx n^2$.
 - *Permutationsmatrix* $P$: $P A$ vertauscht Zeilen; $P^(-1) = P^tp$. *$P A = L R$* existiert für jede reguläre Matrix.

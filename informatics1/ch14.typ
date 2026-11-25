@@ -91,6 +91,16 @@ A classical trap is "a `Square` is a `Rectangle`, mathematically". Suppose `Rect
 
 #everyday[Graphical user interfaces are the classical use: `Button`, `Slider`, `TextBox` all derive from `Widget` with a virtual `draw()` and `on_click()`; the window loops over its list of `Widget*` and calls `draw()`. Games: `Enemy` with many kinds. Standard library: streams (`std::ostream` is the base of `std::cout` and of file streams, so that `operator<<` for `Rational` of Chapter 9 works with all of them).]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Game entities.* In a typical game there is a base class `Entity` with a virtual function `update()` and `draw()`. Player, Enemy, Bullet and Tree each derive from it and override these. The game loop holds a list of `Entity*` and calls `update()` for each, without knowing whether it deals with a player or a tree: the virtual call selects the correct code at runtime. New kinds of objects can be added without changing the loop, which is the point of polymorphism.]
+
+#everyday[*«Everything is a file».* On Linux and macOS, a file on the disk, a USB stick, a network connection and the keyboard all offer the same operations (`open`, `read`, `write`, `close`). Programs use these without caring what is behind them. Internally the operating system calls different code for each device, which is a polymorphic interface in the plain C of the kernel. The same idea lets you save a document to a local disk or to the cloud with the same code, only the object behind the interface differs.]
+
+#everyday[*What polymorphism costs.* A virtual function call goes through a table of function addresses (the vtable) and costs a few nanoseconds more than a normal call. For almost all programs this is irrelevant, but in the inner loop of a physics simulation with billions of calls professionals avoid virtual functions. Good engineering is knowing where the cost matters.]
+// ALLTAG-END
+
 #summary[
 - A *derived class* contains its base part: all base members plus its own. Constructors run base first; destructors the reverse. `protected` is visible in derived classes.
 - *Subtyping*: a derived object can be used where the base type is expected (references, pointers). The *static type* is what the code declares; the *dynamic type* is what the object really is.

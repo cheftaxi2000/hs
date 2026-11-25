@@ -220,6 +220,14 @@ Successive ionisation energies show a huge jump once the core is reached: for Na
 
 #everyday[*Why caesium is used in photocells and atomic clocks, why fluorine is so aggressive.* Caesium has the lowest ionisation energy of all stable elements (376 kJ/mol): light alone can knock electrons out, which made it the material of early photocells and night-vision devices. (Its precise line spectrum also defines the second.) Fluorine combines the highest $Z_"eff"$ of its period with a strongly negative electron affinity, so it pulls electrons from almost anything. That is why #ce("F2") attacks glass and steel, while in compounds such as PTFE (Teflon) the same strong C–F bonds make the material extremely inert.]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*Why fireworks have colours.* Each colour is the light of one element, whose excited electrons fall back to lower levels, exactly the atomic spectra in this chapter: strontium gives red, barium green, copper blue, sodium yellow, calcium orange. The chemist's art is to produce the colour without too much of the yellow sodium light, which drowns the others, and to keep the temperature right: copper chloride, for example, emits the blue only below about $1200 degree "C"$, so blue is the hardest firework colour.]
+
+#everyday[*Why lithium batteries.* Lithium is the lightest metal and it gives up its electron most readily: the standard potential is $-3.04$ V, the lowest of all metals. Light and strongly reducing is a perfect combination for a battery that should store a lot of energy per kilogram. Everything from the periodic trend in this chapter, the small atom with a single outer electron, is used here. That is why a phone, a laptop and an electric car run on lithium-ion cells.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Photon energy][

@@ -166,6 +166,16 @@ Der Fall «Widerspruch» (eine Gleichung der Form $0 = c$ mit $c != 0$) bedeutet
 
 #alltag[*Aufwand.* Bei einem System mit $n$ Gleichungen und $n$ Unbekannten braucht das Gausssche Verfahren etwa $n^3\/3$ Multiplikationen (und etwa ebenso viele Additionen). Für $n = 1000$ sind das rund $3 dot 10^8$ Operationen: ein Rechner schafft das in Bruchteilen einer Sekunde. Das Einsetzverfahren «von Hand» für beliebige Systeme oder die Cramersche Regel mit Determinanten (Woche 10) wären bei grossem $n$ hoffnungslos langsam. Gauss ist nicht nur das älteste, sondern bis heute das praktischste Verfahren.]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*GPS: ein Gleichungssystem im Taschenformat.* Dein Handy kennt seinen Ort $(x, y, z)$ und den Fehler seiner Uhr $t$. Das sind vier Unbekannte. Jeder empfangene Satellit liefert eine Gleichung (Abstand = Lichtgeschwindigkeit mal Laufzeit); deshalb braucht man mindestens vier Satelliten. Die Gleichungen sind eigentlich nicht linear, werden aber in jedem Rechenschritt durch ein lineares System ersetzt und mit dem Gauss-Verfahren gelöst, mehrmals pro Sekunde.]
+
+#alltag[*Reaktionsgleichungen ausgleichen.* Wie viele Sauerstoffmoleküle verbrennen ein Propanmolekül? Ansatz: $a thin "C"_3 "H"_8 + b thin "O"_2 -> c thin "CO"_2 + d thin "H"_2 "O"$. Aus «gleich viele Atome vorher und nachher» folgen drei lineare Gleichungen: $3a = c$, $8a = 2d$, $2b = 2c + d$. Mit $a = 1$ ergibt sich $c = 3$, $d = 4$, $b = 5$. Chemiker lösen auf diese Weise auch grosse Reaktionsnetze, mit Hunderten von Stoffen und einem LGS, das ein Computer rechnet.]
+
+#alltag[*Verkehr und Netzwerke.* An jedem Knoten eines Strassennetzes oder Stromnetzes gilt: Was hineinfliesst, fliesst auch wieder hinaus (Kirchhoff'sche Knotenregel). Jeder Knoten liefert eine lineare Gleichung für die unbekannten Flüsse. So rechnen Verkehrsplaner Zählstellendaten auf nicht gemessene Strassen hoch, und Elektroingenieure bestimmen Ströme in einem Netz mit hunderten Knoten. Dass das lösbar ist (oder nicht eindeutig), entscheidet sich genau mit den Methoden dieses Kapitels.]
+// ALLTAG-END
+
 #kurz[
 - Ein LGS hat $m$ Gleichungen, $n$ Unbekannte; eine Lösung ist ein $n$-Tupel, das *alle* Gleichungen erfüllt; $L$ ist die Menge aller Lösungen.
 - Drei Fragen: Existenz, Eindeutigkeit, Berechnung. Mögliche Anzahl der Lösungen: $0$, $1$ oder $infinity$, nie etwas dazwischen.

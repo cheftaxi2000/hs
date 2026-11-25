@@ -118,6 +118,14 @@ The bracket expression `[](int x) { return x % 2 == 1; }` in `count_if` is a *la
 
 #everyday[Professional C++ code is full of these algorithms and containers. A programmer who knows the standard library writes a third of the code and has a third of the bugs. Whenever you are about to write a loop that searches, counts, sorts or accumulates, ask: *is there a standard algorithm for it?*]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Hiding the details: the bank account.* A class `Account` with a private balance and public `deposit` and `withdraw` functions can enforce rules that no outside code can bypass: the balance never becomes negative, every change is logged. The data is protected because only the class code touches it. Later, the bank can change how the balance is stored (a new database, a faster structure) without a single line of the calling code changing. This is the whole point of information hiding, and it is why large systems with millions of lines remain changeable.]
+
+#everyday[*Choose the container for the question you ask.* `std::vector` if you mostly walk through all elements, `std::map` or `std::unordered_map` if you mostly look things up by key (a phone book, a dictionary of words, the stock price by ticker), `std::set` if you only care whether something is present. The same iterator interface works for all of them, so `std::sort`, `std::find` and `std::count` work with any container. Picking the right one often makes a program a thousand times faster.]
+// ALLTAG-END
+
 #summary[
 - A `class` has `private` data and `public` member functions. *Information hiding* means: outsiders can only use the interface, so a *class invariant* can be guaranteed by constructor and member functions alone.
 - *Constructors* initialise objects (initialiser list); `const` member functions promise not to modify the object.

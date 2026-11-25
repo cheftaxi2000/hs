@@ -102,6 +102,14 @@ The number of correct digits roughly doubles with every step: 0, 1, 3, 6, 12 dig
 
 C++ does *not* specify in which order the arguments of a function call, or the operands of most operators, are evaluated. So `f(i++, i++)` or `a[i] = i++` are traps: different compilers may give different results (or the program may have undefined behaviour). Rule: do not use a variable in the same expression where you also change it with `++` or `=`. One change per expression, and it is the last thing.
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*The stack and «Stack Overflow».* Every function call puts a block of memory (the stack frame) on the call stack, with the arguments and local variables. When the function returns, the block is removed. If a function calls itself without end, the stack fills up and the program crashes with a «stack overflow». The well-known question-and-answer site for programmers is named after this error. The default stack of a program is typically a few megabytes, so a recursion that goes millions of levels deep must be rewritten as a loop.]
+
+#everyday[*Overloading in the standard library.* `std::abs(int)`, `std::abs(double)` and `std::abs(long)` are three different functions with one name, and the compiler picks the right one from the argument type. You use this all the time without noticing. The price you pay as a programmer is clarity: if two overloads do very different things, readers get confused, so overloads should always do «the same thing for different types».]
+// ALLTAG-END
+
 #summary[
 - A function is a contract: *precondition* (caller's duty), *postcondition* (function's duty). Write them as comments, check preconditions with `assert`.
 - Test with typical and edge cases; re-run tests after each change.

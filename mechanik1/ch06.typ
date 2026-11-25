@@ -222,6 +222,14 @@ Die Dyname ${vR, vM_Z}$ auf der Zentralachse heißt (Kraft-)*Schraube*: eine Kra
   - In der Ebene die Vorzeichen der Momente nicht konsequent nach einem festen Drehsinn vergeben.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Kraft und Moment zusammen: die Dyname.* Jede noch so komplizierte Kräfteverteilung lässt sich auf eine einzige Kraft plus ein einziges Moment in einem Punkt reduzieren. Das nutzt jede Messtechnik: Eine Kraftmessplatte in der Sportmedizin oder im Windkanal misst nur diese beiden Vektoren, und alles andere wird daraus berechnet. Ein Sechs-Achsen-Kraftsensor am Handgelenk eines Roboters liefert genau $(vF, vM)$; damit «fühlt» der Roboter, ob die Schraube klemmt.]
+
+#alltag[*Wind auf dem Hochhaus.* Der Wind drückt auf ein Gebäude mit Tausenden kleiner Kräfte, verteilt über die ganze Fassade. Für die Statik ersetzt man sie durch eine Resultierende und ein Moment am Fundament. Das Moment ist es, das das Gebäude zum Kippen bringen will und das das Fundament aufnehmen muss. Ein Schraubenschlüssel funktioniert gleich: Wer ihn am Ende des Griffs fasst, erreicht dasselbe Moment mit weniger Kraft.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg(fig: "a06_wuerfel", fw: 5.8cm)[Ist die Kräftegruppe im Gleichgewicht?][

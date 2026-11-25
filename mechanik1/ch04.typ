@@ -120,6 +120,14 @@ Für einen horizontalen Balken mit veränderlichem spezifischem Gewicht $gamma(x
   In der Tiefe $h$ herrscht der Druck $p = rho_W g h$, er steht senkrecht auf der Wand und wächst linear mit der Tiefe. Auf ein Wandstück $dif A$ wirkt die Kraft $dif F = p dif A$. Für eine Mauer der Breite $b$ ist die Linienkraftdichte (Kraft je Höhenmeter) $q(h) = p b = rho_W g b h$: eine *Dreieckslast*, die oben null ist und unten maximal. Wie man sie durch eine einzige Kraft ersetzt, zeigt Kapitel 7.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Kräfte sind Vektoren: das Seil am Berg.* Ein Seil, das an einem Hang durchhängt, zieht an den Befestigungen viel stärker, als das Gewicht der Last vermuten lässt: Je flacher das Seil gespannt ist, desto grösser wird die Seilkraft. Mit zwei gleich langen Seilen unter dem Winkel $alpha$ zur Horizontalen gilt $S = G\/(2 sin alpha)$. Bei $alpha = 5 degree$ ist $S approx 5.7 G$. Darum lassen sich Slacklines kaum so spannen, dass sie nicht mehr durchhängen: Die Kraft würde ins Unendliche wachsen.]
+
+#alltag[*Actio gleich Reactio: die Rakete.* Eine Rakete bewegt sich, weil sie Gas nach hinten stösst und das Gas sie nach vorne. Es gibt keine Luft, an der sie «abstossen» könnte, und das Prinzip funktioniert deshalb im Vakuum. Dieselbe Idee steckt in jedem Wasserschlauch: Wer den Schlauch hält, spürt die Rückstosskraft des austretenden Wassers. Feuerwehrleute brauchen deshalb zwei bis drei Personen für grosse Strahlrohre.]
+// ALLTAG-END
+
 #kurz[
   - Kraft = Vektor $vF$ *plus* Angriffspunkt $A$: ${A | vF}$. Einheit N.
   - Fernkräfte wirken im Volumen, Kontaktkräfte an Berührungsflächen. Lasten sind gegeben, Reaktionen sind gesucht.

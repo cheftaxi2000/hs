@@ -158,6 +158,14 @@ Gerade in der Ebene: $3x + 4y = 10$ hat $|bold(m)| = 5$, HNF $(3x + 4y)\/5 = 2$.
 
 #alltag[Abstandsformeln dieser Art stecken in jedem CAD- und Grafikprogramm: Kollisionserkennung (liegt ein Punkt vor oder hinter einer Wand?), Clipping (wird ein Dreieck von einer Ebene abgeschnitten?) und die Trennebenen von Support-Vector-Maschinen im maschinellen Lernen sind Hessesche Normalformen. Das Vorzeichen von $bold(n) dot bold(p) - d$ entscheidet, auf welcher Seite man sich befindet.]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Zu viele Lösungen: der Roboterarm.* Ein Roboterarm mit sieben Gelenken kann dieselbe Position der Hand auf unendlich viele Arten erreichen (wie dein eigener Arm: Die Hand bleibt am Tisch, der Ellbogen wandert). Das ist ein lineares System mit freien Parametern, wie es die Zeilenstufenform beschreibt: Die Hand legt sechs Grössen fest (Ort und Drehung), die übrigen Gelenke dürfen frei gewählt werden, etwa um Hindernissen auszuweichen. Wer das Lösungsraum-Prinzip versteht, versteht, warum redundante Roboter geschickter sind.]
+
+#alltag[*Schnittpunkte in CAD und Spielen.* Jede Ebene im Raum ist eine lineare Gleichung $a x + b y + c z = d$. Wo sich drei Ebenen treffen, ist ein Punkt, bei zwei Ebenen eine Gerade, und manchmal treffen sie sich gar nicht (parallele Wände). CAD-Programme berechnen so Kanten und Ecken eines Bauteils; Spiele prüfen so, ob eine Figur eine Wand berührt. Die Fallunterscheidung «keine, eine oder unendlich viele Lösungen» ist genau die, die du in diesem Kapitel gelernt hast.]
+// ALLTAG-END
+
 #kurz[
 - *Zeilenstufenform:* Nullzeilen unten, Pivots bilden eine Treppe. Jede Matrix lässt sich so umformen (Gauss). Die *reduzierte* ZSF hat Pivots $1$ und Nullen auch über den Pivots.
 - Lösungen ablesen: Widerspruchszeile $(0 dots 0 | c)$? Sonst: Pivotvariablen vs. *freie Variablen = Parameter*; von unten nach oben auflösen. Zahl der Parameter $= n - r$.

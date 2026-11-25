@@ -143,6 +143,16 @@ Reading the output:
 
 #everyday[*Ariane 5, 4 June 1996.* Thirty-seven seconds after lift-off, the new European rocket veered off course and destroyed itself, a loss of about 370 million dollars. The cause: software reused from Ariane 4 converted a 64-bit floating-point number (the horizontal velocity) into a 16-bit signed integer. Ariane 5 was faster, the value exceeded 32767, the conversion overflowed (exactly like `static_cast<short>(40000)` in our program), the guidance computer reported a diagnostic error, and the main and backup computer shut down. One single unchecked conversion.]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*A Boeing 787 that must be restarted.* In 2015 the US aviation authority (FAA) ordered operators of Boeing 787 aircraft to power-cycle the aircraft's generator control units at least every 248 days. The reason was a counter of hundredths of a second stored in a signed 32-bit integer: after $2^(31)$ hundredths of a second, which is about $248.55$ days, the number overflows, and the units could shut down. It is the same kind of error as in Ariane 5, in a different place. Always ask: how large can this number become?]
+
+#everyday[*Hexadecimal in colours and addresses.* Web colours like `#FF8800` are three bytes written in hexadecimal: red $=$ `FF` ($255$), green $=$ `88` ($136$), blue $=$ `00`. Hardware addresses of network cards (`3C:22:FB:...`), memory addresses in error messages and the checksums of downloads all use hex. Two hex digits are exactly one byte, which is why programmers like it: $16 = 2^4$, so each hex digit corresponds to exactly four bits.]
+
+#everyday[*Rounding in finance and engineering.* Spreadsheets display $0.1 + 0.2$ as $0.3$ because they round the output, not the stored value. When thousands of such small errors add up (interest calculation, structural analysis over many steps), the order of operations matters: summing $10^6$ numbers from small to large gives a different, usually better, result than from large to small. Numerical software is designed with these effects in mind.]
+// ALLTAG-END
+
 #summary[
 - Binary: positions with weights $2^i$. Hexadecimal: 4 bits per digit. Convert decimal → binary by repeated division by 2.
 - $n$ bits give $2^n$ patterns. *Unsigned*: $0 .. 2^n - 1$. *Two's complement*: $-2^(n-1) .. 2^(n-1) - 1$; the top bit has the negative weight; negate by inverting and adding 1. Overflow wraps around.

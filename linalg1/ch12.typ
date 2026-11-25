@@ -147,6 +147,14 @@ Die Definition gilt auch in Funktionenräumen. Die Gleichung $c_1 f_1 + dots + c
 - $1, cos^2 x, sin^2 x$ sind *abhängig*: $cos^2 x + sin^2 x - 1 = 0$ für alle $x$.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Farben mischen.* Jede Bildschirmfarbe ist eine Linearkombination $r e_R + g e_G + b e_B$ der drei Grundfarben Rot, Grün und Blau. Drei Farben reichen, weil unser Auge drei Arten von Farbrezeptoren hat. Dass kein Grundfarbenpaar ausreicht, ist die Aussage «zwei Vektoren spannen nur eine Ebene auf». Und damit alle Farben eindeutig gemischt werden können, müssen die Grundfarben linear unabhängig sein. Der Farbdrucker nutzt Cyan, Magenta, Gelb (und Schwarz) aus demselben Grund.]
+
+#alltag[*Redundanz und Unabhängigkeit bei Sensoren.* Ein Flugzeug misst seine Lage mit mehreren Sensoren. Sind drei Sensoren linear abhängig (der dritte liefert nur eine Mischung der beiden anderen), ist er redundant: nützlich zur Kontrolle, aber ohne neue Information. Ingenieure prüfen die lineare Unabhängigkeit der Messrichtungen, bevor sie ein System bauen: Zeigen sie alle in einer Ebene, ist die dritte Raumrichtung blind.]
+// ALLTAG-END
+
 #kurz[
 - Durchschnitte von UR sind UR; Vereinigungen nicht. Die Summe $U_1 + U_2$ ist der kleinste UR, der beide enthält.
 - *LK:* $sum c_i bold(v)_i$. *Erzeugnis* $erz{bold(v)_i}$ = Menge aller LKs: kleinster UR, der alle $bold(v)_i$ enthält. $bold(b) in erz{"Spalten von " A} arrow.l.r.double A bold(x) = bold(b)$ lösbar.

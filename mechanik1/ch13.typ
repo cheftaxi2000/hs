@@ -96,6 +96,14 @@ Ein Hinweis zur Annahme: Das Modell vernachlässigt die Biegesteifigkeit des Sei
   Ein Band umschlingt eine drehende Trommel (Radius $r = 0.2$ m) über $alpha = 3 pi\/2$ ($270°$), $mu_1 = 0.4$. Auf der schlaffen Seite wirkt $S_1 = 100$ N. Dann ist $S_2 = S_1 e^(mu_1 alpha) = 100 e^(0.4 dot 4.71) approx 100 dot 6.6 = 660$ N, und das Bremsmoment auf die Trommel ist $M = r (S_2 - S_1) = 0.2 dot 560 = 112$ N m. Mit einem Hebel, der nur die kleine Kraft $S_1$ aufbringen muss, erzeugt man ein großes Bremsmoment. Man zerlegt das System in die Trommel samt Last und den Bremshebel und löst mit den Momentenbedingungen beider Körper. Der Hebel spannt dabei den _ablaufenden_ Seilteil, weil dort der Zug kleiner ist und man mit einer geringeren Bremskraft auskommt.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Hängebrücken.* Das Tragseil einer Hängebrücke trägt die ganze Fahrbahn. Weil die Last gleichmässig über die Spannweite verteilt ist, hängt es in Form einer Parabel; das Eigengewicht des Seils allein ergibt eine Kettenlinie, also einen $cosh$. Die Golden Gate Bridge hat eine Hauptspannweite von $1280$ m und Tragkabel von etwa $90$ cm Durchmesser aus je gut $27 thin 000$ Einzeldrähten. Mit den Formeln dieses Kapitels berechnet man die Seilkraft am Pylon: Sie ist am grössten dort, wo das Seil am steilsten ist.]
+
+#alltag[*Freileitungen und Wäscheleine.* Eine Stromleitung zwischen zwei Masten hängt durch. Im Sommer, bei Hitze, dehnt sie sich aus und hängt noch stärker durch; im Winter zieht sie sich straff. Die Betreiber berechnen den Durchhang als Kettenlinie, damit sie auch bei Hitze mindestens den vorgeschriebenen Abstand zum Boden hält. Dasselbe gilt für die Wäscheleine: Je straffer sie gespannt ist, desto grösser wird die Seilkraft, die an den Befestigungen zieht, ein Fall wie in Kapitel 4.]
+// ALLTAG-END
+
 #kurz[
   - Seil: nur Zug, tangential. Reibungsfreie Rolle: gleiche Seilkraft auf beiden Seiten.
   - Schweres Seil: $H = "konst."$, $V = p s$, $a = H\/p$.

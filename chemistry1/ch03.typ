@@ -211,6 +211,12 @@ $ c_"conc" V_"conc" = c_"dil" V_"dil". $]
   $n(ce("NaOH")) = 0.120 times 0.0186 = 2.23 times 10^(-3)$ mol. HCl : NaOH = 1 : 1, so $n(ce("HCl")) = 2.23 times 10^(-3)$ mol, $c = 2.23 times 10^(-3) \/ 0.0250 = 0.0893$ M.
 ]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*Limescale and antacids.* Hard water contains $"Ca"^(2+)$ and $"HCO"_3^-$. On heating, it gives solid calcium carbonate: $"Ca"^(2+) + 2 "HCO"_3^- -> "CaCO"_3 (s) + "CO"_2 + "H"_2 "O"$. That is the white crust in kettles and coffee machines, and the reason for descaling with citric acid, which dissolves the carbonate again. An antacid tablet for heartburn works the other way round: $"Mg(OH)"_2 + 2 "HCl" -> "MgCl"_2 + 2 "H"_2 "O"$ neutralises excess stomach acid. Both are the same type of reaction as in this chapter, just in the kitchen and in the body.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Electrolytes][

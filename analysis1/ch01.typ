@@ -724,6 +724,16 @@ Eine *vertikale Asymptote* $x = a$ liegt vor, wenn $f(x) -> plus.minus oo$ für 
 
 #merke[Auch nicht-rationale Funktionen haben Asymptoten: $e^x$ hat $y = 0$ für $x -> -oo$, $arctan x$ hat $y = plus.minus pi\/2$, $ln x$ hat die vertikale Asymptote $x = 0$. Allgemein findet man eine schiefe Asymptote $y = m x + b$ über $m = lim f(x)\/x$ und $b = lim (f(x) - m x)$.]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Zinseszins, Hypothek und die Zweiundsiebziger-Regel.* Ein Konto mit Zinssatz $p$ wächst nach $n$ Jahren auf $K_n = K_0 (1 + p)^n$, eine geometrische Folge. Bei $2 %$ Zins verdoppelt sich das Geld nach etwa $72\/2 = 36$ Jahren; die «72er-Regel» ist die Näherung $ln 2 approx 0.69$. Eine Hypothek ist die dazugehörige geometrische Reihe: Wer $500 thin 000$ CHF zu $2 %$ über $25$ Jahre zurückzahlt, zahlt jedes Jahr $K q^n (q-1)\/(q^n - 1) approx 25 thin 600$ CHF mit $q = 1.02$. Jede Bank, jede Pensionskasse und jedes Leasing rechnet mit dieser Summenformel.]
+
+#alltag[*Logarithmen: Dezibel, Richter und pH.* Wo Grössen über viele Zehnerpotenzen laufen, misst man den Logarithmus. $+10$ dB heisst zehnmal mehr Schallintensität, $+3$ dB ungefähr doppelt so viel; ein Presslufthammer ($approx 100$ dB) ist deshalb nicht «ein bisschen» lauter als Flüstern ($approx 30$ dB), sondern $10^7$-mal intensiver. Bei der Richterskala bedeutet eine Magnitude mehr $10 times$ grössere Bodenbewegung und rund $32 times$ mehr Energie. Ein pH-Wert um eins kleiner heisst zehnmal mehr $H^+$. Immer, wenn eine Skala logarithmisch ist, steckt diese Funktion dahinter.]
+
+#alltag[*Wie der Taschenrechner Wurzeln zieht.* Die Folge $x_(n+1) = (x_n + 2\/x_n)\/2$ mit $x_0 = 1$ liefert $1$, $1.5$, $1.41667$, $1.414216$, also schon nach drei Schritten $sqrt(2)$ auf sechs Stellen. Sie konvergiert so schnell, dass die Zahl der richtigen Stellen sich pro Schritt etwa verdoppelt. Das ist das Newton-Verfahren, und es steckt (in Varianten) in den Grafikkarten- und Taschenrechner-Routinen für Wurzel und Kehrwert. Jedes Programm, das eine Zahl «auf Genauigkeit $epsilon$ berechnen» soll, läuft nach demselben Muster: iterieren, bis sich die Folge nicht mehr nennenswert ändert.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg[Grenzwerte von Folgen][

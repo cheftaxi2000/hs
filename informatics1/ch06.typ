@@ -124,6 +124,14 @@ An element of a vector may itself be a vector: `std::vector<std::vector<int>>` i
 
 #everyday[Almost all data in engineering is a vector or a table: measurements over time, pixels in an image (a matrix of colour values), coordinates of the nodes in a simulation, a matrix in a system of equations. The loops of this and the last chapters are what process them.]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Why you pass big things by reference.* A 4K image has $3840 times 2160$ pixels with $3$ bytes each, about $25$ MB. If a function takes it by value, it copies $25$ MB each call; with `const Image&` it passes an address of $8$ bytes, about three million times less. Every professional C++ API passes large objects by reference for this reason, and `const` makes sure the function does not change them. In video processing, with $60$ frames per second, this decides whether the program keeps up or not.]
+
+#everyday[*`std::vector`: the default container.* Sensor measurements over time, the pixels of a row, the particles of a simulation: whenever the data is a sequence, professionals first reach for `std::vector`. It stores its elements in one block of memory, which is what processors like best: in many measurements a vector beats fancier structures simply because the hardware loads neighbouring elements together. Rule of thumb in industry: use `vector` unless you can prove you need something else.]
+// ALLTAG-END
+
 #summary[
 - A *reference* `T&` is a second name for a variable. *Call by reference* lets a function modify its arguments; `const T&` avoids copies for read-only access.
 - `std::vector<T>`: a growable sequence with `size()`, `push_back`, `[i]`. Indices run from 0 to `size() - 1`; going outside is a bug that the compiler does not catch (use `at()` to find it).

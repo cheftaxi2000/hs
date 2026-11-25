@@ -227,6 +227,14 @@ A Lewis structure shows which atoms are bonded, but not the 3D shape. The Lewis 
 
 #everyday[*Why water is bent, and why that matters.* If water were linear like #ce("CO2"), its two O–H bond dipoles would cancel, it would be nonpolar, it would boil around −80 °C and there would be no liquid oceans and no life. The two lone pairs on oxygen bend the molecule to 104.5°. The same VSEPR reasoning explains why #ce("CO2") (linear, nonpolar) is a gas that does not dissolve well in water, and why the tetrahedral carbon atom is the 3D building block of all organic chemistry, from fuels to polymers to proteins.]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*The microwave oven.* Water is a polar molecule with a permanent dipole. The oven's radiation at $2.45$ GHz is an oscillating electric field, and the molecules try to follow it, rotating back and forth billions of times per second. The friction with neighbouring molecules warms the food. A dry plastic plate with no polar molecules stays cold, and ice, where the molecules are locked in place, heats badly: the dipole picture explains both.]
+
+#everyday[*Why $"CO"_2$ warms the climate and $"N"_2$ does not.* The light from the Earth's surface is infrared. A molecule absorbs it only if the vibration changes its dipole moment. $"N"_2$ and $"O"_2$ are symmetric and have no dipole, so their stretching vibration does not interact with infrared. $"CO"_2$ is linear, with no net dipole, but its asymmetric stretch and its bend produce a changing dipole and absorb, and so do $"H"_2 "O"$ and $"CH"_4$. The shapes in this chapter are the reason for the greenhouse effect.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Ionic or covalent?][

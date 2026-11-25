@@ -228,6 +228,14 @@ Two effects cause deviations:
 
 #intu[Gases are most ideal at *high temperature and low pressure*: molecules far apart (volume negligible) and fast (attractions negligible). Large, polar molecules with strong attractions (e.g. water vapour, $a = 5.5$) deviate much more than small nonpolar ones (He, $a = 0.034$). Chapter 8 explains these attractions.]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*Scuba diving: the partial pressures.* Every $10$ m of water adds about $1$ bar. At $40$ m the total pressure is $5$ bar, so the oxygen in air has $p("O"_2) = 0.21 dot 5 = 1.05$ bar and nitrogen $3.95$ bar. Nitrogen at this level has a narcotic effect («rapture of the deep»), and oxygen becomes toxic above about $1.4$ bar, which limits recreational diving on air to about $57$ m. Divers who go deeper use special mixtures with helium. Coming up too fast is dangerous for a gas-law reason: the dissolved nitrogen comes out of the blood as bubbles, like in a shaken lemonade bottle.]
+
+#everyday[*Tyre pressure in winter.* At constant volume $p slash T$ is constant (Gay-Lussac). A tyre inflated to $2.2$ bar gauge at $20 degree "C"$ ($293$ K) cools by $10$ K overnight and loses about $3.4 %$ of its absolute pressure: that is $0.1$ bar. Garages recommend checking the pressure when the tyres are cold, and the warning light on the dashboard often goes on at the first cold morning of the year for exactly this reason.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Pressure units][

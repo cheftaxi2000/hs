@@ -170,6 +170,14 @@ Transition temperatures depend on pressure. A *phase diagram* shows, in a $P$–
 
 #photo(("dryice", "aerogel"), [Left: dry ice (solid #ce("CO2")) sublimes at −78 °C; in water it makes a cold fog of condensed water droplets. Right: a block of silica aerogel, made by supercritical drying, insulates a flower from a flame below. #credit[left: Christopher from Salem, CC BY-SA 2.0; right: NASA/JPL, public domain; both Wikimedia Commons]], ht: 4.6cm)
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*Gecko tape.* A gecko climbs a smooth glass wall because its feet carry billions of tiny hairs (setae), each ending in even smaller tips. Every tip makes contact so close to the wall that the weak London dispersion forces between its molecules and those of the glass add up to hold the animal, without any glue. Researchers have built adhesive tapes after this model, which can be peeled off and reused. Weak forces, many of them, make a strong bond.]
+
+#everyday[*A butane lighter works because of the vapour pressure.* Butane has a vapour pressure of about $2.1$ bar at $20 degree "C"$, so at room temperature, a few bars of pressure are enough to keep it liquid in the lighter. When you open the valve, the pressure drops, the liquid evaporates and a gas jet leaves. On a cold winter day, the vapour pressure is lower and the lighter may not work: the normal boiling point of butane is $-1 degree "C"$.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Intermolecular forces][

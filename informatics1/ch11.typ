@@ -149,6 +149,14 @@ When `head` is null, `prev` points to the new first node: `return prev`.]
 
 #everyday[Lists with pointers are everywhere: the undo history of an editor, the chain of blocks in a block chain, the free-space management of the heap itself, queues in operating systems, the "next" song in a playlist. Their strength: cheap insertion and deletion anywhere (once you hold a pointer to the place). Their weakness: no random access, and each element costs an extra pointer plus the overhead of its own allocation.]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Heartbleed.* In 2014 a bug in OpenSSL, the library that secures a large part of the world's web traffic, let an attacker read memory that did not belong to the request. The code copied a number of bytes that the sender had claimed, without checking that the sender had actually sent that many; the surplus came from neighbouring memory, with passwords and private keys. It is the classical out-of-bounds read, the same bug you can write with a pointer or a `char` array in this chapter. The vulnerability affected hundreds of thousands of servers.]
+
+#everyday[*Memory safety is the biggest class of security bugs.* Microsoft and the Chrome team have both reported that about 70% of their serious security vulnerabilities are memory-safety problems: dangling pointers, buffer overflows, use after free. That is why the industry is moving to safer languages (Rust is one) and to safer habits in C++: smart pointers, containers instead of raw arrays, and tools like AddressSanitizer that crash the program the moment it does something illegal. What you learn here is what you need to read their reports.]
+// ALLTAG-END
+
 #summary[
 - Memory regions: *stack* (automatic), *static*, *heap* (manual, via `new` / `delete`).
 - A *pointer* holds an address: `&x` address-of, `*p` dereference, `p->m` is `(*p).m`, `nullptr` points nowhere. Pointer arithmetic moves by elements; `a[i]` is `*(a + i)`.

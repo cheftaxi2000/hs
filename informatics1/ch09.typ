@@ -119,6 +119,16 @@ If a variable can take one of a small number of *named* values (weekdays, direct
 
 `enum class` values are written `Weekday::Fri`; they are *not* implicitly numbers, so `static_cast<int>` is needed to get the index, and you cannot accidentally compare a `Weekday` with a `Colour`. The `% 7` in `next` makes the days cycle (remainder, Chapter 2). Enumerations pair naturally with `switch` (Chapter 4).
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Backtracking: Sudoku, scheduling, route planning.* A Sudoku solver, a timetable generator, a robot looking for a way through a maze: all use the same recursive idea. Try a choice, recurse, and if it fails, undo the choice and try the next one. This is the structure of the Eight Queens problem in this chapter. Real planning programs add clever tricks to cut off bad branches early, but the skeleton is the recursion you have written.]
+
+#everyday[*Divide and conquer.* Merge sort splits the list in half, sorts each half recursively and merges: $n log n$ steps instead of $n^2$. For one million elements that is about $2 dot 10^7$ steps instead of $10^(12)$. Python's built-in `sort` (Timsort) is a refined merge sort, and the same split-and-combine idea is behind the fast Fourier transform (audio, mobile phone signals) and parallel computing: each processor gets one half.]
+
+#everyday[*Structs are records.* One row in a database table, one line of a CSV file, one measurement from a GPS receiver (time, latitude, longitude, height): everything with several fields that belong together is a `struct`. Defining your own type, instead of using five loose variables, is the first step to readable code, and it is how data is passed between all parts of a program.]
+// ALLTAG-END
+
 #summary[
 - Recursion patterns: *try all possibilities* (permutations, backtracking with pruning), *divide and conquer* (binary search $log n$, fast power, merge sort $n log n$), *memoization* (store sub-results).
 - `struct` bundles values into a new type; members via `.`; copying copies all members.

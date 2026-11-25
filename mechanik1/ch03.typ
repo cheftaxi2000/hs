@@ -310,6 +310,14 @@ Ein Beispiel ist der *Kollergang* (Mühle): Ein Rad mit Radius $R$ rollt auf ein
   - In $vom times arrow(B M)$ den Vektor in der falschen Richtung nehmen: Er zeigt vom Bezugspunkt $B$ zum Punkt $M$, dessen Geschwindigkeit gesucht ist.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Das rollende Rad.* Der Auflagepunkt eines Rades, das auf der Strasse rollt, steht in diesem Augenblick still: Er ist das Momentanzentrum. Darum kann ein Reifen Kraft auf die Strasse übertragen, ohne zu rutschen. Der oberste Punkt des Rades bewegt sich dagegen doppelt so schnell wie das Auto. Das sieht man auf Fotos mit langer Belichtung: Unten sind die Speichen scharf, oben verschmiert.]
+
+#alltag[*Kurbeltrieb und Getriebe.* In jedem Benzin- und Dieselmotor verwandelt ein Kurbeltrieb die geradlinige Bewegung des Kolbens in eine Drehung der Kurbelwelle. Die Kinematik starrer Körper sagt, wie schnell der Kolben in jeder Stellung ist, und damit, welche Kräfte die Pleuelstange aushalten muss. Ein Planetengetriebe (Automatikgetriebe, Nabenschaltung am Fahrrad, Antrieb von Windkraftanlagen) ist ein Zusammenspiel von Körpern, die gleichzeitig drehen und um einen anderen Körper laufen, genau die Bewegungen, die dieses Kapitel beschreibt.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg(fig: "a03_wuerfelrot", fw: 5.8cm)[Würfel, momentane Rotation][

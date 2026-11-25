@@ -64,7 +64,7 @@
 #let mistake(body) = _blk([Common mistakes], body, col: crd, bar: crd)
 #let recipe(title, body) = _blk([Recipe: #title], body, fill: luma(248), stroke: 0.6pt + luma(140))
 #let why(title, body) = _blk([Why? #title], body, bar: luma(150))
-#let everyday(body) = _blk([In practice], body, fill: rgb("#eef4fb"), stroke: 0.6pt + rgb("#2f6fb0"), col: rgb("#235a92"))
+#let everyday(body) = _blk([In practice], body, fill: rgb("#eef4fb"), stroke: 0.6pt + rgb("#2f6fb0"), col: rgb("#235a92"), brk: true)
 #let check(q, a) = block(width: 100%, breakable: false, spacing: 1.15em, inset: (x: 10pt, y: 7pt), radius: 4pt,
   stroke: (paint: luma(150), thickness: 0.6pt, dash: "dashed"), {
     _lab([Check yourself], luma(60)); v(-4pt); q
@@ -173,3 +173,9 @@
   show raw.where(block: false): it => box(fill: luma(240), inset: (x: 2.2pt), outset: (y: 2.4pt), radius: 2pt, it)
   body
 }
+
+// ---------- real photographs (Wikimedia Commons, credited in the caption) ----------
+#let _ph(name, h) = box(clip: true, radius: 4pt, image("photos/" + name + ".jpg", height: h))
+#let photo(names, cap, ht: 4.6cm, gap: 6pt) = figure(
+  box(names.map(n => _ph(n, ht)).join(h(gap))), caption: cap)
+#let credit(t) = text(size: 7.5pt, fill: luma(110))[Photo: #t]

@@ -191,6 +191,14 @@ $ vv = dot(phi) ve_z times vr. $
   _Schnelligkeit:_ $dot(s) = (1\/2) sqrt(k\/t)$. In $A$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(T\/3)) = 3L\/(2T)$. In $B$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(4T\/3)) = 3L\/(4T)$. Der Punkt wird unterwegs langsamer, wie man es bei einer Wurzelfunktion erwartet.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Tacho, Blitzer und Fahrtschreiber.* Der Tacho zeigt die Momentangeschwindigkeit, also die Ableitung $dot(vr)$ des Ortes. Ein Blitzer auf der Autobahn misst sie direkt (Radar nutzt den Doppler-Effekt). Ein Abschnittskontrolle dagegen misst die _mittlere_ Geschwindigkeit: Strecke durch Zeit zwischen zwei Kameras. Beides ist richtig, aber es sind zwei verschiedene Grössen. Wer gerade 30 s lang 140 km/h gefahren ist, kann trotzdem im Mittel unter 100 km/h liegen.]
+
+#alltag[*Warum man in der Kurve nach aussen gedrückt wird.* Auf einer Kreisbahn ändert sich die Richtung der Geschwindigkeit ständig, obwohl der Betrag konstant bleibt. Eine Richtungsänderung ist eine Beschleunigung, nämlich $a = v^2\/r$ nach innen. Bei 90 km/h ($25$ m/s) in einer Kurve mit $r = 100$ m sind das $6.25$ m/s², fast zwei Drittel der Erdbeschleunigung. Das spürt der Körper als «Kraft nach aussen»; in Wahrheit will er nur geradeaus weiter.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg(fig: "a02_bahn", fw: 5.4cm)[Bahnkurve, Schnelligkeit und Tangente][

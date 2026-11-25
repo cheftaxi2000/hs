@@ -111,6 +111,14 @@ Insertion is easy, removal needs a case distinction, depending on the number of 
 
 #everyday[Trees are everywhere: the folders of a file system, the structure of a web page (the DOM), the parsing of an arithmetic expression or of your C++ program (the compiler's *syntax tree*), databases (indexes are B-trees), decision trees in machine learning, the call tree of a recursive function.]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Trees inside databases.* A database with a billion entries finds a record after a handful of steps, because the index is a balanced search tree. A binary tree needs $log_2 10^9 approx 30$ levels; real databases use B-trees with hundreds of children per node, so about four levels are enough. The same structure organises directories in many file systems. Without this, searching by name in a big table would mean reading every row, which would take minutes instead of milliseconds. It is the practical use of the binary-tree idea in this chapter.]
+
+#everyday[*Git is a linked structure.* Every commit points to its parent commit (and a merge commit to two). Following these links from the newest commit backwards is walking through a linked list; the whole history of a project is a directed graph. When you type `git log`, the program follows the pointers exactly as in the list traversal you learned. Also, every commit is identified by a hash of its content and its parent's hash, so changing one old commit would change all later ones. The structure is a blockchain in miniature.]
+// ALLTAG-END
+
 #summary[
 - A list class keeps `head_` / `tail_` / `size_` consistent and owns its nodes (rule of three).
 - *Stack* (LIFO) and *queue* (FIFO) are restricted sequences; brackets can be checked with a stack.

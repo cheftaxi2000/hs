@@ -107,6 +107,14 @@ Dagegen ist die Lösungsmenge von $f'' + f = x$ (inhomogen) *kein* Unterraum: $b
 
 #kontrolle[Ist $U = {A in RR^(2 times 2) : A = A^tp, spur(A) = 0}$ ein Unterraum von $RR^(2 times 2)$? Wie sieht ein Element aus?][Ja: Es sind genau die Matrizen $mat(a, b; b, -a)$ (symmetrisch, Spur $0$). Summe und Vielfache haben wieder diese Form. $U = {a mat(1, 0; 0, -1) + b mat(0, 1; 1, 0)}$.]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Das Superpositionsprinzip.* Die Lösungen einer homogenen linearen Differentialgleichung bilden einen Unterraum: Summen und Vielfache von Lösungen sind wieder Lösungen. Das ist der Grund, warum Töne sich überlagern können, ohne einander zu stören, warum Wellen im Wasser durcheinander laufen und warum in der Elektrotechnik jede Schaltung aus «Teilschaltungen» berechnet wird. Eine Gitarrensaite schwingt als Summe von Obertönen, und der Klang jedes Instruments ist die Mischung.]
+
+#alltag[*Polynome und Splines.* Die Polynome höchstens vom Grad $n$ bilden einen Vektorraum der Dimension $n + 1$. Ein CAD-Programm, das eine glatte Kurve durch Punkte legt (Autokarosserie, Schriftart, Strassenverlauf), baut sie aus Stücken von Polynomen dritten Grades, den Splines. Dass man sie addieren und strecken darf, ohne den Raum zu verlassen, macht sie rechenbar. Auch die Buchstaben, die du gerade liest, sind solche Kurven.]
+// ALLTAG-END
+
 #kurz[
 - Funktionen $X arrow.r KK$ bilden mit punktweiser Addition und Skalarmultiplikation einen *Vektorraum* $F(X, KK)$. Er enthält $KK^n$, Matrizen und Folgen als Spezialfälle; ebenso $C(RR)$, $C^k(RR)$, Polynome.
 - *Unterraum* $U subset.eq V$: ein Vektorraum mit den Operationen von $V$. *Kriterium:* $bold(0) in U$, abgeschlossen unter $+$ und unter Skalarmultiplikation.
