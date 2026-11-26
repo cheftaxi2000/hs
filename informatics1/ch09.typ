@@ -6,6 +6,8 @@
 
 #lecture[The first half deepens recursion: three powerful patterns (trying all possibilities, splitting a problem in halves, remembering results) with the exercises *all permutations*, *binary search*, *merge sort* and the *$n$ queens problem*. The second half is about *types*: with `struct` you create your own data types, bundling values that belong together, and with operator overloading you make them as pleasant to use as `int`.]
 
+#include "ch09_a.typ"
+
 == Recursion pattern 1: trying all possibilities
 
 Some problems ask for *all* arrangements of something. Recursion handles them elegantly: *choose* the first element, then solve the same problem for the rest.
@@ -118,6 +120,8 @@ If a variable can take one of a small number of *named* values (weekdays, direct
 #cpp("enum")
 
 `enum class` values are written `Weekday::Fri`; they are *not* implicitly numbers, so `static_cast<int>` is needed to get the index, and you cannot accidentally compare a `Weekday` with a `Colour`. The `% 7` in `next` makes the days cycle (remainder, Chapter 2). Enumerations pair naturally with `switch` (Chapter 4).
+
+#include "ch09_b.typ"
 
 // ALLTAG-BEGIN
 == Where this shows up in the real world

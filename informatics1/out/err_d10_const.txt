@@ -1,0 +1,5 @@
+main.cpp: In member function ‘int Counter::value() const’:
+main.cpp:4:27: error: increment of member ‘Counter::count_’ in read-only object
+    4 |     int value() const { ++count_; return count_; }   // const, but changes!
+      |                           ^~~~~~
+main.cpp: In function ‘int main()’:
