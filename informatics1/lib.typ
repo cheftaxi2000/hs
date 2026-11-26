@@ -203,3 +203,22 @@
   text(font: sans, size: 7.5pt, weight: "bold", fill: rgb("#8fd3b8"))[OUTPUT]; v(-6pt)
   text(font: mono, size: 8pt, fill: rgb("#e8f3ee"), raw(read("out/" + name + ".txt").trim("\n", at: end), block: true))
 })
+
+// ---------- linked-list pictures: #chain("head", "4", "9", "1") ----------
+#let _node(v, col: white) = box(stroke: 0.8pt + luma(70), radius: 2pt, fill: col, baseline: 30%,
+  grid(columns: 2, inset: (x: 6pt, y: 4pt), stroke: (x, y) => if x == 1 { (left: 0.8pt + luma(70)) },
+    text(font: mono, size: 9pt, v), text(font: mono, size: 9pt, fill: luma(90), sym.bullet)))
+#let _arr = text(size: 11pt, fill: luma(60), [ #sym.arrow.r ])
+#let chain(head, ..vals, hlv: (), note: none) = align(center, block(breakable: false, spacing: 1.1em, {
+  if head != none { text(font: mono, size: 8.5pt, head); _arr }
+  for (i, v) in vals.pos().enumerate() {
+    _node(v, col: if v in hlv { hl } else { white }); _arr
+  }
+  text(font: mono, size: 8.5pt, fill: luma(90), "nullptr")
+  if note != none { linebreak(); text(size: 8.5pt, style: "italic", note) }
+}))
+// table of memory cells with addresses
+#let memtab(..rows) = align(center, block(breakable: false, spacing: 1.1em, table(columns: 3, inset: (x: 10pt, y: 4pt), align: (right, center, center),
+  stroke: (x, y) => (bottom: if y == 0 { 0.6pt } else { 0.3pt + luma(200) }),
+  text(size: 8.5pt, weight: "bold")[address], text(size: 8.5pt, weight: "bold")[name], text(size: 8.5pt, weight: "bold")[value],
+  ..rows.pos().flatten().map(c => text(font: mono, size: 8.8pt, c)))))

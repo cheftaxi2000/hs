@@ -6,6 +6,8 @@
 
 #lecture[So far, the amount of memory a program uses was fixed when we wrote it (variables) or determined by the call depth (the stack). This chapter lifts the restriction: with *pointers* and *dynamic memory* a program can ask for memory *while running*, as much as it needs, and link pieces of memory into *data structures* of any shape. It is the most error-prone part of C++, and the one that explains how everything else works.]
 
+#include "ch11_a.typ"
+
 == Where does data live?
 
 A running program has several regions of memory:
@@ -148,6 +150,8 @@ In `remove`, the first node is a special case because `head` itself changes: tha
 When `head` is null, `prev` points to the new first node: `return prev`.]
 
 #everyday[Lists with pointers are everywhere: the undo history of an editor, the chain of blocks in a block chain, the free-space management of the heap itself, queues in operating systems, the "next" song in a playlist. Their strength: cheap insertion and deletion anywhere (once you hold a pointer to the place). Their weakness: no random access, and each element costs an extra pointer plus the overhead of its own allocation.]
+
+#include "ch11_b.typ"
 
 // ALLTAG-BEGIN
 == Where this shows up in the real world
