@@ -300,3 +300,9 @@ dialog.fb::backdrop { background: rgba(20, 20, 19, .38); }
   .inbox-item { grid-template-columns: minmax(0, 1fr); gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* the chosen script: description and download */
+.room-d { padding-top: 32px; max-width: 62ch; }
+.room-d p { margin: 0 0 16px; font: 400 19px/1.55 var(--serif); color: var(--ink-2); }
+.room-d .room-m { font: 400 15px/1.5 var(--sans); color: var(--muted); margin-bottom: 28px; }
+.room-d .btn { text-decoration: none; height: 42px; padding: 0 20px; font-size: 15px; }

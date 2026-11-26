@@ -1,7 +1,7 @@
 name: GitHub Pages
 
-# Baut die Mechanik-Tafeln (web/, React/Vite) und veröffentlicht sie zusammen mit der
-# Lernstoff-Seite: /hs/ = index.html + assets/ + PDFs, /hs/mechanik/ und /hs/analysis/ = Tafeln, /hs/errors/ = Meldungen.
+# Veröffentlicht die Lernstoff-Seite: /hs/ = index.html + assets/ + die fünf PDFs, /hs/errors/ = Meldungen.
+# (Die interaktiven Animationen liegen im Branch «animationen» und werden nicht veröffentlicht.)
 on:
   push:
     branches: [main]
@@ -21,16 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: web/package-lock.json
-      - name: Tafeln bauen und testen
-        working-directory: web
-        run: |
-          npm ci
-          npm run check
       - name: Seite zusammenstellen
         run: |
           mkdir -p _site
@@ -39,8 +29,6 @@ jobs:
           for d in mechanik1 analysis1 linalg1 informatics1 chemistry1; do
             mkdir -p "_site/$d" && cp "$d"/*.pdf "_site/$d/"
           done
-          cp -r web/dist _site/mechanik
-          mkdir -p _site/analysis && cp web/dist/index.html _site/analysis/   # same app, opens on Analysis
       - name: Dateien versionieren (Browser lädt nach jedem Deployment neu)
         run: |
           V="${GITHUB_SHA::7}"
