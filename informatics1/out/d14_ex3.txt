@@ -1,0 +1,4 @@
+Anna: 6000
+Ben: 2400
+Cleo: 900
+total: 9300
