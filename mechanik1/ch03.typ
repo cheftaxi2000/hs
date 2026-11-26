@@ -4,7 +4,7 @@
 
 #woche(3, [Starrer Körper], [35–45])
 
-Ein starrer Körper besteht aus unendlich vielen Punkten. Müssten wir für jeden einzelnen die Geschwindigkeit angeben, kämen wir nie zu einem Ende. Die gute Nachricht dieses Kapitels: Weil alle Abstände fest sind, genügen *zwei Vektoren*, um die Geschwindigkeit _jedes_ Punktes zu kennen. Dahin arbeiten wir uns in vier Schritten vor: ein Grundsatz (der Satz der projizierten Geschwindigkeiten), drei Spezialbewegungen (Translation, Rotation, Kreiselung), die allgemeine Bewegung und schließlich der für Aufgaben wichtigste Fall, die ebene Bewegung.
+Ein starrer Körper besteht aus unendlich vielen Punkten. Müssten wir für jeden einzelnen die Geschwindigkeit angeben, kämen wir nie zu einem Ende. Die gute Nachricht dieses Kapitels: Weil alle Abstände fest sind, genügen *zwei Vektoren*, um die Geschwindigkeit _jedes_ Punktes zu kennen. Dahin arbeiten wir uns in vier Schritten vor: ein Grundsatz (der Satz der projizierten Geschwindigkeiten), drei Spezialbewegungen (Translation, Rotation, Kreiselung), die allgemeine Bewegung und schliesslich der für Aufgaben wichtigste Fall, die ebene Bewegung.
 
 Was wir aus Kapitel 1 brauchen: Ein starrer Körper behält alle Abstände. Verbindet man zwei beliebige Punkte $M, M'$ des Körpers durch den Vektor $va := arrow(M M')$, so ändert $va$ im Lauf der Zeit seine Richtung, aber nie seine Länge. Auch alle Winkel zwischen solchen Verbindungsvektoren bleiben konstant, also sind alle Skalarprodukte $va dot.c vb$ von Verbindungsvektoren zeitlich konstant, insbesondere $va dot.c va = "konst."$ -- aber nur, wenn man beide Vektoren zum _gleichen_ Zeitpunkt nimmt.
 
@@ -23,17 +23,17 @@ Was wir aus Kapitel 1 brauchen: Ein starrer Körper behält alle Abstände. Verb
 #fg("k03_sdpg", [Links: Die Anteile $v'_M$ und $v'_N$ längs $M N$ sind gleich, quer dazu sind die Geschwindigkeiten frei. Rechts: Ein Stab, dessen Enden an Boden und Wand geführt werden.])
 
 #warum[Beweis][
-  Mit $vr_M, vr_N$ den Ortsvektoren ist $va := arrow(M N) = vr_N - vr_M$. Weil der Körper starr ist, gilt $va dot.c va = "konst."$ Ableiten mit der Produktregel ergibt $2 va dot.c dot(va) = 0$, also $va dot.c dot(va) = 0$. Nun ist $dot(va) = dot(vr)_N - dot(vr)_M = vv_N - vv_M$. Damit $va dot.c (vv_N - vv_M) = 0$, das heißt $va dot.c vv_N = va dot.c vv_M$. Teilt man durch $|va|$, steht da gerade «gleiche Projektion auf die Richtung von $va$». $square$
+  Mit $vr_M, vr_N$ den Ortsvektoren ist $va := arrow(M N) = vr_N - vr_M$. Weil der Körper starr ist, gilt $va dot.c va = "konst."$ Ableiten mit der Produktregel ergibt $2 va dot.c dot(va) = 0$, also $va dot.c dot(va) = 0$. Nun ist $dot(va) = dot(vr)_N - dot(vr)_M = vv_N - vv_M$. Damit $va dot.c (vv_N - vv_M) = 0$, das heisst $va dot.c vv_N = va dot.c vv_M$. Teilt man durch $|va|$, steht da gerade «gleiche Projektion auf die Richtung von $va$». $square$
 ]
 
 Der Satz ist ein Handwerkszeug: Kennt man die Geschwindigkeit von $M$ ganz und von $N$ nur die Richtung, so liefert er den Betrag von $vv_N$.
 
 #bsp[Stab an Wand und Boden][
-  Die Enden eines starren Stabes $A B$ werden längs zweier senkrechter Geraden geführt ($A$ am Boden, $B$ an der Wand). $A$ habe die Schnelligkeit $v$, der Stab schließe mit dem Boden den Winkel $alpha$ ein. Gesucht: Geschwindigkeit von $B$.
+  Die Enden eines starren Stabes $A B$ werden längs zweier senkrechter Geraden geführt ($A$ am Boden, $B$ an der Wand). $A$ habe die Schnelligkeit $v$, der Stab schliesse mit dem Boden den Winkel $alpha$ ein. Gesucht: Geschwindigkeit von $B$.
 
   Die Richtung der Stabgeraden von $A$ nach $B$ ist $(-cos alpha, sin alpha)$. $vv_A = (v, 0)$ hat auf ihr die Projektion $-v cos alpha$. $vv_B$ ist vertikal, $vv_B = (0, -v_B)$ (positiv nach unten angenommen), mit Projektion $-v_B sin alpha$. Gleichsetzen:
   $ v cos alpha = v_B sin alpha quad => quad v_B = v cot alpha. $
-  Für $alpha -> 0$ (Stab fast flach) rutscht $B$ beliebig schnell; steht der Stab fast senkrecht, bewegt sich $B$ kaum. Wenn der Stab ganz flach auf dem Boden liegt, würde $v_B$ unendlich groß: Dort verschwindet die Projektion von $vv_B$ auf den Stab ganz, also muss $v$ selbst null sein.
+  Für $alpha -> 0$ (Stab fast flach) rutscht $B$ beliebig schnell; steht der Stab fast senkrecht, bewegt sich $B$ kaum. Wenn der Stab ganz flach auf dem Boden liegt, würde $v_B$ unendlich gross: Dort verschwindet die Projektion von $vv_B$ auf den Stab ganz, also muss $v$ selbst null sein.
 ]
 
 == Drei Grundbewegungen
@@ -45,13 +45,13 @@ Wir untersuchen drei einfache Bewegungsarten. Sie unterscheiden sich darin, wie 
 === Translation
 
 #defn[Translation][
-  Bleibt bei der Bewegung eines starren Körpers nicht nur der Betrag, sondern auch die _Richtung_ jedes Verbindungsvektors $arrow(M N)$ konstant, so heißt die Bewegung *Translation*.
+  Bleibt bei der Bewegung eines starren Körpers nicht nur der Betrag, sondern auch die _Richtung_ jedes Verbindungsvektors $arrow(M N)$ konstant, so heisst die Bewegung *Translation*.
 ]
 
 Der Körper verschiebt sich parallel zu sich selbst, ohne sich zu drehen. Alle Bahnkurven sind dann *kongruent* (deckungsgleich). Sind die Bahnen Geraden, spricht man von geradliniger Translation, sonst von krummliniger.
 
 #intu[
-  Translation heißt _nicht_ geradlinig. Die Gondel eines Riesenrads bleibt immer aufrecht: Sie dreht sich nicht. Trotzdem läuft jeder ihrer Punkte auf einem Kreis. Alle diese Kreise sind gleich groß und nur gegeneinander verschoben. Das ist eine _kreisförmige Translation_. Dasselbe passiert bei der Koppel $A A'$ des Viergelenks in der Abbildung: Die beiden gleich langen Kurbeln drehen, aber die Koppel bleibt parallel zu ihrer Anfangslage.
+  Translation heisst _nicht_ geradlinig. Die Gondel eines Riesenrads bleibt immer aufrecht: Sie dreht sich nicht. Trotzdem läuft jeder ihrer Punkte auf einem Kreis. Alle diese Kreise sind gleich gross und nur gegeneinander verschoben. Das ist eine _kreisförmige Translation_. Dasselbe passiert bei der Koppel $A A'$ des Viergelenks in der Abbildung: Die beiden gleich langen Kurbeln drehen, aber die Koppel bleibt parallel zu ihrer Anfangslage.
 ]
 
 Mit $vr_M (t) = vr_M (t_1) + bold(R)_M (t)$ und dem gleichen für $N$ folgt aus der Konstanz von $arrow(M N) = vr_N - vr_M$, dass die Verschiebungen $bold(R)_M (t) = bold(R)_N (t)$ für alle Punkte *gleich* sind (Translationsvektor). Ableiten ergibt:
@@ -61,10 +61,10 @@ Die Geschwindigkeiten sind örtlich konstant verteilt (zeitlich dürfen sie sich
 === Rotation
 
 #defn[Rotation][
-  Bleiben bei der Bewegung eines starren Körpers zwei Punkte $A, B in K$ für alle Zeiten in Ruhe, so heißt die Bewegung *Rotation*. Die feste Gerade $A B$ heißt *Rotationsachse* (Drehachse).
+  Bleiben bei der Bewegung eines starren Körpers zwei Punkte $A, B in K$ für alle Zeiten in Ruhe, so heisst die Bewegung *Rotation*. Die feste Gerade $A B$ heisst *Rotationsachse* (Drehachse).
 ]
 
-Aus der Definition und der Starrheit folgt (man kann es mit dem SdpG nachrechnen): Jeder Punkt außerhalb der Achse läuft auf einem Kreis senkrecht zur Achse, dessen Mittelpunkt auf der Achse liegt, und alle diese Punkte drehen sich um denselben Winkel $Phi(t)$. Wir legen die $z$-Achse in die Drehachse. Jeder Punkt führt dann eine Kreisbewegung aus, mit der gemeinsamen Winkelgeschwindigkeit, die wir jetzt *Rotationsgeschwindigkeit* des Körpers nennen:
+Aus der Definition und der Starrheit folgt (man kann es mit dem SdpG nachrechnen): Jeder Punkt ausserhalb der Achse läuft auf einem Kreis senkrecht zur Achse, dessen Mittelpunkt auf der Achse liegt, und alle diese Punkte drehen sich um denselben Winkel $Phi(t)$. Wir legen die $z$-Achse in die Drehachse. Jeder Punkt führt dann eine Kreisbewegung aus, mit der gemeinsamen Winkelgeschwindigkeit, die wir jetzt *Rotationsgeschwindigkeit* des Körpers nennen:
 #gl($ vom = dot(Phi) ve_z = omega ve_z, wide vv(vr, t) = vom(t) times vr. $)
 Hier ist $omega$ die *Rotationsschnelligkeit* und $vr$ der Ortsvektor von einem beliebigen Achsenpunkt aus. Die Richtung von $vom$ ist durch die feste Achse bestimmt und ändert sich nicht, nur der Betrag $dot(Phi)(t)$ darf zeitabhängig sein. Ist er konstant, liegt eine *gleichförmige Rotation* vor.
 
@@ -84,19 +84,25 @@ Gilt $vv = vom times vr$ nur in einem Augenblick, nennt man das *momentane Rotat
   Ein Körper *rollt* auf einem ruhenden Körper, wenn seine materiellen Berührungspunkte momentan in Ruhe sind. Haben diese Punkte eine (tangentiale) Geschwindigkeit, so *gleitet* er.
 ]
 
-Betrachte einen Kreiszylinder (Rad), der auf einer ruhenden Ebene rollt. Der materielle Punkt $Z$ am Rad, der die Unterlage gerade berührt, ruht definitionsgemäß momentan. Das gilt für alle Punkte der Berührungsgeraden. Diese Gerade ist daher die momentane Rotationsachse. Die Rollbewegung ist eine *momentane Rotation um die Berührungsgerade*, die ihre Lage mit der Zeit parallel verschiebt. Die Geschwindigkeit jedes Radpunkts steht senkrecht auf seiner Verbindung mit $Z$ und ist proportional zu diesem Abstand.
+Betrachte einen Kreiszylinder (Rad), der auf einer ruhenden Ebene rollt. Der materielle Punkt $Z$ am Rad, der die Unterlage gerade berührt, ruht definitionsgemäss momentan. Das gilt für alle Punkte der Berührungsgeraden. Diese Gerade ist daher die momentane Rotationsachse. Die Rollbewegung ist eine *momentane Rotation um die Berührungsgerade*, die ihre Lage mit der Zeit parallel verschiebt. Die Geschwindigkeit jedes Radpunkts steht senkrecht auf seiner Verbindung mit $Z$ und ist proportional zu diesem Abstand.
 
-#fg("k03_rollen", [Links: Beim rollenden Rad stehen alle Geschwindigkeiten senkrecht auf der Verbindung zum Berührungspunkt $Z$. Rechts: Dieselbe Verteilung als Überlagerung von Translation der Nabe und Drehung um die Nabe. Unten heben sich beide Anteile auf.])
+#fg("k03_rollen", [Links: Beim rollenden Rad steht jede Geschwindigkeit senkrecht auf der Verbindung zum Berührungspunkt $Z$ und ist proportional zu ihrer Länge; längs des senkrechten Durchmessers wächst sie linear von $0$ in $Z$ bis $2v$ oben. Rechts: Dieselbe Verteilung als Überlagerung von Translation der Nabe und Drehung um die Nabe. Unten heben sich beide Anteile auf, oben addieren sie sich.])
 
 #intu[
-  Unten, im Berührungspunkt, wirken zwei Dinge gegeneinander: «vorwärts mit der Nabe» und «rückwärts durch die Drehung». Sie heben sich genau auf, deshalb steht der Punkt für einen Augenblick still. Oben addieren sich beide, die Geschwindigkeit ist $2v$. Das sieht man auf Fotos fahrender Räder: Die Speichen unten sind scharf, oben verwischt. Rollbedingung: $v_O = omega R$. Die Bahnen der Radpunkte sind Zykloiden.
+  Unten, im Berührungspunkt, wirken zwei Dinge gegeneinander: «vorwärts mit der Nabe» und «rückwärts durch die Drehung». Sie heben sich genau auf, deshalb steht der Punkt für einen Augenblick still. Oben addieren sich beide, die Geschwindigkeit ist $2v$. Das sieht man auf Fotos fahrender Räder: Die Speichen unten sind scharf, oben verwischt. Rollbedingung: $v_O = omega R$.
 ]
+
+Wie sich das über eine ganze Umdrehung auswirkt, zeigt die Bildfolge unten. Ein Punkt $P$ am Radumfang läuft auf einer *Zykloide*. Mit dem Drehwinkel $phi$ des Rades (von der untersten Lage aus) gilt
+$ x_P = R (phi - sin phi), quad y_P = R (1 - cos phi), quad vv_P = R dot(phi) (1 - cos phi, thin sin phi). $
+Für $phi = 0$ und $phi = 2 pi$ ist $vv_P = bold(0)$: Genau wenn $P$ den Boden berührt, steht er still, und die Bahn hat dort eine Spitze mit senkrechter Tangente. Der Punkt setzt nicht schräg auf, sondern senkrecht, und hebt senkrecht wieder ab. Deshalb reibt ein rollendes Rad nicht am Boden.
+
+#fg("k03_zykloide", [Bildfolge über eine Umdrehung: Das Rad rollt nach rechts, $P$ (schwarz) beschreibt eine Zykloide. In jedem Bild ist $Z$ (rot) das Momentanzentrum; $vv_P$ steht senkrecht auf $Z P$ und ist proportional zu $overline(Z P)$. Bei $1\/2$ Umdrehung ist $P$ oben und hat $2 v_O$, bei $0$ und $1$ berührt er den Boden mit $vv_P = bold(0)$.])
 
 #woche(4, [Starrer Körper], [45–54])
 === Kreiselung
 
 #defn[Kreiselung][
-  Bleibt bei der Bewegung eines starren Körpers *ein* Punkt $O in K$ in Ruhe, so heißt die Bewegung *Kreiselung* mit dem Kreiselzentrum $O$.
+  Bleibt bei der Bewegung eines starren Körpers *ein* Punkt $O in K$ in Ruhe, so heisst die Bewegung *Kreiselung* mit dem Kreiselzentrum $O$.
 ]
 
 Jeder Punkt $M$ bewegt sich dann auf einer Kugel mit Radius $overline(O M)$, seine Geschwindigkeit steht zu jeder Zeit senkrecht auf $arrow(O M)$. Das Beispiel ist der Spielzeugkreisel oder jede Drehbewegung eines Körpers um einen festen Punkt (Kugelgelenk).
@@ -119,10 +125,10 @@ Was ist $dot(vrho)$? Der Vektor $vrho$ hat konstanten Betrag (Starrheit). Denkt 
 
 Die Geschwindigkeit jedes Punktes besteht also aus einem *Translationsanteil* $vv_B$ (alle Punkte machen die Bewegung des Bezugspunktes mit) und einem *Drehanteil* $vom times arrow(B M)$ (Kreiselung um $B$).
 
-#fg("k03_kinemate", [Die Geschwindigkeit von $M$ ist die Summe aus der Geschwindigkeit des Bezugspunkts $B$ und dem Drehanteil $vom times arrow(B M)$.])
+#fg("k03_kinemate", [Die Geschwindigkeit von $M$ ist die Summe aus der Geschwindigkeit des Bezugspunkts $B$ und dem Drehanteil $vom times arrow(B M)$, der senkrecht auf $arrow(B M)$ steht (Winkelmarke) und den Betrag $omega overline(B M)$ hat.])
 
 #defn[Kinemate][
-  Das Vektorpaar ${vv_B, vom}$ heißt *Kinemate in $B$*. Sie legt die Geschwindigkeit jedes Punktes des starren Körpers fest.
+  Das Vektorpaar ${vv_B, vom}$ heisst *Kinemate in $B$*. Sie legt die Geschwindigkeit jedes Punktes des starren Körpers fest.
 ]
 
 Das ist die Antwort auf die Eingangsfrage: Zwei Vektoren genügen. Es gibt drei Spezialfälle: Ist $vom = bold(0)$, haben wir eine Translation. Ist $vv_B = bold(0)$, eine Kreiselung um $B$. Sind beide ungleich null, liegt die allgemeine Bewegung vor (zum Beispiel Erde: Translation des Mittelpunkts auf der Bahn um die Sonne mit etwa 2.6 Mio km/Tag, überlagert von der Eigendrehung, die an der Oberfläche höchstens 40 000 km/Tag beiträgt).
@@ -155,10 +161,10 @@ $ (vv_B)_perp + vom times arrow(B Z) = bold(0). $
 Alle Punkte auf der Parallelen zu $vom$ durch $Z$ haben dieselbe Eigenschaft (der Zusatzterm $vom times arrow(Z Z')$ verschwindet für $arrow(Z Z') parallel vom$).
 
 #defn[Zentralachse und Schraube][
-  Die *Zentralachse* $zeta$ ist die Gerade aller Punkte $Z$, deren Geschwindigkeit parallel zu $vom$ ist. Die Kinemate in ihren Punkten, ${vv_omega, vom}$, besteht nur aus den beiden Invarianten und heißt *Schraube*.
+  Die *Zentralachse* $zeta$ ist die Gerade aller Punkte $Z$, deren Geschwindigkeit parallel zu $vom$ ist. Die Kinemate in ihren Punkten, ${vv_omega, vom}$, besteht nur aus den beiden Invarianten und heisst *Schraube*.
 ]
 
-#fg("k03_schraube", [Vom Bezugspunkt $B$ aus findet man die Zentralachse im Abstand $d_Z$, senkrecht zu $vom$ und $(vv_B)_perp$. Auf ihr hat jeder Punkt nur die Geschwindigkeit $vv_omega$ in Richtung der Achse.])
+#fg("k03_schraube", [Die Zentralachse $zeta$ liegt parallel zu $vom$ im Abstand $d_Z$ von $B$, senkrecht zu $vom$ und zu $(vv_B)_perp$; hier mit $vom$ in $y$- und $(vv_B)_perp$ in $x$-Richtung liegt sie _unter_ $B$, denn $arrow(B Z) = vom times vv_B \/ omega^2$ zeigt in $-z$-Richtung. Auf $zeta$ hat jeder Punkt nur $vv_omega$. Entlang der Senkrechten durch $Z$ wächst der Queranteil linear: das Geschwindigkeitsfeld einer Schraubung.])
 
 #satz[Allgemeinste Bewegung][
   Der Bewegungszustand eines starren Körpers ist in jedem Augenblick eine *momentane Schraubung*: eine Drehung mit $vom$ um die Zentralachse und gleichzeitig eine Verschiebung mit $vv_omega$ längs dieser Achse.
@@ -194,14 +200,14 @@ Die Schraube *degeneriert*, wenn $vom dot.c vv_B = 0$ ist, also $vv_omega = bold
 == Die ebene Bewegung
 
 #defn[Ebene Bewegung][
-  Die Bewegung eines starren Körpers heißt *eben*, wenn die Bahnkurven aller Punkte eben sind und in parallelen Ebenen liegen.
+  Die Bewegung eines starren Körpers heisst *eben*, wenn die Bahnkurven aller Punkte eben sind und in parallelen Ebenen liegen.
 ]
 
 Das ist der Normalfall in den Aufgaben: ein Rad, ein Stab, ein Kolben, eine Kurbel. Alle Punkte auf einer Senkrechten zur Bewegungsebene bewegen sich gleich, es genügt also, einen _ebenen Schnitt_ des Körpers in der $x y$-Ebene zu betrachten. Seine Lage ist durch drei Zahlen bestimmt: $x_B, y_B$ eines Punktes $B$ und den Winkel $phi$ einer festen Verbindungsstrecke $B M$ gegen die $x$-Achse.
 
 Mit $vrho = rho(cos phi ve_x + sin phi ve_y)$ ($rho$ konstant) ist $dot(vrho) = dot(phi) ve_z times vrho$. Vergleich mit der Grundgleichung liefert für die Kinemate
 #gl($ vom = dot(phi) ve_z, wide vv_B = dot(x)_B ve_x + dot(y)_B ve_y perp vom. $)
-Die Rotationsgeschwindigkeit steht senkrecht auf der Bewegungsebene, die Translationsgeschwindigkeit liegt in ihr. Also ist immer $vom dot.c vv_B = 0$: Wir sind im dritten Spezialfall oben. Die Zentralachse wird zur *momentanen Drehachse*, und sie durchstößt die Bewegungsebene in einem Punkt.
+Die Rotationsgeschwindigkeit steht senkrecht auf der Bewegungsebene, die Translationsgeschwindigkeit liegt in ihr. Also ist immer $vom dot.c vv_B = 0$: Wir sind im dritten Spezialfall oben. Die Zentralachse wird zur *momentanen Drehachse*, und sie durchstösst die Bewegungsebene in einem Punkt.
 
 #satz[Satz vom Momentanzentrum][
   Bei jeder ebenen Bewegung eines starren Körpers mit $vom != bold(0)$ gibt es genau einen momentan ruhenden Punkt $Z$ des (in Gedanken auf die ganze Ebene ausgedehnten) Körpers, das *Momentanzentrum*. Der Körper dreht sich momentan um $Z$: Für jeden Punkt $M$ ist
@@ -228,11 +234,11 @@ Lage: Aus $arrow(B Z) = (vom times vv_B)\/omega^2$ folgt $overline(B Z) = |vv_B|
 
 === Polbahnen
 
-Das Momentanzentrum $Z$ ist nur _momentan_ in Ruhe. Im nächsten Augenblick ist ein anderer Punkt Momentanzentrum. Die Menge der Lagen von $Z$ im ruhenden Bezugssystem heißt *feste Polbahn*. Die Menge der Lagen von $Z$, wie sie ein mit dem Körper mitbewegter Beobachter sieht, heißt *bewegliche Polbahn*. Beide Kurven berühren sich in $Z$, und die bewegliche Polbahn *rollt* ohne zu gleiten auf der festen ab. Jede ebene Bewegung lässt sich so durch das Abrollen zweier Kurven erzeugen.
+Das Momentanzentrum $Z$ ist nur _momentan_ in Ruhe. Im nächsten Augenblick ist ein anderer Punkt Momentanzentrum. Die Menge der Lagen von $Z$ im ruhenden Bezugssystem heisst *feste Polbahn*. Die Menge der Lagen von $Z$, wie sie ein mit dem Körper mitbewegter Beobachter sieht, heisst *bewegliche Polbahn*. Beide Kurven berühren sich in $Z$, und die bewegliche Polbahn *rollt* ohne zu gleiten auf der festen ab. Jede ebene Bewegung lässt sich so durch das Abrollen zweier Kurven erzeugen.
 
-Beim rollenden Rad ist die feste Polbahn die Straße, die bewegliche der Radumfang. Beim geführten Stab hat $Z$ die Koordinaten $(L cos alpha, L sin alpha)$, liegt also immer im Abstand $L$ von der Ecke $O$: Die feste Polbahn ist ein Viertelkreis mit Radius $L$. Aus Sicht des Stabes sieht man $Z$ stets unter einem rechten Winkel auf die Strecke $A B$: Die bewegliche Polbahn ist der Kreis mit Durchmesser $A B$ (Satz des Thales), Radius $L\/2$. Man kann die Stabbewegung also erzeugen, indem man einen kleinen Kreis im doppelt so großen abrollen lässt.
+Beim rollenden Rad ist die feste Polbahn die Strasse, die bewegliche der Radumfang. Beim geführten Stab hat $Z$ die Koordinaten $(L cos alpha, L sin alpha)$, liegt also immer im Abstand $L$ von der Ecke $O$: Die feste Polbahn ist ein Viertelkreis mit Radius $L$. Aus Sicht des Stabes sieht man $Z$ stets unter einem rechten Winkel auf die Strecke $A B$: Die bewegliche Polbahn ist der Kreis mit Durchmesser $A B$ (Satz des Thales), Radius $L\/2$. Man kann die Stabbewegung also erzeugen, indem man einen kleinen Kreis im doppelt so grossen abrollen lässt.
 
-#fg("k03_polbahnen", [Der geführte Stab: Der Thaleskreis (bewegliche Polbahn) rollt im Viertelkreis mit Radius $L$ (feste Polbahn) ab. Die Punkte auf dem Viertelkreis sind die Momentanzentren bei verschiedenen Neigungen.])
+#fg("k03_polbahnen", w: 62%, [Bildfolge des geführten Stabes bei drei Neigungen. Der Thaleskreis über $A B$ (bewegliche Polbahn, blau) rollt innen im Viertelkreis mit Radius $L$ (feste Polbahn, grau) ab; die roten Punkte sind die jeweiligen Momentanzentren. Ein anderer Stabpunkt $C$ läuft auf einer Ellipse.])
 
 === Die Polbahnen des Stabes: analytisch
 
@@ -244,7 +250,9 @@ Bei einfachen Problemen liest man die Polbahnen aus der Zeichnung. Bei schwierig
   _Beweglich._ Wir führen ein körperfestes System $A xi eta$ ein ($xi$ entlang des Stabes von $A$ nach $B$, $eta$ senkrecht dazu). Der Vektor $arrow(A Z) = (0, L sin phi)$ hat dort die Komponenten $xi_Z = L sin^2 phi = (L\/2)(1 - cos 2 phi)$ und $eta_Z = L sin phi cos phi = (L\/2) sin 2 phi$. Elimination von $phi$: $(xi_Z - L\/2)^2 + eta_Z^2 = (L\/2)^2$. Das ist der Kreis um die Stabmitte mit Radius $L\/2$.
 ]
 
-Allgemein heißt das: Die ebene Bewegung eines starren Körpers lässt sich als *Rollbewegung der beweglichen Polbahn auf der festen* auffassen. Man kann sich den starren Körper (hier den Stab) in Gedanken durch die bewegliche Polbahn (den kleinen Kreis) ersetzen und das Bezugssystem durch die feste (den großen Kreis): Die Stabbewegung ist dann das Abrollen des kleinen Kreises im großen.
+Allgemein heisst das: Die ebene Bewegung eines starren Körpers lässt sich als *Rollbewegung der beweglichen Polbahn auf der festen* auffassen. Man kann sich den starren Körper (hier den Stab) in Gedanken durch die bewegliche Polbahn (den kleinen Kreis) ersetzen und das Bezugssystem durch die feste (den grossen Kreis): Die Stabbewegung ist dann das Abrollen des kleinen Kreises im grossen.
+
+Daraus folgt ein schönes Ergebnis, das man in der Bildfolge sieht. Rollt ein Kreis innen in einem doppelt so grossen, so laufen alle Punkte seines Umfangs auf _Geraden_ durch den Mittelpunkt des grossen Kreises (Satz von Cardano). $A$ und $B$ liegen auf dem kleinen Kreis und bleiben deshalb auf Boden und Wand. Jeder andere Stabpunkt $C$ mit $overline(B C) = t L$ hat die Koordinaten $x_C = t L cos phi$, $y_C = (1 - t) L sin phi$ und läuft auf einer Ellipse mit den Halbachsen $t L$ und $(1 - t) L$. Genau so funktioniert der Ellipsenzirkel.
 
 === Systeme aus mehreren starren Körpern
 
@@ -257,21 +265,27 @@ Technische Mechanismen (Getriebe, Fachwerke mit entferntem Stab, Kurbeltriebe) b
   + Wo man ein $Z$ nicht direkt findet, hilft der Satz der projizierten Geschwindigkeiten für den Betrag.
 ]
 
-#bsp[Fachwerk-Mechanismus][
-  Ein ebenes Fachwerk aus 9 gelenkig verbundenen Stäben sei in $A$ drehbar und in $B$ horizontal verschiebbar gelagert; in der gegebenen Lage ist Stab 4 entfernt, und $B$ erhält die horizontale Geschwindigkeit $v$. Die Stäbe 5 bis 9 bilden zusammen einen starren Körper $K$. Zusammen mit den Stäben 1, 2, 3 gibt es also vier starre Körper und damit vier Momentanzentren. Zwei davon (die der Stäbe 1 und 2) fallen mit dem ruhenden Lager $A$ zusammen. Daraus folgt: Die Geschwindigkeit in $D$ steht senkrecht auf Stab $A D$. $D$ gehört auch zu $K$; also liegt das Momentanzentrum $Z_K$ auf der Geraden durch $A$ und $D$. Außerdem kennen wir die Geschwindigkeit von $B in K$ und damit die Senkrechte dazu. Der Schnittpunkt beider Geraden ist $Z_K$ (Konstruktion wie in der ersten Abbildung des letzten Abschnitts). Damit hat man $omega_K$, $vv_D$ und $omega_2$. Die Geschwindigkeit von $C$ liefert dann der Satz der projizierten Geschwindigkeiten, und das Momentanzentrum von Stab $C E$ ergibt sich aus den Senkrechten zu $vv_E$ und $vv_C$.
-]
+Ein vollständig durchgerechnetes Beispiel mit Abbildung ist die Aufgabe «Gelenkwerk mit einem Freiheitsgrad» am Ende des Kapitels: Dort bilden die Stäbe 1 bis 5 einen einzigen starren Körper, und die übrigen drei Stäbe werden mit Momentanzentren und dem SdpG nacheinander erledigt.
 
 #satz[Parallelogrammregel][
   Vier gelenkig zu einem (nicht entarteten) Parallelogramm verbundene Stäbe haben gegenüberliegend jeweils gleiche Rotationsgeschwindigkeit: $vom_(A B) = vom_(C D)$ und $vom_(B C) = vom_(D A)$. Die Lage der Momentanzentren spielt dabei keine Rolle.
 ]
 
-#warum[Beweisidee][
-  Wir dürfen $A$ in Ruhe annehmen (eine Translation von $A$ addiert sich zu allen Geschwindigkeiten und ändert keine Rotation). Dann haben $B$ und $D$ die Geschwindigkeiten $a omega_1$ bzw. $b omega_4$. Die Geschwindigkeit von $C$ ist die von $B$ plus der Anteil $b omega_2$ aus der Drehung von $B C$. Der Satz der projizierten Geschwindigkeiten für $C D$ liefert: Von $vv_C$ trägt nur die Komponente $b omega_2$ bei (die andere steht senkrecht zu $C D$), und dasselbe muss in $D$ herauskommen. Aus der Geometrie des Parallelogramms folgt $omega_2 = omega_4$; analog mit dem SdpG für $B C$ folgt $omega_1 = omega_3$.
+#warum[Beweis über die Schliessbedingung][
+  Läuft man einmal um das Viereck herum, $A -> B -> C -> D -> A$, so ist man wieder am Ausgangspunkt. Für die Geschwindigkeiten heisst das: Die Relativgeschwindigkeiten längs des Umlaufs summieren sich zu null. Mit der Grundgleichung für jeden Stab,
+  $ vv_B - vv_A = omega_1 ve_z times arrow(A B), quad vv_C - vv_B = omega_2 ve_z times arrow(B C), quad dots, $
+  ergibt die Summe aller vier Gleichungen
+  $ bold(0) = ve_z times (omega_1 arrow(A B) + omega_2 arrow(B C) + omega_3 arrow(C D) + omega_4 arrow(D A)). $
+  Im Parallelogramm ist $arrow(C D) = -arrow(A B)$ und $arrow(D A) = -arrow(B C)$, also
+  $ bold(0) = (omega_1 - omega_3) thin ve_z times arrow(A B) + (omega_2 - omega_4) thin ve_z times arrow(B C). $
+  Die beiden Vektoren $ve_z times arrow(A B)$ und $ve_z times arrow(B C)$ sind nicht parallel (das Parallelogramm ist nicht entartet). Eine Summe zweier nicht paralleler Vektoren verschwindet nur, wenn beide Koeffizienten null sind: $omega_1 = omega_3$ und $omega_2 = omega_4$. $square$
+
+  Anschaulich: Gegenüberliegende Seiten eines Parallelogramms bleiben parallel, also ändern sich ihre Richtungswinkel gleich schnell.
 ]
 
-Der Spezialfall ist uns schon begegnet: Das Viergelenk mit zwei gleich langen Kurbeln (Abbildung 3.2) ist ein Parallelogramm, und die Koppel behält ihre Richtung, sie führt also eine Translation aus ($omega = 0$).
+Der Spezialfall ist uns schon begegnet: Das Viergelenk mit zwei gleich langen Kurbeln (Abbildung 3.2) ist ein Parallelogramm, dessen vierte Seite das ruhende Gestell mit $omega = 0$ ist. Also hat auch die gegenüberliegende Koppel $A A'$ die Rotationsgeschwindigkeit null: Sie führt eine Translation aus.
 
-#fg("k03_kurbel", [Schubkurbelgetriebe: Kurbel 1 dreht um $O$, der Kolben 2 gleitet geradlinig, die Pleuelstange 3 verbindet beide. $Z_3$ ist ihr Momentanzentrum.])
+#fg("k03_kurbel", [Schubkurbelgetriebe: Kurbel 1 dreht um $O$, der Kolben 2 gleitet geradlinig, die Pleuelstange 3 verbindet beide. $Z_3$ ist ihr Momentanzentrum: Schnittpunkt der Geraden $O B$ (Senkrechte zu $vv_B$) mit der Senkrechten zur Kolbenbahn in $A$. Die Pfeillängen sind massstäblich, $v_A : v_B = overline(Z_3 A) : overline(Z_3 B)$.])
 
 #bsp[Schubkurbelgetriebe][
   Die Kurbel ($O B = r$) dreht mit $omega$ um $O$, der Kolben bewegt sich in einer Geraden durch $O$, die Pleuelstange hat die Länge $l$. Gesucht: die Schnelligkeit des Kolbens als Funktion des Kurbelwinkels $phi$ gegen die Gerade $O A$.
@@ -287,7 +301,7 @@ Der Spezialfall ist uns schon begegnet: Das Viergelenk mit zwei gleich langen Ku
 
 Ein Planetengetriebe enthält ein Sonnenrad 1 (Radius $R_1$), ein Hohlrad 2 (Innenradius $R_2$) und dazwischen ein Planetenrad 3 mit Radius $R_3 = (R_2 - R_1)\/2$, das auf beiden abrollt. Das Planetenrad sitzt in einem um $O$ drehbaren Arm der Länge $L = (R_1 + R_2)\/2$. Die Räder 1, 2 drehen mit $omega_1, omega_2$ um $O$; gesucht ist die Rotationsschnelligkeit $omega$ des Arms.
 
-#fg("k03_planet", [Planetengetriebe. Die Berührungspunkte $P$ und $Q$ haben die Geschwindigkeiten der Räder 1 und 2.])
+#fg("k03_planet", [Planetengetriebe. Die Berührungspunkte $P$ und $Q$ haben die Geschwindigkeiten der Räder 1 und 2. Weil Rad 3 eben bewegt ist, wachsen die Geschwindigkeiten längs $P Q$ linear; die Mitte $O'$ hat den Mittelwert, und sie ist zugleich Punkt des Arms.])
 
 _Lösung:_ Die Punkte $P$ und $Q$, in denen Rad 3 die Räder 1 und 2 berührt, haben (als Punkte von 1 bzw. 2) die Schnelligkeiten $R_1 omega_1$ bzw. $R_2 omega_2$, senkrecht zum Arm. Weil das Planetenrad abrollt, haben $P$ und $Q$ als Punkte des Planetenrades _dieselben_ Geschwindigkeiten. Die Geschwindigkeit eines ebenen Körpers wächst linear mit dem Abstand vom Momentanzentrum. Der Mittelpunkt $O'$ des Planetenrades liegt genau in der Mitte zwischen $P$ und $Q$, also hat er die mittlere Schnelligkeit
 $ v_(O') = (R_1 omega_1 + R_2 omega_2) / 2. $
@@ -295,7 +309,10 @@ $O'$ gehört auch zum Arm, der um $O$ mit dem Abstand $L$ dreht, also $v_(O') = 
 $ omega = (R_1 omega_1 + R_2 omega_2) / (R_1 + R_2). $
 Die Rotationsschnelligkeit des Planetenrads selbst folgt aus dem Geschwindigkeitsunterschied zwischen $P$ und $Q$ (Abstand $2R_3 = R_2 - R_1$): $omega_3 = (R_2 omega_2 - R_1 omega_1)\/(R_2 - R_1)$.
 
-Spezialfälle: Hält man das Sonnenrad fest ($omega_1 = 0$), ist $omega = R_2 omega_2\/(R_1 + R_2)$ -- ein kräftiges Untersetzungsgetriebe. Hält man den Arm fest ($omega = 0$), gilt $omega_2 = -(R_1\/R_2) omega_1$: Das Hohlrad dreht gegensinnig.
+Spezialfälle (Zahlen für $R_2 = 3 R_1$):
+- *Hohlrad fest* ($omega_2 = 0$): $omega = R_1 omega_1\/(R_1 + R_2) = omega_1\/4$. Das ist die übliche, kräftige Untersetzung: Antrieb am Sonnenrad, Abtrieb am Arm.
+- *Sonnenrad fest* ($omega_1 = 0$): $omega = R_2 omega_2\/(R_1 + R_2) = 3 omega_2\/4$, eine milde Untersetzung. Allgemein liegt das Verhältnis $R_2\/(R_1 + R_2)$ immer zwischen $1\/2$ und $1$.
+- *Arm fest* ($omega = 0$): $omega_2 = -(R_1\/R_2) omega_1 = -omega_1\/3$. Das Hohlrad dreht gegensinnig, das Getriebe arbeitet wie ein gewöhnliches Stirnradgetriebe.
 
 === Polkegel und Kollergang
 
@@ -335,7 +352,9 @@ Ein Beispiel ist der *Kollergang* (Mühle): Ein Rad mit Radius $R$ rollt auf ein
   $ vom times arrow(E B) = (a omega_z, thick a omega_z, thick -a(omega_x + omega_y)) = (v, v, -v) quad => quad omega_y = 0. $
   Also $vom = (v\/a)(1, 0, 1)$ mit $omega = sqrt(2) v\/a$.
 
-  _Achse._ Sie geht durch $E$ in Richtung $vom$: $mu: thick vr = (0, a, 0) + lambda (1, 0, 1)$. Sie trifft die gegenüberliegende Ecke $C(a, a, a)$.
+  _Achse._ Sie geht durch $E$ in Richtung $vom$: $mu: thick vr = (0, a, 0) + lambda (1, 0, 1)$. Für $lambda = a$ trifft sie die Ecke $C(a, a, a)$: Die Drehachse ist die Diagonale der Seitenfläche $y = a$.
+
+  _Kontrolle:_ $vv_B = vom times arrow(E B) = (v, v, -v)$ ✓, und $vv_C = bold(0)$, weil $C$ auf der Achse liegt.
 ]
 
 #aufg(fig: "a03_tetraeder", fw: 5.8cm)[Pyramide, allgemeine Bewegung][

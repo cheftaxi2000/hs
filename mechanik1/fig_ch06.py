@@ -8,24 +8,23 @@ def verschieben():
     f.arrow(A1, A1 + d * 2.3, c=F, lw=1.6); f.arrow(A2, A2 + d * 2.3, c=F, lw=1.6)
     f.dot(O); f.text(O, "$O$", dx=-0.3, dy=0.25)
     foot = A1 + d * ((O - A1) @ d)
-    f.line(O, foot, c=M, lw=1.5); f.text((O + foot) / 2, "$a$", c=M, dx=-0.3, dy=0.0, size=9.5)
+    f.line(O, foot, c=NEU, lw=1.2); f.text((O + foot) / 2, "$a$", c=NEU, dx=-0.3, dy=0.0, size=9.5)
+    f.rightangle(foot, O - foot, d, a=0.2)
     f.dot(A1); f.dot(A2); f.text(A1, "$A$", dx=0.0, dy=-0.45); f.text(A2, "$A'$", dx=0.0, dy=-0.45)
     f.text(A1 + d * 2.3, r"$\mathbfit{F}$", c=F, dx=0.1, dy=0.4); f.text(A2 + d * 2.3, r"$\mathbfit{F}$", c=F, dx=0.1, dy=0.4)
-    f.cap((12.0, 3.2), "gleiches Moment $\\mathbf{M}_O$", size=9); f.cap((12.0, 2.6), "(gleicher Hebelarm $a$)", size=8.5)
+    f.cap((12.0, 3.2), "gleiches Moment $\\mathbfit{M}_O$", size=9); f.cap((12.0, 2.6), "(gleicher Hebelarm $a$)", size=8.5)
     f.save("k06_verschieben")
 
 # ---------- 6.2 Hebelgesetz und Kräftepaar ----------
 def paare():
-    f = Fig(15.8, 5.5)
+    f = Fig(15.8, 5.9)
     y = 2.1
     f.beam((0.8, y), (7.2, y), c=GREY, lw=2.0)
     x1, x2 = 1.4, 6.6; F1, F2 = 1.7, 1.0
     xs = (x1 * F1 + x2 * F2) / (F1 + F2)
     f.arrow((x1, y + 1.7), (x1, y + 0.05), c=F, lw=1.6); f.text((x1, y + 1.7), r"$\mathbfit{F}_1$", c=F, dx=0.35, dy=0.15)
     f.arrow((x2, y + 1.0), (x2, y + 0.05), c=F, lw=1.6); f.text((x2, y + 1.0), r"$\mathbfit{F}_2$", c=F, dx=0.35, dy=0.15)
-    f.arrow((xs, y + 2.7), (xs, y - 0.4 + 0.0), c=F, lw=1.0, dash=(5, 3))
-    f.arrow((xs, y - 0.1), (xs, y - 1.5), c=F, lw=0) if False else None
-    f.arrow((xs, y + 2.7), (xs, y + 0.9), c=F, lw=1.9); f.text((xs, y + 2.7), r"$\mathbfit{R}$", c=F, dx=0.35, dy=0.1)
+    f.arrow((xs, y + F1 + F2 + 0.05), (xs, y + 0.05), c=FL, lw=2.2); f.text((xs, y + F1 + F2 + 0.05), r"$\mathbfit{R}=\mathbfit{F}_1+\mathbfit{F}_2$", c=F, dx=0.95, dy=0.12, size=9)
     f.dim((x1, y), (xs, y), "$a_1$", off=-0.55); f.dim((xs, y), (x2, y), "$a_2$", off=-0.55)
     f.cap((4.0, 0.35), "$a_1 F_1 = a_2 F_2$", size=9.5)
     # Kräftepaar
@@ -53,9 +52,9 @@ def parallel():
     f.text((9.6, 1.8), "$=$", size=14)
     # rechts
     f.dot((11.1, 1.8)); f.arrow((11.1, 0.3), (11.1, 1.75), c=F, lw=1.6); f.text((11.1, 0.3), r"$\mathbfit{F}$", c=F, dx=0.4)
-    f.moment(P(13.0, 1.8), 0.5, 160, -140, col=M); f.text((13.0, 1.8), "$M$", c=M, size=9)
+    f.arc(P(13.0, 1.8), 0.5, 200, 500, col=M, lw=1.3, arrow=True); f.text((13.0, 1.8), "$M$", c=M, size=9)
     f.dim((1.3, 3.0), (3.3, 3.0), "$d$", off=0.0 + 0.0)
-    f.text((12.8, 3.2), r"$M = d\,F$", size=9)
+    f.text((12.8, 3.2), r"$M = d\,F$ (Gegenuhrzeigersinn)", size=8.5)
     f.save("k06_parallel")
 
 # ---------- 6.4 Reduktion: Schraube einer Kräftegruppe ----------
@@ -72,7 +71,7 @@ def dyname():
     B = P(8.2, 2.1); f.dot(B, 0.06); f.text(B, "$B$", dx=-0.3, dy=-0.3)
     f.arrow(B, B + P(0.9, 1.3), c=F, lw=1.8); f.text(B + P(0.9, 1.3), r"$\mathbfit{R}$", c=F, dx=-0.3, dy=0.05)
     f.moment(B, 0.55, 20, 300, col=M); f.text(B + P(-0.6, 0.9), r"$\mathbfit{M}_B$", c=M, size=9)
-    f.cap((8.6, 0.2), "Dyname ${\\mathbf{R},\\mathbf{M}_B}$", size=8.5)
+    f.cap((8.6, 0.2), "Dyname $\\{\\mathbfit{R},\\mathbfit{M}_B\\}$", size=8.5)
     f.text((11.2, 2.2), r"$\Rightarrow$", size=15)
     Z = P(13.4, 2.0); u = unit(P(0.7, 1.0))
     f.line(Z - u * 1.7, Z + u * 2.0, c=GREY, lw=0.8, dash=(7, 3, 1.5, 3))
@@ -101,19 +100,27 @@ def baleken():
     f.save("k07_last")
 
 def schwerpunkte():
-    f = Fig(15.8, 3.9)
+    f = Fig(15.8, 4.1)
+    g = dict(c=GREY, lw=0.5)
     # Dreieck
     pts = [(0.5, 0.9), (3.5, 0.9), (1.9, 3.4)]; f.poly(pts); c = np.mean(pts, axis=0); f.dot(c, 0.07, c=F)
-    f.guide((0.2, c[1]), (3.8, c[1])); f.text((3.95, c[1]), "$h/3$", size=8.5); f.cap((2.0, 0.35), "Dreieck")
+    f.guide((0.35, c[1]), (3.4, c[1]))
+    f.dim((3.75, 0.9), (3.75, c[1]), "$h/3$", off=0.0, size=8); f.dim((4.35, 0.9), (4.35, 3.4), "$h$", off=0.0, size=8)
+    f.line((1.9, 3.4), (4.5, 3.4), **g); f.line((3.5, 0.9), (4.5, 0.9), **g)
+    f.cap((2.0, 0.35), "Dreieck")
     # Halbkreisfläche
-    c0 = P(6.6, 0.9); t = np.linspace(0, 180, 60); f.poly([pol(c0, 1.5, a) for a in t]); sc = c0 + P(0, 4 * 1.5 / (3 * np.pi))
-    f.dot(sc, 0.07, c=F); f.text(sc, r"$4R/3\pi$", dx=0.0, dy=-0.32, size=8); f.cap((6.6, 0.35), "Halbkreisfläche")
+    R = 1.5; c0 = P(7.1, 0.9); f.poly([pol(c0, R, a) for a in np.linspace(0, 180, 60)]); sc = c0 + P(0, 4 * R / (3 * np.pi))
+    f.dot(sc, 0.07, c=F); f.dim(c0 + P(0.5, 0), sc + P(0.5, 0), "", off=0.0); f.text(sc + P(0.5, 0.0), r"$\frac{4R}{3\pi}$", dx=0.42, dy=-0.25, size=8.5)
+    f.line(sc, sc + P(0.6, 0), **g); f.cap((7.1, 0.35), "Halbkreisfläche")
     # Halbkreisbogen
-    c0 = P(10.0, 0.9); f.arc(c0, 1.5, 0, 180, lw=1.6); f.line((8.4, 0.9), (11.6, 0.9), c=GREY, lw=0.6); sc = c0 + P(0, 2 * 1.5 / np.pi)
-    f.dot(sc, 0.07, c=F); f.text(sc, r"$2R/\pi$", dx=0.0, dy=-0.35, size=8); f.cap((10.0, 0.35), "Halbkreisbogen")
+    c0 = P(10.75, 0.9); f.arc(c0, R, 0, 180, lw=1.6); f.line(c0 - P(R + 0.1, 0), c0 + P(R + 0.1, 0), c=GREY, lw=0.6); sc = c0 + P(0, 2 * R / np.pi)
+    f.dot(sc, 0.07, c=F); f.dim(c0 + P(0.5, 0), sc + P(0.5, 0), "", off=0.0); f.text(sc + P(0.5, 0), r"$\frac{2R}{\pi}$", dx=0.38, dy=-0.35, size=8.5)
+    f.line(sc, sc + P(0.6, 0), **g); f.cap((10.75, 0.35), "Halbkreisbogen")
     # Viertelkreis
-    c0 = P(12.8, 0.9); f.poly([c0] + [pol(c0, 2.0, a) for a in np.linspace(0, 90, 40)]); sc = c0 + P(1, 1) * 4 * 2.0 / (3 * np.pi)
-    f.dot(sc, 0.07, c=F); f.text(sc, r"$4R/3\pi$", dx=0.1, dy=-0.35, size=8); f.cap((13.8, 0.35), "Viertelkreis")
+    c0 = P(13.3, 0.9); Rq = 2.0; f.poly([c0] + [pol(c0, Rq, a) for a in np.linspace(0, 90, 40)]); e = 4 * Rq / (3 * np.pi); sc = c0 + P(e, e)
+    f.dot(sc, 0.07, c=F); f.guide(sc, P(sc[0], c0[1])); f.guide(sc, P(c0[0], sc[1]))
+    f.text(P(sc[0] + 0.55, c0[1] + e / 2), r"$x_S = y_S = \frac{4R}{3\pi}$", size=7.8, ha="left", dx=-0.05)
+    f.cap((14.3, 0.35), "Viertelkreis")
     f.save("k07_schwerpunkte")
 
 def lprofil():

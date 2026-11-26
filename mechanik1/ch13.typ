@@ -18,7 +18,7 @@ Daraus folgt sofort:
 
 Wie bildet sich das *Seilpolygon*? Ein gewichtsloses Seil werde in $A$ durch die Kraft ${A | vS_0}$ gehalten. Das Seilstück $A B$ nimmt die Richtung dieser Kraft an, der Seilzug in $A B$ ist ihr Betrag. Greift in $B$ eine Last ${B | vF_1}$ an, muss am Knoten $B$ Gleichgewicht herrschen: Das Seilstück $B C$ stellt sich parallel zum negativen Summenvektor $vS_1 = -(vS_0 + vF_1)$ ein, und dessen Betrag ist der Seilzug in $B C$. Eine weitere Last ${C | vF_2}$ richtet das Stück $C D$ parallel zu $-(vS_0 + vF_1 + vF_2)$. Jede Last «knickt» das Seil also in die Richtung, die das Knotengleichgewicht verlangt.
 
-Den Beweis für die Rolle erhält man durch die Momentenbedingung um die Rollenachse: Betrachtet man Rolle und angrenzende Seilstücke als System, ist die Lagerkraft in der reibungsfreien Achse ohne Moment. Die Seilzüge links und rechts haben denselben Hebelarm (den Rollenradius), also müssen sie gleich groß sein, egal in welche Richtung das Seil läuft.
+Den Beweis für die Rolle erhält man durch die Momentenbedingung um die Rollenachse: Betrachtet man Rolle und angrenzende Seilstücke als System, ist die Lagerkraft in der reibungsfreien Achse ohne Moment. Die Seilzüge links und rechts haben denselben Hebelarm (den Rollenradius), also müssen sie gleich gross sein, egal in welche Richtung das Seil läuft.
 
 Lässt man die Zahl der Lasten über alle Grenzen wachsen, ihre Beträge und die Abstände gegen null gehen, wird aus dem Vieleck eine Kurve, die nur noch dort Ecken hat, wo Einzelkräfte angreifen. Diesen Grenzfall (das kontinuierlich belastete Seil) behandeln wir jetzt für das Eigengewicht.
 
@@ -45,10 +45,10 @@ Weil $vS$ tangential ist, gilt für den Neigungswinkel $tau$ des Seils $tan tau 
   #gl($ H = p a, wide V = p s, wide S = sqrt(H^2 + V^2) = p y. $)
 ]
 
-Die letzte Formel ist bemerkenswert einfach: Die Seilkraft in einem Punkt ist das Gewicht eines Seilstücks, dessen Länge gleich der Höhe $y$ des Punkts über der $x$-Achse ist. Am kleinsten ist sie im Scheitel ($S = H$), am größten in den Aufhängepunkten.
+Die letzte Formel ist bemerkenswert einfach: Die Seilkraft in einem Punkt ist das Gewicht eines Seilstücks, dessen Länge gleich der Höhe $y$ des Punkts über der $x$-Achse ist. Am kleinsten ist sie im Scheitel ($S = H$), am grössten in den Aufhängepunkten.
 
 #intu[
-  Der Parameter $a = H\/p$ sagt, wie «straff» das Seil ist. Ist $a$ groß (starker Horizontalzug, leichtes Seil), ist die Kurve flach; bei kleinem $a$ hängt das Seil tief durch. Ein Seil völlig gerade zu spannen ist unmöglich: Dafür müsste $H$ unendlich werden, denn irgendetwas Vertikales muss das Gewicht tragen, und das geht nur mit einer Neigung.
+  Der Parameter $a = H\/p$ sagt, wie «straff» das Seil ist. Ist $a$ gross (starker Horizontalzug, leichtes Seil), ist die Kurve flach; bei kleinem $a$ hängt das Seil tief durch. Ein Seil völlig gerade zu spannen ist unmöglich: Dafür müsste $H$ unendlich werden, denn irgendetwas Vertikales muss das Gewicht tragen, und das geht nur mit einer Neigung.
 ]
 
 *Folgerung aus $S = p y$.* Ein Seil, das in $B$ befestigt und in $C$ über eine kleine, reibungsfrei drehbare Rolle gelegt wird, hängt mit seinem freien Ende genau bis zur Leitlinie, der $x$-Achse. Denn am Ende ist $S = p y$ das Gewicht des freien Stücks, das von der Rolle bis zum Ende herunterhängt, und das ist gerade die Länge $y$ der Rolle über der Leitlinie.
@@ -62,13 +62,13 @@ Ist das Seil straff ($|x| << a$), entwickelt man $cosh$ und $sinh$ in eine Reihe
 Die Kettenlinie wird zur *Parabel*. Für ein flaches Seil mit Spannweite $l$ zwischen gleich hohen Aufhängepunkten ist der Durchhang damit $f approx l^2 \/ (8a) = p l^2 \/ (8H)$. Verdoppelt man den Horizontalzug, halbiert sich der Durchhang.
 
 #bsp[Hochspannungsleitung][
-  Ein Leiterseil mit $p = 20$ N/m hängt zwischen zwei Masten im Abstand $l = 300$ m mit einem Horizontalzug von $H = 20$ kN. Durchhang: $f approx p l^2\/(8H) = 20 dot 300^2\/(8 dot 20000) approx 11.3$ m. Die größte Seilkraft liegt an den Masten: $S = p y = H cosh(l\/(2a))$ mit $a = H\/p = 1000$ m, also $S approx H(1 + (l\/2a)^2\/2) = 20000 dot (1 + 0.0113) approx 20.2$ kN.
+  Ein Leiterseil mit $p = 20$ N/m hängt zwischen zwei Masten im Abstand $l = 300$ m mit einem Horizontalzug von $H = 20$ kN. Durchhang: $f approx p l^2\/(8H) = 20 dot 300^2\/(8 dot 20000) approx 11.3$ m. Die grösste Seilkraft liegt an den Masten: $S = p y = H cosh(l\/(2a))$ mit $a = H\/p = 1000$ m, also $S approx H(1 + (l\/2a)^2\/2) = 20000 dot (1 + 0.0113) approx 20.2$ kN.
 ]
 
 #woche(12, [Reibung, Statik (Fortsetzung)], [188–190])
 == Seilreibung
 
-Ein Seil sei über einen ruhenden rauen Zylinder (Poller, Trommel) gelegt und umschlinge ihn über den Winkel $alpha$. Am einen Ende wirkt $S_1$, am anderen $S_2 > S_1$. Wie groß darf $S_2$ werden, bevor das Seil rutscht?
+Ein Seil sei über einen ruhenden rauen Zylinder (Poller, Trommel) gelegt und umschlinge ihn über den Winkel $alpha$. Am einen Ende wirkt $S_1$, am anderen $S_2 > S_1$. Wie gross darf $S_2$ werden, bevor das Seil rutscht?
 
 #fg("k13_seilreibung", [Links: Seil auf der Trommel. Rechts: Kräfte an einem Seilelement mit dem Öffnungswinkel $dif phi$. Die Seilkräfte drücken das Element mit $dif N = S dif phi$ auf die Trommel; die Reibung $mu dif N$ trägt den Unterschied $dif S$.])
 
@@ -79,21 +79,21 @@ Der Zuwachs ist proportional zum schon vorhandenen Wert: Das ist die Gleichung d
 #satz[Seilreibungsformel (Euler--Eytelwein)][
   Das Seil haftet auf dem Zylinder, solange
   #gl($ S_2 <= S_1 e^(mu_0 alpha) $)
-  ist ($alpha$ im Bogenmaß, $S_2$ die größere Kraft). Gleitet das Seil auf der Trommel, gilt $S_2 = S_1 e^(mu_1 alpha)$.
+  ist ($alpha$ im Bogenmass, $S_2$ die grössere Kraft). Gleitet das Seil auf der Trommel, gilt $S_2 = S_1 e^(mu_1 alpha)$.
 ]
 
-Ein Hinweis zur Annahme: Das Modell vernachlässigt die Biegesteifigkeit des Seils und sein Gewicht gegenüber den übrigen Kräften. Gleitet das Seil nicht auf der Trommel, ist der Zug auf der auflaufenden Seite größer als auf der ablaufenden ($S_2 > S_1$, weil $mu_1, alpha > 0$), und das Verhältnis $S_2\/S_1$ wächst mit dem Umschlingungswinkel exponentiell. Die Formel legt nur das _Verhältnis_ der beiden Kräfte fest; über eine davon kann man frei verfügen. Wird die Trommel gedreht und soll das Seil mitgenommen werden, so tritt die Mitnahme ein, solange $S_2 < S_1 e^(mu alpha)$ gilt.
+Ein Hinweis zu den Annahmen: Das Modell vernachlässigt die Biegesteifigkeit des Seils und sein Gewicht gegenüber den Seilkräften. Die Formel legt nur das _Verhältnis_ der beiden Kräfte fest; über eine davon kann man frei verfügen. Der Radius der Trommel kommt nicht vor, nur der Umschlingungswinkel. Dreht sich die Trommel unter dem Seil (Bandbremse, Riementrieb), so zieht die Reibung das Seil in Drehrichtung mit: Die grössere Kraft $S_2$ wirkt auf der Seite, an der die Trommeloberfläche in die Umschlingung _hineinläuft_ (auflaufende Seite), die kleinere auf der ablaufenden. Ein Riementrieb überträgt Kraft ohne Rutschen, solange $S_2 <= S_1 e^(mu_0 alpha)$.
 
 #intu[
   Jedes Stück Umschlingung vervielfacht die Haltekraft um denselben Faktor, wie Zinseszins. Bei $mu_0 = 0.3$ ergibt eine halbe Umschlingung den Faktor $e^(0.3 pi) approx 2.6$, eine ganze $6.6$, zwei ganze $43$, drei ganze $286$. Deshalb kann ein Matrose ein Schiff halten, indem er das Tau ein paar Mal um den Poller legt. Der Radius des Pollers spielt keine Rolle, nur der Winkel.
 ]
 
 #bsp[Schiff am Poller][
-  Schiffe werden an Land festgehalten, indem man das Tau mehrmals um einen kurzen Poller schlingt. Weil der Umschlingungswinkel sehr groß ist, genügt eine kleine Kraft $S_1$, die schon die Haftreibung des Seilendes am Boden (oder die Hand des Matrosen) liefert, um eine große Kraft $S_2$ am anderen Ende auszuhalten. Schon bei einer fünffachen Umschlingung ($alpha = 10 pi$) und $mu = 0.4$ ist $S_2\/S_1 = e^(0.4 dot 10 pi) = e^(4 pi) approx 2.9 dot 10^5$. Eine Hand mit 100 N hält damit rechnerisch 29 Millionen Newton, die Reibung gibt also praktisch beliebig viel Haltekraft her.
+  Schiffe werden an Land festgehalten, indem man das Tau mehrmals um einen kurzen Poller schlingt. Weil der Umschlingungswinkel sehr gross ist, genügt eine kleine Kraft $S_1$, die schon die Haftreibung des Seilendes am Boden (oder die Hand des Matrosen) liefert, um eine grosse Kraft $S_2$ am anderen Ende auszuhalten. Schon bei einer fünffachen Umschlingung ($alpha = 10 pi$) und $mu = 0.4$ ist $S_2\/S_1 = e^(0.4 dot 10 pi) = e^(4 pi) approx 2.9 dot 10^5$. Eine Hand mit 100 N hält damit rechnerisch 29 Millionen Newton. Die Reibung gibt also praktisch beliebig viel Haltekraft her; begrenzt wird die Last durch die Festigkeit von Seil und Poller.
 ]
 
 #bsp[Bandbremse][
-  Ein Band umschlingt eine drehende Trommel (Radius $r = 0.2$ m) über $alpha = 3 pi\/2$ ($270°$), $mu_1 = 0.4$. Auf der schlaffen Seite wirkt $S_1 = 100$ N. Dann ist $S_2 = S_1 e^(mu_1 alpha) = 100 e^(0.4 dot 4.71) approx 100 dot 6.6 = 660$ N, und das Bremsmoment auf die Trommel ist $M = r (S_2 - S_1) = 0.2 dot 560 = 112$ N m. Mit einem Hebel, der nur die kleine Kraft $S_1$ aufbringen muss, erzeugt man ein großes Bremsmoment. Man zerlegt das System in die Trommel samt Last und den Bremshebel und löst mit den Momentenbedingungen beider Körper. Der Hebel spannt dabei den _ablaufenden_ Seilteil, weil dort der Zug kleiner ist und man mit einer geringeren Bremskraft auskommt.
+  Ein Band umschlingt eine drehende Trommel (Radius $r = 0.2$ m) über $alpha = 3 pi\/2$ ($270°$), $mu_1 = 0.4$. Auf der schlaffen Seite wirkt $S_1 = 100$ N. Dann ist $S_2 = S_1 e^(mu_1 alpha) = 100 e^(0.4 dot 4.71) approx 100 dot 6.6 = 660$ N, und das Bremsmoment auf die Trommel ist $M = r (S_2 - S_1) = 0.2 dot 560 = 112$ N m. Mit einem Hebel, der nur die kleine Kraft $S_1$ aufbringen muss, erzeugt man ein grosses Bremsmoment. Man zerlegt das System in die Trommel samt Last und den Bremshebel und löst mit den Momentenbedingungen beider Körper. Der Hebel spannt dabei den _ablaufenden_ Seilteil, weil dort der Zug kleiner ist und man mit einer geringeren Bremskraft auskommt.
 ]
 
 // ALLTAG-BEGIN

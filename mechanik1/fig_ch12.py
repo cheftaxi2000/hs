@@ -3,10 +3,10 @@ from figlib import *
 def experiment():
     f = Fig(15.8, 4.2)
     f.ground(0.3, 6.3, 0.8); f.rect((1.4, 0.8), (3.6, 2.2)); f.dot((2.5, 1.5), 0.05)
-    f.arrow((2.5, 1.5), (2.5, 0.35), c=F, lw=1.4); f.text((2.5, 0.35), r"$\mathbfit{G}$", c=F, dx=0.4)
+    f.arrow((2.5, 1.5), (2.5, 0.88), c=F, lw=1.4); f.text((2.5, 1.15), r"$\mathbfit{G}$", c=F, dx=-0.32)
     f.arrow((3.6, 1.5), (5.4, 1.5), c=F, lw=1.6); f.text((5.4, 1.5), r"$\mathbfit{F}$", c=F, dx=0.35, dy=0.25)
     f.arrow((2.5, 0.8), (1.1, 0.8), c=F, lw=1.6); f.text((1.1, 0.8), r"$\mathbfit{F}_R$", c=F, dx=-0.45, dy=0.35)
-    f.arrow((3.0, 0.1), (3.0, 0.8), c=F, lw=0) if False else None
+    f.arrow((2.95, 0.12), (2.95, 0.78), c=F, lw=1.4); f.text((2.95, 0.3), r"$\mathbfit{N}$", c=F, dx=0.33)
     # Diagramm
     o = P(8.3, 0.9)
     f.arrow(o - P(0.1, 0), o + P(6.5, 0), lw=0.7, head=0.6); f.arrow(o - P(0, 0.1), o + P(0, 3.2), lw=0.7, head=0.6)
@@ -35,7 +35,9 @@ def schief():
     f.arrow(o, o + P(0, 3.4), c=GREY, lw=0.8, head=0.6); f.text(o + P(0.0, 3.65), "Normale", size=8, c=GREY, dx=0.0)
     for s in (-1, 1): f.line(o, o + P(s * 3.4 * np.sin(r0), 3.4 * np.cos(r0)), c=INK, lw=0.9, dash=(5, 3))
     f.line(o + P(-3.0, 0), o + P(3.0, 0), c=INK, lw=1.2); f.hatch(o + P(3.0, 0), o + P(-3.0, 0), side=-1)
-    f.arc(o + P(0, 0.0), 2.0, 90 - 25, 90 + 25, col=INK, lw=0.7); f.text(o + P(0, 2.45), r"$\rho_0$", size=9)
+    f.arc(o, 2.0, 90, 90 + 25, col=INK, lw=0.7); f.text(pol(o, 2.35, 90 + 12.5), r"$\rho_0$", size=9)
+    h = 3.4 * np.cos(r0); w = 3.4 * np.sin(r0)
+    f.path([o + P(w * np.cos(t), h + 0.28 * w * np.sin(t)) for t in np.linspace(0, 2 * np.pi, 100)], c=GREY, lw=0.6, dash=(3, 2))
     R = P(0.8, 2.5); f.arrow(o + R * 0, o + R, c=F, lw=1.7); f.text(o + R, r"$\mathbfit{R}$", c=F, dx=-0.3, dy=0.05)
     f.cap((11.2, 0.25), "Reibungskegel: $\\tan\\rho_0=\\mu_0$", size=8.5)
     f.save("k12_ebene")
@@ -63,7 +65,9 @@ def rollen():
         f.ground(x0 - 2.0, x0 + 2.0, 0.8); c = P(x0, 0.8 + 1.4); f.circle(c, 1.4, fc=LIGHT); f.dot(c, 0.05)
         f.arrow(c, c - P(0, 1.0), c=F, lw=1.4); f.text(c - P(0, 0.45), r"$\mathbfit{G}$", c=F, dx=-0.35, dy=0.0)
         if k == 0:
-            f.arrow((x0 + 0.5, 0.0), (x0 + 0.5, 0.8), c=F, lw=1.6); f.text((x0 + 0.5, 0.0), r"$\mathbfit{N}$", c=F, dx=0.4, dy=0.1); f.text((x0 + 0.95, 0.4), "$e$", size=8.5)
+            f.arrow((x0 + 0.5, 0.0), (x0 + 0.5, 0.8), c=F, lw=1.6); f.text((x0 + 0.5, 0.0), r"$\mathbfit{N}$", c=F, dx=0.4, dy=0.1)
+            f.dim((x0, 0.55), (x0 + 0.5, 0.55), "", off=0.0); f.text((x0 + 0.25, 0.3), "$e$", size=8.5); f.dot((x0, 0.8), 0.05); f.text((x0, 0.8), "$Z$", dx=-0.28, dy=-0.25, size=8.5)
+            f.arrow(c, c + P(1.0, 0), c=V, lw=1.4); f.text(c + P(1.0, 0), r"$\mathbfit{v}$", c=V, dx=0.3); f.text((x0, 3.85), "rollt nach rechts", size=7.8, c=GREY)
             f.text((x0 + 0.25, -0.25), "", size=8)
         else:
             f.arrow((x0, 0.0), (x0, 0.8), c=F, lw=1.6); f.text((x0, 0.0), r"$\mathbfit{N}$", c=F, dx=0.4, dy=0.1)

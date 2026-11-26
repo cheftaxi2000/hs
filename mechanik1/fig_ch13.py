@@ -29,10 +29,10 @@ def seilreibung():
     f = Fig(15.8, 5.0)
     c = P(3.0, 2.8); f.circle(c, 1.4, fc=LIGHT); f.dot(c, 0.06)
     f.arc(c, 1.4, 0, 180, lw=2.4)
-    f.line((c[0] - 1.4, c[1]), (c[0] - 1.4, 0.9), lw=2.4); f.line((c[0] + 1.4, c[1]), (c[0] + 1.4, 0.9), lw=2.4)
-    f.arrow((c[0] - 1.4, 1.1), (c[0] - 1.4, 0.3), c=F, lw=1.6); f.arrow((c[0] + 1.4, 1.1), (c[0] + 1.4, -0.0), c=F, lw=0) if False else None
-    f.arrow((c[0] + 1.4, 1.5), (c[0] + 1.4, 0.2), c=F, lw=1.9)
-    f.text((c[0] - 1.8, 0.7), "$S_1$", c=F, size=9.5); f.text((c[0] + 1.9, 0.8), "$S_2$", c=F, size=9.5)
+    f.line((c[0] - 1.4, c[1]), (c[0] - 1.4, 1.3), lw=2.4); f.line((c[0] + 1.4, c[1]), (c[0] + 1.4, 1.3), lw=2.4)
+    f.arrow((c[0] - 1.4, 1.3), (c[0] - 1.4, 0.55), c=F, lw=1.6)
+    f.arrow((c[0] + 1.4, 1.3), (c[0] + 1.4, -0.35), c=F, lw=1.9)
+    f.text((c[0] - 1.8, 0.8), "$S_1$", c=F, size=9.5); f.text((c[0] + 1.9, 0.4), "$S_2 > S_1$", c=F, size=9.5, ha="left", dx=-0.25)
     f.arc(c, 0.6, 0, 180, col=INK, lw=0.7); f.text(c + P(0, 0.9), r"$\alpha$", size=9)
     # Element
     e = P(11.0, -0.8); R = 3.6

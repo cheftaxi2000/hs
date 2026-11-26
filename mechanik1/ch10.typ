@@ -8,7 +8,7 @@ Die meisten Konstruktionen bestehen aus mehreren Körpern, die durch Gelenke, Se
 
 == Behandlung mit dem Hauptsatz: Zerlegen
 
-Schneidet man ein System an einer Verbindung auf, so werden die inneren Bindungskräfte an der Schnittstelle zu äußeren Kräften der Teile. Nach dem Reaktionsprinzip gilt:
+Schneidet man ein System an einer Verbindung auf, so werden die inneren Bindungskräfte an der Schnittstelle zu äusseren Kräften der Teile. Nach dem Reaktionsprinzip gilt:
 
 #merke[
   An einer Schnittstelle trägt man die Verbindungskräfte an beiden Teilen *entgegengesetzt gleich* ein: $B_x, B_y$ am einen Teil, $-B_x, -B_y$ am anderen. Man führt also pro Gelenk nur zwei neue Unbekannte ein, nicht vier. Für jeden freigeschnittenen starren Körper stehen dann wieder drei (eben) Gleichgewichtsbedingungen zur Verfügung.
@@ -23,7 +23,7 @@ Die Gleichungen am Gesamtsystem sind die Summe der Gleichungen an den Teilen und
 
   #align(center, image("figs/a10_feder.svg", width: 8.6cm))
 
-  Am Gesamtsystem (Kolben, beide Stäbe) sind die äußeren Kräfte die beiden Gewichte, $vP$, die Gelenkkraft in $A$ ($A_x, A_y$), die Federkraft $F = k Delta x = 2 k L sin phi$ in $C$ und die Normalkraft $N$ der Kolbenführung. Das sind vier Unbekannte ($A_x, A_y, N$ und die gesuchte $P$) bei nur drei Gleichungen. Unbestimmt ist das Problem trotzdem nicht: Zerlegt man in $B$, kommen zwei Gelenkkraftkomponenten $B_x, B_y$ dazu, und für zwei Körper hat man sechs Gleichungen für sechs Unbekannte. Man muss sie aber nicht alle lösen.
+  Am Gesamtsystem (Kolben, beide Stäbe) sind die äusseren Kräfte die beiden Gewichte, $vP$, die Gelenkkraft in $A$ ($A_x, A_y$), die Federkraft $F = k Delta x = 2 k L sin phi$ in $C$ und die Normalkraft $N$ der Kolbenführung. Das sind vier Unbekannte ($A_x, A_y, N$ und die gesuchte $P$) bei nur drei Gleichungen. Unbestimmt ist das Problem trotzdem nicht: Zerlegt man in $B$, kommen zwei Gelenkkraftkomponenten $B_x, B_y$ dazu, und für zwei Körper hat man sechs Gleichungen für sechs Unbekannte. Man muss sie aber nicht alle lösen.
 
   _Momentenbedingung um $A$ für das Gesamtsystem._ Sie enthält $A_x, A_y$ nicht, und die Federkraft geht durch $A$:
   $ N dot 2 L sin phi - G dot L/2 cos phi - 2 G dot L cos phi - P dot 2 L = 0 quad => quad N = (5 G)/(4 tan phi) + P/(sin phi). $
@@ -43,12 +43,12 @@ Die Gleichungen am Gesamtsystem sind die Summe der Gleichungen an den Teilen und
 
   _Linker Holm, Momentenbedingung um $C$_ (dort fallen die unbekannten Gelenkkräfte heraus): $N_A$ hat den Hebelarm $L sin beta$, die Seilkraft greift in halber Höhe an und hat den Hebelarm $(L\/2) cos beta$.
   $ N_A L sin beta - S dot.c (L/2) cos beta = 0 quad => quad S = 2 N_A tan beta = G tan beta. $
-  Je weiter die Leiter gespreizt ist, desto größer die Seilkraft; für $beta -> 90°$ wächst sie über alle Grenzen.
+  Je weiter die Leiter gespreizt ist, desto grösser die Seilkraft; für $beta -> 90°$ wächst sie über alle Grenzen.
 ]
 
 == Behandlung mit dem PdvL
 
-Sucht man nur _eine_ Größe, ist das PdvL oft schneller.
+Sucht man nur _eine_ Grösse, ist das PdvL oft schneller.
 
 #rezept[PdvL an Systemen][
   + Die Bindung, deren Kraft gesucht ist, *lösen* und durch die (unbekannte) Bindungskraft ersetzen. Das System wird dadurch zu einem Mechanismus mit einem Freiheitsgrad.
@@ -57,7 +57,7 @@ Sucht man nur _eine_ Größe, ist das PdvL oft schneller.
 ]
 
 #bsp[Stehleiter: Lösung mit dem PdvL][
-  Seil entfernen und durch die Kräfte $S$ ersetzen, die die Holme nach innen ziehen. Virtuelle Bewegung: Die Leiter spreizt sich, $beta$ wächst mit $dot(tilde(beta))$. Die Böden sind reibungsfrei: $N_A, N_B$ stehen senkrecht auf den Geschwindigkeiten der Fußpunkte und leisten nichts. Das Gelenk in $C$ ist reibungsfrei, seine inneren Kräfte leisten zusammen nichts.
+  Seil entfernen und durch die Kräfte $S$ ersetzen, die die Holme nach innen ziehen. Virtuelle Bewegung: Die Leiter spreizt sich, $beta$ wächst mit $dot(tilde(beta))$. Die Böden sind reibungsfrei: $N_A, N_B$ stehen senkrecht auf den Geschwindigkeiten der Fusspunkte und leisten nichts. Das Gelenk in $C$ ist reibungsfrei, seine inneren Kräfte leisten zusammen nichts.
 
   Die Höhe des Gelenks ist $h = L cos beta$, es sinkt also mit $-dot(h) = L sin beta thin dot(tilde(beta))$. Leistung von $G$: $+G L sin beta thin dot(tilde(beta))$.
 
@@ -66,7 +66,7 @@ Sucht man nur _eine_ Größe, ist das PdvL oft schneller.
   Eine Gleichung, eine Unbekannte, kein Freischnitt der Einzelteile.
 ]
 
-Die Verfahren im Überblick: Das PdvL betrachtet das System _ohne Zerlegung_ in der Ruhelage, führt die Lasten (und nur die gesuchten Bindungskräfte) ein, wählt einen zweckmäßigen virtuellen Bewegungszustand und löst $tilde(PP) = 0$. Zwei Faustregeln für die Wahl:
+Die Verfahren im Überblick: Das PdvL betrachtet das System _ohne Zerlegung_ in der Ruhelage, führt die Lasten (und nur die gesuchten Bindungskräfte) ein, wählt einen zweckmässigen virtuellen Bewegungszustand und löst $tilde(PP) = 0$. Zwei Faustregeln für die Wahl:
 
 + Will man eine Beziehung zwischen Lasten und Lage (wie im Mechanismus mit Feder), wählt man einen _zulässigen_ Zustand, der mit allen Bindungen verträglich ist. Die reibungsfreien Bindungskräfte, die nicht interessieren, tragen dann nichts bei.
 + Will man eine _Bindungskraft_ ermitteln, wählt man einen Zustand, der genau diese Bindung verletzt und mit allen anderen verträglich ist. Dann trägt nur die gesuchte Kraft zur Leistung bei.
@@ -88,23 +88,23 @@ Beim Mechanismus mit Feder dreht man zum Beispiel $A D$ virtuell mit $dot(tilde(
 Für ein System aus mehreren Körpern zählt man über alle Teile: $m$ = Anzahl aller Gleichgewichtsbedingungen (eben: 3 pro starrem Körper), $n$ = Anzahl aller unbekannten Lager- und Verbindungskraftkomponenten.
 
 #defn[Grad der statischen Unbestimmtheit][
-  Ist $m = n$ am Gesamtsystem und an allen Teilsystemen, so heißt das System *statisch bestimmt*. Muss man $u$ Bindungskomponenten lösen, um es gerade noch unbeweglich zu machen, ist es *$u$-fach statisch unbestimmt*, und es gilt
+  Ist $m = n$ am Gesamtsystem und an allen Teilsystemen, so heisst das System *statisch bestimmt*. Muss man $u$ Bindungskomponenten lösen, um es gerade noch unbeweglich zu machen, ist es *$u$-fach statisch unbestimmt*, und es gilt
   #gl($ n - m = u. $)
 ]
 
-#fg("k10_dreigelenk", [Der Dreigelenkbogen: Das Gesamtsystem hat 4 Unbekannte und nur 3 Gleichungen, aber nach dem Zerlegen im Gelenk $C$ sind es 6 Unbekannte und 6 Gleichungen. Er ist statisch bestimmt.])
+#fg("k10_dreigelenk", [Der Dreigelenkbogen: Das Gesamtsystem hat 4 Unbekannte und nur 3 Gleichungen. Nach dem Zerlegen im Gelenk $C$ kommen $C_x, C_y$ dazu, am rechten Teil mit umgekehrtem Vorzeichen (Reaktionsprinzip): 6 Unbekannte und 6 Gleichungen. Er ist statisch bestimmt.])
 
 #bsp[Dreigelenkbogen][
-  Zwei Träger, in $A$ und $B$ gelenkig gelagert und im Scheitel $C$ gelenkig verbunden. Am Gesamtsystem: 4 Unbekannte ($A_x, A_y, B_x, B_y$) und 3 Gleichungen. Zerlegt in $C$: 2 Körper mal 3 Gleichungen $= 6$; Unbekannte $4 + 2 = 6$ (nämlich $C_x, C_y$ kommen dazu). Statisch bestimmt. Vorgehen: Am Gesamtsystem liefern die Momentenbedingungen um $A$ und um $B$ die vertikalen Komponenten $B_y$ und $A_y$. Die horizontalen Komponenten folgen erst aus der Momentenbedingung um $C$ an einem der beiden Teile, denn nur dort kommt $A_x$ (bzw. $B_x$) mit einem Hebelarm vor.
+  Zwei Träger, in $A$ und $B$ gelenkig gelagert und im Scheitel $C$ gelenkig verbunden. Am Gesamtsystem: 4 Unbekannte ($A_x, A_y, B_x, B_y$) und 3 Gleichungen. Zerlegt in $C$: 2 Körper mal 3 Gleichungen $= 6$; Unbekannte $4 + 2 = 6$ (nämlich $C_x, C_y$ kommen dazu). Statisch bestimmt. Vorgehen bei gleich hohen Fussgelenken $A$, $B$: Am Gesamtsystem liefern die Momentenbedingungen um $A$ und um $B$ direkt die vertikalen Komponenten $B_y$ und $A_y$, denn die horizontalen Komponenten haben dort keinen Hebelarm. Die horizontalen Komponenten folgen erst aus der Momentenbedingung um $C$ an einem der beiden Teile; dort hat $A_x$ (bzw. $B_x$) den Hebelarm der Bogenhöhe. Liegen $A$ und $B$ verschieden hoch, koppeln die Gleichungen, und man löst zwei Momentenbedingungen gemeinsam.
 ]
 
-#fg("k10_unbrauchbar", [Abzählen allein kann täuschen. Links: Drei Auflager, $n = m = 3$, aber alle Wirkungslinien sind parallel. Nichts hält den Träger horizontal, die Lagerung ist unbrauchbar. Rechts: Alle Wirkungslinien gehen durch einen Punkt $P$. Der Träger kann sich momentan um $P$ drehen.])
+#fg("k10_unbrauchbar", [Abzählen allein kann täuschen. Links: Drei Auflager, $n = m = 3$, aber alle Wirkungslinien sind parallel. Nichts hält den Träger horizontal, die Lagerung ist unbrauchbar. Rechts: Drei Pendelstützen, deren Wirkungslinien sich in einem Punkt $P$ schneiden. Keine von ihnen hat ein Moment um $P$; der Träger kann sich momentan um $P$ drehen.])
 
 #merke[
-  Die Bedingung $n = m$ ist notwendig, aber nicht hinreichend. Zusätzlich muss das Gleichungssystem eindeutig lösbar sein. Anschaulich: Schneiden sich in der Ebene die Wirkungslinien aller Lagerkräfte in *einem Punkt* (oder sind sie alle parallel), kann keine von ihnen ein Moment um diesen Punkt aufbringen (bzw. eine Kraft quer dazu). Das System ist beweglich, obwohl die Zahlen stimmen. Solche Lagerungen heißen auch _statisch unbrauchbar_.
+  Die Bedingung $n = m$ ist notwendig, aber nicht hinreichend. Zusätzlich muss das Gleichungssystem eindeutig lösbar sein. Anschaulich: Schneiden sich in der Ebene die Wirkungslinien aller Lagerkräfte in *einem Punkt* (oder sind sie alle parallel), kann keine von ihnen ein Moment um diesen Punkt aufbringen (bzw. eine Kraft quer dazu). Das System ist beweglich, obwohl die Zahlen stimmen. Solche Lagerungen heissen auch _statisch unbrauchbar_.
 ]
 
-Man kann ein System also auf zwei Arten als statisch unbestimmt erkennen. *Statisch:* Man vergleicht die Anzahl $n$ der Unbekannten mit der Anzahl $m$ der zur Verfügung stehenden unabhängigen Gleichgewichtsbedingungen, bei Bedarf nach dem Zerlegen. Ist $m = n$ für das Gesamtsystem und alle Teilsysteme, heißt es statisch bestimmt; für $m < n$ statisch unbestimmt; für $m > n$ _überbestimmt_: Ein Mechanismus, der im Allgemeinen nicht in Ruhe bleibt, weil die nötigen Gleichgewichtsbedingungen nicht erfüllt werden können. (Man nennt solche Systeme auch «verschieblich» oder «kinematisch unbestimmt»; man richtet dann den Blick auf zu wenige Bindungen statt auf zu viele Gleichungen.) *Kinematisch:* Ein statisch unbestimmtes System hat mehr Bindungskomponenten, als für die Ruhe nötig sind. Hebt man $u$ Bindungskomponenten auf, und es bleibt gerade noch unbeweglich, aber bei einer weiteren wird es zum beweglichen Mechanismus, ist es $u$-fach statisch unbestimmt. Die Existenz eines zulässigen virtuellen Bewegungszustands mit nichtverschwindenden Geschwindigkeiten zeigt, dass das System ein Mechanismus ist. Bei der Beurteilung der Unbeweglichkeit zählt zunächst nur, ob irgendeine Bewegung möglich ist, nicht, welche Kräfte dabei auftreten.
+Man kann ein System also auf zwei Arten als statisch unbestimmt erkennen. *Statisch:* Man vergleicht die Anzahl $n$ der Unbekannten mit der Anzahl $m$ der zur Verfügung stehenden unabhängigen Gleichgewichtsbedingungen, bei Bedarf nach dem Zerlegen. Ist $m = n$ für das Gesamtsystem und alle Teilsysteme, heisst es statisch bestimmt; für $m < n$ statisch unbestimmt; für $m > n$ _überbestimmt_: Ein Mechanismus, der im Allgemeinen nicht in Ruhe bleibt, weil die nötigen Gleichgewichtsbedingungen nicht erfüllt werden können. (Man nennt solche Systeme auch «verschieblich» oder «kinematisch unbestimmt»; man richtet dann den Blick auf zu wenige Bindungen statt auf zu viele Gleichungen.) *Kinematisch:* Ein statisch unbestimmtes System hat mehr Bindungskomponenten, als für die Ruhe nötig sind. Hebt man $u$ Bindungskomponenten auf, und es bleibt gerade noch unbeweglich, aber bei einer weiteren wird es zum beweglichen Mechanismus, ist es $u$-fach statisch unbestimmt. Die Existenz eines zulässigen virtuellen Bewegungszustands mit nichtverschwindenden Geschwindigkeiten zeigt, dass das System ein Mechanismus ist. Bei der Beurteilung der Unbeweglichkeit zählt zunächst nur, ob irgendeine Bewegung möglich ist, nicht, welche Kräfte dabei auftreten.
 
 Statisch unbestimmte Systeme lassen sich erst lösen, wenn man die Verformungen einbezieht (Festigkeitslehre, Mechanik 2). Typisch ist dann der Ansatz: Zusätzliche Gleichungen aus «die Verschiebung am Lager ist null» bzw. «das Lager federt ein».
 

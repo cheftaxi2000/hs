@@ -1,4 +1,4 @@
-"""Zeichenbibliothek für das Mechanik-Skript. Einheit der Koordinaten: cm (= Maß auf dem Papier)."""
+"""Zeichenbibliothek für das Mechanik-Skript. Einheit der Koordinaten: cm (= Mass auf dem Papier)."""
 import os
 import numpy as np
 import matplotlib
@@ -14,15 +14,19 @@ for f in ("cmunrm", "cmunti", "cmunbx", "cmunbi"):
 plt.rcParams.update({
     "svg.fonttype": "path", "font.family": "CMU Serif", "font.size": 8,
     "mathtext.fontset": "cm", "axes.unicode_minus": False,
+    "svg.hashsalt": "mechanik1",   # deterministische SVG-IDs: Diffs zeigen nur echte Änderungen
 })
 
 INK = "#1b1b1b"; GREY = "#8d8d8d"; LIGHT = "#efefef"; MID = "#d9d9d9"
 V = "#1f5fa8"      # Geschwindigkeiten
 F = "#b3382c"      # Kräfte
 M = "#2a7f5a"      # Drehung, Momente
+FL = "#d99a90"     # Kraftkomponenten, Ersatzgrössen (aufgehellte Kraftfarbe)
+VL = "#8fb0d6"     # Geschwindigkeitskomponenten (aufgehellte Geschwindigkeitsfarbe)
+NEU = "#555555"    # neutrale Hervorhebung (Längen, Projektionen, Schnitte)
 PT = 28.3465       # Punkte pro cm
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figs")
-PNG = "/tmp/claude-0/-home-user-hs/86681ad6-701a-5310-b84c-b1468856c4a6/scratchpad/figpng"
+PNG = os.environ.get("FIGPNG", os.path.join(os.path.dirname(os.path.abspath(__file__)), ".figpng"))  # Vorschau-PNGs (nicht im Repo)
 os.makedirs(OUT, exist_ok=True); os.makedirs(PNG, exist_ok=True)
 
 def P(*a): return np.array(a, dtype=float)
@@ -57,7 +61,7 @@ class Fig:
         if dash: p.set_linestyle((0, dash))
         s.ax.add_patch(p)
     def potato(s, c, w, h, ang=0, seed=1, k=1.0, **kw):
-        """Beliebiger starrer Körper: glatte, unregelmäßig gerundete «Kartoffel»."""
+        """Beliebiger starrer Körper: glatte, unregelmässig gerundete «Kartoffel»."""
         rs = np.random.RandomState(seed); t = np.linspace(0, 2 * np.pi, 260, endpoint=False)
         r = 1 + k * (0.075 * rs.uniform(.7, 1.3) * np.cos(2 * t + rs.uniform(0, 6.3)) + 0.055 * rs.uniform(.7, 1.3) * np.cos(3 * t + rs.uniform(0, 6.3))
                      + 0.03 * np.cos(4 * t + rs.uniform(0, 6.3)) + 0.02 * np.cos(5 * t + rs.uniform(0, 6.3)))
@@ -197,8 +201,23 @@ class Fig:
             q = s.proj(o, *v); s.arrow(o, q, c=c, lw=0.7, head=0.6)
             d = unit(q - np.array(o)); s.text(q + d * 0.28, f"${nm}$", size=9)
 
+    def rightangle(s, p, u, v, a=0.22, c=INK, lw=0.6):
+        """Rechter-Winkel-Marke im Punkt p zwischen den Richtungen u und v."""
+        p = np.array(p, float); u = unit(u) * a; v = unit(v) * a
+        s.path([p + u, p + u + v, p + v], c=c, lw=lw, z=4)
+    def circle3(s, o, c3, r, plane="xy", n=160, t0=0, t1=360):
+        """Bildpunkte eines Kreises (Mittelpunkt c3, Radius r) in einer Koordinatenebene, schief projiziert."""
+        t = np.deg2rad(np.linspace(t0, t1, n)); c3 = np.array(c3, float); pts = []
+        for a in t:
+            d = {"xy": (np.cos(a), np.sin(a), 0), "yz": (0, np.cos(a), np.sin(a)), "xz": (np.cos(a), 0, np.sin(a))}[plane]
+            q = c3 + r * np.array(d); pts.append(s.proj(o, *q))
+        return np.array(pts)
+    def cut(s, p, q, lw=0.9):
+        """Schnittlinie (neutral, strichpunktiert)."""
+        ln = s.line(p, q, c=NEU, lw=lw, z=6); ln.set_dashes((6, 2.5, 1.2, 2.5))
+
     def fit(s, pad=0.12):
-        """Zeichenfläche so erweitern, dass nichts abgeschnitten wird (Maßstab bleibt 1 Einheit = 1 cm)."""
+        """Zeichenfläche so erweitern, dass nichts abgeschnitten wird (Massstab bleibt 1 Einheit = 1 cm)."""
         for a in s.ax.get_children():
             try: a.set_clip_on(False)
             except Exception: pass
@@ -216,6 +235,6 @@ class Fig:
     def save(s, name):
         W, H = s.fit()
         if W > s.w + 0.01 or H > s.h + 0.01: print(f"  fit {name}: {s.w:.1f}x{s.h:.1f} -> {W:.2f}x{H:.2f}")
-        s.fig.savefig(os.path.join(OUT, name + ".svg"), format="svg", transparent=True)
+        s.fig.savefig(os.path.join(OUT, name + ".svg"), format="svg", transparent=True, metadata={"Date": None})
         s.fig.savefig(os.path.join(PNG, name + ".png"), dpi=220, facecolor="white")
         plt.close(s.fig)

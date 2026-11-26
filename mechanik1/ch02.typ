@@ -4,7 +4,7 @@
 
 #woche(2, [Geschwindigkeit], [24–35])
 
-Die Geschwindigkeit ist die zentrale Größe der Kinematik. Mathematisch ist sie nichts anderes als die Ableitung des Ortsvektors nach der Zeit. Weil der Ortsvektor aber ein _Vektor_ ist, der sich in Länge und Richtung ändern kann, müssen wir zuerst klären, was es heißt, einen Vektor abzuleiten. Danach rechnen wir die Geschwindigkeit in jedem der drei Koordinatensätze aus.
+Die Geschwindigkeit ist die zentrale Grösse der Kinematik. Mathematisch ist sie nichts anderes als die Ableitung des Ortsvektors nach der Zeit. Weil der Ortsvektor aber ein _Vektor_ ist, der sich in Länge und Richtung ändern kann, müssen wir zuerst klären, was es heisst, einen Vektor abzuleiten. Danach rechnen wir die Geschwindigkeit in jedem der drei Koordinatensätze aus.
 
 == Ableitung einer Vektorfunktion
 
@@ -29,7 +29,7 @@ Für zwei Vektorfunktionen $vq(t), vr(t)$ und eine skalare Funktion $s(t)$ gelte
 #gl($ (s vr)^dot = dot(s) vr + s dot(vr), wide (vq dot.c vr)^dot = dot(vq) dot.c vr + vq dot.c dot(vr), wide (vq times vr)^dot = dot(vq) times vr + vq times dot(vr). $)
 Beim Kreuzprodukt ist die Reihenfolge wichtig: Der abgeleitete Faktor bleibt jeweils an seiner Stelle.
 
-Hängt $vr$ über eine Zwischengröße $s$ von der Zeit ab, $t |-> s(t)$ und $s |-> vr(s)$, so gilt die *Kettenregel*
+Hängt $vr$ über eine Zwischengrösse $s$ von der Zeit ab, $t |-> s(t)$ und $s |-> vr(s)$, so gilt die *Kettenregel*
 #gl($ (dif vr) / (dif t) = (dif vr) / (dif s) dot.c (dif s) / (dif t). $)
 
 #warum[Der Betrag eines Vektors konstanter Länge][
@@ -44,19 +44,19 @@ Hängt $vr$ über eine Zwischengröße $s$ von der Zeit ab, $t |-> s(t)$ und $s 
 
 == Schnelligkeit und Geschwindigkeit
 
-Der Punkt $M$ bewege sich auf einer Bahnkurve $C$. Wir wählen auf $C$ einen festen Punkt $A$ und eine positive Richtung. Die entlang der Kurve gemessene, vorzeichenbehaftete Strecke von $A$ bis $M$ heißt *Bogenlänge* $s$. Sie ist eine krummlinige Koordinate von $M$ auf $C$. Die Bewegung ist dann durch eine einzige Funktion $t |-> s(t)$ beschrieben.
+Der Punkt $M$ bewege sich auf einer Bahnkurve $C$. Wir wählen auf $C$ einen festen Punkt $A$ und eine positive Richtung. Die entlang der Kurve gemessene, vorzeichenbehaftete Strecke von $A$ bis $M$ heisst *Bogenlänge* $s$. Sie ist eine krummlinige Koordinate von $M$ auf $C$. Die Bewegung ist dann durch eine einzige Funktion $t |-> s(t)$ beschrieben.
 
 #defn[Schnelligkeit][
-  Die Ableitung $dot(s) = dif s \/ dif t$ der Bogenlänge heißt *Schnelligkeit* von $M$ auf $C$. Sie ist ein Skalar mit der Dimension Länge pro Zeit (Einheit m/s). Ihr _Betrag_ sagt, wie rasch der Punkt läuft, ihr _Vorzeichen_, in welchem Richtungssinn.
+  Die Ableitung $dot(s) = dif s \/ dif t$ der Bogenlänge heisst *Schnelligkeit* von $M$ auf $C$. Sie ist ein Skalar mit der Dimension Länge pro Zeit (Einheit m/s). Ihr _Betrag_ sagt, wie rasch der Punkt läuft, ihr _Vorzeichen_, in welchem Richtungssinn.
 ]
 
-Ist $dot(s)$ konstant, heißt die Bewegung *gleichförmig*: Die Bogenlänge wächst linear, $s = s_0 + dot(s) t$. Ist zusätzlich die Bahn eine Gerade, spricht man von *geradlinig gleichförmiger* Bewegung.
+Ist $dot(s)$ konstant, heisst die Bewegung *gleichförmig*: Die Bogenlänge wächst linear, $s = s_0 + dot(s) t$. Ist zusätzlich die Bahn eine Gerade, spricht man von *geradlinig gleichförmiger* Bewegung.
 
 #bsp[Schwingende Bewegung][
   $s(t) = s_0 sin(2 pi t \/ T)$. Dann ist $dot(s) = (2 pi s_0 \/ T) cos(2 pi t \/ T)$. Anfangsschnelligkeit: $dot(s)(0) = 2 pi s_0 \/ T > 0$, der Punkt läuft zu wachsendem $s$. Bei $t = T\/4$ erreicht er die Amplitude $s = s_0$, dort ist $cos(pi\/2) = 0$, also $dot(s) = 0$ -- Umkehrpunkt. Bei $t = T\/2$ läuft er mit negativer Schnelligkeit $-2 pi s_0\/T$ durch den Nullpunkt zurück. Die _Form_ der Bahnkurve kann man aus dieser Beschreibung nicht erkennen: Sie sagt nur, wie weit der Punkt auf der Bahn gelaufen ist, nicht, in welche Richtung im Raum.
 ]
 
-Genau diese fehlende Richtungsinformation holen wir uns jetzt. Die Schnelligkeit ist ein Skalar; sie weiß nichts davon, _wohin_ sich der Punkt bewegt. Die Richtung der Bewegung ist die Tangente an die Bahnkurve. Wir führen deshalb in jedem Bahnpunkt den *tangentialen Einheitsvektor* $vtau$ ein, der in Richtung wachsender Bogenlänge zeigt. Er hat konstante Länge 1, aber (außer bei Geraden) eine veränderliche Richtung.
+Genau diese fehlende Richtungsinformation holen wir uns jetzt. Die Schnelligkeit ist ein Skalar; sie weiss nichts davon, _wohin_ sich der Punkt bewegt. Die Richtung der Bewegung ist die Tangente an die Bahnkurve. Wir führen deshalb in jedem Bahnpunkt den *tangentialen Einheitsvektor* $vtau$ ein, der in Richtung wachsender Bogenlänge zeigt. Er hat konstante Länge 1, aber (ausser bei Geraden) eine veränderliche Richtung.
 
 #defn[Geschwindigkeit][
   Die *Geschwindigkeit* ist der Vektor
@@ -106,7 +106,7 @@ Die Einheitsvektoren $ve_x, ve_y, ve_z$ sind konstant, ihre Ableitungen null. Ma
   $ vv = -9 pi sin(3 pi t) ve_x - 12 pi sin(3 pi t) ve_y + 3 pi cos(3 pi t) ve_z, $
   in cm/s. Für die Schnelligkeit: $|vv|^2 = 81 pi^2 sin^2 + 144 pi^2 sin^2 + 9 pi^2 cos^2 = 9 pi^2 (25 sin^2 + cos^2)$, also
   $ |vv| = 3 pi sqrt(1 + 24 sin^2(3 pi t)) quad "cm/s". $
-  _Kontrolle:_ In den Umkehrpunkten der Schwingung ($x = plus.minus 3$, $y = plus.minus 4$, $z = 0$, also $sin = 0$) ist $dot(x) = dot(y) = 0$, die Geschwindigkeit ist rein vertikal mit $|vv| = 3 pi$ cm/s. In den obersten und untersten Lagen ($z = plus.minus 1$, $cos = 0$) ist $dot(z) = 0$, die Geschwindigkeit ist rein horizontal, der Betrag $15 pi$ cm/s ist maximal. Das passt zur Ellipse: oben und unten läuft der Punkt am schnellsten durch.
+  _Kontrolle:_ In den Punkten, in denen die horizontale Bewegung umkehrt ($x = plus.minus 3$, $y = plus.minus 4$, $z = 0$, also $sin = 0$), ist $dot(x) = dot(y) = 0$, die Geschwindigkeit ist rein vertikal mit $|vv| = 3 pi$ cm/s. In den obersten und untersten Lagen ($z = plus.minus 1$, $cos = 0$) ist $dot(z) = 0$, die Geschwindigkeit ist rein horizontal, der Betrag $15 pi$ cm/s ist maximal. Das passt zur Ellipse: oben und unten läuft der Punkt am schnellsten durch.
 ]
 
 === Zylindrische Komponenten
@@ -132,7 +132,7 @@ Das ist auch direkt aus dem Wegelement (rechts in der Abbildung) ablesbar: $dif 
 #bsp[Elektron][
   Zu $rho = R_1 + a t$, $phi = b t$, $z = a t$ gehört $dot(rho) = a$, $dot(phi) = b$, $dot(z) = a$, also
   $ vv = a ve_rho + b (R_1 + a t) ve_phi + a ve_z, wide |vv| = sqrt(2 a^2 + b^2 (R_1 + a t)^2). $
-  Beim Start ($t = 0$) ist der Querteil $b R_1$, an der Anode ($t = t_2$) ist er $b R_2$: Bei gleicher Winkelschnelligkeit ist die Umfangsgeschwindigkeit außen größer. Der radiale und der axiale Anteil bleiben dagegen konstant $= a$.
+  Beim Start ($t = 0$) ist der Querteil $b R_1$, an der Anode ($t = t_2$) ist er $b R_2$: Bei gleicher Winkelschnelligkeit ist die Umfangsgeschwindigkeit aussen grösser. Der radiale und der axiale Anteil bleiben dagegen konstant $= a$.
 ]
 
 === Sphärische Komponenten
@@ -152,13 +152,13 @@ Der Faktor $sin theta$ erscheint, weil der Breitenkreis, auf dem sich $psi$ änd
 
 Der wichtigste Spezialfall: Ein Punkt läuft auf einem Kreis mit Radius $R$ um die $z$-Achse. Dann ist $rho = R$ und $z = z_0$ konstant, $dot(rho) = dot(z) = 0$, und die zylindrische Formel reduziert sich auf
 $ vv = R dot(phi) ve_phi. $
-Die Größe $dot(phi)$ heißt *Winkelschnelligkeit*. Die Schnelligkeit ist $R dot(phi)$ (der Weg pro Zeit auf dem Kreis), und die Richtung ist tangential, $vtau = ve_phi$.
+Die Grösse $dot(phi)$ heisst *Winkelschnelligkeit*. Die Schnelligkeit ist $R dot(phi)$ (der Weg pro Zeit auf dem Kreis), und die Richtung ist tangential, $vtau = ve_phi$.
 
 Diese Formel hängt noch an der Wahl der Zylinderkoordinaten. Es gibt eine koordinatenfreie Form, und die ist der Schlüssel zum nächsten Kapitel. Mit $ve_phi = ve_z times ve_rho$ ist $vv = dot(phi) ve_z times R ve_rho$. Der Ortsvektor von $O$ auf der Achse zum Punkt ist $vr = R ve_rho + z_0 ve_z$. Weil $ve_z times ve_z = bold(0)$ ist, darf man $R ve_rho$ durch $vr$ ersetzen:
 $ vv = dot(phi) ve_z times vr. $
 
 #defn[Winkelgeschwindigkeit][
-  Der Vektor $vom := dot(phi) ve_z$ heißt *Winkelgeschwindigkeit* der Kreisbewegung um die $z$-Achse. Er liegt _auf der Drehachse_, sein Betrag ist die Winkelschnelligkeit, sein Richtungssinn folgt der Rechte-Hand-Regel: Finger in Drehrichtung, Daumen zeigt in Richtung $vom$.
+  Der Vektor $vom := dot(phi) ve_z$ heisst *Winkelgeschwindigkeit* der Kreisbewegung um die $z$-Achse. Er liegt _auf der Drehachse_, sein Betrag ist die Winkelschnelligkeit, sein Richtungssinn folgt der Rechte-Hand-Regel: Finger in Drehrichtung, Daumen zeigt in Richtung $vom$.
 ]
 
 #fg("k02_kreis", [Kreisbewegung. Die Winkelgeschwindigkeit $vom$ liegt auf der Drehachse, die Geschwindigkeit $vv$ steht senkrecht auf $vom$ und auf $vr$.])
@@ -176,7 +176,7 @@ $ vv = dot(phi) ve_z times vr. $
   - $dot(ve)_rho$ vergessen und $vv = dot(rho) ve_rho + dot(z) ve_z$ schreiben. Der Term $rho dot(phi) ve_phi$ entsteht genau aus der Drehung von $ve_rho$.
   - Schnelligkeit (Skalar $dot(s)$) und Geschwindigkeit (Vektor $vv$) verwechseln.
   - Bei $vv = vom times vr$ die Reihenfolge vertauschen: $vr times vom$ hat das falsche Vorzeichen.
-  - Die Winkelgeschwindigkeit in Grad pro Sekunde einsetzen. In allen Formeln muss $phi$ im _Bogenmaß_ sein.
+  - Die Winkelgeschwindigkeit in Grad pro Sekunde einsetzen. In allen Formeln muss $phi$ im _Bogenmass_ sein.
 ]
 
 #bsp[Aufgabe: Bewegung mit $s^2 prop t$][
@@ -188,7 +188,7 @@ $ vv = dot(phi) ve_z times vr. $
 
   _Zeiten:_ $t_A = T\/3$, $t_B = 4T\/3$.
 
-  _Schnelligkeit:_ $dot(s) = (1\/2) sqrt(k\/t)$. In $A$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(T\/3)) = 3L\/(2T)$. In $B$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(4T\/3)) = 3L\/(4T)$. Der Punkt wird unterwegs langsamer, wie man es bei einer Wurzelfunktion erwartet.
+  _Schnelligkeit:_ $dot(s) = (1\/2) sqrt(k\/t)$. In $A$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(T\/3)) = 3L\/(2T)$. In $B$: $dot(s) = (1\/2) sqrt((3L^2\/T)\/(4T\/3)) = 3L\/(4T)$. Der Punkt wird unterwegs langsamer, wie man es bei einer Wurzelfunktion erwartet. (Bei $t = 0$ wäre $dot(s)$ unendlich gross: Als Modell für einen Start aus der Ruhe taugt $s^2 prop t$ nicht, für $t >= T\/3$ aber sehr wohl.)
 ]
 
 // ALLTAG-BEGIN
@@ -204,7 +204,7 @@ $ vv = dot(phi) ve_z times vr. $
 #aufgaben()
 
 #aufg(fig: "a02_bahn", fw: 5.4cm)[Bahnkurve, Schnelligkeit und Tangente][
-  Ein Punkt $M$ bewegt sich gemäß
+  Ein Punkt $M$ bewegt sich gemäss
   $ vr(t) = (a t, thick a t, thick b a^2 t^2) $
   (kartesische Komponenten, $a, b > 0$ konstant). Gesucht sind die Form der Bahn, die Geschwindigkeit $vv(t)$, die Schnelligkeit $dot(s)(t)$, der Tangenteneinheitsvektor $vtau(t)$ und die Schnelligkeit im Punkt $P = (a, a, b a^2)$.
 ][

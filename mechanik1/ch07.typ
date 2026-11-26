@@ -2,7 +2,7 @@
 
 = Parallele Kräfte und Schwerpunkt
 
-Parallele Kräfte sind der häufigste Fall überhaupt: Alle Gewichtskräfte zeigen nach unten. Nach Kapitel 6 lässt sich eine parallele Kräftegruppe immer auf eine Einzelkraft reduzieren. Die Frage ist nur noch: _Wo_ greift sie an? Die Antwort liefert der Kräftemittelpunkt, und im Spezialfall des Gewichts heißt er Schwerpunkt.
+Parallele Kräfte sind der häufigste Fall überhaupt: Alle Gewichtskräfte zeigen nach unten. Nach Kapitel 6 lässt sich eine parallele Kräftegruppe immer auf eine Einzelkraft reduzieren. Die Frage ist nur noch: _Wo_ greift sie an? Die Antwort liefert der Kräftemittelpunkt, und im Spezialfall des Gewichts heisst er Schwerpunkt.
 
 == Kräftemittelpunkt
 
@@ -25,7 +25,7 @@ Soll das nicht nur für eine Richtung $ve$ gelten, sondern für _jede_ (wir dreh
 
 Für parallele Kräfte $vF_i = Z_i ve_z$ (Basis so gewählt, dass die Wirkungslinien parallel zur $z$-Achse liegen) hat die Reduktion auf den Ursprung eine besonders einfache Gestalt: Die Resultierende ist $vR = (sum Z_i) ve_z$, und das Moment $vM_O$ hat nur Komponenten in der $x y$-Ebene, denn $vM_O = sum arrow(O A_i) times Z_i ve_z$ steht senkrecht auf $ve_z$. Daraus folgt $vR dot.c vM_O = 0$. Nach Kapitel 6 kann man eine parallele Kräftegruppe deshalb *immer* auf eine Einzelkraft oder, für $vR = bold(0)$, auf ein Kräftepaar in einer zur $z$-Achse parallelen Ebene reduzieren. Für $vR != bold(0)$ ist die Wirkungslinie der Einzelkraft die Zentralachse.
 
-Warum heißt $S$ «Mittelpunkt»? Dreht man alle Kräfte einer _gleich gerichteten_ Gruppe um ihre Angriffspunkte um denselben Winkel, ändert sich die Resultierende nur in der Richtung, und ihre Wirkungslinie dreht sich um den festen Punkt $S$. Genau diesen Punkt meinen wir. Er hängt auch nicht davon ab, wo man den Ursprung des Koordinatensystems hinlegt: Verschiebt man ihn nach $O'$, haben alle Ortsvektoren den Zusatz $arrow(O' O)$, und die Formel liefert $vr'_S = vr_S + arrow(O' O)$. Der Punkt $S$ bleibt also am selben materiellen Ort des Körpers. Er ist eine Eigenschaft der Kräftegruppe, nicht des Koordinatensystems.
+Warum heisst $S$ «Mittelpunkt»? Dreht man alle Kräfte einer _gleich gerichteten_ Gruppe um ihre Angriffspunkte um denselben Winkel, ändert sich die Resultierende nur in der Richtung, und ihre Wirkungslinie dreht sich um den festen Punkt $S$. Genau diesen Punkt meinen wir. Er hängt auch nicht davon ab, wo man den Ursprung des Koordinatensystems hinlegt: Verschiebt man ihn nach $O'$, haben alle Ortsvektoren den Zusatz $arrow(O' O)$, und die Formel liefert $vr'_S = vr_S + arrow(O' O)$. Der Punkt $S$ bleibt also am selben materiellen Ort des Körpers. Er ist eine Eigenschaft der Kräftegruppe, nicht des Koordinatensystems.
 
 == Linien- und flächenverteilte Kräfte
 
@@ -36,13 +36,13 @@ Bei kontinuierlichen Verteilungen werden die Summen zu Integralen, der Beitrag j
   Die äquivalente Einzelkraft einer Linienlast hat als Betrag die *Fläche* unter dem Lastdiagramm und greift im *Flächenschwerpunkt* dieses Diagramms an. Man rechnet nicht jedes Mal das Integral aus, sondern kennt die beiden Standardfälle.
 ]
 
-#fg("k07_last", [Gleichlast: $R = q_0 L$, Mitte. Dreieckslast: $R = q_0 L\/2$, im Abstand $2L\/3$ von der Spitze (also $L\/3$ von der großen Seite).])
+#fg("k07_last", [Gleichlast: $R = q_0 L$, Mitte. Dreieckslast: $R = q_0 L\/2$, im Abstand $2L\/3$ von der Spitze (also $L\/3$ von der grossen Seite).])
 
 #warum[Die Dreieckslast][
   $q(x) = q_0 x \/ L$ steigt linear von null auf $q_0$. Dann ist $R = integral_0^L (q_0 x\/L) dif x = q_0 L\/2$ (Dreiecksfläche), und $x_S = (integral_0^L x (q_0 x\/L) dif x)\/R = (q_0 L^2\/3)\/(q_0 L\/2) = 2L\/3$.
 ]
 
-Eine Dreieckslast tritt zum Beispiel als Schneelast auf einem Dach oder als Wasserdruck auf einer senkrechten Wand auf.
+Eine Dreieckslast tritt zum Beispiel als Wasserdruck auf einer senkrechten Wand auf (der Druck wächst linear mit der Tiefe) oder als Schneeverwehung vor einer Dachstufe.
 
 Ein Trapez zerlegt man in ein Rechteck und ein Dreieck (zwei Ersatzkräfte), ein beliebiger Verlauf in einfache Teile oder man integriert.
 
@@ -69,7 +69,7 @@ Jedes Volumenelement $dif V$ eines Körpers hat das Gewicht $dif G = gamma dif V
 ]
 
 #defn[Massenmittelpunkt][
-  Mit $dif m = rho dif V$ und $m = integral rho dif V$ heißt $vr_C := 1/m integral vr dif m$ der *Massenmittelpunkt*. Im homogenen Schwerefeld ($g$ überall gleich) fällt er mit dem Schwerpunkt zusammen. Ist der Körper zusätzlich homogen ($rho = "konst."$), ist er der geometrische *Volumenmittelpunkt* $vr_C = 1/V integral vr dif V$.
+  Mit $dif m = rho dif V$ und $m = integral rho dif V$ heisst $vr_C := 1/m integral vr dif m$ der *Massenmittelpunkt*. Im homogenen Schwerefeld ($g$ überall gleich) fällt er mit dem Schwerpunkt zusammen. Ist der Körper zusätzlich homogen ($rho = "konst."$), ist er der geometrische *Volumenmittelpunkt* $vr_C = 1/V integral vr dif V$.
 ]
 
 #intu[
@@ -82,7 +82,7 @@ Drei Dinge zum Schwerpunkt:
 - Wie jeder Kräftemittelpunkt muss er nicht im Material liegen. Eine homogene Hohlkugel hat ihren Schwerpunkt im Zentrum, in der Luft.
 - Der Betrag des spezifischen Gewichts folgt aus der spezifischen Masse (Dichte) $rho$ und der Erdbeschleunigung: $gamma = rho g$. Streng genommen müsste man zwischen träger und schwerer Masse unterscheiden; Einstein hat ihre Gleichheit postuliert, sie ist eine Grundlage der allgemeinen Relativitätstheorie.
 
-Der *Massenmittelpunkt* $vr_C$ ist wie der Schwerpunkt definiert, aber mit der Masse statt mit dem Gewicht. Bei Körpern, deren Abmessungen viel kleiner als der Erdradius sind, fallen beide zusammen. Bei großen Körpern und in der Astronomie ist das Gravitationsfeld nicht mehr aus parallelen Kräften aufgebaut, der Begriff des Kräftemittelpunkts (und damit der Schwerpunkt) entfällt, aber der Massenmittelpunkt existiert trotzdem, weil er nicht aus einer Momentenbedingung, sondern aus der Massenverteilung allein definiert ist. Ein Körper heißt *homogen*, wenn $rho = rho_0$ im ganzen Körper konstant ist; dann ist $m = rho_0 V$, und $rho_0$ kürzt sich aus allen Formeln.
+Der *Massenmittelpunkt* $vr_C$ ist wie der Schwerpunkt definiert, aber mit der Masse statt mit dem Gewicht. Bei Körpern, deren Abmessungen viel kleiner als der Erdradius sind, fallen beide zusammen. Bei grossen Körpern und in der Astronomie ist das Gravitationsfeld nicht mehr aus parallelen Kräften aufgebaut, der Begriff des Kräftemittelpunkts (und damit der Schwerpunkt) entfällt, aber der Massenmittelpunkt existiert trotzdem, weil er nicht aus einer Momentenbedingung, sondern aus der Massenverteilung allein definiert ist. Ein Körper heisst *homogen*, wenn $rho = rho_0$ im ganzen Körper konstant ist; dann ist $m = rho_0 V$, und $rho_0$ kürzt sich aus allen Formeln.
 
 #rezept[Schwerpunkt bestimmen][
   + *Symmetrie nutzen.* Hat der (homogene) Körper eine Symmetrieebene oder -achse, liegt der Schwerpunkt darauf. Mit zwei Symmetrieachsen: Schnittpunkt, fertig.
@@ -138,8 +138,8 @@ Weitere nützliche Werte: Halbkugelschale $R\/2$ über der Grundfläche, Halbkug
   $ y_S = (4 dot (-3) + 3 dot 1 + 2 dot (-3) + 1 dot 3 + 0) / (-4) "m" = (-12)/(-4) "m" = 3 "m". $
 
   _Kräftemittelpunkt._ Er muss auch dann auf der Wirkungslinie liegen, wenn man alle Kräfte um denselben Winkel dreht. Dreht man sie um 90° in die $y$-Richtung, zählt der Hebelarm $x_i$:
-  $ x_S = (4 dot (-3) + 0 dot 1 + 3 dot (-3) + 1 dot 3 + 2 dot (-2)) / (-4) "m" = (-22)/(-4) "m" = 5,5 "m". $
-  Also $S = (5,5 "m"; thick 3 "m")$. Der Punkt liegt außerhalb des Rahmens. Das ist möglich, weil die Kräfte verschiedene Vorzeichen haben; bei gleichgerichteten Kräften (Gewichten) liegt $S$ immer «zwischen» den Angriffspunkten.
+  $ x_S = (4 dot (-3) + 0 dot 1 + 3 dot (-3) + 1 dot 3 + 2 dot (-2)) / (-4) "m" = (-22)/(-4) "m" = 5.5 "m". $
+  Also $S = (5.5 "m", thick 3 "m")$. Der Punkt liegt ausserhalb des Rahmens. Das ist möglich, weil die Kräfte verschiedene Vorzeichen haben; bei gleichgerichteten Kräften (Gewichten) liegt $S$ immer «zwischen» den Angriffspunkten.
 ]
 
 #kurz[

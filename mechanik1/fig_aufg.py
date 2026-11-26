@@ -344,10 +344,10 @@ def a14_L():
     f = Fig(8.8, 5.4); A = P(1.4, 1.6); L = 2.6; Bp = A + P(L, 0); C = A + P(2 * L, 0); D = C + P(0, L)
     f.clamp(A, h=1.3, side=-1); f.beam(A, C, lw=3.0); f.beam(C + P(0, -0.04), D, lw=3.0); f.hinge(Bp, 0.1); f.roller(C)
     n = 6
-    for y in np.linspace(0, L, n + 1)[1:]: f.arrow(C + P(0.06, y), C + P(0.95, y), c=F, lw=0.8, head=0.55)
-    f.line(C + P(0.95, 0), D + P(0.95, 0), c=F, lw=0.8); f.text(D + P(1.0, 0.0), r"$q=P/L$", c=F, dx=0.0, dy=0.3, size=8.5)
-    f.dim(A, Bp, "$L$", off=0.5); f.dim(Bp, C, "$L$", off=0.5); f.dim(C, D, "$L$", off=-1.45)
-    for p, t, dx, dy in [(A, "A", 0.25, -0.35), (Bp, "B", 0.0, -0.35), (C, "C", -0.3, 0.3), (D, "D", -0.3, 0.05)]: f.text(p, f"${t}$", dx=dx, dy=dy)
+    for y in np.linspace(0, L, n + 1)[1:]: f.arrow(C + P(-0.95, y), C + P(-0.06, y), c=F, lw=0.8, head=0.55)   # Last drückt in +x
+    f.line(C + P(-0.95, L / n), D + P(-0.95, 0), c=F, lw=0.8); f.text(D + P(-0.95, 0.0), r"$q=P/L$", c=F, dx=-0.1, dy=0.32, size=8.5)
+    f.dim(A, Bp, "$L$", off=-1.05); f.dim(Bp, C, "$L$", off=-1.05); f.dim(C, D, "$L$", off=-0.55)
+    for p, t, dx, dy in [(A, "A", 0.25, -0.35), (Bp, "B", 0.0, -0.35), (C, "C", 0.32, 0.22), (D, "D", 0.3, 0.1)]: f.text(p, f"${t}$", dx=dx, dy=dy)
     kos(f, (2.2, 3.6), l=0.7)
     f.save("a14_ltraeger")
 

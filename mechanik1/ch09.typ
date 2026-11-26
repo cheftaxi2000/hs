@@ -2,25 +2,25 @@
 
 = Lagerbindungen und Lagerkräfte
 
-Lager sind die äußeren Bindungen von Trägern, Wellen und Tragwerken. Dieses Kapitel ist das handwerkliche Herz der Statik: Lager erkennen, Lagerkräfte einzeichnen, Gleichgewicht ansetzen, auflösen. Nach dem letzten Kapitel wissen wir _warum_ das funktioniert; jetzt üben wir _wie_.
+Lager sind die äusseren Bindungen von Trägern, Wellen und Tragwerken. Dieses Kapitel ist das handwerkliche Herz der Statik: Lager erkennen, Lagerkräfte einzeichnen, Gleichgewicht ansetzen, auflösen. Nach dem letzten Kapitel wissen wir _warum_ das funktioniert; jetzt üben wir _wie_.
 
 == Körper auf ebener Unterlage, Standfestigkeit
 
-Eine reibungsfreie Unterlage drückt mit verteilten Normalkräften auf die Berührungsfläche. Sie sind alle parallel und gleich gerichtet: Die Unterlage kann nur drücken, nicht ziehen. Ihre äquivalente Einzelkraft $vN$ (Kapitel 7: Kräftemittelpunkt) muss deshalb *innerhalb der Standfläche* angreifen, genauer: innerhalb der kleinsten konvexen Fläche, die alle Berührungspunkte umschließt.
+Eine reibungsfreie Unterlage drückt mit verteilten Normalkräften auf die Berührungsfläche. Sie sind alle parallel und gleich gerichtet: Die Unterlage kann nur drücken, nicht ziehen. Ihre äquivalente Einzelkraft $vN$ (Kapitel 7: Kräftemittelpunkt) muss deshalb *innerhalb der Standfläche* angreifen, genauer: innerhalb der kleinsten konvexen Fläche, die alle Berührungspunkte umschliesst.
 
 #defn[Standfestigkeit][
-  Ein Körper auf einer Unterlage heißt *standfest*, wenn er nicht kippt. Das ist genau dann der Fall, wenn die Wirkungslinie der Resultierenden aller übrigen Kräfte (Gewicht, Lasten) die Standfläche durchstößt. Geht sie durch den Rand, steht der Körper an der Kippgrenze.
+  Ein Körper auf einer Unterlage heisst *standfest*, wenn er nicht kippt. Das ist genau dann der Fall, wenn die Wirkungslinie der Resultierenden aller übrigen Kräfte (Gewicht, Lasten) die Standfläche durchstösst. Geht sie durch den Rand, steht der Körper an der Kippgrenze.
 ]
 
 #warum[Warum $vN$ innerhalb der Standfläche angreift][
-  Betrachte eine beliebige Tangente an die Randkurve der Standfläche. Die Momente aller infinitesimalen Normalkräfte $dif vN$ bezüglich dieser Tangente haben dasselbe Vorzeichen, denn alle Berührungspunkte liegen auf derselben Seite der Tangente und alle Kräfte zeigen gleich (nach oben). Wegen der statischen Äquivalenz muss auch das Moment der Resultierenden $vN$ dieses Vorzeichen haben. Also liegt ihr Angriffspunkt $P$ auf derselben Seite jeder solchen Tangente wie die Berührungspunkte, das heißt innerhalb der Standfläche. Liefert die Rechnung einen Angriffspunkt außerhalb, ist das ein Widerspruch: Der Kontakt kommt in dieser Form nicht zustande, der Körper kippt.
+  Betrachte eine beliebige Tangente an die Randkurve der Standfläche. Die Momente aller infinitesimalen Normalkräfte $dif vN$ bezüglich dieser Tangente haben dasselbe Vorzeichen, denn alle Berührungspunkte liegen auf derselben Seite der Tangente und alle Kräfte zeigen gleich (nach oben). Wegen der statischen Äquivalenz muss auch das Moment der Resultierenden $vN$ dieses Vorzeichen haben. Also liegt ihr Angriffspunkt $P$ auf derselben Seite jeder solchen Tangente wie die Berührungspunkte, das heisst innerhalb der Standfläche. Liefert die Rechnung einen Angriffspunkt ausserhalb, ist das ein Widerspruch: Der Kontakt kommt in dieser Form nicht zustande, der Körper kippt.
 ]
 
 #bsp[Tisch mit seitlicher Kraft][
-  Ein dreibeiniger Tisch steht auf einer rauen Ebene. Ohne Last ist seine Standfläche das Dreieck durch die drei Beinenden, und er ist standfest, solange der Schwerpunkt $S$ vertikal darüber liegt (Gewicht und Normalkraft müssen dieselbe Wirkungslinie haben). Nun greife in der Höhe $h$ über dem Boden zusätzlich eine horizontale Kraft $K$ an. Die Unterlage liefert die Normalkraft $N$ und die Reibungskraft $F_R$ (Angriffspunkt $P$). Komponentenbedingungen: $F_R = K$ und $N = G$. Die Momentenbedingung um $S$ verschiebt den Angriffspunkt von $N$ um $x = K h\/G$ gegenüber der Lotrechten durch $S$. Der Tisch kippt nicht, solange $P$ in der Standfläche bleibt, also für $x <= a$ (mit $a$ dem Abstand von $S$ zur Kippkante): $K <= G a\/h$. Außerdem muss die Reibung halten, $F_R <= mu_0 N$, also $K <= mu_0 G$. Die kleinere der beiden Grenzen entscheidet, ob der Tisch zuerst kippt oder gleitet.
+  Ein dreibeiniger Tisch steht auf einer rauen Ebene. Ohne Last ist seine Standfläche das Dreieck durch die drei Beinenden, und er ist standfest, solange der Schwerpunkt $S$ vertikal darüber liegt (Gewicht und Normalkraft müssen dieselbe Wirkungslinie haben). Nun greife in der Höhe $h$ über dem Boden zusätzlich eine horizontale Kraft $K$ an. Die Unterlage liefert die Normalkraft $N$ und die Reibungskraft $F_R$ (Angriffspunkt $P$). Komponentenbedingungen: $F_R = K$ und $N = G$. Die Momentenbedingung um $S$ verschiebt den Angriffspunkt von $N$ um $x = K h\/G$ gegenüber der Lotrechten durch $S$. Der Tisch kippt nicht, solange $P$ in der Standfläche bleibt, also für $x <= a$ (mit $a$ dem Abstand von $S$ zur Kippkante): $K <= G a\/h$. Ausserdem muss die Reibung halten, $F_R <= mu_0 N$, also $K <= mu_0 G$. Die kleinere der beiden Grenzen entscheidet, ob der Tisch zuerst kippt oder gleitet.
 ]
 
-#fg("k09_standfest", [Die Normalkraft liegt immer genau gegenüber der Resultierenden aus Gewicht und Last. Je stärker man seitlich drückt, desto weiter wandert $vN$ zum Rand. Erreicht sie die Kante, kippt der Körper.])
+#fg("k09_standfest", [Kräfte massstäblich. Ohne seitliche Last greift $vN$ unter dem Schwerpunkt an. Mit $vF$ kommt die Reibungskraft $vF_R = -vF$ dazu, und $vN$ wandert um $e = F h\/G$ zur vorderen Kante ($h$: Höhe von $vF$). Die gestrichelte Wirkungslinie der Resultierenden aus $vG$ und $vF$ trifft den Boden genau dort (Dreikräftesatz). Erreicht sie die Kante, steht der Körper an der Kippgrenze.])
 
 #intu[
   Eine Kiste, die du seitlich anschiebst, drückt ihre Last immer stärker auf die vordere Kante. Die Unterlage kann nur dort drücken, wo Kontakt ist, also muss die Gegenkraft $vN$ nach vorne wandern, um das Kippmoment aufzufangen. Wenn sie die Kante erreicht, ist kein Platz mehr, und die Kiste kippt.
@@ -51,14 +51,14 @@ Im Raum zählt man genauso:
   [Längslager], [Verschiebung in Achsrichtung (oft einseitig)], [1 Kraft],
   [langes Querlager], [Querverschiebungen und Schiefstellung der Achse], [2 Kräfte, 2 Momente],
   [Kugelgelenk], [alle drei Verschiebungen, alle Drehungen frei], [3 Kräfte],
-  [Zylindergelenk (Scharnier)], [alles außer der Drehung um die Zapfenachse], [3 Kräfte, 2 Momente],
+  [Zylindergelenk (Scharnier)], [alles ausser der Drehung um die Zapfenachse], [3 Kräfte, 2 Momente],
   [Einspannung], [alles], [3 Kräfte, 3 Momente],
   table.hline(stroke: 0.7pt),
 )
 
 Etwas mehr zu den einzelnen Lagern:
 
-*Auflager.* Es wirkt einseitig und verhindert die Bewegung der Berührungspunkte des Trägers in eine Halbebene; die Auflagerkraft zeigt gegen den anderen Halbraum. Bei reibungsfreier Auflage steht sie senkrecht zur Trägerachse. Beispiel: Ein Träger auf zwei Auflagern $A$, $B$ trage vertikale Lasten $F_1$ (im Abstand $a_1$ von $A$) und $F_2$ (im Abstand $a_2$ von $A$; die Auflager haben den Abstand $L$). Die Momentenbedingungen liefern $B_y = (F_1 a_1 + F_2 a_2)\/L$ und $A_y = (F_1 (L - a_1) + F_2 (L - a_2))\/L$. Wegen der einseitigen Bindung dürfen $A_y, B_y$ nicht negativ werden. Liegt $F_2$ weit hinter $B$ ($a_2 > L$), kann $A_y$ negativ werden: Dann hebt der Träger bei $A$ ab und bleibt in dieser Lage nicht in Ruhe. Aus $A_y >= 0$ folgt $F_2 (a_2 - L) <= F_1 (L - a_1)$.
+*Auflager.* Es wirkt einseitig und verhindert die Bewegung der Berührungspunkte des Trägers in eine Halbebene; die Auflagerkraft zeigt gegen den anderen Halbraum. Bei reibungsfreier Auflage steht sie senkrecht zur Berührungsfläche (bei einem waagrechten Träger auf waagrechter Unterlage also senkrecht zur Trägerachse). Beispiel: Ein Träger auf zwei Auflagern $A$, $B$ trage vertikale Lasten $F_1$ (im Abstand $a_1$ von $A$) und $F_2$ (im Abstand $a_2$ von $A$; die Auflager haben den Abstand $L$). Die Momentenbedingungen liefern $B_y = (F_1 a_1 + F_2 a_2)\/L$ und $A_y = (F_1 (L - a_1) + F_2 (L - a_2))\/L$. Wegen der einseitigen Bindung dürfen $A_y, B_y$ nicht negativ werden. Liegt $F_2$ weit hinter $B$ ($a_2 > L$), kann $A_y$ negativ werden: Dann hebt der Träger bei $A$ ab und bleibt in dieser Lage nicht in Ruhe. Aus $A_y >= 0$ folgt $F_2 (a_2 - L) <= F_1 (L - a_1)$.
 
 *Kurzes Querlager* (schmales Ringlager oder Kugellager). Es verhindert die Quertranslation eines Querschnitts senkrecht zur Trägerachse, lässt aber die Längsverschiebung, Kippdrehungen um Querachsen und (bei Rundquerschnitt) die Eigendrehung zu. Reibungsfrei hat die Lagerkraft zwei Komponenten senkrecht zur Achse, deren Richtungssinn sich je nach Belastung einstellt. Zeichnet man eine Komponente in positiver Richtung ein und die Rechnung liefert ein _negatives_ Vorzeichen, so wirkt sie in Wirklichkeit in der Gegenrichtung. Das ist kein Fehler, sondern die Antwort.
 
@@ -82,7 +82,7 @@ Etwas mehr zu den einzelnen Lagern:
 
 #rezept[Lagerkräfte in acht Schritten][
   + *System abgrenzen.* Was genau ist «mein» System?
-  + *Äußere Kräfte einführen:* Lasten (Gewicht im Schwerpunkt, verteilte Lasten durch ihre Ersatzkraft) und Lagerkräfte. Das Bild dazu heißt *Freischnitt*: das System allein, ohne Lager, nur mit Kräften.
+  + *Äussere Kräfte einführen:* Lasten (Gewicht im Schwerpunkt, verteilte Lasten durch ihre Ersatzkraft) und Lagerkräfte. Das Bild dazu heisst *Freischnitt*: das System allein, ohne Lager, nur mit Kräften.
   + *Basis* $ve_x, ve_y, ve_z$ und Koordinaten wählen.
   + *Abzählen:* Unbekannte $n$ gegen Gleichungen $m$ (eben: 3 pro Körper). Statisch bestimmt?
   + *Gleichgewichtsbedingungen* komponentenweise aufschreiben.
@@ -101,7 +101,7 @@ Etwas mehr zu den einzelnen Lagern:
   Ein Balken der Länge $L = a + b$, in $A$ gelenkig und in $B$ auf einem Loslager, trägt im Abstand $a$ von $A$ die Last $F$. Unbekannte: $A_x, A_y, B_y$ (3), Gleichungen: 3. Statisch bestimmt.
   $ sum X: quad A_x = 0, wide sum M_A: quad -a F + (a + b) B_y = 0, wide sum M_B: quad b F - (a + b) A_y = 0. $
   $ => quad B_y = a / (a + b) F, wide A_y = b / (a + b) F. $
-  _Kontrolle:_ $A_y + B_y = F$ ✓. _Deutung:_ Das Lager, das näher an der Last liegt, trägt den größeren Teil. Steht die Last direkt über $A$ ($a = 0$), trägt $A$ alles. Außerdem muss $B_y >= 0$ sein, weil das Loslager nur drücken kann; das ist hier für $F > 0$ erfüllt.
+  _Kontrolle:_ $A_y + B_y = F$ ✓. _Deutung:_ Das Lager, das näher an der Last liegt, trägt den grösseren Teil. Steht die Last direkt über $A$ ($a = 0$), trägt $A$ alles. Ausserdem muss $B_y >= 0$ sein, weil das Loslager nur drücken kann; das ist hier für $F > 0$ erfüllt.
 ]
 
 #bsp[Kragarm mit Gleichlast][
@@ -112,16 +112,16 @@ Etwas mehr zu den einzelnen Lagern:
 
 === Mehrere Momentenbedingungen
 
-Bei ebenen Problemen ist es oft nützlich, eine Komponentenbedingung durch eine zweite Momentenbedingung zu ersetzen. Man stellt zuerst die Momentenbedingung um einen günstigen Punkt $O_1$ auf, danach eine zweite um einen Punkt $O_2$, und schließlich eine Komponentenbedingung längs einer Achse, die _nicht_ senkrecht zur Verbindung $O_1 O_2$ steht. Diese drei Gleichungen sind notwendig und auch hinreichend: Verschwinden die Momente um $O_1$ und $O_2$, lässt sich die Kräftegruppe höchstens noch auf eine Einzelkraft mit Wirkungslinie längs $O_1 O_2$ reduzieren (Formel $vM_P = vM_O + arrow(P O) times vR$); die Komponentenbedingung sorgt dafür, dass auch diese verschwindet. Ebenso genügen drei Momentenbedingungen um drei _nicht auf einer Geraden liegende_ Punkte. Im Raum kann man die sechs Gleichungen durch sechs Momentenbedingungen um sechs geeignet liegende Achsen ersetzen.
+Bei ebenen Problemen ist es oft nützlich, eine Komponentenbedingung durch eine zweite Momentenbedingung zu ersetzen. Man stellt zuerst die Momentenbedingung um einen günstigen Punkt $O_1$ auf, danach eine zweite um einen Punkt $O_2$, und schliesslich eine Komponentenbedingung längs einer Achse, die _nicht_ senkrecht zur Verbindung $O_1 O_2$ steht. Diese drei Gleichungen sind notwendig und auch hinreichend: Verschwinden die Momente um $O_1$ und $O_2$, lässt sich die Kräftegruppe höchstens noch auf eine Einzelkraft mit Wirkungslinie längs $O_1 O_2$ reduzieren (Formel $vM_P = vM_O + arrow(P O) times vR$); die Komponentenbedingung sorgt dafür, dass auch diese verschwindet. Ebenso genügen drei Momentenbedingungen um drei _nicht auf einer Geraden liegende_ Punkte. Im Raum kann man die sechs Gleichungen durch sechs Momentenbedingungen um sechs geeignet liegende Achsen ersetzen.
 
 #merke[
-  Es gibt aber nie mehr als *drei* unabhängige Gleichgewichtsbedingungen pro ebenem Körper (sechs im Raum). Denn sie garantieren schon, dass die Dyname der äußeren Kräfte verschwindet, und damit ist jede weitere Bedingung automatisch erfüllt. Zusätzliche Gleichungen bringen nichts Neues und helfen nicht gegen eine statische Unbestimmtheit.
+  Es gibt aber nie mehr als *drei* unabhängige Gleichgewichtsbedingungen pro ebenem Körper (sechs im Raum). Denn sie garantieren schon, dass die Dyname der äusseren Kräfte verschwindet, und damit ist jede weitere Bedingung automatisch erfüllt. Zusätzliche Gleichungen bringen nichts Neues und helfen nicht gegen eine statische Unbestimmtheit.
 ]
 
 == Statische Bestimmtheit
 
 #defn[Statisch bestimmt, unbestimmt][
-  Sei $n$ die Anzahl der unbekannten Lagerkraftkomponenten und $m$ die Anzahl unabhängiger Gleichgewichtsbedingungen. Für $m = n$ (und eindeutig lösbares Gleichungssystem) heißt das Problem *statisch bestimmt*. Für $m < n$ ist es *statisch unbestimmt*: Die Statik allein reicht nicht, man braucht zusätzlich die Verformungen. Für $m > n$ ist das System beweglich und nur für spezielle Lasten in Ruhe.
+  Sei $n$ die Anzahl der unbekannten Lagerkraftkomponenten und $m$ die Anzahl unabhängiger Gleichgewichtsbedingungen. Für $m = n$ (und eindeutig lösbares Gleichungssystem) heisst das Problem *statisch bestimmt*. Für $m < n$ ist es *statisch unbestimmt*: Die Statik allein reicht nicht, man braucht zusätzlich die Verformungen. Für $m > n$ ist das System beweglich und nur für spezielle Lasten in Ruhe.
 ]
 
 Physikalisch: Ein System ist statisch bestimmt gelagert, wenn es gerade so viele Bindungen hat, dass es sich nicht mehr bewegen kann. Jede weitere Bindung ist «überzählig». Löst man in Gedanken $u$ Bindungskomponenten, bis das System gerade noch unbeweglich ist, so ist es *$u$-fach statisch unbestimmt*.
@@ -134,7 +134,7 @@ Die physikalische Überlegung dahinter: Bei einem statisch unbestimmten System k
 
 === Lagerkraft oder Lagerreaktion?
 
-Die *Lagerkraft* ist die Kraft, die das Lager _auf den Träger_ ausübt; sie tragen wir im Freischnitt des Trägers ein. Die *Lagerreaktion* ist ihre Gegenkraft, die der Träger auf das Lager (das Fundament) ausübt. Für die Dimensionierung des Fundaments braucht man die zweite; sie ist gleich groß und entgegengesetzt.
+Die *Lagerkraft* ist die Kraft, die das Lager _auf den Träger_ ausübt; sie tragen wir im Freischnitt des Trägers ein. Die *Lagerreaktion* ist ihre Gegenkraft, die der Träger auf das Lager (das Fundament) ausübt. Für die Dimensionierung des Fundaments braucht man die zweite; sie ist gleich gross und entgegengesetzt.
 
 === Federn und nachgiebige Lager
 
@@ -142,7 +142,7 @@ Eine lineare Feder mit *Federkonstante* $k$ (N/m) übt bei der Längenänderung 
 #gl($ F = k Delta x $)
 aus, so gerichtet, dass sie in die ungespannte Länge zurückwill. Eine Drehfeder liefert entsprechend ein Moment $M = k_phi Delta phi$. Ein elastisch nachgiebiges Lager ist ein Lager mit Feder: Die Lagerkraft ist dann keine freie Unbekannte mehr, sondern durch die Einsenkung bestimmt. Damit bekommt man zusätzliche Gleichungen, die auch statisch unbestimmte Probleme lösbar machen (Beispiel: Feder zwischen zwei Stäben, Kapitel 10).
 
-Für ein elastisch nachgiebiges Lager gilt: Das Auflager $A$ mit Federkonstante $k$ übt die Auflagerkraft $A_y = k Delta y_A$ aus, wobei $Delta y_A$ die sich in der Ruhelage einstellende Verschiebung ist. Ein Zylindergelenk, das in zwei Richtungen elastisch verschiebbar ist, hat Komponenten $B_x = k_x Delta x_B$ und $B_y = k_y Delta y_B$. Zusätzlich können in jeder Richtung Reibungskräfte auftreten (Kapitel 12). Auch Einspannungen sind nicht unendlich steif: Man ersetzt sie durch eine lineare Drehfeder (Torsionsfeder), die bei einer Verdrehung $Delta phi$ ein Kräftepaar mit dem Moment $M = C Delta phi$ entwickelt ($C$ hat die Dimension Kraft mal Länge). Ist die Einspannung auch translatorisch nachgiebig, kommen entsprechende Zug- und Druckfedern dazu (elastische Einspannung). Bei großen Verformungen muss man nichtlineare Effekte berücksichtigen. Die Lager, die wir bisher betrachtet haben, heißen im Gegensatz dazu *feste Lager*: Sie sind eine Idealisierung, in der die Nachgiebigkeit des Lagers vernachlässigt wird.
+Beispiele: Ein Auflager $A$ mit Federkonstante $k$ übt die Auflagerkraft $A_y = k Delta y_A$ aus, wobei $Delta y_A$ die Einsenkung in der Ruhelage ist. Ein in zwei Richtungen elastisch verschiebbares Gelenk hat $B_x = k_x Delta x_B$ und $B_y = k_y Delta y_B$. Eine nachgiebige Einspannung ersetzt man durch eine Drehfeder mit $M = k_phi Delta phi$ ($k_phi$ hat die Dimension Kraft mal Länge), wenn nötig ergänzt durch Längsfedern. Bei grossen Verformungen werden die Federgesetze nichtlinear. Die Lager der vorigen Abschnitte heissen im Gegensatz dazu *feste Lager*: eine Idealisierung, in der die Nachgiebigkeit vernachlässigt wird.
 
 === Gesucht ist die Ruhelage
 
@@ -161,7 +161,7 @@ Manchmal sind nicht die Kräfte unbekannt, sondern die Lage selbst (ein Winkel, 
 
 #alltag[*Lager an der Brücke.* Eine Brücke dehnt sich im Sommer aus und zieht sich im Winter zusammen: Eine $100$ m lange Stahlbrücke wird bei $40$ K Temperaturunterschied um etwa $5$ cm länger. Darum liegt sie auf einem Festlager (nimmt Kräfte in beiden Richtungen auf) und einem Loslager (rollt und nimmt nur die senkrechte Kraft auf). Hätte sie zwei Festlager, entstünden gewaltige Zwangskräfte. Dasselbe Prinzip steckt in Dehnfugen von Autobahnen und im «Klacken» von Brückenübergängen.]
 
-#alltag[*Scharnier und Türrahmen.* Eine Tür hängt an zwei Scharnieren. Das obere zieht an der Tür, das untere drückt, und beide zusammen halten das Moment des Türgewichts. Wer schon einmal eine schwere Brandschutztür umhängen musste, weiss, dass man dafür drei Scharniere nimmt. Die Berechnung der Lagerkräfte in diesem Kapitel ist genau der Schritt, den Statiker bei jedem Bauteil als erstes tun: erst die Kräfte an den Auflagern, dann die Schnitte im Bauteil.]
+#alltag[*Scharnier und Türrahmen.* Eine Tür hängt an zwei Scharnieren. Das obere zieht an der Tür, das untere drückt, und beide zusammen halten das Moment des Türgewichts. Schwere Türen bekommen drei Bänder. Damit ist die Lagerung statisch unbestimmt: Wie sich die Kräfte auf die drei Bänder verteilen, hängt davon ab, wie genau sie montiert sind. Die Berechnung der Lagerkräfte in diesem Kapitel ist genau der Schritt, den Statiker bei jedem Bauteil als erstes tun: erst die Kräfte an den Auflagern, dann die Schnitte im Bauteil.]
 // ALLTAG-END
 
 #aufgaben()
@@ -187,7 +187,7 @@ Manchmal sind nicht die Kräfte unbekannt, sondern die Lage selbst (ein Winkel, 
   $ M_x^((A)): quad 0 = 0, wide M_y^((A)): quad -F_z L/2 - B_z L = 0, wide M_z^((A)): quad F_y L/2 + B_y L = 0. $
   Daraus $B_y = A_y = -F_y\/2$ und $B_z = A_z = -F_z\/2$. Für die Längsrichtung bleibt nur $A_x + B_x = -F_x$: Wie sich $F_x$ auf die beiden Gelenke verteilt, lässt sich mit der Statik allein nicht sagen. Es gibt nur $m = 5$ brauchbare Gleichungen für $n = 6$ Unbekannte, die Lagerung ist *einfach statisch unbestimmt*. (Die Gleichung $0 = 0$ zeigt zugleich, dass nichts die Drehung um die Balkenachse verhindert.)
 
-  - _Kurzes Querlager in $B$:_ $B_x$ entfällt, $n = 5 = m$, statisch bestimmt, $A_x = -F_x$.
+  - _Kurzes Querlager in $B$:_ $B_x$ entfällt, $n = 5 = m$, alle Lagerkräfte sind eindeutig bestimmt, $A_x = -F_x$. Die Gleichung $M_x: 0 = 0$ bleibt aber stehen: Die Drehung um die Balkenachse ist nach wie vor frei. Die Lagerung trägt nur deshalb, weil die Last kein Moment um diese Achse hat; streng genommen ist sie beweglich, nicht statisch bestimmt. Beim Stabmodell (Querschnitt null) ist das bedeutungslos, bei einer Welle mit Rad nicht.
   - _Einspannung in $B$, Kugelgelenk in $A$:_ $n = 6 + 3 = 9$, $m = 6$, dreifach statisch unbestimmt.
 ]
 
@@ -196,14 +196,14 @@ Manchmal sind nicht die Kräfte unbekannt, sondern die Lage selbst (ein Winkel, 
 
   Gesucht sind die Lagerkräfte und die Bedingung, unter der die Scheibe liegen bleibt.
 ][
-  $vF$ schließt mit der Vertikalen 30° ein: $vF = F (-1\/2, sqrt(3)\/2)$.
+  $vF$ schliesst mit der Vertikalen 30° ein: $vF = F (-1\/2, sqrt(3)\/2)$.
   $ sum X: quad & A_x - F/2 = 0 quad && => quad A_x = F/2, \
     sum M_A: quad & B_y L - G dot 3/2 L + sqrt(3)/2 F dot 2 L = 0 quad && => quad B_y = 3/2 G - sqrt(3) F, \
     sum Y: quad & A_y + B_y - G + sqrt(3)/2 F = 0 quad && => quad A_y = -1/2 G + sqrt(3)/2 F. $
 
   _Diskussion._ Das Auflager in $B$ ist einseitig, es kann nur drücken: $B_y >= 0$, also
   $ F <= sqrt(3)/2 G. $
-  Für größeres $F$ hebt die Scheibe in $B$ ab und dreht um $A$. Das Gelenk $A$ darf dagegen in beide Richtungen belastet werden; $A_y$ wechselt bei $F = G\/sqrt(3)$ das Vorzeichen.
+  Für grösseres $F$ hebt die Scheibe in $B$ ab und dreht um $A$. Das Gelenk $A$ darf dagegen in beide Richtungen belastet werden; $A_y$ wechselt bei $F = G\/sqrt(3)$ das Vorzeichen.
 ]
 
 #aufg(fig: "a09_schraeg", fw: 6.8cm)[Schräger Balken][

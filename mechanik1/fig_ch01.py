@@ -28,8 +28,8 @@ def lage():
 
 # ---------- 1.2 Die drei Koordinatensätze ----------
 def koordinaten():
-    f = Fig(15.8, 5.0)
-    cols = [(2.6, 1.6), (7.7, 1.6), (12.6, 1.6)]
+    f = Fig(15.8, 5.2)
+    cols = [(2.6, 1.8), (7.7, 1.8), (12.6, 1.8)]
     L = 2.7
     pts = []
     # --- kartesisch
@@ -50,8 +50,11 @@ def koordinaten():
     f.line(o, Mxy, lw=1.7); f.line(Mxy, M_, lw=1.7); f.guide(o, M_)
     arcpts = [f.proj(o, 0.95 * np.cos(rad(a)), 0.95 * np.sin(rad(a)), 0) for a in np.linspace(0, ph, 30)]
     f.path(arcpts, lw=0.8)
+    # Koordinatenlinie phi (Kreis um die z-Achse durch M) und Zylinder rho = konst. (hell)
+    f.path(f.circle3(o, (0, 0, zc), r_), c=MID, lw=0.7, dash=(3, 2.5), z=1)
     f.dot(M_, 0.08); f.text(M_, "$M$", dx=0.28, dy=0.12); f.dot(Mxy, 0.045); f.text(Mxy, "$M_{xy}$", dx=0.5, dy=-0.12, size=8.5)
-    f.text((o + (Mxy - o) * 0.5), r"$\rho$", dx=0.1, dy=0.3); f.text(f.proj(o, 1.35 * np.cos(rad(ph / 2)), 1.35 * np.sin(rad(ph / 2)), 0), r"$\varphi$", dy=-0.05, size=9)
+    f.text((o + (Mxy - o) * 0.62), r"$\rho$", dx=0.13, dy=0.24); f.text(f.proj(o, 1.35 * np.cos(rad(ph / 2)), 1.35 * np.sin(rad(ph / 2)), 0), r"$\varphi$", dy=-0.05, size=9)
+    f.rightangle(Mxy, o - Mxy, M_ - Mxy, a=0.17)
     f.text((Mxy + M_) / 2, "$z$", dx=0.25)
     f.text((o[0] + 0.9, 0.3), r"zylindrisch  $(\rho,\,\varphi,\,z)$", size=9)
     # --- sphärisch
@@ -61,6 +64,9 @@ def koordinaten():
     f.line(o, M_, lw=1.7); f.guide(o, Mxy); f.guide(Mxy, M_)
     f.path([sph(f, o, 1.2, a, ps) for a in np.linspace(0, th, 30)], lw=0.8)
     f.path([sph(f, o, 0.95, 90, a) for a in np.linspace(0, ps, 30)], lw=0.8)
+    # Koordinatenlinien durch M: Breitenkreis (psi-Linie) und Meridian (theta-Linie), hell
+    f.path([sph(f, o, r_, th, a) for a in np.linspace(0, 360, 200)], c=MID, lw=0.7, dash=(3, 2.5), z=1)
+    f.path([sph(f, o, r_, a, ps) for a in np.linspace(0, 90, 80)], c=MID, lw=0.7, z=1)
     f.dot(M_, 0.08); f.text(M_, "$M$", dx=0.28, dy=0.12); f.dot(Mxy, 0.045); f.text(Mxy, "$M_{xy}$", dx=0.5, dy=-0.12, size=8.5)
     f.text((o + M_) / 2, "$r$", dx=0.28, dy=-0.05)
     f.text(sph(f, o, 1.75, th / 2 - 8, ps), r"$\theta$", dx=-0.28, dy=0.0, size=9)
@@ -113,22 +119,48 @@ def basis():
     f.cap((12.2, 0.2), "kartesische Basis")
     f.save("k01_basis")
 
-# ---------- 1.5 Beispiele: Ellipse und Schraubenlinie ----------
+# ---------- 1.5 Beispiele: Ellipse und Schraubenlinie (massstäblich) ----------
 def beispiele():
-    f = Fig(15.8, 5.0)
-    # Ellipse in schiefer Ebene
-    o = P(3.2, 1.6); f.axes3(o, l=2.5)
-    ts = np.linspace(0, 1, 90)
-    pts = [f.proj(o, 1.0 * np.cos(3 * np.pi * t) * 3 / 5 * 1.4, 1.0 * np.cos(3 * np.pi * t) * 4 / 5 * 1.4 + 0.0, 1.3 + 0.9 * np.sin(3 * np.pi * t)) for t in ts]
-    f.path(pts, lw=1.4); f.dot(pts[0]); f.dot(pts[-1], c=GREY)
-    f.text(pts[0], "$M(0)$", dx=0.7, dy=0.15, size=8.5); f.text(pts[-1], "$M(1)$", dx=-0.65, dy=0.0, size=8.5)
-    f.cap((3.6, 0.3), "Ellipse (kartesisches Beispiel)")
-    # Schraubenlinie
-    o = P(11.6, 1.6); f.axes3(o, l=2.5)
-    pts = [f.proj(o, (0.8 + 0.5 * t) * np.cos(5.2 * t), (0.8 + 0.5 * t) * np.sin(5.2 * t), 0.1 + 3.0 * t) for t in np.linspace(0, 1, 160)]
-    f.path(pts, lw=1.4); f.dot(pts[0]); f.dot(pts[-1])
-    f.text(pts[0], "Kathode", dx=-0.9, dy=-0.15, size=8); f.text(pts[-1], "Anode", dx=0.8, dy=0.15, size=8)
-    f.cap((12.2, 0.3), "Schraubenlinie (zylindrisches Beispiel)")
+    f = Fig(15.8, 5.6)
+    # --- links: Stabspitze x = 3cos(3πt), y = 4cos(3πt), z = sin(3πt) [cm], Massstab k
+    o = P(3.6, 2.6); k = 0.5
+    u = np.array([3, 4, 0]) / 5.0                     # horizontale Richtung der Bahnebene
+    def Q(uu, zz): return f.proj(o, *(k * (uu * u + np.array([0, 0, zz]))))
+    # Bahnebene y = 4x/3 (senkrecht, enthält die z-Achse) als helle Fläche
+    f.poly([Q(-6.2, -1.9), Q(6.2, -1.9), Q(6.2, 2.6), Q(-6.2, 2.6)], fc="#f4f4f4", ec=MID, lw=0.6, z=0)
+    f.axes3(o, l=2.6)
+    f.line(Q(-6.2, 0), Q(6.2, 0), c=GREY, lw=0.6, dash=(4, 3), z=1)
+    ts = np.linspace(0, 1, 300)
+    pts = np.array([Q(5 * np.cos(3 * np.pi * t), np.sin(3 * np.pi * t)) for t in ts])
+    f.path(pts, lw=1.5, z=4)
+    M0, M1 = Q(5, 0), Q(-5, 0)
+    f.dot(M0, 0.075); f.dot(M1, 0.075, c=GREY)
+    f.text(M0, "$M(0)$", dx=0.45, dy=-0.32, size=8.5); f.text(M1, "$M(1)$", dx=-0.55, dy=0.3, size=8.5)
+    f.arrow(M0, M0 + P(0, 0.62), c=V, lw=1.2); f.text(M0 + P(0, 0.62), r"$\mathbfit{v}(0)$", c=V, dx=0.1, dy=0.28, size=8.5)
+    # Halbachsen
+    top = Q(0, 1); f.line(top + P(-0.12, 0), top + P(0.12, 0), c=NEU, lw=0.8, z=6)
+    f.text(o + P(0.36, k * 0.5), "1 cm", size=7.3, c=NEU)
+    f.text(o + (M0 - o) * 0.6, "5 cm", dy=0.2, size=7.3, c=NEU)
+    f.text(Q(-6.0, 2.35), r"Bahnebene $y = \frac{4}{3}x$", size=7.6, c=GREY, ha="left", dy=-0.05)
+    f.cap((3.6, -0.05), "Stabspitze: Ellipse in einer senkrechten Ebene")
+    # --- rechts: Elektron rho = R1 + a t, phi = b t, z = a t (zwischen Kathode und Anode)
+    o = P(11.9, 1.45); R1, R2 = 0.65, 2.05; H = R2 - R1
+    for R, lab in ((R1, "Kathode"), (R2, "Anode")):
+        for zz, ls in ((0, (3, 2.5)), (H + 0.55, None)):
+            c3 = f.circle3(o, (0, 0, zz), R)
+            f.path(c3, c=GREY if R == R2 else NEU, lw=0.6, dash=ls, z=1)
+        xs = f.circle3(o, (0, 0, 0), R, n=721)
+        i0, i1 = np.argmin(xs[:, 0]), np.argmax(xs[:, 0])
+        for i in (i0, i1): f.line(xs[i], xs[i] + P(0, H + 0.55), c=GREY if R == R2 else NEU, lw=0.6, z=1)
+    f.axes3(o, l=2.9)
+    turns = 1.15; tt = np.linspace(0, 1, 400)
+    sp = np.array([f.proj(o, (R1 + H * t) * np.cos(2 * np.pi * turns * t), (R1 + H * t) * np.sin(2 * np.pi * turns * t), H * t) for t in tt])
+    f.path(sp, lw=1.6, z=5)
+    f.dot(sp[0], 0.075); f.dot(sp[-1], 0.075)
+    f.text(sp[0], "Start ($t=0$)", dx=-1.2, dy=0.1, size=7.8); f.text(sp[-1], "Ziel ($t_2$)", dx=0.15, dy=0.32, size=7.8)
+    f.text(f.proj(o, 0, 0, H + 0.55) + P(-0.95, 0.75), "Kathode $R_1$", size=7.6, c=NEU)
+    f.text(f.proj(o, 0, R2, H + 0.55), "Anode $R_2$", size=7.6, c=GREY, dx=0.45, dy=0.3)
+    f.cap((12.2, -0.05), r"Elektron: Schraubenlinie auf dem Kegel $\rho = R_1 + z$")
     f.save("k01_beispiele")
 
 lage(); koordinaten(); basis(); beispiele()
@@ -142,21 +174,22 @@ def produkte():
     f.arrow(o, o + a, c=INK, lw=1.3); f.tip(o, o + a, r"$\mathbfit{a}$", dist=0.3)
     f.arrow(o, o + b, c=INK, lw=1.3); f.tip(o, o + b, r"$\mathbfit{b}$", dist=0.3)
     pr = o + P(b[0], 0); f.guide(o + b, pr)
-    f.line(o + P(0.0, -0.18), pr + P(0, -0.18), c=F, lw=2.2)
-    f.dim(o + P(0, 0), pr, "", off=0)  # unsichtbare Maßlinie vermeiden
+    f.line(o + P(0.0, -0.18), pr + P(0, -0.18), c=NEU, lw=2.2)
+    f.dim(o + P(0, 0), pr, "", off=0)  # unsichtbare Masslinie vermeiden
     f.angle(o, 0.9, 0, 38, label=r"$\theta$", lr=1.25)
-    f.text(o + P(b[0] / 2, -0.5), r"$|\mathbf{b}|\cos\theta$", c=F, size=9)
+    f.text(o + P(b[0] / 2, -0.5), r"$|\mathbfit{b}|\cos\theta$", c=NEU, size=9)
     f.cap((3.6, 5.0), "Skalarprodukt", size=8.5)
-    f.text((3.6, 4.45), r"$\mathbf{a}\cdot\mathbf{b}=|\mathbf{a}|\,|\mathbf{b}|\cos\theta$", size=9.5)
-    f.text((3.6, -0.02), "Anteil von $\\mathbf{b}$ in Richtung $\\mathbf{a}$, mal $|\\mathbf{a}|$", size=7.8, c=GREY)
+    f.text((3.6, 4.45), r"$\mathbfit{a}\cdot\mathbfit{b}=|\mathbfit{a}|\,|\mathbfit{b}|\cos\theta$", size=9.5)
+    f.text((3.6, -0.02), "Anteil von $\\mathbfit{b}$ in Richtung $\\mathbfit{a}$, mal $|\\mathbfit{a}|$", size=7.8, c=GREY)
     # rechts: Kreuzprodukt
     o = P(10.4, 1.6)
     a = f.proj(o, 2.4, 0, 0) - o; b = f.proj(o, 0, 3.0, 0) - o
-    f.poly([o, o + a, o + a + b, o + b], fc="#e4ecf5", ec=GREY, lw=0.7)
+    f.poly([o, o + a, o + a + b, o + b], fc="#ececec", ec=GREY, lw=0.7)
     f.arrow(o, o + a, c=INK, lw=1.3); f.tip(o, o + a, r"$\mathbfit{a}$", dist=0.3)
     f.arrow(o, o + b, c=INK, lw=1.3); f.tip(o, o + b, r"$\mathbfit{b}$", dist=0.3)
-    f.arrow(o, o + P(0, 2.8), c=V, lw=1.3); f.tip(o, o + P(0, 2.8), r"$\mathbfit{a}\times\mathbfit{b}$", c=V, dist=0.42)
-    f.text(o + (a + b) * 0.55, "Fläche $= |\\mathbf{a}\\times\\mathbf{b}|$", size=7.8, c=GREY, dy=-0.15)
+    f.arrow(o, o + P(0, 2.8), c=INK, lw=1.6); f.tip(o, o + P(0, 2.8), r"$\mathbfit{a}\times\mathbfit{b}$", c=INK, dist=0.42)
+    f.rightangle(o, a, P(0, 1), a=0.2); f.rightangle(o, b, P(0, 1), a=0.2)
+    f.text(o + (a + b) * 0.5 + P(0.55, -0.05), "Fläche $= |\\mathbfit{a}\\times\\mathbfit{b}|$", size=7.8, c=NEU)
     f.cap((12.0, 5.0), "Kreuzprodukt", size=8.5)
     f.save("k01_produkte")
 produkte()

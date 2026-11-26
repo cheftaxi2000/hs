@@ -21,4 +21,7 @@ y0, ph = rows[1]; tc = 1.15 * np.pi; cx = R * (tc + ph) - 6.0; cy = y0 + R
 th = np.linspace(0, 2 * np.pi, 200); ax.plot(cx + R * np.cos(th), cy + R * np.sin(th), color="white", lw=1.1)
 px, py = cx - R * np.sin(tc), cy - R * np.cos(tc)
 ax.plot([cx, px], [cy, py], color="white", lw=1.1); ax.plot([cx], [cy], "o", ms=3.2, color="white"); ax.plot([px], [py], "o", ms=4.2, color="#f0b25a")
-fig.savefig("figs/cover.svg", format="svg"); fig.savefig("/tmp/claude-0/-home-user-hs/86681ad6-701a-5310-b84c-b1468856c4a6/scratchpad/cover.png", dpi=110)
+import os
+plt.rcParams["svg.hashsalt"] = "mechanik1"
+fig.savefig("figs/cover.svg", format="svg", metadata={"Date": None})
+if os.environ.get("FIGPNG"): fig.savefig(os.path.join(os.environ["FIGPNG"], "cover.png"), dpi=110)
