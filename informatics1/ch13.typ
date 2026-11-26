@@ -6,6 +6,8 @@
 
 #lecture[We now combine the two previous chapters: the pointer structures of Chapter 11 and the memory-owning classes of Chapter 12. Then we meet the first structure that is *not* a line: the binary search tree, where recursion and pointers fit together perfectly. It finds, inserts and deletes in about $log n$ steps.]
 
+#include "ch13_a.typ"
+
 == A linked list as a class
 
 The loose functions of Chapter 11 required the caller to manage `head` and to call `free_list`. Now the list manages itself. The class owns its nodes (RAII, rule of three), the node type is a private detail, and a second pointer `tail_` to the *last* node makes `push_back` fast.
@@ -110,6 +112,8 @@ Insertion is easy, removal needs a case distinction, depending on the number of 
 ]
 
 #everyday[Trees are everywhere: the folders of a file system, the structure of a web page (the DOM), the parsing of an arithmetic expression or of your C++ program (the compiler's *syntax tree*), databases (indexes are B-trees), decision trees in machine learning, the call tree of a recursive function.]
+
+#include "ch13_b.typ"
 
 // ALLTAG-BEGIN
 == Where this shows up in the real world

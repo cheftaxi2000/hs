@@ -1,0 +1,3 @@
+stack top: 4, queue front: 2
+stack: 4 2 1
+queue: 2 3 4

@@ -6,6 +6,8 @@
 
 #lecture[Chapter 11 left us with a nagging worry: who calls `delete`, and when? In this chapter classes take the job over. A class that *owns* memory allocates it in its constructor and releases it in its *destructor*, and the language calls both for us at exactly the right moments. The price: we must say what *copying* such an object means. That is the famous "rule of three".]
 
+#include "ch12_a.typ"
+
 == Lifetime of objects: constructors and destructors
 
 Every object of class type goes through two special moments:
@@ -102,6 +104,8 @@ Inside any member function the keyword `this` is a *pointer to the current objec
 - Copy assignment without the self-assignment check, or one that deletes before the copy is made.
 - Pass big objects by value when `const T&` is meant: not wrong, but each call makes a complete deep copy.
 ]
+
+#include "ch12_b.typ"
 
 // ALLTAG-BEGIN
 == Where this shows up in the real world

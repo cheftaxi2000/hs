@@ -222,3 +222,6 @@
   stroke: (x, y) => (bottom: if y == 0 { 0.6pt } else { 0.3pt + luma(200) }),
   text(size: 8.5pt, weight: "bold")[address], text(size: 8.5pt, weight: "bold")[name], text(size: 8.5pt, weight: "bold")[value],
   ..rows.pos().flatten().map(c => text(font: mono, size: 8.8pt, c)))))
+// plain monospace block (no syntax colouring), e.g. for ASCII drawings of trees
+#let plain(src) = align(center, block(breakable: false, spacing: 1.2em, fill: rgb("#f5f8f7"), stroke: 0.6pt + luma(195), radius: 4pt,
+  inset: (x: 14pt, y: 8pt), text(font: mono, size: 9pt, raw(src.trim("\n"), block: true))))
