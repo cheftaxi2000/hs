@@ -161,6 +161,14 @@ A liquid boils when its vapour pressure reaches the external pressure. Since the
   #step[Compare.] The freezing-point depression of the same solution would be only about $1.86 times 5 times 10^(-5) approx 10^(-4)$ °C, impossible to measure. The osmotic pressure (1.3 cm of water column) is easy to measure.
 ]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*Salt water in the body.* An infusion bag in hospital contains $0.9 %$ sodium chloride («physiological saline»), $154$ mmol/L, because that has the same osmotic pressure as blood. Pure water would flow into the red blood cells, which would swell and burst; a stronger solution would draw water out of them and shrink them. The colligative properties of this chapter decide, here, over life and death.]
+
+#everyday[*Why jam and pickled food keep.* Concentrated sugar or salt takes water from the bacteria by osmosis: The microbe's cell loses water and stops growing. This is the old reason for salting fish and meat and making jam with a lot of sugar, long before anyone knew about bacteria. The same effect is the reason that very salty water in the sea or in the Dead Sea has so few living organisms.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Like dissolves like][

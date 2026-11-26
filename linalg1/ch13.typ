@@ -139,6 +139,14 @@ Der Raum der Polynome vom Grad $<= 2$ «ist» also (nach Wahl einer Basis) der R
 
 Das Wesentliche: *Jeder $n$-dimensionale Vektorraum über $KK$ verhält sich (nach Wahl einer Basis) wie $KK^n$.* Man sagt, er sei *isomorph* zu $KK^n$. Der abstrakte Begriff des Vektorraums bringt also, wenn man nur endliche Dimension betrachtet, keine neuen Räume, aber eine neue Freiheit: Man darf die Basis passend zum Problem wählen. Eine kluge Basis kann ein schwieriges Problem einfach machen.
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Dimension heisst Freiheitsgrade.* Ein starrer Körper im Raum (Flugzeug, Satellit, Werkstück) hat sechs Freiheitsgrade: drei Verschiebungen, drei Drehungen. Seine Lage ist ein Vektor in einem sechsdimensionalen Raum. Ein Roboterarm mit sieben Gelenken hat sieben, davon sechs für die Hand. Die Frage «Wie viele Grössen muss ich festlegen?» ist genau die Frage nach der Dimension.]
+
+#alltag[*Basiswechsel: JPEG und MP3.* Ein Bild liegt als Folge von Pixelwerten vor. Wechselt man in eine geschickte Basis aus Cosinus-Mustern (die diskrete Cosinus-Transformation), konzentriert sich die Information auf wenige Koordinaten, und man kann die übrigen weglassen. So funktioniert JPEG (in Blöcken von $8 times 8$ Pixeln). Bei MP3 ist es eine Basis aus Frequenzen. Der Inhalt bleibt derselbe Vektor, nur die Koordinaten ändern sich, und darum lässt er sich einfacher speichern.]
+// ALLTAG-END
+
 #kurz[
 - Geometrisch: 2 Vektoren abhängig $arrow.l.r.double$ parallel; 3 Vektoren im Raum abhängig $arrow.l.r.double$ komplanar $arrow.l.r.double$ $det = 0$.
 - *Basis* = Erzeugendensystem + linear unabhängig $arrow.l.r.double$ jeder Vektor hat genau eine Darstellung $sum x_i bold(b)_i$.

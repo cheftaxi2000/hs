@@ -180,6 +180,14 @@ $ H = I - 1/3 mat(1, -1, -2; -1, 1, 2; -2, 2, 4) = 1/3 mat(2, 1, 2; 1, 2, -2; 2,
   [Determinante], [$+1$ (Drehung)], [$-1$ (Spiegelung)],
   [Gut für], [dünn besetzte Matrizen, gezielte Eingriffe], [volle (dichte) Matrizen])
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Verschlüsseln mit einer Matrix.* Die Hill-Chiffre (Lester Hill, 1929) ersetzt je zwei Buchstaben durch zwei neue, indem man den Vektor der Buchstaben mit einer Matrix $A$ multipliziert (und modulo $26$ rechnet). Zum Entschlüsseln braucht man die Inverse $A^(-1)$. Die Chiffre ist nach heutigen Massstäben unsicher, zeigt aber das Prinzip: Eine umkehrbare lineare Abbildung ist eine perfekte «Codierung». Jede Matrix, die nicht invertierbar ist, verliert Information.]
+
+#alltag[*Orthogonale Matrizen: stabil und sauber.* Eine orthogonale Matrix ändert Längen und Winkel nicht, sie dreht und spiegelt nur. Darum rechnet jede gute Numerik-Software damit: Das Produkt vergrössert Rundungsfehler nicht. Die QR-Zerlegung mit Householder-Spiegelungen, die in LAPACK und damit in MATLAB, NumPy und R steckt, löst so Ausgleichsprobleme, zum Beispiel wenn man eine Gerade durch Messpunkte legt, stabiler als jedes Rechnen mit der Inversen.]
+// ALLTAG-END
+
 #kurz[
 - $A$ *regulär* $arrow.l.r.double$ $exists A^(-1)$ mit $A A^(-1) = A^(-1) A = I$ $arrow.l.r.double$ $rang(A) = n$ $arrow.l.r.double$ $A bold(x) = bold(0)$ nur trivial lösbar $arrow.l.r.double$ $A bold(x) = bold(b)$ für alle $bold(b)$ eindeutig lösbar. Sonst *singulär*.
 - *Gauss-Jordan:* $(A | I) arrow.r (I | A^(-1))$. Für $2 times 2$: $A^(-1) = 1/(a d - b c) mat(d, -b; -c, a)$.

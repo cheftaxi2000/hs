@@ -6,6 +6,8 @@
 
 #lecture[The final chapter completes the picture of object-oriented programming. *Inheritance* lets a new class reuse and extend an existing one. *Subtyping* says that an object of the derived class can be used wherever the base class is expected. And *polymorphism* ("many forms") makes the program do the right thing for the *actual* kind of object at run time. Together they allow code like "compute the total area of all shapes" that works for shapes that did not even exist when the code was written.]
 
+#include "ch14_a.typ"
+
 == Inheritance
 
 #idea[Dogs, cats and fish are all animals: they have a name, they eat, they have an age. Writing these features three times would be wasteful and error-prone. With *inheritance* you write them once in a *base class* (`Animal`) and let *derived classes* (`Dog`, ...) take them over and add their own.]
@@ -90,6 +92,18 @@ The question that decides whether the derived class is a legitimate subtype: *ca
 A classical trap is "a `Square` is a `Rectangle`, mathematically". Suppose `Rectangle` has `set_width(w)` and `set_height(h)` that change one side only. A `Square` must keep its sides equal, so `set_width` would have to change the height too. Code that works on a `Rectangle&` and relies on "setting the width does not change the height" now breaks for squares. In our example the shapes are *immutable* (no setters), so the subtype relation is harmless. With mutable objects the "is a" of mathematics is not the "is a" of programs. Prefer *small interfaces* (like `Shape`: `area`, `name`), and use inheritance mostly to implement such interfaces.
 
 #everyday[Graphical user interfaces are the classical use: `Button`, `Slider`, `TextBox` all derive from `Widget` with a virtual `draw()` and `on_click()`; the window loops over its list of `Widget*` and calls `draw()`. Games: `Enemy` with many kinds. Standard library: streams (`std::ostream` is the base of `std::cout` and of file streams, so that `operator<<` for `Rational` of Chapter 9 works with all of them).]
+
+#include "ch14_b.typ"
+
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Game entities.* In a typical game there is a base class `Entity` with a virtual function `update()` and `draw()`. Player, Enemy, Bullet and Tree each derive from it and override these. The game loop holds a list of `Entity*` and calls `update()` for each, without knowing whether it deals with a player or a tree: the virtual call selects the correct code at runtime. New kinds of objects can be added without changing the loop, which is the point of polymorphism.]
+
+#everyday[*«Everything is a file».* On Linux and macOS, a file on the disk, a USB stick, a network connection and the keyboard all offer the same operations (`open`, `read`, `write`, `close`). Programs use these without caring what is behind them. Internally the operating system calls different code for each device, which is a polymorphic interface in the plain C of the kernel. The same idea lets you save a document to a local disk or to the cloud with the same code, only the object behind the interface differs.]
+
+#everyday[*What polymorphism costs.* A virtual function call goes through a table of function addresses (the vtable) and costs a few nanoseconds more than a normal call. For almost all programs this is irrelevant, but in the inner loop of a physics simulation with billions of calls professionals avoid virtual functions. Good engineering is knowing where the cost matters.]
+// ALLTAG-END
 
 #summary[
 - A *derived class* contains its base part: all base members plus its own. Constructors run base first; destructors the reverse. `protected` is visible in derived classes.

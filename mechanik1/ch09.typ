@@ -156,6 +156,14 @@ Manchmal sind nicht die Kräfte unbekannt, sondern die Lage selbst (ein Winkel, 
   - Mehr als drei Gleichungen pro ebenem Körper aufstellen und sich wundern, dass sie nichts Neues bringen.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Lager an der Brücke.* Eine Brücke dehnt sich im Sommer aus und zieht sich im Winter zusammen: Eine $100$ m lange Stahlbrücke wird bei $40$ K Temperaturunterschied um etwa $5$ cm länger. Darum liegt sie auf einem Festlager (nimmt Kräfte in beiden Richtungen auf) und einem Loslager (rollt und nimmt nur die senkrechte Kraft auf). Hätte sie zwei Festlager, entstünden gewaltige Zwangskräfte. Dasselbe Prinzip steckt in Dehnfugen von Autobahnen und im «Klacken» von Brückenübergängen.]
+
+#alltag[*Scharnier und Türrahmen.* Eine Tür hängt an zwei Scharnieren. Das obere zieht an der Tür, das untere drückt, und beide zusammen halten das Moment des Türgewichts. Wer schon einmal eine schwere Brandschutztür umhängen musste, weiss, dass man dafür drei Scharniere nimmt. Die Berechnung der Lagerkräfte in diesem Kapitel ist genau der Schritt, den Statiker bei jedem Bauteil als erstes tun: erst die Kräfte an den Auflagern, dann die Schnitte im Bauteil.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg(fig: "a09_balken", fw: 6.8cm)[Balken mit schräger Kraft][

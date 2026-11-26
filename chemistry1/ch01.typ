@@ -300,6 +300,14 @@ In practice the reactants are rarely mixed in exactly the stoichiometric ratio. 
 
 #everyday[*The hydrogen economy (research at D-MAVT).* Excess electricity from wind, hydro or solar can split water by electrolysis, #ce("2 H2O(l) -> 2 H2(g) + O2(g)"). The hydrogen is stored and later burned in a high-efficiency gas turbine, #ce("2 H2(g) + O2(g) -> 2 H2O(g)"), to produce electricity at peak demand. The result is a carbon-neutral cycle. Stoichiometry tells the engineer, for example, that 1 kg of #ce("H2") needs 8 kg of #ce("O2") (taken from air) and produces 9 kg of water vapour. The same bookkeeping applies to car airbags (#ce("2 NaN3 -> 2 Na + 3 N2"): 65 g of sodium azide give about 34 L of nitrogen gas in 30 ms) and to rocket propellants.]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*The airbag is a stoichiometry problem.* In a collision a sensor ignites sodium azide: $2 thin "NaN"_3 -> 2 thin "Na" + 3 thin "N"_2$. Three moles of nitrogen gas form from every two moles of azide, and that gas inflates the bag in about $30$ ms. Engineers choose the mass of azide so that exactly the right volume of gas forms (about $60$ L for a driver bag). Too little and the bag is soft; too much and it injures the occupant. The sodium is then converted into harmless compounds by other ingredients.]
+
+#everyday[*The pharmacist counts in moles.* A tablet of $500$ mg aspirin ($M = 180.16$ g/mol) contains $0.500 slash 180.16 = 2.78$ mmol. Dosing, blood concentrations and drug interactions are all given per mole or per litre, because molecules, not grams, are what meet in the body. In a hospital laboratory, a blood glucose of $5$ mmol/L is normal; the same value in older units is $90$ mg/dL. The moles are the common language.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Subatomic particles][

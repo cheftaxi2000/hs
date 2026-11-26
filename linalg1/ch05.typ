@@ -138,6 +138,16 @@ Für einen Spaltenvektor $bold(x)$ ist $bold(x)^tp bold(x) = x_1^2 + dots + x_n^
 
 Es gilt $spur(A + B) = spur(A) + spur(B)$, $spur(c A) = c spur(A)$, $spur(A^tp) = spur(A)$ und, interessant, $spur(A B) = spur(B A)$, obwohl $A B != B A$ im Allgemeinen gilt. Beweis: $spur(A B) = a_(i k) b_(k i) = b_(k i) a_(i k) = spur(B A)$. (Man vertauscht nur die Namen der stummen Indizes und die Reihenfolge der Zahlen.)
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Neuronale Netze sind Matrizenprodukte.* Eine Schicht eines neuronalen Netzes rechnet $y = W x + b$ mit einer grossen Matrix $W$. Ein Sprachmodell oder ein Bilderkenner besteht aus Tausenden solcher Produkte hintereinander. Darum bauen Grafikkarten ihre Hardware speziell für das Multiplizieren von Matrizen: Moderne Karten schaffen Billionen solcher Operationen pro Sekunde. Dass $(A B) x = A (B x)$ gilt (Assoziativität), erlaubt dabei, die Reihenfolge so zu wählen, dass die Rechnung am billigsten ist.]
+
+#alltag[*PageRank: das Netz als Matrix.* Jede Webseite ist eine Zeile und eine Spalte; der Eintrag $a_(i j)$ sagt, wie wahrscheinlich es ist, von Seite $j$ auf Seite $i$ zu klicken. Wer das Produkt $A x$ immer wieder bildet, erhält eine Reihenfolge der wichtigsten Seiten. So hat Google angefangen. Das Beispiel zeigt, warum man Matrizen als «Zustände ändern» versteht: $A x$ ist der Zustand nach einem Schritt, $A^2 x$ nach zwei.]
+
+#alltag[*Summenkonvention in der Physik.* Die Einstein'sche Schreibweise $a_i b^i$ (über doppelte Indizes summieren) hat Albert Einstein eingeführt, weil er in der Relativitätstheorie hunderte Summen schreiben musste. Heute ist sie Alltag in der Physik, in der Kontinuumsmechanik und in Programmen wie NumPy (`einsum`). Wer sie versteht, schreibt Tensorrechnungen in einer Zeile.]
+// ALLTAG-END
+
 #kurz[
 - *Einstein:* Über doppelt vorkommende Indizes wird summiert. $delta_(i j)$ ist das Kronecker-Symbol; $delta_(i j) x_j = x_i$.
 - Es gelten: Assoziativität, Distributivität, $I A = A I = A$. Es gelten *nicht*: Kommutativität, Kürzen ($A B = A C arrow.r.not B = C$), Nullteilerfreiheit, binomische Formeln.

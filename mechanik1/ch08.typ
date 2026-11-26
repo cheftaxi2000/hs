@@ -134,6 +134,16 @@ Die genaue Aussage ist: Für einen *einzelnen starren Körper* bilden der Haupts
   - *PdvL*: elegant, wenn man an einem beweglichen System (Mechanismus) _eine_ Beziehung zwischen Lasten oder _eine_ bestimmte Kraft sucht, ohne alle anderen auszurechnen. Braucht dafür etwas Kinematik aus Kapitel 3.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Wippe, Waage, Kran.* Das Hebelgesetz $F_1 l_1 = F_2 l_2$ ist die Momentenbedingung in ihrer einfachsten Form. Auf ihr beruhen die Balkenwaage, die Wippe auf dem Spielplatz, der Flaschenöffner und die Schubkarre. Ein Turmdrehkran trägt hinten Betongewichte, damit das Moment der Last (vorn) vom Moment des Gegengewichts (hinten) aufgehoben wird, und er darf nur so viel heben, wie dieses Gleichgewicht erlaubt: Je weiter draussen die Last hängt, desto weniger darf sie wiegen. Darum steht auf dem Kran eine Lastmomenttabelle.]
+
+#alltag[*Standsicherheit.* Ob eine Leiter, ein Gerüst, ein Schild oder ein Kran umkippt, entscheiden die Gleichgewichtsbedingungen: $sum vF = bold(0)$ und $sum vM = bold(0)$ um jeden Punkt. Beim Aufstellen einer Leiter wählt man den Winkel so, dass die Haftreibung am Boden die waagrechte Kraft aufnehmen kann, in der Praxis etwa $75 degree$. Dieselben Bedingungen entscheiden, ob ein Regal an der Wand befestigt werden muss, wenn man oben Gewicht ablegt.]
+
+#photo(("m_kran",), [Turmdrehkran von oben: Der Ausleger trägt die Last, das Gegengewicht am anderen Ende hält das Moment im Gleichgewicht. #credit[Wikideas1, CC0, Wikimedia Commons]], ht: 5cm)
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg(fig: "a08_quader", fw: 6.2cm)[Quader auf schiefer Ebene: Wo greift $vN$ an?][

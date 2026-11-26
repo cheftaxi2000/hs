@@ -123,7 +123,7 @@
         let hs = query(selector(heading.where(level: 1)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let ls = query(<woche>).filter(m => m.location().page() <= here().page())
+        let ls = query(<woche>).filter(m => m.location().page() < here().page() or (m.location().page() == here().page() and m.location().position().y < 5cm))
         let lab = if ls.len() > 0 and ls.last().value != none [Woche #ls.last().value] else [Lineare Algebra I]
         let w = box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9pt, weight: "bold", fill: white, lab))
         text(size: 9pt)[#n#t #h(1fr) #w]
@@ -158,3 +158,9 @@
   show raw: set text(font: mono, size: 8.8pt)
   body
 }
+
+// ---------- Fotos (Wikimedia Commons, Quelle in der Bildunterschrift) ----------
+#let _ph(name, h) = box(clip: true, radius: 4pt, image("photos/" + name + ".jpg", height: h))
+#let photo(names, cap, ht: 4.6cm, gap: 6pt) = figure(
+  box(names.map(n => _ph(n, ht)).join(h(gap))), caption: cap)
+#let credit(t) = text(size: 7.5pt, fill: luma(110))[Foto: #t]

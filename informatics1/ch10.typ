@@ -6,6 +6,8 @@
 
 #lecture[Two ideas that make large programs manageable. *Information hiding*: a type decides what is visible from outside and keeps its data private, so that nobody can break it. *Containers and iterators*: the standard library already offers ready-made, well-tested data structures and algorithms; you only have to learn how to use them.]
 
+#include "ch10_a.typ"
+
 == Classes and information hiding
 
 #idea[In Chapter 9 a `Rational` was a `struct` whose members `n` and `d` anybody could change. Somebody can write `r.d = 0` and the program contains an invalid fraction that nobody notices until something crashes much later. The cure is *information hiding* (also: *encapsulation*): the data is *private*, and the type offers a few *public* operations, the *interface*, that keep the data consistent.]
@@ -117,6 +119,16 @@ The most useful ones:
 The bracket expression `[](int x) { return x % 2 == 1; }` in `count_if` is a *lambda*, a small nameless function written on the spot ("count the elements for which this function returns true"). You will mostly just copy this pattern.
 
 #everyday[Professional C++ code is full of these algorithms and containers. A programmer who knows the standard library writes a third of the code and has a third of the bugs. Whenever you are about to write a loop that searches, counts, sorts or accumulates, ask: *is there a standard algorithm for it?*]
+
+#include "ch10_b.typ"
+
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Hiding the details: the bank account.* A class `Account` with a private balance and public `deposit` and `withdraw` functions can enforce rules that no outside code can bypass: the balance never becomes negative, every change is logged. The data is protected because only the class code touches it. Later, the bank can change how the balance is stored (a new database, a faster structure) without a single line of the calling code changing. This is the whole point of information hiding, and it is why large systems with millions of lines remain changeable.]
+
+#everyday[*Choose the container for the question you ask.* `std::vector` if you mostly walk through all elements, `std::map` or `std::unordered_map` if you mostly look things up by key (a phone book, a dictionary of words, the stock price by ticker), `std::set` if you only care whether something is present. The same iterator interface works for all of them, so `std::sort`, `std::find` and `std::count` work with any container. Picking the right one often makes a program a thousand times faster.]
+// ALLTAG-END
 
 #summary[
 - A `class` has `private` data and `public` member functions. *Information hiding* means: outsiders can only use the interface, so a *class invariant* can be guaranteed by constructor and member functions alone.

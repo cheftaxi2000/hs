@@ -6,6 +6,8 @@
 
 #lecture[Chapter 11 left us with a nagging worry: who calls `delete`, and when? In this chapter classes take the job over. A class that *owns* memory allocates it in its constructor and releases it in its *destructor*, and the language calls both for us at exactly the right moments. The price: we must say what *copying* such an object means. That is the famous "rule of three".]
 
+#include "ch12_a.typ"
+
 == Lifetime of objects: constructors and destructors
 
 Every object of class type goes through two special moments:
@@ -102,6 +104,16 @@ Inside any member function the keyword `this` is a *pointer to the current objec
 - Copy assignment without the self-assignment check, or one that deletes before the copy is made.
 - Pass big objects by value when `const T&` is meant: not wrong, but each call makes a complete deep copy.
 ]
+
+#include "ch12_b.typ"
+
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Resources are not only memory.* Every open file, network connection, database transaction or lock is a resource that must be returned. The idea of this chapter, that the destructor cleans up when the object dies, is called RAII (resource acquisition is initialisation) and is the central idiom of modern C++. `std::ifstream` closes its file, `std::lock_guard` releases its lock and `std::unique_ptr` frees its memory, even when an exception is thrown in between. Leaks in long-running servers cost real money: a web server that loses a few bytes per request will be restarted every night.]
+
+#everyday[*Why copying must be thought through.* If a class owns a resource, copying it by default copies only the pointer, so two objects point to the same memory, and when both are destroyed the memory is freed twice. The «rule of three» (destructor, copy constructor, copy assignment) in this chapter is the cure. Modern code avoids the problem by making the owning member a `std::vector` or `std::unique_ptr`; then the compiler does the right thing without any extra code.]
+// ALLTAG-END
 
 #summary[
 - *Constructor* at creation, *destructor* at destruction (end of scope or `delete`). Locals are destroyed in reverse order.

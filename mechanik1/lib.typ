@@ -49,6 +49,7 @@
 #let satz(title, body) = _blk([Satz: #title], body, fill: cblf, stroke: 0.7pt + cbl)
 #let intu(body) = _blk([Anschaulich], body, bar: luma(150))
 #let merke(body) = _blk([Merke], body, col: crd, bar: crd)
+#let alltag(body) = _blk([Im Alltag und im Beruf], body, fill: rgb("#fdf5ea"), stroke: 0.6pt + rgb("#c7741a"), col: rgb("#9a520c"), brk: true)
 #let fehler(body) = _blk([Typische Fehler], body, col: crd, bar: crd)
 #let rezept(title, body) = _blk([Vorgehen: #title], body, fill: luma(248), stroke: 0.6pt + luma(140))
 #let warum(title, body) = _blk([Warum gilt das? #title], body, bar: luma(150))
@@ -126,7 +127,7 @@
         let h2 = query(selector(heading.where(level: 2)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let ws = query(<woche>).filter(m => m.location().page() <= here().page())
+        let ws = query(<woche>).filter(m => m.location().page() < here().page() or (m.location().page() == here().page() and m.location().position().y < 5cm))
         let w = if ws.len() > 0 and ws.last().value != none { box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9.5pt, weight: "bold", fill: white)[Woche #ws.last().value]) } else { [Mechanik 1] }
         text(size: 9pt)[#n#t #h(1fr) #w]
         v(-7pt); line(length: 100%, stroke: 0.5pt)
@@ -155,3 +156,9 @@
   set enum(indent: 0.6em)
   body
 }
+
+// ---------- Fotos (Wikimedia Commons, Quelle in der Bildunterschrift) ----------
+#let _ph(name, h) = box(clip: true, radius: 4pt, image("photos/" + name + ".jpg", height: h))
+#let photo(names, cap, ht: 4.6cm, gap: 6pt) = figure(
+  box(names.map(n => _ph(n, ht)).join(h(gap))), caption: cap)
+#let credit(t) = text(size: 7.5pt, fill: luma(110))[Foto: #t]

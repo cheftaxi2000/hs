@@ -1,0 +1,2 @@
+[2, 5] length 3
+[2, 7] contains 6: 1

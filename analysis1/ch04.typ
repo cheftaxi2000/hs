@@ -563,6 +563,18 @@ Existiert der Grenzwert, heisst das Integral *konvergent*, sonst *divergent*. An
   - *Gabriels Horn.* Dreht man $y = 1\/x$ für $x >= 1$ um die $x$-Achse, entsteht ein unendlich langes Horn mit dem endlichen Volumen $pi integral_1^oo 1\/x^2 dif x = pi$, aber unendlicher Oberfläche (sie ist grösser als $2 pi integral_1^oo 1\/x dif x$). Man könnte es also mit Farbe füllen, aber nicht anmalen.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Wasserdruck auf die Staumauer.* Der Druck im Wasser wächst mit der Tiefe: $p(y) = rho g y$. Die Kraft auf einen Meter Mauerbreite ist deshalb das Integral $F = integral_0^h rho g y thin dif y = rho g h^2\/2$. Bei $h = 100$ m sind das $approx 49$ MN, also das Gewicht von rund $5000$ Tonnen, die an jedem Meter Mauer drücken. Wegen des Faktors $h^2$ verdoppelt sich die Kraft nicht, wenn die Mauer doppelt so hoch ist, sondern vervierfacht sich. Darum werden Staumauern unten dick gebaut. Ohne Integral wäre diese Rechnung nur durch Raten möglich.]
+
+#alltag[*Effektivwert: warum die Steckdose $230$ V und nicht $325$ V heisst.* Die Spannung schwingt zwischen $-325$ V und $+325$ V. Wichtig ist, wie viel Leistung sie im Mittel liefert, und das ist der quadratische Mittelwert $U_("eff") = sqrt(1\/T integral_0^T u(t)^2 thin dif t) = hat(u)\/sqrt(2)$. Mit $hat(u) = 325$ V ergibt das $325\/1.414 approx 230$ V. Der «Effektivwert» ist das, was auf dem Typenschild jedes Geräts steht. Dasselbe Prinzip steckt im Mittel von Lärm (Schallpegel), von Vibrationen und von Messfehlern.]
+
+#alltag[*Wahrscheinlichkeiten als Flächen.* Wie gross ist die Chance, dass eine Maschine ein Teil produziert, das mehr als $0.1$ mm zu gross ist? Dafür integriert man die Dichtefunktion der Normalverteilung von $0.1$ bis unendlich. Die Fläche unter der Glockenkurve zwischen $mu - sigma$ und $mu + sigma$ beträgt $68 %$, zwischen $mu plus.minus 2 sigma$ sind es $95 %$, zwischen $mu plus.minus 3 sigma$ $99.7 %$. Qualitätssicherung («Six Sigma»), Versicherungen, Wetterprognosen und jede Umfrage mit «Fehlermarge» beruhen darauf. Ein bestimmtes Integral ist hier buchstäblich eine Wahrscheinlichkeit.]
+
+#photo(("a_hoover",), [Die Hoover-Staumauer ist 221 m hoch. Der Wasserdruck wächst linear mit der Tiefe, die Gesamtkraft ist ein Integral. #credit[Dietmar Rabich, CC BY-SA 4.0, Wikimedia Commons]], ht: 5cm)
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg[Partielle Integration und Substitution][

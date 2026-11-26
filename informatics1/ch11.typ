@@ -6,6 +6,8 @@
 
 #lecture[So far, the amount of memory a program uses was fixed when we wrote it (variables) or determined by the call depth (the stack). This chapter lifts the restriction: with *pointers* and *dynamic memory* a program can ask for memory *while running*, as much as it needs, and link pieces of memory into *data structures* of any shape. It is the most error-prone part of C++, and the one that explains how everything else works.]
 
+#include "ch11_a.typ"
+
 == Where does data live?
 
 A running program has several regions of memory:
@@ -148,6 +150,18 @@ In `remove`, the first node is a special case because `head` itself changes: tha
 When `head` is null, `prev` points to the new first node: `return prev`.]
 
 #everyday[Lists with pointers are everywhere: the undo history of an editor, the chain of blocks in a block chain, the free-space management of the heap itself, queues in operating systems, the "next" song in a playlist. Their strength: cheap insertion and deletion anywhere (once you hold a pointer to the place). Their weakness: no random access, and each element costs an extra pointer plus the overhead of its own allocation.]
+
+#include "ch11_b.typ"
+
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*Heartbleed.* In 2014 a bug in OpenSSL, the library that secures a large part of the world's web traffic, let an attacker read memory that did not belong to the request. The code copied a number of bytes that the sender had claimed, without checking that the sender had actually sent that many; the surplus came from neighbouring memory, with passwords and private keys. It is the classical out-of-bounds read, the same bug you can write with a pointer or a `char` array in this chapter. The vulnerability affected hundreds of thousands of servers.]
+
+#everyday[*Memory safety is the biggest class of security bugs.* Microsoft and the Chrome team have both reported that about 70% of their serious security vulnerabilities are memory-safety problems: dangling pointers, buffer overflows, use after free. That is why the industry is moving to safer languages (Rust is one) and to safer habits in C++: smart pointers, containers instead of raw arrays, and tools like AddressSanitizer that crash the program the moment it does something illegal. What you learn here is what you need to read their reports.]
+
+#photo(("i_core", "i_dram",), [Left: magnetic core memory, where each tiny ring stores one bit. Right: a modern memory chip. A pointer is nothing but the number of one of these storage cells. #credit[Johann H. Addicks, CC BY-SA 3.0, Wikimedia Commons; Mister rf, CC BY-SA 4.0, Wikimedia Commons]], ht: 4.4cm)
+// ALLTAG-END
 
 #summary[
 - Memory regions: *stack* (automatic), *static*, *heap* (manual, via `new` / `delete`).

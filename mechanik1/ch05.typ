@@ -104,6 +104,14 @@ Die Formel gilt nicht nur für zwei Kräfte. Man erweitert sie ohne Weiteres auf
   Beide Wege stimmen überein. Das Ergebnis ist negativ: Hebt der Arm die Last, bremst die Last den Arm. Der zweite Weg ist meist der schnellere, wenn die Geschwindigkeit des Angriffspunkts nicht schon gegeben ist.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Leistung gleich Kraft mal Geschwindigkeit.* Die Formel $P = vF dot vv$ ist die Grundformel jedes Antriebs. Ein Auto bei 100 km/h ($27.8$ m/s) braucht allein gegen den Luftwiderstand etwa $300$ N, also $P approx 300 dot 27.8 approx 8.3$ kW. Bei doppelter Geschwindigkeit vervierfacht sich die Kraft und verachtfacht sich die Leistung. Das ist der Grund, warum Tempo 130 so viel mehr Sprit braucht als Tempo 100, und warum die Reichweite eines Elektroautos auf der Autobahn schrumpft.]
+
+#alltag[*Kilowattstunden und das E-Bike.* Auf der Stromrechnung steht Energie in kWh, also Leistung mal Zeit. Ein Radfahrer leistet dauerhaft etwa $100$ W, ein Profi über eine Stunde $300$ bis $400$ W. Ein E-Bike-Motor mit $250$ W, der $2$ h läuft, verbraucht $0.5$ kWh, das kostet weniger als $15$ Rappen. Mit demselben Rechenweg schätzt man ab, wie lange ein Akku oder eine Seilbahn arbeiten muss, um eine bestimmte Höhe zu überwinden: $P = m g dot v_("steig")$.]
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg(fig: "a05_stab", fw: 6cm)[Gesamtleistung auf zwei Wegen][

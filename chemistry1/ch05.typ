@@ -188,6 +188,14 @@ For a phase change this is the melting or boiling point.]
 
 #everyday[*Lime kilns and steel mills.* #ce("CaCO3 -> CaO + CO2") has $Delta H^degree = +178$ kJ and $Delta S^degree = +161$ J/K (a gas is formed): case 4. It only becomes spontaneous above $T^* = 178 000\/161 approx 1100$ K, which is why cement kilns run at about 900–1450 °C. Similarly, iron ore is reduced with carbon only at the high temperatures of a blast furnace, where the entropy gained by forming CO gas wins over the enthalpy cost. Plotting $Delta G^degree$ against $T$ for metal oxides (the *Ellingham diagram*) is the standard tool of metallurgists.]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*Why ice melts above $0 degree "C"$.* For $"H"_2 "O"(s) -> "H"_2 "O"(l)$ the enthalpy is $Delta H = +6.01$ kJ/mol and the entropy $Delta S = +22.0$ J/(mol K). Melting is favourable when $Delta G = Delta H - T Delta S < 0$, so above $T = Delta H slash Delta S = 6010 slash 22.0 = 273$ K. The melting point is not a property that has to be remembered: it follows from two numbers, and it is exactly the temperature at which entropy beats enthalpy.]
+
+#everyday[*The heat pump.* A heat pump heats a house with about one unit of electrical energy and takes about two to three units from the outside air or the ground: the coefficient of performance is typically $3$ to $4$. This is no violation of the first law: the energy is moved, not created, and the second law explains why moving heat «uphill» costs work. In Switzerland, heat pumps are the standard for new houses, and the efficiency depends on the temperature difference, which is why they work best with floor heating at low temperature.]
+// ALLTAG-END
+
 #problems()
 
 #prob[Sign of $Delta S$][

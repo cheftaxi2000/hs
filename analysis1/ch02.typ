@@ -512,6 +512,18 @@ $ vec(E)(t) = vr(t) + 1/(k(t)) hat(vn)(t) = vec(x - dot(y) (dot(x)^2 + dot(y)^2)
 
 #fg("a02_evolute", [Die Evolute einer Ellipse (rot) ist eine gestreckte Astroide. Für jeden Punkt der Ellipse liegt der Mittelpunkt des Krümmungskreises (grün) auf ihr. Wo die Ellipse am stärksten gekrümmt ist (an den Enden der langen Achse), ist der Kreis am kleinsten, und die Evolute hat dort ihre Spitzen nahe an der Kurve.], w: 58%)
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Optimieren mit der Ableitung: die Getränkedose.* Gesucht ist ein Zylinder mit festem Volumen $V$ und möglichst wenig Blech. Mit $O = 2 pi r^2 + 2 V\/r$ liefert $O' = 0$ den Radius $r = root(3, V\/(2 pi))$ und die Höhe $h = 2 r$. Für $V = 330$ cm³ ist das $r approx 3.7$ cm und $h approx 7.5$ cm. Echte Dosen sind schlanker ($r approx 3.3$ cm, $h approx 11.5$ cm), weil sie in der Hand liegen, sich stapeln lassen und besser aussehen sollen. Die Rechnung ist trotzdem der Massstab: Sie zeigt, was der Hersteller für ein bestimmtes Aussehen «bezahlt». Dieselbe Methode senkt Kosten in jedem Betrieb: Verpackungen, Tanks, Leitungsquerschnitte, Lagerhaltung.]
+
+#alltag[*Steigung, Gefälle und die Strasse.* Auf einem Strassenschild steht «$10 %$»: Das ist $f' = 0.10$, also $10$ m Höhenunterschied auf $100$ m horizontal. Die Rampen der Alpenpässe, die Neigung einer Rollstuhlrampe (maximal $6 %$) und der Anstieg im Fahrradcomputer sind alles Ableitungen. Die zweite Ableitung ist die Krümmung. Darum werden Autobahnkurven als Klothoiden gebaut, deren Krümmung linear mit der Länge wächst: Der Fahrer dreht das Lenkrad gleichmässig, und die Querbeschleunigung baut sich ruckfrei auf.]
+
+#alltag[*Linearisieren: die Kleinwinkelnäherung.* Für kleine Winkel gilt $sin x approx x$: Bei $x = 0.1$ ($5.7 degree$) ist $sin x = 0.0998$, also nur $0.2 %$ Abweichung. Dank dieser Näherung ist die Pendelbewegung eine einfache Schwingung mit Periode $T = 2 pi sqrt(l\/g)$, unabhängig von der Auslenkung. Das macht Pendeluhren möglich: Ein Pendel von $1$ m Länge schwingt in etwa $2$ s hin und zurück. Ingenieure ersetzen so ständig komplizierte Funktionen durch ihre Tangente, um schnell und mit Bleistift abzuschätzen, bevor sie die Simulation starten.]
+
+#photo(("a_pendel",), [Pendeluhr: Dank der Kleinwinkelnäherung ist die Schwingdauer fast unabhängig von der Auslenkung. #credit[Christoph Braun, CC0, Wikimedia Commons]], ht: 6.5cm)
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg[Ableiten][

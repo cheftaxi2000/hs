@@ -125,6 +125,14 @@ Dabei wurde $Z_2 - Z_1$, $Z_3 - Z_1$ gerechnet (ändert $det$ nicht) und aus den
 
 #intu[Die Determinante ist der *Test auf Eindeutigkeit*: Die Gleichung $A bold(x) = bold(b)$ ist eindeutig lösbar genau dann, wenn $det(A) != 0$. Geometrisch: $A$ presst den Raum zu einem niederdimensionalen Gebilde zusammen (Volumen $0$) genau dann, wenn $det(A) = 0$. Dann gehen Informationen verloren, und man kann nicht zurück.]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Die Produktregel $det(A B) = det A dot det B$ in Aktion.* Wenn zwei Abbildungen hintereinander ausgeführt werden, multiplizieren sich die Volumenfaktoren. Eine Abbildung, die Flächen um $2$ vergrössert, und eine, die sie um $3$ vergrössert, ergeben zusammen den Faktor $6$. Bei der Änderung von Variablen in einem Integral (Polarkoordinaten, Kugelkoordinaten) ist genau diese Determinante, die Jacobi-Determinante, der Faktor, der $r$ in $integral r thin dif r thin dif phi$ erzeugt.]
+
+#alltag[*Singularitäten beim Roboter.* Die Bewegung der Hand eines Roboters hängt über eine Matrix (die Jacobi-Matrix) von den Gelenkgeschwindigkeiten ab. Wird deren Determinante null, kann sich die Hand in einer Richtung nicht mehr bewegen, egal wie sehr sich die Gelenke drehen; das nennt man eine Singularität. Robotersteuerungen berechnen deshalb laufend die Determinante und weichen solchen Stellungen aus. Dasselbe Phänomen heisst bei kardanisch aufgehängten Kreiseln «Gimbal Lock» und machte schon beim Apollo-Programm Sorgen.]
+// ALLTAG-END
+
 #kurz[
 - Verhalten: Vertauschen $arrow.r$ Vorzeichen; Zeile mal $c$ $arrow.r$ mal $c$; Vielfaches addieren $arrow.r$ unverändert; gleiche Zeilen oder Nullzeile $arrow.r$ $0$; $det A^tp = det A$; $det(c A) = c^n det A$; Dreiecksmatrix $arrow.r$ Produkt der Diagonale.
 - *Entwicklung* nach jeder Zeile/Spalte (Beweis durch Hochtauschen).

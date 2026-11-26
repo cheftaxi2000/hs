@@ -159,6 +159,14 @@ Two things to learn from the last line. First, `1 < 2 < 3` is *not* the mathemat
 
 #check[Write "`x` is *not* between 1 and 3 (inclusive)" without using `!`.][`x < 1 || x > 3` (De Morgan applied to `!(x >= 1 && x <= 3)`).]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*The Patriot missile and a tiny rounding error.* On 25 February 1991, a Patriot air-defence battery in Dhahran failed to intercept an incoming Scud missile; 28 soldiers died. The system counted time in tenths of a second, and $0.1$ cannot be stored exactly in binary. The error is tiny, about $0.000000095$ s per tick, but after about 100 hours of operation it had grown to $0.34$ s, during which a Scud flies more than half a kilometre. The investigators (US Government Accountability Office) traced the failure to exactly this. Lesson: the type you choose decides what your program can and cannot represent.]
+
+#everyday[*Never use `float` for money.* Banks and shops store amounts as whole numbers of cents (an `int` or `long`), not as `double`. With floating point, `0.1 + 0.2 == 0.3` is false, and after many additions the cents drift. With integers, $0.10 + 0.20$ becomes `10 + 20 == 30` and is exactly right. The same advice holds for time stamps, pixel coordinates and anything you want to compare for equality.]
+// ALLTAG-END
+
 #summary[
 - An *expression* has a value and a type; *precedence* and *associativity* determine how it is parsed. Parentheses are free.
 - Integer division truncates towards zero; `%` is the remainder; $(a/b) dot b + a % b = a$.

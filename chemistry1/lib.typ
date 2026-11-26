@@ -73,7 +73,7 @@
 #let mistake(body) = _blk([Common mistakes], body, col: crd, bar: crd)
 #let recipe(title, body) = _blk([Recipe: #title], body, fill: luma(248), stroke: 0.6pt + luma(140))
 #let why(title, body) = _blk([Why? #title], body, bar: luma(150))
-#let everyday(body) = _blk([In everyday life and engineering], body, fill: rgb("#fdf5ea"), stroke: 0.6pt + rgb("#c7741a"), col: rgb("#9a520c"))
+#let everyday(body) = _blk([In everyday life and engineering], body, fill: rgb("#fdf5ea"), stroke: 0.6pt + rgb("#c7741a"), col: rgb("#9a520c"), brk: true)
 #let check(q, a) = block(width: 100%, breakable: false, spacing: 1.15em, inset: (x: 10pt, y: 7pt), radius: 4pt,
   stroke: (paint: luma(150), thickness: 0.6pt, dash: "dashed"), {
     _lab([Check yourself], luma(60)); v(-4pt); q
@@ -139,7 +139,7 @@
         let hs = query(selector(heading.where(level: 1)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let ls = query(<lecture>).filter(m => m.location().page() <= here().page())
+        let ls = query(<lecture>).filter(m => m.location().page() < here().page() or (m.location().page() == here().page() and m.location().position().y < 5cm))
         let lab = if ls.len() > 0 and ls.last().value != none [Lecture #ls.last().value] else [Chemistry]
         let w = box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9pt, weight: "bold", fill: white, lab))
         text(size: 9pt)[#n#t #h(1fr) #w]

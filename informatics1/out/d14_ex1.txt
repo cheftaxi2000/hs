@@ -1,0 +1,1 @@
+B::f A::g | B::f A::g | A::f A::g | B::f B::g 

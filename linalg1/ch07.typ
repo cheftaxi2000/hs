@@ -119,6 +119,14 @@ $ R = mat(2, 1, 1; 0, 1, 1; 0, 0, 2), quad L = mat(1, 0, 0; 2, 1, 0; 4, 3, 1). $
 
 Eine Zerlegung existiert aber *nicht immer*: Bei $A = mat(0, 1; 1, 1)$ ist schon der erste Pivot $0$. Dafür braucht man Zeilenvertauschungen (nächste Woche: $P A = L R$).
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Computergrafik: alles ist eine Matrix.* Jede Drehung eines 3D-Modells im Spiel, im Film oder im CAD ist die Multiplikation mit einer Rotationsmatrix $R(phi)$. Ein Charakter mit $50$ Gelenken trägt $50$ solche Matrizen, die hintereinander multipliziert werden. Weil die Matrizen orthogonal sind, bleibt der Charakter beim Drehen gleich gross: Isometrien erhalten Längen. Das ist der Grund, warum eine Spielfigur beim Drehen nicht schrumpft.]
+
+#alltag[*LR-Zerlegung: einmal zerlegen, oft lösen.* In der Praxis hat man oft dasselbe System $A x = b$ für viele rechte Seiten $b$: Eine Brücke wird für hundert Lastfälle berechnet, eine Wärmeleitung für jeden Zeitschritt. Die Zerlegung $A = L R$ kostet etwa $n^3\/3$ Operationen, jede weitere Lösung nur noch $n^2$. Bei $n = 10 thin 000$ ist das ein Faktor von etwa $3000$. Das ist der Grund, warum Simulationsprogramme die Matrix einmal zerlegen und die Zerlegung speichern.]
+// ALLTAG-END
+
 #kurz[
 - *Skalarprodukt* $bold(x)^tp bold(y)$, Länge $sqrt(bold(x) dot bold(x))$, Winkel $cos theta = (bold(x) dot bold(y))\/(|bold(x)||bold(y)|)$; Cauchy-Schwarz $|bold(x) dot bold(y)| <= |bold(x)||bold(y)|$.
 - $Q$ orthogonal $arrow.l.r.double$ $Q$ erhält Skalarprodukt $arrow.l.r.double$ $Q$ erhält Längen. Lineare Isometrien sind genau die orthogonalen Matrizen.

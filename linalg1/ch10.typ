@@ -135,6 +135,14 @@ Aus den acht Axiomen folgen die gewohnten Rechenregeln, ohne dass man sie extra 
 
 Dass diese Folgerungen ohne Rechnen aus den Axiomen kommen, ist das Wesen der Axiomatik: Man beweist einmal und gewinnt Resultate für *alle* Beispiele.
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Cramer'sche Regel: schön, aber nur für kleine Systeme.* Die Formel $x_i = det A_i \/ det A$ löst ein $2 times 2$- oder $3 times 3$-System in einer Zeile und zeigt sofort, wann es keine eindeutige Lösung gibt ($det A = 0$). Für grosse Systeme ist sie hoffnungslos langsam: Die Determinante nach Definition braucht $n!$ Terme, bei $n = 20$ sind das $2.4 dot 10^18$. Darum nimmt man in der Praxis immer Gauss. Cramer nutzt man in der Mechanik oder Elektrotechnik, wenn eine Formel mit Parametern gewünscht ist.]
+
+#alltag[*Vektorräume sind überall, wo man addieren und skalieren darf.* Ein Audiosignal ist ein Vektor aus $44 thin 100$ Zahlen pro Sekunde, ein Foto ein Vektor aus Millionen Pixelwerten, eine Farbe ein Vektor $(R, G, B)$. Zwei Signale addieren (Mischpult), eines mit einer Zahl multiplizieren (Lautstärke): Das sind genau die Vektorraum-Operationen. Weil sie die Axiome erfüllen, darf man die ganze Theorie anwenden, egal wie «exotisch» die Vektoren sind.]
+// ALLTAG-END
+
 #kurz[
 - Für quadratische $A$ gilt: $det A != 0$ $arrow.l.r.double$ $rang A = n$ $arrow.l.r.double$ regulär $arrow.l.r.double$ $A bold(x) = bold(b)$ ist für alle $bold(b)$ eindeutig lösbar. *Cramersche Regel:* $x_i = det(A_i)\/det(A)$. *Inverse:* $A^(-1) = adj(A)\/det(A)$ (nur für kleine $n$ praktikabel).
 - *Vektorraum* über $KK in {RR, CC}$: Menge mit Addition und Skalarmultiplikation, die acht Axiome (V1)-(V8) erfüllt. Nullvektor $bold(0) != 0$.

@@ -183,6 +183,16 @@ für Belastung senkrecht dazu.
   - Vorzeichen: positives und negatives Schnittufer verwechseln.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Biegen und Schneiden: warum Balken hochkant stehen.* Ein Brett als Regalboden biegt sich viel weniger, wenn man es hochkant einbaut. Die Schnittgrössen (Querkraft $Q$, Biegemoment $M$) sagen, wo und wie stark ein Balken beansprucht ist; die Spannung hängt dann von der Querschnittsform ab. Ein I-Profil legt das Material weit nach aussen, wo die Biegespannung am grössten ist, und spart in der Mitte Gewicht. Deshalb sehen Stahlträger auf Baustellen so aus, und deshalb sind auch Röhrenknochen hohl.]
+
+#alltag[*Das Sprungbrett.* Ein Sprungbrett ist ein Kragarm: einseitig eingespannt, am freien Ende belastet. Das Biegemoment wächst linear von null am freien Ende bis zum Maximum an der Einspannung $M_("max") = F l$. Dort bricht ein überbelastetes Brett auch. Dieselbe Rechnung entscheidet, wie weit ein Balkon über die Fassade ragen darf, wie viel Last ein Kranausleger hat und wo man bei einem Haken in der Wand am meisten Kraft braucht.]
+
+#photo(("m_traeger",), [Stahlträger bei der Montage einer Brücke: Das Material liegt oben und unten, wo die Biegespannung am grössten ist. #credit[MassDOT, Public Domain, Wikimedia Commons]], ht: 4.6cm)
+// ALLTAG-END
+
 #aufgaben()
 
 #merke[

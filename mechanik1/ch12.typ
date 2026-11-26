@@ -157,6 +157,16 @@ Die Auflösung: Rad und Unterlage verformen sich an der Berührungsstelle ein we
   - Vergessen, auch das Kippen zu prüfen: Ein hoher Klotz kippt, bevor er rutscht.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Haftreibung und ABS.* Ein Reifen haftet auf trockener Strasse mit $mu_0 approx 0.8$ bis $1$, auf nasser Fahrbahn mit etwa $0.5$ und auf Eis nur mit etwa $0.1$. Beim Notbremsen ist die grösste Verzögerung $a = mu_0 g$, bei Eis also gerade mal $1$ m/s². Rutscht der Reifen, wird aus Haft- Gleitreibung, die kleiner ist, und das Auto lässt sich nicht mehr lenken. Genau das verhindert das ABS: Es bremst so, dass der Reifen gerade noch haftet, und regelt mehrmals pro Sekunde nach.]
+
+#alltag[*Seilreibung: ein Segler hält ein Schiff.* Wickelt man ein Seil mit dem Winkel $alpha$ um einen Poller, gilt $S_1 = S_2 e^(mu alpha)$ (Euler-Eytelwein). Bei $mu = 0.3$ und drei vollen Windungen ($alpha = 6 pi$) ergibt das $e^(0.3 dot 6 pi) approx 286$: Mit $100$ N Handkraft hält man $28.6$ kN, das sind $2.9$ Tonnen! So legen Segler ihre Boote an, und so funktionieren Kletterknoten und Gitarrenwirbel. Ein Fehler hier ist lebensgefährlich, deshalb steht die Formel im Handbuch jeder Bergrettung.]
+
+#photo(("m_bremse",), [Scheibenbremse am Fahrrad: Der Belag wird gegen die Scheibe gepresst, die Reibkraft $F_R = mu N$ bremst das Rad. #credit[Alextredz, CC BY-SA 4.0, Wikimedia Commons]], ht: 5cm)
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg(fig: "a12_schrank", fw: 5.4cm)[Schrank schieben: Kippen oder Gleiten?][

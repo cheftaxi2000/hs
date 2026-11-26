@@ -153,6 +153,14 @@ Wie viel Arbeit macht das Verfahren für $n$ Gleichungen und $n$ Unbekannte? Im 
 $ sum_(j=1)^(n-1) j(j + 1) = frac((n - 1) n (n + 1), 3) approx n^3/3. $
 Verdoppelt man $n$, so wird die Rechnung *achtmal* aufwändiger. Das anschliessende Rückwärtseinsetzen kostet nur etwa $n^2\/2$ Multiplikationen und fällt für grosse $n$ nicht ins Gewicht.
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Wie teuer ist das Gauss-Verfahren?* Für ein System mit $n$ Gleichungen und $n$ Unbekannten braucht man etwa $n^3\/3$ Rechenoperationen. Für $n = 1000$ sind das gut $3 dot 10^8$, also für einen heutigen Rechner ein Bruchteil einer Sekunde. Für $n = 10^6$ (so gross sind Systeme in der Strömungs- oder Festigkeitsberechnung) wären es $3 dot 10^17$, weshalb man dort spezielle Verfahren für Matrizen mit fast nur Nullen verwendet. Jede Finite-Elemente-Software, die ein Bauteil auf Spannungen prüft, löst am Ende solche Systeme.]
+
+#alltag[*Pivotisieren in der Praxis.* Rechnet man mit Zahlen, die nur auf endlich viele Stellen genau gespeichert sind, wächst ein Rundungsfehler, wenn man durch eine sehr kleine Zahl teilt. Darum wählt jedes Programm als Pivot das betragsmässig grösste Element der Spalte. Das ist kein Trick für Prüfungen, sondern Standard in jeder Numerikbibliothek (LAPACK, NumPy, MATLAB): ohne Pivotsuche würden Ergebnisse stellenweise völlig falsch.]
+// ALLTAG-END
+
 #kurz[
 - Ein LGS hat vier Schreibweisen; die *erweiterte Matrix* $(A | bold(b))$ und die *Matrixgleichung* $A bold(x) = bold(b)$ sind die wichtigsten. $A bold(x)$ ist «Zeilen mal Vektor» und gleichzeitig eine *Linearkombination der Spalten*.
 - *Elementare Zeilenumformungen*: Zeilen vertauschen, Zeile mit $c != 0$ multiplizieren, Vielfaches einer Zeile zu einer anderen addieren. Sie ändern $L$ nicht.

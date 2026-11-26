@@ -64,7 +64,7 @@
 #let mistake(body) = _blk([Common mistakes], body, col: crd, bar: crd)
 #let recipe(title, body) = _blk([Recipe: #title], body, fill: luma(248), stroke: 0.6pt + luma(140))
 #let why(title, body) = _blk([Why? #title], body, bar: luma(150))
-#let everyday(body) = _blk([In practice], body, fill: rgb("#eef4fb"), stroke: 0.6pt + rgb("#2f6fb0"), col: rgb("#235a92"))
+#let everyday(body) = _blk([In practice], body, fill: rgb("#eef4fb"), stroke: 0.6pt + rgb("#2f6fb0"), col: rgb("#235a92"), brk: true)
 #let check(q, a) = block(width: 100%, breakable: false, spacing: 1.15em, inset: (x: 10pt, y: 7pt), radius: 4pt,
   stroke: (paint: luma(150), thickness: 0.6pt, dash: "dashed"), {
     _lab([Check yourself], luma(60)); v(-4pt); q
@@ -139,7 +139,7 @@
         let hs = query(selector(heading.where(level: 1)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let ls = query(<lecture>).filter(m => m.location().page() <= here().page())
+        let ls = query(<lecture>).filter(m => m.location().page() < here().page() or (m.location().page() == here().page() and m.location().position().y < 5cm))
         let lab = if ls.len() > 0 and ls.last().value != none [Lecture #ls.last().value] else [Informatics]
         let w = box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9pt, weight: "bold", fill: white, lab))
         text(size: 9pt)[#n#t #h(1fr) #w]
@@ -173,3 +173,55 @@
   show raw.where(block: false): it => box(fill: luma(240), inset: (x: 2.2pt), outset: (y: 2.4pt), radius: 2pt, it)
   body
 }
+
+// ---------- real photographs (Wikimedia Commons, credited in the caption) ----------
+#let _ph(name, h) = box(clip: true, radius: 4pt, image("photos/" + name + ".jpg", height: h))
+#let photo(names, cap, ht: 4.6cm, gap: 6pt) = figure(
+  box(names.map(n => _ph(n, ht)).join(h(gap))), caption: cap)
+#let credit(t) = text(size: 7.5pt, fill: luma(110))[Photo: #t]
+
+// ---------- memory pictures: #mem(("x", "10"), ("y", "11")) ----------
+#let mem(..cells, note: none) = align(center, block(breakable: false, spacing: 1.1em, {
+  let cs = cells.pos()
+  grid(columns: cs.len(), column-gutter: 7pt, row-gutter: 3pt, align: center + bottom,
+    ..cs.map(c => text(font: mono, size: 7.8pt, fill: luma(90), c.at(0))),
+    ..cs.map(c => box(stroke: 0.8pt + luma(70), inset: (x: 8pt, y: 5pt), radius: 2pt,
+      fill: if c.len() > 2 { c.at(2) } else { white }, text(font: mono, size: 9pt, c.at(1)))))
+  if note != none { v(-2pt); text(size: 8.5pt, style: "italic", note) }
+}))
+#let hl = rgb("#fde8c8")   // highlight colour for changed cells
+// a labelled frame (stack frame of a function) containing memory cells
+#let frame(name, ..cells) = box(stroke: (dash: "dashed", paint: luma(120), thickness: 0.6pt), radius: 3pt, inset: 6pt,
+  { text(font: sans, size: 7.5pt, weight: "bold", fill: luma(90), name); v(-1pt)
+    if cells.pos().len() == 0 { box(height: 1.2em, width: 1.5em) } else { grid(columns: cells.pos().len(), column-gutter: 6pt, row-gutter: 3pt, align: center + bottom,
+      ..cells.pos().map(c => text(font: mono, size: 7.8pt, fill: luma(90), c.at(0))),
+      ..cells.pos().map(c => box(stroke: 0.8pt + luma(70), inset: (x: 7pt, y: 4pt), radius: 2pt,
+        fill: if c.len() > 2 { c.at(2) } else { white }, text(font: mono, size: 9pt, c.at(1))))) } })
+#let frames(..fs) = align(center, block(breakable: false, spacing: 1.1em, fs.pos().join(h(10pt))))
+// output of a program only (code shown earlier with out: false)
+#let outonly(name) = block(width: 100%, spacing: 1.2em, breakable: false, fill: rgb("#1f2a2d"), radius: 4pt, inset: (x: 10pt, y: 7pt), {
+  text(font: sans, size: 7.5pt, weight: "bold", fill: rgb("#8fd3b8"))[OUTPUT]; v(-6pt)
+  text(font: mono, size: 8pt, fill: rgb("#e8f3ee"), raw(read("out/" + name + ".txt").trim("\n", at: end), block: true))
+})
+
+// ---------- linked-list pictures: #chain("head", "4", "9", "1") ----------
+#let _node(v, col: white) = box(stroke: 0.8pt + luma(70), radius: 2pt, fill: col, baseline: 30%,
+  grid(columns: 2, inset: (x: 6pt, y: 4pt), stroke: (x, y) => if x == 1 { (left: 0.8pt + luma(70)) },
+    text(font: mono, size: 9pt, v), text(font: mono, size: 9pt, fill: luma(90), sym.bullet)))
+#let _arr = text(size: 11pt, fill: luma(60), [ #sym.arrow.r ])
+#let chain(head, ..vals, hlv: (), note: none) = align(center, block(breakable: false, spacing: 1.1em, {
+  if head != none { text(font: mono, size: 8.5pt, head); _arr }
+  for (i, v) in vals.pos().enumerate() {
+    _node(v, col: if v in hlv { hl } else { white }); _arr
+  }
+  text(font: mono, size: 8.5pt, fill: luma(90), "nullptr")
+  if note != none { linebreak(); text(size: 8.5pt, style: "italic", note) }
+}))
+// table of memory cells with addresses
+#let memtab(..rows) = align(center, block(breakable: false, spacing: 1.1em, table(columns: 3, inset: (x: 10pt, y: 4pt), align: (right, center, center),
+  stroke: (x, y) => (bottom: if y == 0 { 0.6pt } else { 0.3pt + luma(200) }),
+  text(size: 8.5pt, weight: "bold")[address], text(size: 8.5pt, weight: "bold")[name], text(size: 8.5pt, weight: "bold")[value],
+  ..rows.pos().flatten().map(c => text(font: mono, size: 8.8pt, c)))))
+// plain monospace block (no syntax colouring), e.g. for ASCII drawings of trees
+#let plain(src) = align(center, block(breakable: false, spacing: 1.2em, fill: rgb("#f5f8f7"), stroke: 0.6pt + luma(195), radius: 4pt,
+  inset: (x: 14pt, y: 8pt), text(font: mono, size: 9pt, raw(src.trim("\n"), block: true))))

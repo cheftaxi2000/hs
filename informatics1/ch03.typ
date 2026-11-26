@@ -151,6 +151,14 @@ A `double` has 64 bits: not enough to store every decimal number exactly. Comput
 
 #check[Your sum of ten 0.1's is `0.99999999999999989`. Is the computer "wrong"?][No: it computes exactly what the standard prescribes, with numbers that cannot store 0.1 exactly. The program's *specification* has to say "approximately", and the comparison has to use a tolerance.]
 
+// ALLTAG-BEGIN
+== Where this shows up in the real world
+
+#everyday[*A thermostat is an `if` inside an endless loop.* Every control system runs the same pattern: read a sensor, decide, act, repeat. `while (true) { read temperature; if (temp < target) heat on; else heat off; }` is the heart of a heating system, of the cruise control in a car, of the cooling in a server room. Industrial controllers (PLCs, the computers that run factory lines and elevators) literally work in a «scan cycle»: read all inputs, evaluate the program, write all outputs, and start again, typically every few milliseconds.]
+
+#everyday[*Loops decide how long things take.* A loop over $n$ elements takes time proportional to $n$; a loop inside a loop takes time proportional to $n^2$. This difference is what makes a website load instantly or time out: searching a list of one million entries once is fast, but comparing each entry with every other (a nested loop) is $10^(12)$ steps, which takes a quarter of an hour or more. Experienced programmers look at the nesting of loops before they run anything.]
+// ALLTAG-END
+
 #summary[
 - `if`/`else if`/`else` select one alternative; conditions are `bool` expressions; always use braces.
 - A *block* is a scope: its variables die at the closing brace. Declare in the smallest scope.

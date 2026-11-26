@@ -301,6 +301,18 @@ $ p(z) = a_n (z - z_1)(z - z_2) dots (z - z_n). $]
   image("figs/a03_poly.svg", width: 100%))
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Wechselstrom mit komplexen Zahlen.* Die Steckdose liefert $u(t) = hat(u) cos(omega t)$, aber Spulen und Kondensatoren verschieben den Strom gegenüber der Spannung. Ein Elektroingenieur ersetzt die Funktion durch einen komplexen Zeiger $hat(u) e^(j omega t)$ und rechnet mit Widerständen $R$, $j omega L$, $1\/(j omega C)$ wie mit gewöhnlichen Zahlen. Aus Differentialgleichungen wird Algebra. Das Resultat: Phasenverschiebung und Resonanzfrequenz eines Schwingkreises lassen sich in einer Zeile ablesen. Jedes Netzteil, jeder Lautsprecherfilter und jeder Radiotuner ist so entworfen.]
+
+#alltag[*Fourier, MP3 und WLAN.* Jedes Signal ist eine Summe von Schwingungen $e^(j omega t)$. Das Rechnen mit komplexen Exponentialfunktionen macht daraus eine Maschine: Die Fourier-Transformation (in Computern als FFT) zerlegt Musik in ihre Frequenzen, und MP3 speichert nur die, die das Ohr hört. WLAN und LTE senden viele Frequenzen gleichzeitig (OFDM), jede mit einer komplexen Zahl als «Daten»: Betrag und Phase tragen die Bits. Ohne $e^(j phi) = cos phi + j sin phi$ gäbe es kein Handy in der heutigen Form.]
+
+#alltag[*Fraktale aus $z^2 + c$.* Wiederholt man $z_(n+1) = z_n^2 + c$ in der komplexen Ebene und färbt jeden Punkt $c$ danach, ob die Folge beschränkt bleibt, erhält man die Mandelbrot-Menge, eine der berühmtesten Figuren der Mathematik. Dieselbe Regel, die man mit zwei Zeilen Code programmiert, erzeugt unendlich viele Details. Die Technik der Iteration komplexer Funktionen wird auch für Computergrafik (Landschaften, Wolken) und für die Untersuchung chaotischer Systeme genutzt.]
+
+#photo(("a_scope",), [Eine Sinusspannung auf dem Oszilloskop: Der komplexe Zeiger dreht sich, was man sieht, ist seine Projektion. #credit[Pittigrilli, CC BY-SA 4.0, Wikimedia Commons]], ht: 5cm)
+// ALLTAG-END
+
 #aufgaben()
 
 #aufg[Grundrechenarten][

@@ -207,6 +207,14 @@ The reverse processes (freezing, condensation) have the opposite sign. Chapter 8
 
 #idea[So far we have only asked *how much* energy is involved ($Delta E$, $Delta H$). But energy alone does not tell us *whether* a process will happen: ice melts spontaneously at 25 °C even though melting is endothermic. The missing ingredient is entropy and the second law (Chapter 5).]
 
+// ALLTAG-BEGIN
+== More from everyday life and the professions
+
+#everyday[*The food label.* The energy on a package is measured by burning the food in a calorimeter, exactly the experiment of this chapter. A chocolate bar with $250$ kcal contains $250 dot 4.184 approx 1050$ kJ. The body does not burn it in a flame, but the enthalpy of the overall reaction is the same, because $Delta H$ does not depend on the path (Hess's law). A fat gives about $37$ kJ/g, a carbohydrate or protein about $17$ kJ/g, which is why fat is the most energy-dense food.]
+
+#everyday[*Hand warmers.* The little bag you open in winter contains iron powder, salt, water and activated carbon. When air gets in, the iron slowly rusts: $4 "Fe" + 3 "O"_2 -> 2 "Fe"_2 "O"_3$ with $Delta H approx -1648$ kJ per $2$ mol $"Fe"_2 "O"_3$. The same rusting that destroys a bridge in decades is, in finely powdered form with salt as a catalyst, done in an hour or two and heats your pocket. It is a good reminder that the enthalpy tells how much heat, not how fast.]
+// ALLTAG-END
+
 #problems()
 
 #prob[First law][

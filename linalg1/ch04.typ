@@ -174,6 +174,14 @@ $A B$ ist $2 times 2$. $(A B)_(11) = 1 dot 1 + 2 dot 2 + 3 dot 0 = 5$, $(A B)_(1
 - Dimensionen prüfen: $(2 times 3)(2 times 3)$ ist *nicht* definiert.
 ]
 
+// ALLTAG-BEGIN
+== Wo man das im Alltag und im Beruf braucht
+
+#alltag[*Rang als Informationsgehalt.* Der Rang einer Matrix sagt, wie viele wirklich unabhängige Zeilen sie enthält. Ein Foto der Grösse $1000 times 1000$ Pixel hat $10^6$ Zahlen, aber oft ist es annähernd Rang $50$. Man kann es dann mit $2 dot 1000 dot 50 = 10^5$ Zahlen speichern, also mit einem Zehntel des Platzes. Solche «Niedrigrang-Näherungen» stecken in der Bildkompression, in der Gesichtserkennung und in Empfehlungssystemen: Die Matrix «Nutzer mal Film» ist näherungsweise von niedrigem Rang, weil Geschmäcker sich in wenigen Mustern wiederholen. So empfiehlt dir ein Streamingdienst einen Film.]
+
+#alltag[*Homogene Systeme: Gleichgewichte und Schwingungen.* $A x = 0$ beschreibt, was «nichts bewirkt»: Ströme, die sich aufheben, Kräfte, die im Gleichgewicht sind, Eigenschwingungen einer Brücke. Gibt es nur $x = 0$, ist das System stabil. Gibt es mehr Lösungen, ist etwas «frei beweglich». Ein Bauingenieur prüft mit dem Rang der Steifigkeitsmatrix, ob ein Tragwerk nicht doch wackelt: Hat sie nicht vollen Rang, gibt es einen Mechanismus, also eine Bewegung ohne Widerstand.]
+// ALLTAG-END
+
 #kurz[
 - *Rang* = Anzahl der Pivots. $0 <= rang(A) <= min(m, n)$.
 - $A bold(x) = bold(b)$ lösbar $arrow.l.r.double$ $rang(A) = rang(A | bold(b))$. Dann $n - rang(A)$ freie Parameter; eindeutig genau dann, wenn $rang(A) = n$. Bei $m < n$ nie eindeutig. $rang(A) = m$ $arrow.r$ immer lösbar.

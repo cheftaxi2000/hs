@@ -1,0 +1,9 @@
+lo=0 hi=10 mid=5 v[mid]=23
+lo=0 hi=5 mid=2 v[mid]=8
+lo=3 hi=5 mid=4 v[mid]=16
+result 4
+lo=0 hi=10 mid=5 v[mid]=23
+lo=6 hi=10 mid=8 v[mid]=72
+lo=6 hi=8 mid=7 v[mid]=56
+lo=6 hi=7 mid=6 v[mid]=38
+result -1
