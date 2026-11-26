@@ -1,0 +1,5 @@
+size 0: 
+size 1: 7 
+size 3: 7 3 9 
+size 3: 7 4 9 
+size 2: 7 4 

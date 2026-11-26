@@ -6,6 +6,8 @@
 
 #lecture[Two big steps. First, *references*: a second name for an existing variable, which lets a function change the caller's data and avoids needless copying. Second, the `std::vector`: a growing row of values of the same type. With vectors, a program can handle *as many* values as the input contains, not just as many as we have declared variables for.]
 
+#include "ch06_a.typ"
+
 == References
 
 #defn[Reference][A *reference* is an *alias*, a second name, for an existing variable. It is declared with `&` after the type: `int& r = a;`. From then on `r` and `a` denote *the same* memory cell. A reference must be initialised and always stays bound to the same variable.]
@@ -123,6 +125,8 @@ An element of a vector may itself be a vector: `std::vector<std::vector<int>>` i
 #cpp("pascal")
 
 #everyday[Almost all data in engineering is a vector or a table: measurements over time, pixels in an image (a matrix of colour values), coordinates of the nodes in a simulation, a matrix in a system of equations. The loops of this and the last chapters are what process them.]
+
+#include "ch06_b.typ"
 
 // ALLTAG-BEGIN
 == Where this shows up in the real world

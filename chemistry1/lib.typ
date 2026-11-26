@@ -139,7 +139,7 @@
         let hs = query(selector(heading.where(level: 1)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let ls = query(<lecture>).filter(m => m.location().page() <= here().page())
+        let ls = query(<lecture>).filter(m => m.location().page() < here().page() or (m.location().page() == here().page() and m.location().position().y < 5cm))
         let lab = if ls.len() > 0 and ls.last().value != none [Lecture #ls.last().value] else [Chemistry]
         let w = box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9pt, weight: "bold", fill: white, lab))
         text(size: 9pt)[#n#t #h(1fr) #w]

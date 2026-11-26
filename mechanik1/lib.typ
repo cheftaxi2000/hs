@@ -127,7 +127,7 @@
         let h2 = query(selector(heading.where(level: 2)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let ws = query(<woche>).filter(m => m.location().page() <= here().page())
+        let ws = query(<woche>).filter(m => m.location().page() < here().page() or (m.location().page() == here().page() and m.location().position().y < 5cm))
         let w = if ws.len() > 0 and ws.last().value != none { box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9.5pt, weight: "bold", fill: white)[Woche #ws.last().value]) } else { [Mechanik 1] }
         text(size: 9pt)[#n#t #h(1fr) #w]
         v(-7pt); line(length: 100%, stroke: 0.5pt)

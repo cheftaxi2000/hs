@@ -139,7 +139,7 @@
         let hs = query(selector(heading.where(level: 1)).before(here()))
         let t = if hs.len() > 0 { hs.last().body } else { [] }
         let n = if hs.len() > 0 and hs.last().numbering != none { [#counter(heading).get().first() #h(0.3em)] } else { [] }
-        let ls = query(<lecture>).filter(m => m.location().page() <= here().page())
+        let ls = query(<lecture>).filter(m => m.location().page() < here().page() or (m.location().page() == here().page() and m.location().position().y < 5cm))
         let lab = if ls.len() > 0 and ls.last().value != none [Lecture #ls.last().value] else [Informatics]
         let w = box(fill: black, radius: 2pt, inset: (x: 5pt, y: 2.5pt), baseline: 2.5pt, text(font: sans, size: 9pt, weight: "bold", fill: white, lab))
         text(size: 9pt)[#n#t #h(1fr) #w]
@@ -179,3 +179,27 @@
 #let photo(names, cap, ht: 4.6cm, gap: 6pt) = figure(
   box(names.map(n => _ph(n, ht)).join(h(gap))), caption: cap)
 #let credit(t) = text(size: 7.5pt, fill: luma(110))[Photo: #t]
+
+// ---------- memory pictures: #mem(("x", "10"), ("y", "11")) ----------
+#let mem(..cells, note: none) = align(center, block(breakable: false, spacing: 1.1em, {
+  let cs = cells.pos()
+  grid(columns: cs.len(), column-gutter: 7pt, row-gutter: 3pt, align: center + bottom,
+    ..cs.map(c => text(font: mono, size: 7.8pt, fill: luma(90), c.at(0))),
+    ..cs.map(c => box(stroke: 0.8pt + luma(70), inset: (x: 8pt, y: 5pt), radius: 2pt,
+      fill: if c.len() > 2 { c.at(2) } else { white }, text(font: mono, size: 9pt, c.at(1)))))
+  if note != none { v(-2pt); text(size: 8.5pt, style: "italic", note) }
+}))
+#let hl = rgb("#fde8c8")   // highlight colour for changed cells
+// a labelled frame (stack frame of a function) containing memory cells
+#let frame(name, ..cells) = box(stroke: (dash: "dashed", paint: luma(120), thickness: 0.6pt), radius: 3pt, inset: 6pt,
+  { text(font: sans, size: 7.5pt, weight: "bold", fill: luma(90), name); v(-1pt)
+    if cells.pos().len() == 0 { box(height: 1.2em, width: 1.5em) } else { grid(columns: cells.pos().len(), column-gutter: 6pt, row-gutter: 3pt, align: center + bottom,
+      ..cells.pos().map(c => text(font: mono, size: 7.8pt, fill: luma(90), c.at(0))),
+      ..cells.pos().map(c => box(stroke: 0.8pt + luma(70), inset: (x: 7pt, y: 4pt), radius: 2pt,
+        fill: if c.len() > 2 { c.at(2) } else { white }, text(font: mono, size: 9pt, c.at(1))))) } })
+#let frames(..fs) = align(center, block(breakable: false, spacing: 1.1em, fs.pos().join(h(10pt))))
+// output of a program only (code shown earlier with out: false)
+#let outonly(name) = block(width: 100%, spacing: 1.2em, breakable: false, fill: rgb("#1f2a2d"), radius: 4pt, inset: (x: 10pt, y: 7pt), {
+  text(font: sans, size: 7.5pt, weight: "bold", fill: rgb("#8fd3b8"))[OUTPUT]; v(-6pt)
+  text(font: mono, size: 8pt, fill: rgb("#e8f3ee"), raw(read("out/" + name + ".txt").trim("\n", at: end), block: true))
+})

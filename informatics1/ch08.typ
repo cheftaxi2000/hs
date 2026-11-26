@@ -6,6 +6,8 @@
 
 #lecture[Until now we have treated `int` and `double` as black boxes that "mostly behave like numbers". This chapter opens the boxes. Why does `127 + 1` become $-128$ in 8 bits? Why is $0.1$ not exactly representable? Understanding the representation explains every surprise from Chapters 2 and 3, and it explains how a 370 million dollar rocket was lost.]
 
+#include "ch08_a.typ"
+
 == Positional number systems
 
 You write the number $472$ in the *decimal* system with the *base* 10: each position has a weight that is ten times that of the position to its right.
@@ -142,6 +144,8 @@ Reading the output:
 ]
 
 #everyday[*Ariane 5, 4 June 1996.* Thirty-seven seconds after lift-off, the new European rocket veered off course and destroyed itself, a loss of about 370 million dollars. The cause: software reused from Ariane 4 converted a 64-bit floating-point number (the horizontal velocity) into a 16-bit signed integer. Ariane 5 was faster, the value exceeded 32767, the conversion overflowed (exactly like `static_cast<short>(40000)` in our program), the guidance computer reported a diagnostic error, and the main and backup computer shut down. One single unchecked conversion.]
+
+#include "ch08_b.typ"
 
 // ALLTAG-BEGIN
 == Where this shows up in the real world

@@ -6,6 +6,8 @@
 
 #lecture[This chapter has two halves. Text first: how computers store characters, and how to work with the `std::string` type. Then one of the central ideas of computer science: *recursion*, a function that solves a problem by calling itself on a smaller version of the same problem.]
 
+#include "ch07_a.typ"
+
 == Characters
 
 A computer knows only numbers. To store text, every character is assigned a number: a *code*. The most common table is *ASCII*, defined for 128 characters (letters, digits, punctuation, control characters). A `char` is nothing but a small integer that is *printed* as a character.
@@ -137,6 +139,8 @@ For $n = 0$ there is nothing to do.]
 The number of moves $M(n)$ satisfies $M(0) = 0$ and $M(n) = 2 M(n-1) + 1$, which gives $M(n) = 2^n - 1$: 1048575 for 20 discs, as the program counted. For 64 discs, as in the legend of the monks of Hanoi, it would be $2^64 - 1 approx 1.8 dot 10^19$ moves: at one move per second the world would end first. No program can improve this: the *problem* itself needs that many moves.
 
 #check[What is the smallest number of moves for 5 discs? And what does `hanoi(0, ...)` do?][$2^5 - 1 = 31$. It returns immediately, because the base case `n == 0` is reached; there is nothing to do.]
+
+#include "ch07_b.typ"
 
 // ALLTAG-BEGIN
 == Where this shows up in the real world

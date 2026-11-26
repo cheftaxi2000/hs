@@ -1,0 +1,5 @@
+code of 'd':        100
+position in abc:    3
+upper case:         D
+digit '7' as int:   7
+'7' + 1 as int:     56

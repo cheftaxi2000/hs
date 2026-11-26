@@ -1,0 +1,2 @@
+10 letters, 4 digits, 2 upper case
+HelloWorld
