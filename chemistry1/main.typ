@@ -35,4 +35,5 @@
 #include "ch08.typ"
 #include "ch09.typ"
 #include "ch10.typ"
+#include "ch11.typ"
 #include "appendix.typ"

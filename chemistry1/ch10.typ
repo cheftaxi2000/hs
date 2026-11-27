@@ -171,7 +171,7 @@ The rate law raises questions that this lecture does not yet answer:
 // ALLTAG-BEGIN
 == More from everyday life and the professions
 
-#everyday[*The catalytic converter.* A catalytic converter in a petrol car contains platinum, palladium and rhodium on a ceramic honeycomb. At the hot surface, in a fraction of a second, three reactions happen: $"CO"$ is oxidised to $"CO"_2$, unburnt hydrocarbons are oxidised, and nitrogen oxides are reduced to $"N"_2$. Without the catalyst, these reactions are too slow at exhaust temperatures to matter; with it, more than $90 %$ of the pollutants disappear. A catalyst does not change the thermodynamics, only the activation energy, exactly as in this chapter.]
+#everyday[*The catalytic converter.* A catalytic converter in a petrol car contains platinum, palladium and rhodium on a ceramic honeycomb. At the hot surface, in a fraction of a second, three reactions happen: $"CO"$ is oxidised to $"CO"_2$, unburnt hydrocarbons are oxidised, and nitrogen oxides are reduced to $"N"_2$. Without the catalyst, these reactions are too slow at exhaust temperatures to matter; with it, more than $90 %$ of the pollutants disappear. A catalyst does not change the thermodynamics, only the activation energy (Chapter 11).]
 
 #everyday[*The fridge as a kinetic device.* Rule of thumb: a reaction rate roughly doubles for every $10$ K. A fridge at $4 degree "C"$ compared with a kitchen at $25 degree "C"$ has a $21$ K difference, so spoilage proceeds roughly $2^(2.1) approx 4$ times more slowly, and milk keeps for a week instead of a day or two. The Arrhenius equation turns this rule of thumb into numbers, and food scientists use it to predict shelf lives.]
 // ALLTAG-END

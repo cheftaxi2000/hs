@@ -13,13 +13,14 @@ from matplotlib.patches import Polygon
 for f in ("cmunrm", "cmunti", "cmunbx", "cmunbi"):
     fm.fontManager.addfont(f"/usr/share/fonts/truetype/cmu/{f}.ttf")
 plt.rcParams.update({"svg.fonttype": "path", "font.family": "CMU Serif", "font.size": 8,
-                     "mathtext.fontset": "cm", "axes.unicode_minus": False})
+                     "mathtext.fontset": "cm", "axes.unicode_minus": False,
+                     "svg.hashsalt": "chemistry1"})   # deterministic SVG ids
 
 INK = "#1b1b1b"; GREY = "#8d8d8d"; GRID = "#e6e6e6"
 B = "#1f5fa8"; R = "#b3382c"; G = "#2a7f5a"; O = "#c7741a"; P = "#6b4c9a"
 FILL_B = "#cfe0f2"; FILL_R = "#f3d3cf"; FILL_G = "#d3eadf"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figs")
-PNG = "/tmp/claude-0/-home-user-hs/86681ad6-701a-5310-b84c-b1468856c4a6/scratchpad/cpng"
+PNG = os.environ.get("FIGPNG", os.path.join(os.path.dirname(os.path.abspath(__file__)), ".figpng"))  # preview PNGs (not in the repo)
 os.makedirs(OUT, exist_ok=True); os.makedirs(PNG, exist_ok=True)
 HALO = [pe.withStroke(linewidth=2.6, foreground="white")]
 
@@ -140,7 +141,7 @@ class Plot:
 
     def save(s, name):
         if getattr(s, "_clipped", 0): print("CLIP", name, s._clipped)
-        s.fig.savefig(os.path.join(OUT, name + ".svg"), format="svg", bbox_inches="tight", pad_inches=0.03)
+        s.fig.savefig(os.path.join(OUT, name + ".svg"), format="svg", bbox_inches="tight", pad_inches=0.03, metadata={"Date": None})
         s.fig.savefig(os.path.join(PNG, name + ".png"), dpi=130, bbox_inches="tight", pad_inches=0.03)
         plt.close(s.fig)
 

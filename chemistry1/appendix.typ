@@ -9,7 +9,7 @@
 
 #fs[Constants and conversions][
   #table(columns: (1fr, 1fr), stroke: none, inset: (x: 4pt, y: 3pt),
-    [Avogadro: $N_A = 6.022 times 10^(23) "mol"^(-1)$], [Gas constant: $R = 8.314 "J mol"^(-1) "K"^(-1) = 0.08206 "L atm mol"^(-1) "K"^(-1)$],
+    [Avogadro: $N_A = 6.022 times 10^(23) "mol"^(-1)$], [Gas constant: $R = 8.314 thin "J" thin "mol"^(-1) thin "K"^(-1) = 0.08206 thin "L atm" thin "mol"^(-1) thin "K"^(-1)$],
     [Boltzmann: $k_B = R\/N_A = 1.381 times 10^(-23) "J/K"$], [Planck: $h = 6.626 times 10^(-34) "J s"$],
     [Speed of light: $c = 2.998 times 10^8 "m/s"$], [Elementary charge: $e = 1.602 times 10^(-19) "C"$],
     [Atomic mass unit: $1 "u" = 1.6605 times 10^(-27) "kg"$], [$1 "atm" = 760 "torr" = 101.325 "kPa" = 1.01325 "bar"$],
@@ -65,4 +65,10 @@
     [], [*zeroth*], [*first*], [*second*],
     [integrated], [$[A] = [A]_0 - k t$], [$ln[A] = ln[A]_0 - k t$], [$1\/[A] = 1\/[A]_0 + k t$],
     [half-life], [$[A]_0\/(2k)$], [$0.693\/k$], [$1\/(k[A]_0)$])
+]
+
+#fs[Temperature, mechanisms, catalysis (Ch. 11)][
+  $ k = A e^(-E_a\/(R T)), quad ln k = ln A - E_a/R dot 1/T, quad f = e^(-E_a\/(R T)), quad E_a^"rev" = E_a^"fwd" - Delta E $
+  $ ln(k_1/k_2) = E_a/R (1/T_2 - 1/T_1) "  (same reaction)", quad ln(k_1/k_2) = (E_(a,2) - E_(a,1))/(R T) "  (same " T", same " A")" $
+  $[A] = [k]$, $E_a$ in J/mol, $T$ in K. Elementary step $alpha A + beta B ->$: rate $= k[A]^alpha [B]^beta$. Slowest step determines the rate; a catalyst lowers $E_a$ but leaves $Delta E$ and the equilibrium unchanged.
 ]
