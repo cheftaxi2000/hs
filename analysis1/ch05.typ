@@ -12,6 +12,20 @@
 
 Eine Reihe $sum_(k=0)^oo a_k$ *konvergiert* gegen $S$, wenn die Folge der Partialsummen $s_n = a_0 + a_1 + dots + a_n$ gegen $S$ konvergiert (Abschnitt 1.1). Sonst *divergiert* sie.
 
+#bsp[Die Begriffe auseinanderhalten: $1 + 1/2 + 1/4 + dots$][
+  #table(columns: (auto, 1fr), stroke: none, inset: (x: 5pt, y: 3.5pt),
+    table.hline(stroke: 0.6pt),
+    [*Folge* (der Glieder)], [$(a_k) = (1, 1/2, 1/4, 1/8, dots)$, also $a_k = (1/2)^k$],
+    [*Folgenglied*], [eine einzelne Zahl daraus, z. B. $a_2 = 1\/4$],
+    [*Partialsumme*], [eine endliche Summe, z. B. $s_2 = 1 + 1/2 + 1/4 = 7/4$],
+    [*Partialsummenfolge*], [$(s_n) = (1, 3/2, 7/4, 15/8, dots)$; mit der Summenformel $s_n = 2 - (1/2)^n$],
+    [*Reihe*], [$sum_(k=0)^oo (1/2)^k$: das ist (streng genommen) die Partialsummenfolge],
+    [*Reihenwert*], [ihr Grenzwert $lim s_n = 2$, falls er existiert],
+    table.hline(stroke: 0.6pt),
+  )
+  Die Glieder gehen gegen $0$, die Partialsummen gegen $2$. Wer in einer Aufgabe «die Reihe konvergiert gegen $0$» schreibt, hat Folge und Reihe verwechselt.
+]
+
 #satz[Nullfolgenkriterium (notwendige Bedingung)][Konvergiert $sum a_k$, so ist $(a_k)$ eine Nullfolge: $lim_(k -> oo) a_k = 0$.
 
 Umgekehrt formuliert, und so benutzt man es: *Ist $a_k$ keine Nullfolge, so divergiert die Reihe.*]
@@ -33,8 +47,9 @@ Die Glieder gehen gegen $0$, aber zu langsam.]
 === Geometrische Reihe
 
 #satz[Geometrische Reihe][
-  $ sum_(k=0)^oo x^k = 1 + x + x^2 + x^3 + dots = 1/(1 - x) quad "für" |x| < 1. $
-  Für $|x| >= 1$ divergiert sie (die Glieder gehen nicht gegen $0$).
+  Endlich (für $x != 1$) und unendlich:
+  $ sum_(k=0)^n x^k = (1 - x^(n+1))/(1 - x), wide sum_(k=0)^oo x^k = 1 + x + x^2 + x^3 + dots = 1/(1 - x) quad "für" |x| < 1. $
+  Für $|x| >= 1$ divergiert sie (die Glieder gehen nicht gegen $0$). Mit einem Vorfaktor: $sum_(k=0)^oo a_0 q^k = a_0\/(1 - q)$ für $|q| < 1$, also «erstes Glied durch $1 - q$».
 ]
 
 #fg("a05_geom", [Die Partialsummen $s_n = 1 + x + dots + x^n$ (gestrichelt) nähern sich $1\/(1-x)$ nur im grünen Bereich $|x| < 1$. Ausserhalb laufen sie davon, obwohl $1\/(1-x)$ dort ganz harmlos ist (z. B. bei $x = -1.5$).], w: 60%)
@@ -125,10 +140,28 @@ Der Fehler beim Abbrechen nach dem $n$-ten Glied ist höchstens so gross wie das
   Konvergenzbereich: $[-1\/3, 1\/3)$.
 ]
 
+#bsp[Zentrum $x_0 = 1$, beide Randpunkte divergent][
+  $display(sum_(n=0)^oo ((x - 1)/2)^n = sum_(n=0)^oo 1/2^n (x - 1)^n)$, also $x_0 = 1$ und $a_n = 2^(-n)$.
+  $ rho = lim_(n -> oo) |a_n/a_(n+1)| = lim_(n -> oo) 2^(n+1)/2^n = 2, wide |x - 1| < 2 <=> -1 < x < 3. $
+  Schneller sieht man es so: Es ist eine geometrische Reihe mit $q = (x - 1)\/2$, sie konvergiert genau für $|q| < 1$. Im Innern ist ihr Wert $1\/(1 - q) = 2\/(3 - x)$; der Pol bei $x = 3$ liegt im Abstand $2$ vom Zentrum.
+
+  *Randpunkte.* $x = -1$ gibt $q = -1$, also $1 - 1 + 1 - dots$: Die Partialsummen springen zwischen $1$ und $0$, die Glieder sind keine Nullfolge, divergent. $x = 3$ gibt $q = 1$, also $1 + 1 + 1 + dots$: Die Partialsummen wachsen über jede Grenze, divergent. Konvergenzbereich $(-1, 3)$.
+  #fgs(("a05_rand_m1", "a05_rand_p3"), [Partialsummen an den beiden Randpunkten: links beschränkt, aber ohne Grenzwert; rechts unbeschränkt. Zwei verschiedene Arten zu divergieren.])
+]
+
 #fehler[Bei Reihen, in denen nur jede zweite Potenz vorkommt (z. B. $sum x^(2k) \/ 4^k$), ist $a_(k+1)$ in der Formel nicht der nächste vorhandene Koeffizient. Am sichersten wendet man dann das Quotientenkriterium direkt auf die ganzen Glieder an: $|x^(2k+2)\/4^(k+1) dot 4^k\/x^(2k)| = |x|^2\/4 < 1 <=> |x| < 2$.]
 
 #satz[Rechnen mit Potenzreihen][Innerhalb des Konvergenzradius darf man Potenzreihen gliedweise ableiten und integrieren. Der Konvergenzradius bleibt dabei gleich:
 $ dif/(dif x) sum a_k x^k = sum k a_k x^(k-1), wide integral_0^x sum a_k t^k dif t = sum a_k/(k+1) x^(k+1). $]
+
+#satz[Summe und Produkt von Potenzreihen][Im gemeinsamen Konvergenzbereich gilt
+$ sum a_k x^k + sum b_k x^k = sum (a_k + b_k) x^k quad "(gliedweise)," $
+$ (sum_(k=0)^oo a_k x^k)(sum_(k=0)^oo b_k x^k) = sum_(n=0)^oo c_n x^n quad "mit" quad c_n = sum_(k=0)^n a_k b_(n-k) = a_0 b_n + a_1 b_(n-1) + dots + a_n b_0 $
+(*Cauchy-Produkt*).]
+
+#intu[Das Produkt ist nichts anderes als Ausmultiplizieren zweier (unendlich langer) Polynome: Zu $x^n$ trägt _jedes_ Paar von Gliedern bei, deren Exponenten sich zu $n$ addieren. Glied $k$ mit Glied $k$ zu multiplizieren, wie bei der Summe, ist falsch:
+$ e^x sin x = (sum_(n=0)^oo x^n/n!)(sum_(n=0)^oo (-1)^n x^(2n+1)/(2n+1)!) != sum_(n=0)^oo x^n/n! dot (-1)^n x^(2n+1)/(2n+1)!. $
+Richtig: $(1 + x + x^2/2 + x^3/6 + dots)(x - x^3/6 + dots) = x + x^2 + (1/2 - 1/6) x^3 + dots = x + x^2 + x^3/3 + dots$]
 
 #bsp[Neue Reihen aus der geometrischen Reihe][
   - Ableiten von $sum x^k = 1\/(1 - x)$ gibt $display(sum_(k=1)^oo k x^(k-1) = 1/(1-x)^2)$.
@@ -136,6 +169,19 @@ $ dif/(dif x) sum a_k x^k = sum k a_k x^(k-1), wide integral_0^x sum a_k t^k dif
   - $x -> -x^2$: $display(1/(1 + x^2) = sum (-1)^k x^(2k))$. Integrieren: $display(arctan x = sum_(k=0)^oo (-1)^k x^(2k+1)/(2k+1))$.
   Alle mit $rho = 1$. Mit $x = 1$ (Randpunkt, Leibniz) folgt daraus sogar $1 - 1\/3 + 1\/5 - dots = pi\/4$.
 ]
+
+#bsp[Einsetzen, ausklammern, Index verschieben][
+  - *Einsetzen:* $q = -2 x^2$ in die geometrische Reihe:
+    $ 1/(1 + 2 x^2) = sum_(n=0)^oo (-2 x^2)^n = sum_(n=0)^oo (-2)^n x^(2n) = 1 - 2 x^2 + 4 x^4 - dots $
+    Gültig für $|q| = 2 x^2 < 1$, also $|x| < 1\/sqrt(2)$.
+  - *Ausklammern:* Damit die $1$ vorne steht, zieht man die Konstante heraus:
+    $ 1/(5 - x) = 1/5 dot 1/(1 - x\/5) = 1/5 sum_(n=0)^oo (x/5)^n = sum_(n=0)^oo x^n/5^(n+1), quad "gültig für" |x/5| < 1 "," "also" |x| < 5. $
+  - *Multiplizieren und Index verschieben:* $display(x^2/(5 - x) = sum_(n=0)^oo x^(n+2)/5^(n+1))$. Will man die Potenz als $x^k$ schreiben, setzt man $k = n + 2$; dann ist $n = k - 2$, und der Start $n = 0$ wird zu $k = 2$:
+    $ x^2/(5 - x) = sum_(k=2)^oo x^k/5^(k-1) = x^2/5 + x^3/25 + dots $
+    Der Faktor $x^2$ ändert den Konvergenzradius nicht: wieder $|x| < 5$.
+]
+
+#merke[*Indexverschiebung kontrollieren:* Das erste Glied muss in beiden Schreibweisen gleich sein (hier $x^2\/5$ für $n = 0$ bzw. $k = 2$). Wer die untere Grenze nicht mitverschiebt, zählt Glieder doppelt oder lässt welche weg.]
 
 == Taylorpolynome und Taylorreihen
 
@@ -260,6 +306,18 @@ Vorsicht: Die Problemstelle kann auch komplex sein. $1\/(1 + x^2)$ ist auf ganz 
   (Die Vorlage setzt auch die geraden Koeffizienten an und zeigt, dass sie $0$ sind. Mit dem Symmetrie-Argument spart man diese Arbeit.)
 ]
 
+#bsp[Quotient: $sin(x)\/e^x$ um $0$][
+  Ansatz $sin(x)\/e^x = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + dots$, also $sin x = (a_0 + a_1 x + a_2 x^2 + a_3 x^3 + dots) dot e^x$:
+  $ x - x^3/6 + dots = (a_0 + a_1 x + a_2 x^2 + a_3 x^3 + dots)(1 + x + x^2/2 + x^3/6 + dots). $
+  Koeffizienten gleicher Potenzen vergleichen (Cauchy-Produkt):
+  - $x^0$: $0 = a_0$, also $a_0 = 0$.
+  - $x^1$: $1 = a_0 + a_1$, also $a_1 = 1$.
+  - $x^2$: $0 = a_0\/2 + a_1 + a_2$, also $a_2 = -1$.
+  - $x^3$: $-1\/6 = a_0\/6 + a_1\/2 + a_2 + a_3$, also $a_3 = -1/6 - 1/2 + 1 = 1/3$.
+  $ sin(x)/e^x = x - x^2 + x^3/3 + dots $
+  *Kontrolle auf einem zweiten Weg:* $sin(x)\/e^x = sin(x) dot e^(-x) = (x - x^3/6)(1 - x + x^2/2) + dots = x - x^2 + (1/2 - 1/6) x^3 + dots$ #sym.checkmark
+]
+
 === Grenzwerte mit Taylor
 
 #trick[Grenzwerte mit Taylorreihen][Bei Grenzwerten $x -> 0$ der Form $0\/0$ ersetzt man jede Funktion durch die ersten Glieder ihrer Taylorreihe. Was übrig bleibt, ist ein Bruch aus Polynomen, und der niedrigste Grad entscheidet. Oft viel schneller als mehrfaches l'Hôpital.]
@@ -305,6 +363,16 @@ Vorsicht: Die Problemstelle kann auch komplex sein. $1\/(1 + x^2)$ ist auf ganz 
   Konvergenzbereich $[-3, 7)$.
 ]
 
+#aufg[Konvergenzradius (Serie 11, Aufgabe 5a und 5c)][
+  Bestimme den Konvergenzradius von (a) $display(sum_(n=1)^oo (x/n)^n)$ und (c) $display(sum_(n=0)^oo x^(2n)/2^n)$.
+][
+  (a) Wurzelkriterium direkt auf die Glieder: $root(n, |(x\/n)^n|) = |x|\/n -> 0 < 1$, für _jedes_ $x$. Die Reihe konvergiert überall: $rho = oo$. (Die Nenner $n^n$ wachsen schneller als jede Potenz $|x|^n$.)
+
+  (c) Als eine einzige Potenz geschrieben: $x^(2n)\/2^n = (x^2\/2)^n$. Das ist eine geometrische Reihe mit $q = x^2\/2$, konvergent genau für $x^2\/2 < 1$, also $|x| < sqrt(2)$: $rho = sqrt(2)$. An den Rändern $x = plus.minus sqrt(2)$ ist $q = 1$, divergent. Im Innern ist der Wert $2\/(2 - x^2)$.
+
+  Vorsicht bei (c) mit der Formel $rho = lim |a_k\/a_(k+1)|$: Als Potenzreihe in $x$ hat die Reihe nur gerade Potenzen, jeder zweite Koeffizient ist $0$, und der Quotient existiert nicht. Deshalb arbeitet man mit $q$ oder mit den ganzen Gliedern (siehe «Typische Fehler» beim Konvergenzradius).
+]
+
 #aufg[Taylorpolynom][
   Bestimme das Taylorpolynom 3. Grades von $f(x) = e^x cos x$ um $x_0 = 0$.
 ][
@@ -345,7 +413,7 @@ Vorsicht: Die Problemstelle kann auch komplex sein. $1\/(1 + x^2)$ ist auf ganz 
   - Kriterien: Vergleich, Quotient ($k!$, $c^k$), Wurzel ($(dots)^k$), Leibniz (alternierend). Bei $L = 1$ keine Aussage.
   - Potenzreihe: Konvergenzradius $rho = lim |a_k \/ a_(k+1)|$; Randpunkte einzeln prüfen.
   - Taylor: $a_k = f^((k))(x_0)\/k!$. Restglied $f^((n+1))(xi)\/(n+1)! dot (x - x_0)^(n+1)$.
-  - Taylorreihen am besten aus bekannten Reihen bauen: einsetzen, multiplizieren, ableiten, integrieren.
+  - Taylorreihen am besten aus bekannten Reihen bauen: einsetzen, ausklammern, multiplizieren (Cauchy-Produkt, nicht gliedweise), ableiten, integrieren. Indexverschiebung mit Kontrolle des ersten Glieds.
   - $rho$ = Abstand zur nächsten (auch komplexen) Singularität.
   - Grenzwerte $x -> 0$: Taylor einsetzen, niedrigste Potenz entscheidet.
 ]

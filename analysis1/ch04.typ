@@ -307,6 +307,14 @@ $ integral f(x) dif x = F(x) + C. $]
   Kontrolle: Für $t in [0, pi\/2]$ käme $a b pi\/4$ heraus, ein Viertel der Ellipsenfläche $pi a b$. Unser Wert $approx 0.74 a b$ ist etwas kleiner als $pi\/4 approx 0.785$, das passt.
 ]
 
+#bsp[Fläche unter einem Zykloidenbogen][
+  Ein Rad mit Radius $1$ rollt auf der $x$-Achse. Ein Punkt am Rand beschreibt die Zykloide $x(t) = t - sin t$, $y(t) = 1 - cos t$; ein Bogen gehört zu einer Umdrehung, $t in [0, 2 pi]$. Mit der Parameterform $A = integral y dot(x) dif t$ und $dot(x) = 1 - cos t$:
+  $ A = integral_0^(2 pi) (1 - cos t)^2 dif t = integral_0^(2 pi) (1 - 2 cos t + cos^2 t) dif t = 2 pi - 0 + pi = 3 pi. $
+  Dabei ist $integral_0^(2 pi) cos^2 t dif t = pi$, weil $cos^2$ über eine Periode im Mittel $1\/2$ ist.
+  #align(center, image("figs/a04_zykloide.svg", width: 82%))
+  Die Fläche unter einem Bogen ist genau *dreimal die Fläche des rollenden Rades* (Roberval, um 1634). Die Formel funktioniert hier ohne Aufteilen, weil $x(t)$ monoton wächst ($dot(x) = 1 - cos t >= 0$): Jeder Streifen $y dif x$ wird genau einmal und mit positivem Vorzeichen gezählt. Läuft eine Kurve stellenweise nach links ($dot(x) < 0$), zählen die Streifen dort negativ.
+]
+
 #formel[Sektorfläche][
   Fläche, die der Ortsvektor beim Durchlaufen der Kurve überstreicht (vom Ursprung aus):
   $ A = 1/2 integral_(t_1)^(t_2) (x dot(y) - dot(x) y) dif t = 1/2 integral_(phi_1)^(phi_2) r(phi)^2 dif phi. $
@@ -328,9 +336,44 @@ $ integral f(x) dif x = F(x) + C. $]
   $ A = 1/2 [(125 pi^3 - pi^3)/(3 dot 216) + (25 pi^2 - pi^2)/36 + (5pi - pi)/6] = (31 pi^3)/324 + pi^2/3 + pi/3 approx 7.30. $
 ]
 
+#merke[*Vorzeichen.* Ohne Betrag liefert die Sektorformel eine Fläche mit Vorzeichen: In Polarkoordinaten ist $x dot(y) - y dot(x) = r^2 dot(phi)$. Dreht der Ortsvektor im Gegenuhrzeigersinn ($dot(phi) > 0$), ist der Beitrag positiv, im Uhrzeigersinn negativ. Deshalb steht in der Formel für geschlossene Kurven unten der Betrag.]
+
+#formel[Fläche zwischen zwei Polarkurven][Liegt für $phi in [phi_1, phi_2]$ die Kurve $r_1(phi)$ innen und $r_2(phi)$ aussen, so ist die Fläche dazwischen
+$ A = 1/2 integral_(phi_1)^(phi_2) (r_2(phi)^2 - r_1(phi)^2) dif phi. $
+Bei zwei aufeinanderfolgenden Windungen derselben Spirale ist $r_2(phi) = r(phi + 2 pi)$.]
+
+#bsp[Zwischen zwei Windungen der Spirale $r = e^phi$][
+  #grid(columns: (1fr, 5.0cm), column-gutter: 12pt, align: horizon,
+  [
+    Gesucht ist die Fläche im ersten Quadranten zwischen der ersten Windung ($0 <= phi <= pi\/2$) und der zweiten ($2 pi <= phi <= 5 pi\/2$). Äussere minus innere Windung, beide über denselben Winkelbereich:
+    $ A &= 1/2 integral_0^(pi\/2) (e^(2(phi + 2 pi)) - e^(2 phi)) dif phi \
+      &= 1/2 (e^(4 pi) - 1) integral_0^(pi\/2) e^(2 phi) dif phi \
+      &= 1/4 (e^(4 pi) - 1)(e^pi - 1). $
+  ],
+  image("figs/a04_windungen.svg", width: 100%))
+  Ausmultipliziert ist das die Form aus der Übung, $A = 1/4 (e^(5 pi) - e^(4 pi) - e^pi + 1) approx 1.59 dot 10^6$. Die Zahl ist riesig, weil $r$ bei jeder Umdrehung um den Faktor $e^(2 pi) approx 535$ wächst. Die Abbildung zeigt deshalb das Prinzip an der flacheren Spirale $r = e^(phi\/5)$; massstäblich wäre die innere Windung nicht zu sehen.
+]
+
 #formel[Fläche einer geschlossenen Kurve][Ist $vr(t_1) = vr(t_2)$ (die Kurve schliesst sich), so ist die eingeschlossene Fläche
 $ A = |integral_(t_1)^(t_2) x dot(y) dif t| = |integral_(t_1)^(t_2) y dot(x) dif t| = 1/2 |integral_(t_1)^(t_2) (x dot(y) - y dot(x)) dif t|. $
 Beispiel Ellipse: $integral_0^(2pi) a cos t dot b cos t dif t = pi a b$.]
+
+#bsp[Ellipse, deren Rand durch den Ursprung geht][
+  #grid(columns: (1fr, 5.2cm), column-gutter: 12pt, align: horizon,
+  [
+    $x = 2 cos t$, $y = 1 + sin t$, $t in [0, 2 pi]$: eine Ellipse mit Mittelpunkt $(0, 1)$ und Halbachsen $2$ und $1$. Der Ursprung liegt _auf_ dem Rand (bei $t = 3 pi\/2$).
+
+    $dot(x) = -2 sin t$, $dot(y) = cos t$, also
+    $ x dot(y) - y dot(x) = 2 cos^2 t + 2 (1 + sin t) sin t = 2 + 2 sin t. $
+  ],
+  image("figs/a04_ellipse_sektor.svg", width: 100%))
+  $ A = 1/2 integral_0^(2 pi) (2 + 2 sin t) dif t = 1/2 [2 t - 2 cos t]_0^(2 pi) = 2 pi. $
+  Kontrolle: Ellipsenfläche $pi a b = pi dot 2 dot 1 = 2 pi$ #sym.checkmark
+]
+
+#warum[Bei geschlossenen Kurven ist die Lage des Ursprungs egal][
+  Verschiebt man den Ursprung um $(c_1, c_2)$, so wird aus $x dot(y) - y dot(x)$ der Ausdruck $(x - c_1) dot(y) - (y - c_2) dot(x)$. Der Unterschied $-c_1 dot(y) + c_2 dot(x)$ hat das Integral $-c_1 (y(t_2) - y(t_1)) + c_2 (x(t_2) - x(t_1))$, und das ist null, weil die Kurve dort endet, wo sie angefangen hat. Anschaulich: Was der Ortsvektor ausserhalb der Kurve überstreicht, überstreicht er später in umgekehrter Richtung wieder, und die beiden Beiträge heben sich auf. Darum darf der Ursprung innen, aussen oder wie hier auf dem Rand liegen. Bei einem _offenen_ Kurvenstück gilt das nicht: Dort hängt die Sektorfläche vom Ursprung ab.
+]
 
 === Bogenlänge
 
@@ -347,9 +390,21 @@ Beispiel Ellipse: $integral_0^(2pi) a cos t dot b cos t dif t = pi a b$.]
   In Worten: Geschwindigkeit (Betrag) mal Zeit.
 ]
 
-#bsp[Kontrolle: Kreisumfang][
-  $vr(t) = (R cos t, R sin t)$, $|dot(vr)| = sqrt(R^2 sin^2 t + R^2 cos^2 t) = R$, also $L = integral_0^(2pi) R dif t = 2 pi R$. #sym.checkmark
+#bsp[Zwei Kontrollen][
+  - *Kreisumfang:* $vr(t) = (R cos t, R sin t)$, $|dot(vr)| = sqrt(R^2 sin^2 t + R^2 cos^2 t) = R$, also $L = integral_0^(2pi) R dif t = 2 pi R$. #sym.checkmark
+  - *Strecke:* $y = 3\/4 thin x$ für $0 <= x <= 4$. $sqrt(1 + f'^2) = sqrt(1 + 9\/16) = 5\/4$, also $L = 5\/4 dot 4 = 5$: die Hypotenuse des Dreiecks mit den Katheten $4$ und $3$. #sym.checkmark
+  Solche Kontrollen an Kurven mit bekannter Länge sind die schnellste Art, eine Formel oder eine Rechnung zu prüfen.
 ]
+
+#bsp[Länge eines Zykloidenbogens][
+  $x = t - sin t$, $y = 1 - cos t$, $t in [0, 2 pi]$ wie oben. $dot(x) = 1 - cos t$, $dot(y) = sin t$:
+  $ dot(x)^2 + dot(y)^2 = 1 - 2 cos t + cos^2 t + sin^2 t = 2 - 2 cos t = 4 sin^2 (t/2), $
+  mit der Halbwinkelformel $1 - cos t = 2 sin^2 (t\/2)$. Also $sqrt(dot(x)^2 + dot(y)^2) = 2 |sin(t\/2)|$. Für $t in [0, 2 pi]$ liegt $t\/2$ in $[0, pi]$, dort ist $sin(t\/2) >= 0$, und der Betrag fällt weg. Mit $u = t\/2$, $dif t = 2 dif u$:
+  $ L = integral_0^(2 pi) 2 sin(t/2) dif t = integral_0^pi 4 sin u dif u = [-4 cos u]_0^pi = 8. $
+  Ein Bogen ist genau *vier Raddurchmesser* lang (Wren, 1658), mehr als der Weg $2 pi approx 6.28$, den die Nabe in derselben Zeit zurücklegt. Der Randpunkt ist mal schneller, mal langsamer als die Nabe (oben doppelt so schnell, unten steht er still), im Mittel aber schneller.
+]
+
+#fehler[Den Betrag unter der Wurzel vergessen: $sqrt(4 sin^2 u) = 2 |sin u|$, nicht $2 sin u$. Über zwei Zykloidenbögen ($t in [0, 4 pi]$) gäbe $integral 2 sin(t\/2) dif t$ null statt $16$. Immer prüfen, welches Vorzeichen der Ausdruck auf dem Intervall hat, und notfalls aufteilen.]
 
 #bsp[Bogenlänge einer logarithmischen Spirale][
   #grid(columns: (1fr, 5.6cm), column-gutter: 12pt, align: horizon,
@@ -362,6 +417,7 @@ Beispiel Ellipse: $integral_0^(2pi) a cos t dot b cos t dif t = pi a b$.]
   ],
   image("figs/a04_logspirale.svg", width: 100%))
   $ L = sqrt(5)/2 integral_0^1 e^(phi\/2) dif phi = sqrt(5)/2 [2 e^(phi\/2)]_0^1 = sqrt(5) (e^(1\/2) - 1) approx 1.45. $
+  Allgemein gilt für $r = e^(c phi)$: $sqrt(r^2 + dot(r)^2) = sqrt(1 + c^2) thin r$, also $L = sqrt(1 + c^2)\/c dot (r(phi_2) - r(phi_1))$. Die Bogenlänge ist proportional zum Zuwachs des Radius. Für $r = e^phi$ und $phi in [0, pi\/2]$ ergibt das $L = sqrt(2) (e^(pi\/2) - 1) approx 5.39$.
 ]
 
 #alltag[Wie viel Kabel braucht eine Stromleitung zwischen zwei Masten, die 300 m auseinanderstehen und deren Kabel durchhängt? Die Bogenlänge der Kettenlinie $y = a cosh(x\/a)$; dank $1 + sinh^2 = cosh^2$ lässt sich das Integral exakt lösen. Auch ein Velocomputer misst eine Bogenlänge: Er zählt Radumdrehungen und multipliziert mit dem Umfang, egal wie kurvig der Weg ist.]
@@ -611,6 +667,43 @@ Existiert der Grenzwert, heisst das Integral *konvergent*, sonst *divergent*. An
   $ L = integral_0^3 sqrt(1 + x) dif x = [2/3 (1 + x)^(3\/2)]_0^3 = 2/3 (8 - 1) = 14/3. $
 ]
 
+#aufg[Flächen in Polarkoordinaten (Serie 11, Aufgabe 1)][
+  Berechne für $0 <= phi <= 2 pi$ die vom Ortsvektor überstrichene Fläche von (a) $r = sqrt(phi)$, (b) $r = 1\/(1 + phi)$, (c) $r = |sin phi|$, (d) $r = 2 a (1 + cos phi)$ mit $a > 0$.
+  #align(center, image("figs/a04_polar4.svg", width: 100%))
+  #text(size: 8.5pt)[(Die vier Skizzen sind nicht im gleichen Massstab.)]
+][
+  Überall $A = 1/2 integral_0^(2 pi) r^2 dif phi$. Bei (a) und (b) schliesst sich die Kurve nicht; gemeint ist die Fläche zwischen Kurve und Ursprung, wie oben bei der Sektorfläche.
+
+  (a) $r^2 = phi$: $A = 1/2 integral_0^(2 pi) phi dif phi = 1/2 dot (2 pi)^2/2 = pi^2 approx 9.87$.
+
+  (b) $r^2 = (1 + phi)^(-2)$: $A = 1/2 [-(1 + phi)^(-1)]_0^(2 pi) = 1/2 (1 - 1/(1 + 2 pi)) = pi/(1 + 2 pi) approx 0.43$.
+
+  (c) $r^2 = sin^2 phi = (1 - cos 2 phi)\/2$: $A = 1/2 dot pi = pi\/2$. Kontrolle: Die Kurve besteht aus zwei Kreisen mit Durchmesser $1$, zusammen $2 dot pi\/4 = pi\/2$ #sym.checkmark
+
+  (d) $r^2 = 4 a^2 (1 + 2 cos phi + cos^2 phi)$. Über eine Periode ist $integral cos phi = 0$ und $integral cos^2 phi = pi$:
+  $ A = 2 a^2 (2 pi + 0 + pi) = 6 pi a^2. $
+  Die Herzkurve (Kardioide) hat also sechsmal die Fläche eines Kreises mit Radius $a$.
+]
+
+#aufg(fig: "a04_kleeblatt", fw: 4.6cm)[Das Kleeblatt (Serie 11, Aufgabe 2)][
+  Gegeben ist $r(phi) = a |cos(2 phi)|$ mit $a > 0$. Gesucht sind die Gesamtfläche und die Breite $b$ des rechten Blattes (Abstand zwischen höchstem und tiefstem Punkt).
+][
+  *Fläche.* Das rechte Blatt beginnt und endet im Ursprung, also bei $cos 2 phi = 0$: $phi = plus.minus pi\/4$. Mit der Symmetrie zur $x$-Achse und $cos^2 2 phi = (1 + cos 4 phi)\/2$:
+  $ A_"Blatt" = 1/2 integral_(-pi\/4)^(pi\/4) a^2 cos^2 2 phi dif phi = a^2 integral_0^(pi\/4) (1 + cos 4 phi)/2 dif phi = a^2 [phi/2 + (sin 4 phi)/8]_0^(pi\/4) = (pi a^2)/8. $
+  Vier gleiche Blätter: $A = pi a^2 \/ 2$, genau die Hälfte des umschriebenen Kreises mit Radius $a$.
+
+  *Breite.* Höhe eines Punktes: $y(phi) = r sin phi = a cos(2 phi) sin phi$ für $0 <= phi <= pi\/4$. Mit $s = sin phi$ und $cos 2 phi = 1 - 2 s^2$ wird daraus $y = a (s - 2 s^3)$. Da $s$ mit $phi$ monoton wächst, genügt $dif y \/ dif s = a (1 - 6 s^2) = 0$, also $s = 1\/sqrt(6)$ ($phi approx 24.1°$):
+  $ y_max = a (1/sqrt(6) - 2/(6 sqrt(6))) = (2 a)/(3 sqrt(6)) = (sqrt(6))/9 a, wide b = 2 y_max = (2 sqrt(6))/9 a approx 0.544 a. $
+]
+
+#aufg(fig: "a04_vierflaechen", fw: 4.2cm)[Vier gleiche Teilflächen (Serie 11, Aufgabe 4)][
+  Welche Fläche schliesst die Kurve $sqrt(|x|) + sqrt(|y|) = 1$ ein?
+][
+  Die Kurve ist symmetrisch zu beiden Achsen; es genügt der erste Quadrant, dort fallen die Beträge weg: $sqrt(y) = 1 - sqrt(x)$, also $y = (1 - sqrt(x))^2$ für $0 <= x <= 1$.
+  $ A/4 = integral_0^1 (1 - 2 sqrt(x) + x) dif x = 1 - 4/3 + 1/2 = 1/6, wide A = 2/3. $
+  Kontrolle: Die Kurve liegt im Quadrat $|x| + |y| <= 1$ mit der Fläche $2$, denn $|x| + |y| <= (sqrt(|x|) + sqrt(|y|))^2 = 1$. Und $2\/3 < 2$ #sym.checkmark (Jedes der vier Stücke ist übrigens ein Parabelbogen.)
+]
+
 #aufg[Hauptsatz][
   Bestimme die lokalen Extrema von $F(x) = integral_0^x (t^2 - 1) e^(-t^2) dif t$.
 ][
@@ -636,6 +729,7 @@ Existiert der Grenzwert, heisst das Integral *konvergent*, sonst *divergent*. An
   - Partielle Integration: Produktregel rückwärts, nach LIATE ableiten. Bumerang-Integrale nach $I$ auflösen.
   - Substitution: Kettenregel rückwärts; Grenzen mitsubstituieren. $integral f'\/f = ln|f|$.
   - Rationale Funktionen: Polynomdivision, Nenner faktorisieren, Partialbrüche, integrieren ($ln$, $arctan$).
+  - Flächen: Parameterform $integral y dot(x) dif t$; Sektor $1/2 integral (x dot(y) - y dot(x)) dif t = 1/2 integral r^2 dif phi$; zwischen Polarkurven $1/2 integral (r_2^2 - r_1^2) dif phi$. Bei geschlossenen Kurven ist der Ursprung beliebig.
   - Anwendungen: Beitrag eines kleinen Stücks aufschreiben, dann integrieren. $dif A = f dif x$, $dif s = sqrt(dot(x)^2 + dot(y)^2) dif t$, $dif V = pi f^2 dif x$, $dif O = 2 pi f dif s$.
   - Uneigentlich: erst endliche Grenze, dann Grenzwert. $integral_1^oo x^(-p)$ konvergiert für $p > 1$, $integral_0^1 x^(-p)$ für $p < 1$. Vergleichskriterium.
 ]

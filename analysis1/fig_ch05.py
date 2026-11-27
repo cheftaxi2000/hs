@@ -72,3 +72,15 @@ s.text(4.5, y0 + 0.2, "Konvergenz", c=G, ha="center", size=8)
 s.text(1.0, y0 + 0.2, "Divergenz", c=R, ha="center", size=8); s.text(8.0, y0 + 0.2, "Divergenz", c=R, ha="center", size=8)
 s.text(2.2, y0 + 0.2, "?", c=O, ha="center", size=10); s.text(6.8, y0 + 0.2, "?", c=O, ha="center", size=10)
 s.save("a05_intervall")
+
+# ===== Übung 11: Randpunkte einer Potenzreihe mit Zentrum x0 = 1 =====
+# sum ((x-1)/2)^n: bei x = -1 springen die Partialsummen, bei x = 3 wachsen sie unbeschränkt
+p = Plot(6.2, 3.8, (-0.6, 8.6), (-0.6, 2.0), xt=[0, 2, 4, 6, 8], yt=[1], xl="$n$", yl="$s_n$")
+for n in range(9): p.dot((n, 1 if n % 2 == 0 else 0), c=B, r=2.6)
+p.curve(np.arange(9), [1 if n % 2 == 0 else 0 for n in range(9)], c=GREY, lw=0.5)
+p.text(8.4, 1.75, r"$x=-1$: $1-1+1-\dots$", c=B, ha="right", va="top", size=8)
+p.save("a05_rand_m1")
+p = Plot(6.2, 3.8, (-0.6, 8.6), (-0.8, 10.5), xt=[0, 2, 4, 6, 8], yt=[3, 6, 9], xl="$n$", yl="$s_n$")
+for n in range(9): p.dot((n, n + 1), c=R, r=2.6)
+p.text(0.4, 9.6, r"$x=3$: $1+1+1+\dots$", c=R, va="top", size=8)
+p.save("a05_rand_p3")

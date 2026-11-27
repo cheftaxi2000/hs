@@ -190,3 +190,87 @@ xx = np.linspace(-5.2, 5.2, 300); p.fill(xx, 1 / (1 + xx ** 2), 0, c=FILL_B)
 p.f(lambda x: 1 / (1 + x ** 2), c=B, label=r"$\frac{1}{1+x^2}$", lab_at=1.3, lab_off=(0.12, 0.05))
 p.text(-3.0, 0.45, r"Fläche $=\pi$", c=B, size=8, ha="center")
 p.save("a04_lorentz")
+
+# ===== Übung 11: Flächen und Bogenlängen (Parameter- und Polarform) =====
+# Zykloidenbogen: Fläche 3*pi (drei Radflächen), Länge 8 (vier Durchmesser)
+p = Plot(9.6, 3.9, (-0.5, 7.1), (-0.35, 2.55), xt=[np.pi, 2 * np.pi], yt=[1, 2], xtl=[r"$\pi$", r"$2\pi$"], equal=True)
+t = np.linspace(0, 2 * np.pi, 600); X, Y = t - np.sin(t), 1 - np.cos(t)
+p.fill(X, Y, 0, c=FILL_B)
+th = np.linspace(0, 2 * np.pi, 200)
+p.polyfill(list(zip(np.pi + np.cos(th), 1 + np.sin(th))), c=FILL_G, z=2, alpha=0.9)
+p.curve(np.pi + np.cos(th), 1 + np.sin(th), c=G, lw=0.9, dash=(3, 2))
+p.curve(X, Y, c=B, lw=1.6)
+p.dot((np.pi, 1), c=G, r=2.0); p.dot((0, 0)); p.dot((2 * np.pi, 0))
+p.text(np.pi, 1.05, r"Rad: $\pi$", c=G, ha="center", size=8)
+p.text(0.95, 0.42, r"$A = 3\pi$", ha="center", size=9)
+p.text(5.55, 1.55, r"$L = 8$", c=B, size=9)
+p.save("a04_zykloide")
+
+# Verschobene Ellipse: Ursprung liegt auf dem Rand
+p = Plot(5.6, 3.6, (-2.6, 2.8), (-0.45, 2.45), xt=[-2, 2], yt=[], equal=True)
+t = np.linspace(0, 2 * np.pi, 300); X, Y = 2 * np.cos(t), 1 + np.sin(t)
+p.polyfill(list(zip(X, Y)), c=FILL_B)
+for tk in np.linspace(-np.pi / 2 + 0.45, 3 * np.pi / 2 - 0.45, 7):
+    p.seg((0, 0), (2 * np.cos(tk), 1 + np.sin(tk)), c=GREY, lw=0.5)
+p.curve(X, Y, c=B, lw=1.4)
+p.arrow((-2.0, 1.32), (-2.0, 0.68), c=B, lw=1.3)
+p.dot((0, 1), c=GREY, r=1.8); p.text(0.08, 1.04, r"$(0,1)$", size=7, c=GREY)
+p.text(0.12, 0.05, "$O$", size=8.5, va="bottom")
+p.text(-2.12, 1.0, r"$t$", c=B, size=8, ha="right", va="center")
+p.save("a04_ellipse_sektor")
+
+# Fläche zwischen zwei Windungen einer logarithmischen Spirale (Prinzip; flachere Spirale r = e^{phi/5})
+c_ = 0.2
+p = Plot(6.0, 5.2, (-5.4, 5.6), (-4.6, 5.4), xt=[], yt=[], equal=True, grid=False, xl="", yl="")
+ph = np.linspace(0, 2.85 * np.pi, 900); r = np.exp(c_ * ph)
+p.curve(r * np.cos(ph), r * np.sin(ph), c=GREY, lw=0.7, dash=(3, 2))
+q = np.linspace(0, np.pi / 2, 200); ri = np.exp(c_ * q); ro = np.exp(c_ * (q + 2 * np.pi))
+p.polyfill(list(zip(np.r_[ro * np.cos(q), (ri * np.cos(q))[::-1]], np.r_[ro * np.sin(q), (ri * np.sin(q))[::-1]])), c=FILL_B)
+p.curve(ri * np.cos(q), ri * np.sin(q), c=R, lw=1.6); p.curve(ro * np.cos(q), ro * np.sin(q), c=B, lw=1.6)
+p.text(0.95, 0.92, r"$r(\varphi)$", c=R, size=8)
+p.text(3.6, 3.75, r"$r(\varphi + 2\pi)$", c=B, size=8)
+p.text(1.95, 1.55, "$A$", size=10)
+p.text(1.0, -0.32, r"$\varphi=0$", size=7.5, va="top"); p.text(3.6, -0.32, r"$\varphi=2\pi$", size=7.5, va="top")
+p.text(-0.12, 1.25, r"$\frac{\pi}{2}$", size=7.5, ha="right"); p.text(-0.12, 4.75, r"$\frac{5\pi}{2}$", size=7.5, ha="right")
+p.save("a04_windungen")
+
+# Serie 11, Aufgabe 1: vier Polarkurven
+s = Sketch(15.8, 3.9)
+def polar_cell(cx, cy, k, rf, phs, label, fill_pts=None):
+    X, Y = cx + k * rf(phs) * np.cos(phs), cy + k * rf(phs) * np.sin(phs)
+    pts = fill_pts if fill_pts is not None else list(zip(np.r_[cx, X], np.r_[cy, Y]))
+    s.polyfill(pts, c=FILL_B)
+    s.curve(X, Y, c=B, lw=1.2)
+    s.seg((cx - 1.55, cy), (cx + 1.6, cy), c=INK, lw=0.5); s.seg((cx, cy - 1.45), (cx, cy + 1.45), c=INK, lw=0.5)
+    s.text(cx, 0.08, label, ha="center", size=8)
+phs = np.linspace(0, 2 * np.pi, 600)
+polar_cell(2.1, 2.05, 0.56, np.sqrt, phs, r"a)  $r=\sqrt{\varphi}$")
+polar_cell(5.75, 2.25, 1.25, lambda p_: 1 / (1 + p_), phs, r"b)  $r=1/(1+\varphi)$")
+polar_cell(9.6, 2.05, 1.3, lambda p_: np.abs(np.sin(p_)), phs, r"c)  $r=|\sin\varphi|$")
+polar_cell(13.05, 2.05, 0.68, lambda p_: 1 + np.cos(p_), phs, r"d)  $r=2a(1+\cos\varphi)$")
+s.save("a04_polar4")
+
+# Serie 11, Aufgabe 2: Kleeblatt r = a|cos 2phi|
+p = Plot(5.4, 5.0, (-1.25, 1.35), (-1.2, 1.2), xt=[], yt=[], equal=True, grid=False)
+ph = np.linspace(0, 2 * np.pi, 1200); r = np.abs(np.cos(2 * ph))
+p.curve(r * np.cos(ph), r * np.sin(ph), c=GREY, lw=0.8)
+q = np.linspace(-np.pi / 4, np.pi / 4, 300); rq = np.cos(2 * q)
+p.polyfill(list(zip(rq * np.cos(q), rq * np.sin(q))), c=FILL_B)
+p.curve(rq * np.cos(q), rq * np.sin(q), c=B, lw=1.4)
+pm = np.arcsin(1 / np.sqrt(6)); xm, ym = np.cos(2 * pm) * np.cos(pm), np.cos(2 * pm) * np.sin(pm)
+p.dot((xm, ym), c=R, r=2.2); p.dot((xm, -ym), c=R, r=2.2)
+p.hline(ym, c=R, lw=0.5, a=xm, b=1.15); p.hline(-ym, c=R, lw=0.5, a=xm, b=1.15)
+p.arrow((1.12, 0), (1.12, ym), c=R, lw=0.7); p.arrow((1.12, 0), (1.12, -ym), c=R, lw=0.7)
+p.text(1.16, 0.0, "$b$", c=R, size=9, va="center")
+p.text(-1.2, -1.15, r"$a = 1$", size=7.5, c=GREY)
+p.save("a04_kleeblatt")
+
+# Serie 11, Aufgabe 4: sqrt|x| + sqrt|y| = 1
+p = Plot(4.6, 4.6, (-1.3, 1.35), (-1.3, 1.35), xt=[-1, 1], yt=[-1, 1], equal=True)
+t = np.linspace(0, 1, 300); X, Y = t ** 2, (1 - t) ** 2
+p.fill(X, Y, 0, c=FILL_B)
+for sx in (1, -1):
+    for sy in (1, -1):
+        p.curve(sx * X, sy * Y, c=B, lw=1.3)
+p.text(0.2, 0.18, r"$\frac{A}{4}$", size=9, ha="center")
+p.save("a04_vierflaechen")
