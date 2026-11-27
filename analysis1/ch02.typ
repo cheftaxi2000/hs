@@ -305,6 +305,22 @@ sofern der rechte Grenzwert existiert. Das gilt auch für $a = plus.minus oo$ un
 
 #merke[Ist $f'(xi) = f''(xi) = 0$, entscheidet $f''(xi) = 0$ nichts. Dann hilft der *Vorzeichenwechsel von $f'$*: Wechselt $f'$ in $xi$ von $+$ nach $-$, ist es ein Maximum, von $-$ nach $+$ ein Minimum, ohne Wechsel kein Extremum. Beispiel: $x^4$ hat bei $0$ ein Minimum, obwohl $f''(0) = 0$. Der Vorzeichentest funktioniert immer und ist oft schneller als die zweite Ableitung.]
 
+#satz[Erste nichtverschwindende Ableitung][Ist $f'(xi) = f''(xi) = dots = f^((n-1))(xi) = 0$ und $f^((n))(xi) != 0$, entscheidet die Ordnung $n$ dieser ersten nicht verschwindenden Ableitung:
+#table(columns: (auto, 1fr), stroke: none, inset: (x: 5pt, y: 3pt),
+  [$n$ gerade, $f^((n))(xi) > 0$], [lokales *Minimum*],
+  [$n$ gerade, $f^((n))(xi) < 0$], [lokales *Maximum*],
+  [$n >= 3$ ungerade], [kein Extremum, sondern *Sattelpunkt* (Wendepunkt mit waagrechter Tangente)],
+)]
+
+#warum[Taylor][Nach der Taylorformel (Kapitel 5) ist in der Nähe von $xi$ ungefähr $f(x) - f(xi) approx f^((n))(xi)\/n! dot (x - xi)^n$, weil alle früheren Glieder wegfallen. Bei geradem $n$ ist $(x - xi)^n >= 0$ auf beiden Seiten: $f$ liegt überall über $f(xi)$ (Minimum) oder überall darunter (Maximum). Bei ungeradem $n$ wechselt $(x - xi)^n$ das Vorzeichen: auf der einen Seite darunter, auf der anderen darüber, also kein Extremum.]
+
+#bsp[$x^4$, $x^5$ und $-x^6$ bei $0$][
+  - $f(x) = x^4$: Die ersten drei Ableitungen sind bei $0$ null, erst $f^((4))(0) = 24 > 0$. $n = 4$ gerade: Minimum.
+  - $f(x) = x^5$: Erst $f^((5))(0) = 120 != 0$. $n = 5$ ungerade: Sattelpunkt.
+  - $f(x) = -x^6$: $f^((6))(0) = -720 < 0$. $n = 6$ gerade: Maximum.
+  Die Regel «zweite Ableitung null heisst Wendepunkt» ist also falsch: $x^4$ hat bei $0$ ein Minimum, obwohl dort $f'' = 0$ ist.
+]
+
 #alltag[
   - *Konkav im Alltag:* das erste Stück Schokolade macht glücklicher als das fünfte. Ökonomen nennen das abnehmenden Grenznutzen: Der Nutzen wächst, aber immer langsamer ($f' > 0$, $f'' < 0$).
   - *Wendepunkt einer Epidemie:* Die Gesamtzahl der Fälle wächst zuerst immer schneller (konvex). Am Wendepunkt sind die täglichen Neuansteckungen ($f'$) maximal; danach wächst die Gesamtzahl zwar weiter, aber langsamer. Deshalb schaute man in der Pandemie so genau auf den Wendepunkt.

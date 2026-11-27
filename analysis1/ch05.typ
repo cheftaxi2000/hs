@@ -363,10 +363,14 @@ Vorsicht: Die Problemstelle kann auch komplex sein. $1\/(1 + x^2)$ ist auf ganz 
   Konvergenzbereich $[-3, 7)$.
 ]
 
-#aufg[Konvergenzradius (Serie 11, Aufgabe 5a und 5c)][
-  Bestimme den Konvergenzradius von (a) $display(sum_(n=1)^oo (x/n)^n)$ und (c) $display(sum_(n=0)^oo x^(2n)/2^n)$.
+#aufg[Konvergenzradius (Serie 11, Aufgabe 5)][
+  Bestimme den Konvergenzradius von (a) $display(sum_(n=1)^oo (x/n)^n)$, (b) $display(sum_(n=0)^oo n^2/(2 n^3 - 1) x^n)$ und (c) $display(sum_(n=0)^oo x^(2n)/2^n)$.
 ][
   (a) Wurzelkriterium direkt auf die Glieder: $root(n, |(x\/n)^n|) = |x|\/n -> 0 < 1$, für _jedes_ $x$. Die Reihe konvergiert überall: $rho = oo$. (Die Nenner $n^n$ wachsen schneller als jede Potenz $|x|^n$.)
+
+  (b) Quotientenformel mit $a_n = n^2\/(2 n^3 - 1)$:
+  $ |a_n/a_(n+1)| = n^2/(2 n^3 - 1) dot (2 (n + 1)^3 - 1)/(n + 1)^2 -> 1, $
+  denn in Zähler und Nenner dominiert jeweils $2 n^5$. Also $rho = 1$. Die Randpunkte (nicht gefragt, aber typische Zusatzfrage): Bei $x = 1$ verhalten sich die Glieder wie $1\/(2n)$, Vergleich mit der harmonischen Reihe, divergent. Bei $x = -1$ alterniert die Reihe, $n^2\/(2n^3 - 1)$ fällt ab $n = 1$ monoton gegen $0$, konvergent nach Leibniz. Konvergenzbereich $[-1, 1)$.
 
   (c) Als eine einzige Potenz geschrieben: $x^(2n)\/2^n = (x^2\/2)^n$. Das ist eine geometrische Reihe mit $q = x^2\/2$, konvergent genau für $x^2\/2 < 1$, also $|x| < sqrt(2)$: $rho = sqrt(2)$. An den Rändern $x = plus.minus sqrt(2)$ ist $q = 1$, divergent. Im Innern ist der Wert $2\/(2 - x^2)$.
 

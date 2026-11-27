@@ -87,6 +87,18 @@ $ integral f(x) dif x = F(x) + C. $]
 
 #fehler[Es gibt *keine* Produkt- oder Quotientenregel für Integrale: $integral f g dif x != integral f dif x dot integral g dif x$. Für Produkte braucht man partielle Integration oder Substitution.]
 
+#satz[Mittelwertsatz der Integralrechnung][Ist $f$ stetig auf $[a, b]$ mit $a < b$, so gibt es ein $c in [a, b]$ mit
+$ f(c) = 1/(b - a) integral_a^b f(x) dif x. $
+Die rechte Seite heisst *Mittelwert* von $f$ auf $[a, b]$.]
+
+#grid(columns: (1fr, 5.0cm), column-gutter: 12pt, align: horizon,
+  intu[Ein Rechteck über $[a, b]$ mit der Höhe $f(c)$ hat dieselbe Fläche wie die Fläche unter dem Graphen: Was oben übersteht, füllt unten die Lücke. Dass es eine solche Stelle $c$ gibt, folgt aus dem Zwischenwertsatz: Der Mittelwert liegt zwischen Minimum und Maximum von $f$, und eine stetige Funktion nimmt jeden Wert dazwischen an. Es ist derselbe Satz wie in der Differentialrechnung, angewandt auf die Stammfunktion $F$: $(F(b) - F(a))\/(b - a) = F'(c) = f(c)$.],
+  image("figs/a04_mws_int.svg", width: 100%))
+
+#bsp[Mittelwert von $x^2$ auf $[0, 1]$][
+  $integral_0^1 x^2 dif x = 1\/3$, Intervalllänge $1$, also ist die mittlere Höhe $1\/3$. Die Stelle: $c^2 = 1\/3$, also $c = 1\/sqrt(3) approx 0.577$. Sie liegt rechts der Intervallmitte, weil $x^2$ dort steiler wächst und die grossen Werte am rechten Ende den Mittelwert hochziehen.
+]
+
 #formel[Grundintegrale][
   #table(columns: (1fr, 1fr), stroke: none, inset: (x: 4pt, y: 5pt),
     [$integral x^n dif x = x^(n+1)/(n+1) + C quad (n != -1)$], [$integral 1/x dif x = ln|x| + C$],
@@ -668,7 +680,7 @@ Existiert der Grenzwert, heisst das Integral *konvergent*, sonst *divergent*. An
 ]
 
 #aufg[Flächen in Polarkoordinaten (Serie 11, Aufgabe 1)][
-  Berechne für $0 <= phi <= 2 pi$ die vom Ortsvektor überstrichene Fläche von (a) $r = sqrt(phi)$, (b) $r = 1\/(1 + phi)$, (c) $r = |sin phi|$, (d) $r = 2 a (1 + cos phi)$ mit $a > 0$.
+  Berechne den Flächeninhalt, den die folgenden Polarkurven im Bereich $0 <= phi <= 2 pi$ einschliessen (bzw. mit dem Ursprung überstreichen): (a) $r = sqrt(phi)$, (b) $r = 1\/(1 + phi)$, (c) $r = |sin phi|$, (d) $r = 2 a (1 + cos phi)$ mit $a > 0$.
   #align(center, image("figs/a04_polar4.svg", width: 100%))
   #text(size: 8.5pt)[(Die vier Skizzen sind nicht im gleichen Massstab.)]
 ][
@@ -694,6 +706,23 @@ Existiert der Grenzwert, heisst das Integral *konvergent*, sonst *divergent*. An
 
   *Breite.* Höhe eines Punktes: $y(phi) = r sin phi = a cos(2 phi) sin phi$ für $0 <= phi <= pi\/4$. Mit $s = sin phi$ und $cos 2 phi = 1 - 2 s^2$ wird daraus $y = a (s - 2 s^3)$. Da $s$ mit $phi$ monoton wächst, genügt $dif y \/ dif s = a (1 - 6 s^2) = 0$, also $s = 1\/sqrt(6)$ ($phi approx 24.1°$):
   $ y_max = a (1/sqrt(6) - 2/(6 sqrt(6))) = (2 a)/(3 sqrt(6)) = (sqrt(6))/9 a, wide b = 2 y_max = (2 sqrt(6))/9 a approx 0.544 a. $
+]
+
+#aufg(fig: "a04_serie11_3", fw: 4.0cm)[Bogenlänge bis zur ersten vertikalen Tangente (Serie 11, Aufgabe 3)][
+  Die Kurve $K$ ist gegeben durch
+  $ t |-> (x(t), y(t)) = (integral_1^t (cos u)/u dif u, thin integral_1^t (sin u)/u dif u), quad t in [1, 4 pi). $
+  Wie lang ist $K$ vom Koordinatenursprung bis zum ersten Punkt mit vertikaler Tangente?
+][
+  *Start.* Bei $t = 1$ sind beide Integrale null: Die Kurve beginnt im Ursprung.
+
+  *Ableitungen.* Die Integrale lassen sich nicht elementar auswerten, das ist aber auch nicht nötig. Nach dem Hauptsatz ist
+  $ dot(x)(t) = (cos t)/t, quad dot(y)(t) = (sin t)/t, quad sqrt(dot(x)^2 + dot(y)^2) = sqrt((cos^2 t + sin^2 t)/t^2) = 1/t. $
+
+  *Ende.* Vertikale Tangente heisst $dot(x) = 0$ und $dot(y) != 0$. Das erste $t > 1$ mit $cos t = 0$ ist $t = pi\/2$, und dort ist $dot(y) = 2\/pi != 0$.
+
+  *Länge.*
+  $ L = integral_1^(pi\/2) 1/t dif t = ln(pi/2) approx 0.452. $
+  Geometrisch: Der Tangentenvektor $(cos t, sin t)\/t$ zeigt unter dem Winkel $t$; die Tangente dreht also gleichmässig mit dem Parameter, während die Schnelligkeit wie $1\/t$ abnimmt. Deshalb wickelt sich die Kurve zu einer immer engeren Spirale auf.
 ]
 
 #aufg(fig: "a04_vierflaechen", fw: 4.2cm)[Vier gleiche Teilflächen (Serie 11, Aufgabe 4)][

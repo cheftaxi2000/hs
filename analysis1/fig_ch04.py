@@ -274,3 +274,27 @@ for sx in (1, -1):
         p.curve(sx * X, sy * Y, c=B, lw=1.3)
 p.text(0.2, 0.18, r"$\frac{A}{4}$", size=9, ha="center")
 p.save("a04_vierflaechen")
+
+# Serie 11, Aufgabe 3: Kurve (int_1^t cos(u)/u du, int_1^t sin(u)/u du), Tangentenwinkel = t
+_t = np.linspace(1, 4 * np.pi, 6000); _dt = np.diff(_t)
+_ctz = lambda g: np.r_[0, np.cumsum((g[1:] + g[:-1]) / 2 * _dt)]      # Trapezregel, kumuliert
+_X = _ctz(np.cos(_t) / _t); _Y = _ctz(np.sin(_t) / _t)
+p = Plot(4.8, 5.0, (-0.62, 0.42), (-0.12, 1.0), xt=[], yt=[], equal=True, grid=False)
+p.curve(_X, _Y, c=GREY, lw=0.8)
+k = np.searchsorted(_t, np.pi / 2)
+p.curve(_X[:k + 1], _Y[:k + 1], c=B, lw=1.8)
+p.dot((0, 0)); p.dot((_X[k], _Y[k]), c=R)
+p.seg((_X[k], _Y[k] - 0.16), (_X[k], _Y[k] + 0.16), c=R, lw=0.8, dash=(3, 2))
+p.text(0.02, -0.02, r"$t=1$", size=7.5, va="top")
+p.text(_X[k] + 0.03, _Y[k], r"$t=\frac{\pi}{2}$", c=R, size=7.5, va="center")
+p.save("a04_serie11_3")
+
+# Mittelwertsatz der Integralrechnung: f = x^2 auf [0, 1], mittlere Höhe 1/3 bei c = 1/sqrt(3)
+p = Plot(5.4, 4.2, (-0.12, 1.22), (-0.08, 1.3), xt=[1 / np.sqrt(3), 1], yt=[1 / 3, 1], xtl=[r"$c$", "1"], ytl=[r"$\frac{1}{3}$", "1"])
+x = np.linspace(0, 1, 200); p.fill(x, x ** 2, 0, c=FILL_B)
+p.polyfill([(0, 0), (1, 0), (1, 1 / 3), (0, 1 / 3)], c=FILL_G, alpha=0.55, z=2)
+p.hline(1 / 3, c=G, lw=1.0, dash=None, a=0, b=1)
+p.vline(1, a=0, b=1); p.vline(1 / np.sqrt(3), a=0, b=1 / 3)
+p.f(lambda x: x ** 2, 0, 1.06, c=B, lw=1.4); p.dot((1 / np.sqrt(3), 1 / 3), c=G)
+p.text(1.06, 1.06, r"$f(x)=x^2$", c=B, size=8, ha="right")
+p.save("a04_mws_int")
